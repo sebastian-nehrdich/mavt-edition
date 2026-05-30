@@ -30,22 +30,19 @@ re-examined against:
 mavt-edition/
 ├── README.md                          this file
 ├── index.html                         landing page (GitHub Pages)
-├── all-pages.html                     thumbnail grid of all 321 PDF pages
 ├── mavt-reedition-workflow.md         methodology + lessons learned
-├── images/
-│   └── page-001.jpg … page-321.jpg    every page of the PDF, 400 DPI JPG
 └── editions/
     └── chapter-4/                     pratipakṣa-bhāvanā-pariccheda
-        ├── mavt-page-166.html         per-page format,
-        ├── mavt-page-167.html         each with its scan embedded
+        ├── mavt-page-166.html
+        ├── mavt-page-167.html
         ├── mavt-page-168.html
         ├── mavt-page-169.html
         └── mavt-page-170.html
 ```
 
-**The original PDF is not redistributed here.** All 321 PDF pages are
-provided as 400-DPI JPG images in `images/`; the underlying scan is
-the Yamaguchi 1934 edition, available from major academic libraries.
+**The original Yamaguchi 1934 PDF and its page-image renderings are
+not redistributed here.** The Yamaguchi edition is available from
+major academic libraries; this repo is text-only.
 
 ### How to read the editions
 
@@ -71,17 +68,15 @@ Each Yamaguchi-page is segmented into numbered "sentence units"
 A summary table at the bottom of each page-file lists all sentence
 units with status + headline change.
 
-### Page-image cross-reference
+### Page cross-reference
 
-| Edition file | Yamaguchi p. | PDF file p. |
-| --- | --- | --- |
-| `editions/chapter-4/mavt-page-166.html` | 166 | 204 |
-| `editions/chapter-4/mavt-page-167.html` | 167 | 205 |
-| `editions/chapter-4/mavt-page-168.html` | 168 | 206 |
-| `editions/chapter-4/mavt-page-169.html` | 169 | 207 |
-| `editions/chapter-4/mavt-page-170.html` | 170 | 208 |
-
-PDF file page N corresponds to Yamaguchi page (N − 38).
+| Edition file | Yamaguchi p. |
+| --- | --- |
+| `editions/chapter-4/mavt-page-166.html` | 166 |
+| `editions/chapter-4/mavt-page-167.html` | 167 |
+| `editions/chapter-4/mavt-page-168.html` | 168 |
+| `editions/chapter-4/mavt-page-169.html` | 169 |
+| `editions/chapter-4/mavt-page-170.html` | 170 |
 
 ## Methodology
 
@@ -110,6 +105,6 @@ Yamaguchi's original is:
 
 Editorial work in this repository is released under
 [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/). The
-included page-image scans from Yamaguchi 1934 are reproduced for
-scholarly comparison; the underlying typesetting is in the public
+Yamaguchi 1934 typesetting that this re-edition responds to is in
+the public
 domain in the EU and in many other jurisdictions.
