@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sthiramati MAVT chapter 4 — re-edition walk-through</title>
+  <style>
+    :root {
+      --bg: #fdfdfb;
+      --fg: #1c1c1c;
+      --muted: #6b6b6b;
+      --rule: #d8d3c8;
+      --accent: #6c4a1d;
+      --skt-bg: #f4efe4;
+      --para-bg: #eef2f6;
+      --tib-bg: #f6f1ef;
+      --recon-bg: #f0e7d9;
+      --proposed-bg: #e1ecdb;
+      --warn-bg: #fde6e1;
+      --link: #1d4f8e;
+    }
+    html { font-size: 16px; }
+    body {
+      font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
+      background: var(--bg);
+      color: var(--fg);
+      max-width: 960px;
+      margin: 2.5rem auto;
+      padding: 0 1.5rem 4rem;
+      line-height: 1.55;
+    }
+    h1 { font-size: 1.6rem; margin-bottom: 0.2rem; }
+    h2 {
+      font-size: 1.2rem;
+      margin-top: 2.6rem;
+      padding-bottom: 0.2rem;
+      border-bottom: 1px solid var(--rule);
+      color: var(--accent);
+    }
+    h3 { font-size: 1.05rem; margin-top: 1.6rem; color: var(--accent); }
+    h4 { font-size: 0.95rem; margin: 0.8rem 0 0.3rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+    p, ul, ol { margin: 0.5rem 0; }
+    .meta { color: var(--muted); font-size: 0.85rem; margin-top: 0; }
+    .conventions { font-size: 0.88rem; color: var(--muted); }
+    .conventions code { background: #efeae0; padding: 0 0.25rem; border-radius: 2px; }
+    code, .ms { font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 0.92em; }
+    .yamaguchi {
+      background: var(--recon-bg);
+      padding: 0.55rem 0.85rem;
+      border-left: 3px solid #b88c1d;
+      margin: 0.4rem 0;
+      font-family: "Charis SIL", "Gentium Plus", Georgia, serif;
+    }
+    .yamaguchi .recon { font-style: italic; color: #8a3e0c; }
+    .yamaguchi .ms-direct { color: #1c1c1c; }
+    .tibetan {
+      background: var(--tib-bg);
+      padding: 0.55rem 0.85rem;
+      border-left: 3px solid #8a4a4a;
+      margin: 0.4rem 0;
+      font-family: "Jomolhari", "Tibetan Machine Uni", "Iowan Old Style", serif;
+    }
+    .proposed {
+      background: var(--proposed-bg);
+      padding: 0.55rem 0.85rem;
+      border-left: 3px solid #4a7a3a;
+      margin: 0.4rem 0;
+      font-family: "Charis SIL", "Gentium Plus", Georgia, serif;
+    }
+    .proposed strong { color: #2d5020; }
+    .japanese {
+      background: #f5f0e8;
+      padding: 0.55rem 0.85rem;
+      border-left: 3px solid #6b4a2a;
+      margin: 0.4rem 0;
+      font-family: "Hiragino Mincho ProN", "Yu Mincho", "MS Mincho", serif;
+      font-size: 0.97rem;
+    }
+    .compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem;
+      margin: 0.6rem 0;
+    }
+    .compare > div {
+      padding: 0.55rem 0.75rem;
+      border-radius: 3px;
+      font-family: "Charis SIL", "Gentium Plus", Georgia, serif;
+      font-size: 0.95rem;
+    }
+    .compare .before {
+      background: #f4ebe0;
+      border-left: 3px solid #b88c1d;
+    }
+    .compare .after {
+      background: #e1ecdb;
+      border-left: 3px solid #4a7a3a;
+    }
+    .compare h5 {
+      margin: 0 0 0.3rem 0;
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #555;
+    }
+    .compare .before h5 { color: #8a3e0c; }
+    .compare .after h5 { color: #2d5020; }
+    .translation {
+      background: #fafafa;
+      border-left: 3px solid #777;
+      padding: 0.5rem 0.85rem;
+      margin: 0.4rem 0;
+      font-style: italic;
+      color: #333;
+    }
+    .parallel {
+      background: var(--para-bg);
+      padding: 0.55rem 0.8rem;
+      border-left: 3px solid #5a7da2;
+      margin: 0.4rem 0;
+      font-size: 0.95rem;
+    }
+    .parallel .src { font-weight: 600; }
+    .parallel .quote {
+      display: block;
+      margin-top: 0.25rem;
+      font-family: "Charis SIL", "Gentium Plus", Georgia, serif;
+      font-style: italic;
+      color: #333;
+    }
+    .justification {
+      background: #f9f5e8;
+      border-left: 3px solid #c2a04a;
+      padding: 0.5rem 0.85rem;
+      margin: 0.4rem 0;
+      font-size: 0.93rem;
+    }
+    .warn {
+      background: var(--warn-bg);
+      padding: 0.45rem 0.75rem;
+      border-left: 3px solid #b54c30;
+      margin: 0.4rem 0;
+      font-size: 0.93rem;
+    }
+    .disclaimer {
+      background: #fff3e0;
+      border: 2px solid #c25c1a;
+      border-radius: 4px;
+      padding: 1rem 1.2rem;
+      margin: 1.2rem 0 2rem;
+      font-size: 0.95rem;
+    }
+    .disclaimer h2 { margin-top: 0; border: none; color: #8a3e0c; font-size: 1.05rem; }
+    .disclaimer p { margin: 0.5rem 0; }
+    .disclaimer ul { margin: 0.4rem 0 0.4rem 1.2rem; padding: 0; }
+    .intro {
+      background: #f4f0e6;
+      border-left: 3px solid var(--accent);
+      padding: 0.8rem 1rem;
+      margin: 1rem 0 2rem;
+      font-size: 0.97rem;
+    }
+    .intro h3 { margin-top: 0.8rem; }
+    .status {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      padding: 0.15rem 0.5rem;
+      border-radius: 2px;
+      margin-left: 0.5rem;
+      vertical-align: middle;
+    }
+    .status.verified { background: #cfe5c7; color: #244a18; }
+    .status.pending  { background: #f0e4c2; color: #5a4310; }
+    .label {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      padding: 0.1rem 0.4rem;
+      border-radius: 2px;
+      margin-right: 0.4rem;
+      text-transform: uppercase;
+    }
+    .label.recon { background: #f4dab8; color: #6a3f10; }
+    .label.ms { background: #d2dce8; color: #1f3a55; }
+    .label.tib { background: #e6cccc; color: #5a2d2d; }
+    .label.proposed { background: #c8dcc0; color: #2d5020; }
+    .folio-anchor { color: #999; font-size: 0.78rem; }
+    a { color: var(--link); text-decoration: none; border-bottom: 1px solid #c8d3e3; }
+    a:hover { background: #eef3fa; }
+    section.sentence { margin-top: 2.0rem; padding-top: 0.4rem; border-top: 1px dotted #d0d0c0; }
+    section.sentence h3 { display: flex; align-items: center; flex-wrap: wrap; }
+  </style>
+
+
+
+<style>
+.mavt-img-banner { background:#f0e7d9; border-bottom:2px solid #b88c1d; padding:0.8rem 1rem; margin:-2.5rem -1.5rem 1.6rem; text-align:center; font-family:"Iowan Old Style",Georgia,serif; }
+.mavt-img-banner .mavt-nav { font-size:0.88rem; margin-bottom:0.6rem; color:#6a3f10; }
+.mavt-img-banner .mavt-nav a { color:#5a2d2d; text-decoration:none; padding:0.15rem 0.5rem; background:#e8d8b8; border:1px solid #c8a87a; border-radius:3px; margin:0 0.2rem; display:inline-block; }
+.mavt-img-banner .mavt-nav a:hover { background:#d8c0a0; }
+.mavt-img-banner details { text-align:left; }
+.mavt-img-banner summary { cursor:pointer; font-size:0.92rem; color:#5a3a18; padding:0.3rem 0; user-select:none; }
+.mavt-img-banner summary:hover { color:#3a1a08; }
+.mavt-img-banner .mavt-img-strip { display:flex; flex-wrap:wrap; gap:0.6rem; justify-content:center; margin-top:0.6rem; }
+.mavt-img-banner .mavt-img-strip a { display:inline-block; text-decoration:none; }
+.mavt-img-banner .mavt-img-strip img { max-width:420px; max-height:560px; border:1px solid #b88c1d; border-radius:2px; transition:transform 0.15s; }
+.mavt-img-banner .mavt-img-strip img:hover { transform:scale(1.02); box-shadow:0 2px 8px rgba(0,0,0,0.15); }
+.mavt-img-banner .mavt-img-strip .mavt-img-cap { display:block; font-size:0.78rem; color:#6a3f10; margin-top:0.2rem; text-align:center; }
+.mavt-img-banner .mavt-img-single img { max-width:560px; max-height:760px; }
+</style>
+</head>
+<body>
+<div class="mavt-img-banner"><div class="mavt-nav"><a href="../../index.html">← Index</a><a href="../../all-pages.html">📑 All PDF pages</a></div><details open><summary>📜 Show original Yamaguchi 1934 scan — page 167</summary><div class="mavt-img-strip mavt-img-single"><a href="../../images/page-205.jpg" target="_blank" title="Click for full-size"><img src="../../images/page-205.jpg" alt="Yamaguchi 1934, p. 167" loading="lazy"><span class="mavt-img-cap">p. 167</span></a></div></details></div>
+<h1>Sthiramati, <em>Madhyāntavibhāgaṭīkā</em> — Yamaguchi p.&nbsp;167 <span style="font-size:0.7em;color:#888;">(chapter 4)</span></h1>
+<p class="meta">Yamaguchi 1934 file p. 205. Chapter 4 (<em>Pratipakṣa-bhāvanā-pariccheda</em>) — kāya-smṛtyupasthāna (continued). Methodology: <a href="../../mavt-reedition-workflow.md"><code>mavt-reedition-workflow.md</code></a>.</p>
+<h2>Page 205 (Yamaguchi p. 167) — continuation of chapter 4 opening</h2>
+<p class="meta">Sthiramati's commentary on MAVbh kārikā IV.1 begins
+properly. Most italicised stretches on this page are MAVbh
+<em>pratīkas</em> (quotation-words) and can be checked verbatim
+against the local <code>references/SA_T06_vmvkbh_u.txt</code>.</p>
+
+<section class="sentence" id="s10">
+<h3>§10 — Iti vistaraḥ | tatreti bodhipakṣa-bhāvanāyām | tāvac-chabdaḥ kramārthaḥ <span class="status verified">VERIFIED</span></h3>
+
+<h4>Yamaguchi text</h4>
+<div class="yamaguchi">
+<span class="ms-direct">iti vistaraḥ |</span>
+<span class="recon">tatreti bodhipakṣabhāvanāyām |</span>
+<span class="ms-direct">tāvacchabdaḥ kramārthaḥ |</span>
+<span class="folio-anchor">(p. 167; OCR line 6838)</span>
+</div>
+
+<h4>Structure</h4>
+<p>Three brisk glosses closing the kārikā IV.1a quotation:</p>
+<ul>
+  <li><code>iti vistaraḥ</code> — "[so the kārikā goes on] in full"
+  — closes the abbreviated citation begun at §9. Standard MAVT
+  citation-closing formula (parallel at OCR line 6816 of §7
+  context).</li>
+  <li><code>tatra iti bodhipakṣa-bhāvanāyām</code> — glosses
+  <em>tatra</em> from the kārikā / bhāṣya lead-in (<em>tatra tāvad
+  ādau</em>): "by '<em>tatra</em>' is meant 'in the
+  cultivation-of-<em>bodhipakṣya</em>.'" Pratīka + locative gloss.</li>
+  <li><code>tāvac-chabdaḥ krama-arthaḥ</code> — "the word
+  <em>tāvat</em> has the meaning 'in order'/'in sequence'" — i.e.
+  <em>tāvat</em> is a sequence-marker, signalling that
+  smṛtyupasthāna-bhāvanā is treated <em>first</em> in the sequence
+  of bodhipakṣa-bhāvanās.</li>
+</ul>
+
+<h4>Yamaguchi vs. proposed (no change)</h4>
+<div class="compare">
+<div class="before">
+<h5>Yamaguchi 1934 as printed</h5>
+iti vistaraḥ | <em>tatreti bodhipakṣabhāvanāyām</em> | tāvacchabdaḥ
+kramārthaḥ |
+</div>
+<div class="after">
+<h5>Proposed re-edited text</h5>
+iti vistaraḥ | tatreti bodhipakṣyabhāvanāyām | tāvac-chabdaḥ
+kramārthaḥ |<br>
+<span style="font-size:0.85em;color:#5a4310;">(Note: emend
+<em>bodhipakṣa</em> → <em>bodhipakṣya</em> for consistency with
+§3; see §3 note.)</span>
+</div>
+</div>
+
+<h4>Yamaguchi's Japanese translation</h4>
+<div class="japanese">
+等は擴大の語、その中とは菩提分修習に於てなり。且く聲は次第の義なり。
+<span class="folio-anchor">(<code>references/mavt-ja.txt</code> line 3746 + 3747)</span>
+</div>
+
+<h4>Translation</h4>
+<div class="translation">
+"… and so on [<em>iti vistaraḥ</em>]. By '<em>tatra</em>' is meant
+'in the cultivation of the <em>bodhipakṣya</em>[-dharmas].' The
+word '<em>tāvat</em>' has the sense of sequence."
+</div>
+</section>
+<section class="sentence" id="s11">
+<h3>§11 — Ādāu tāvat smṛtyupasthāna-bhāvanā ucyate paścād anyeṣām api <span class="status verified">VERIFIED</span></h3>
+
+<h4>Yamaguchi text (MS-attested)</h4>
+<div class="yamaguchi">
+<span class="ms-direct">ādāu tāvat smṛtyupasthānabhāvanocyate paçcād
+anyeṣām api iti |</span>
+<span class="folio-anchor">(p. 167; OCR line 6839–6840)</span>
+</div>
+
+<h4>Structure</h4>
+<p>An explicit unpacking of <em>ādau tāvat</em>: "[the implied
+meaning is:] at the outset, the cultivation of the
+<em>smṛtyupasthāna</em>s is taught; afterwards [the cultivation] of
+the others as well."</p>
+
+<h4>Yamaguchi vs. proposed (no change)</h4>
+<div class="compare">
+<div class="before">
+<h5>Yamaguchi 1934 as printed</h5>
+ādāu tāvat smṛtyupasthānabhāvanocyate paçcād anyeṣām apiti |
+</div>
+<div class="after">
+<h5>Proposed re-edited text</h5>
+ādau tāvat smṛtyupasthāna-bhāvanocyate paścād anyeṣām apīti |<br>
+<span style="font-size:0.85em;color:#5a4310;">(Normalise OCR
+<em>ç</em> → <em>ś</em>; <em>apiti</em> resolves
+<em>api iti</em>.)</span>
+</div>
+</div>
+
+<h4>Yamaguchi's Japanese translation</h4>
+<div class="japanese">
+初めには且らく念處の修習を説き、後に諸餘〔菩提分〕についても亦〔説く〕なり。
+<span class="folio-anchor">(<code>references/mavt-ja.txt</code> line 3748)</span>
+</div>
+
+<h4>Translation</h4>
+<div class="translation">
+"[The implication is:] at the outset, the cultivation of the
+<em>smṛtyupasthāna</em>s [foundations of mindfulness] is taught;
+afterwards [the cultivation] of the others [the remaining 33
+bodhipakṣya-dharmas] as well."
+</div>
+</section>
+<section class="sentence" id="s12">
+<h3>§12 — Nirvāṇa-saṃsārayor guṇadoṣānavabodhāt … <span class="status verified">VERIFIED</span></h3>
+
+<h4>Yamaguchi text (MS-attested, with two MS-vs-Tib variants noted by Yamaguchi)</h4>
+<div class="yamaguchi">
+<span class="ms-direct">nirvāṇasaṁsārayor guṇadoṣānavabodhāt
+saṁskāreṣu sukhaśucinityātmābhiniveśena bālānāṁ bhavabhoge
+'bhimandanaṁ nirvāṇārthe trāsaḥ |</span>
+<span class="ms-direct">sa ca guṇadoṣānavabodhaḥ
+sukhādyabhiniveśaś ca satyadarśanād vinivartata ity ataḥ saṁsārād
+udvejanārthaṁ nirvāṇe cābhimukhīkaraṇārthaṁ catuḥsatyāvatārāya
+smṛtyupasthānabhāvanaivādāv uktā |</span>
+<span class="folio-anchor">(p. 167; OCR lines 6840–6845)</span>
+</div>
+
+<h4>Apparatus notes from Yamaguchi (footnotes 1, 2, 3)</h4>
+<ul>
+  <li>fn. 1: MS reads <em>nivārṇa</em>; Tib. <em>mya-ṅan-las
+  ḥdas-pa</em> — so <em>nirvāṇa</em> is the correct reading
+  (MS is a metathesis slip).</li>
+  <li>fn. 2: MS reads <em>vacanaṁ nivāṇa-</em> (perhaps an inserted
+  <em>vacanam</em> that should be removed); Tib. <em>mñon-par
+  dgaḥ-ba çiṅ mya-ṅan-las-ḥdas-pa</em> — supports
+  <em>'bhimandanaṁ nirvāṇa</em> (gerundive of <em>abhi-mand</em>
+  "delighting in").</li>
+  <li>fn. 3: In Vasubandhu's MAVbh, this very sentence appears at
+  the end of the <em>smṛtyupasthāna</em> section, and where
+  Sthiramati has <em>uktā</em>, MAVbh has <em>vyavasthāpyate</em>.
+  Cf. local MAVbh file line 815:
+  <code>ādau catuḥsatyāvatārāya smṛtyupasthānabhāvanā
+  vyavasthāpyate /</code></li>
+</ul>
+
+<h4>The MAVbh parallel — Sthiramati anticipates Vasubandhu's prose</h4>
+<div class="parallel">
+<span class="src">Vasubandhu MAVbh ad IV.1 closing</span>
+— local <code>references/SA_T06_vmvkbh_u.txt</code> line 815;
+indexed in
+<a href="https://dharmamitra.org/nexus/db/sa/SA_T06_vmvkbh_u/text?active_segment=SA_T06_vmvkbh_u:789">SA_T06_vmvkbh_u</a>.
+<span class="quote">ādau catuḥsatyāvatārāya
+smṛtyupasthānabhāvanā vyavasthāpyate /</span>
+Sthiramati lifts this MAVbh formula but substitutes the perfect
+passive <em>uktā</em> for the present <em>vyavasthāpyate</em> —
+because in his commentarial order this statement falls at the
+beginning (anticipating what Vasubandhu will say), not at the end.
+</div>
+
+<h4>Yamaguchi vs. proposed (minor cleanups)</h4>
+<div class="compare">
+<div class="before">
+<h5>Yamaguchi 1934 as printed</h5>
+nirvāṇasaṁsārayor guṇadoṣānavabodhāt saṁskāreṣu
+sukhaçucinityātmābhiniveçena bālānāṁ bhavabhoge 'bhimandanaṁ
+nirvāṇārthe trāsaḥ | sa ca guṇadoṣānavabodhaḥ sukhādyabhiniveçaç
+ca satyadarçanād vinivartata ity ataḥ saṁsārād udvejanārthaṁ
+nirvāṇe cābhimukhīkaraṇārthaṁ catuḥsatyāvatārāya
+smṛtyupasthānabhāvanāivādāv uktā |
+</div>
+<div class="after">
+<h5>Proposed re-edited text</h5>
+nirvāṇa-saṃsārayor guṇa-doṣa-anavabodhāt saṃskāreṣu
+sukha-śuci-nitya-ātma-abhiniveśena bālānāṃ bhava-bhoge
+'bhimandanaṃ nirvāṇa-arthe trāsaḥ | sa ca
+guṇa-doṣa-anavabodhaḥ sukha-ādy-abhiniveśaś ca satya-darśanād
+vinivartata ity ataḥ saṃsārād udvejana-arthaṃ nirvāṇe ca
+abhimukhī-karaṇa-arthaṃ catuḥsatya-avatārāya
+smṛtyupasthāna-bhāvanā eva ādāv uktā |<br>
+<span style="font-size:0.85em;color:#5a4310;">(OCR
+<em>ç → ś</em> and minor sandhi resolutions.)</span>
+</div>
+</div>
+
+<h4>Yamaguchi's Japanese translation</h4>
+<div class="japanese">
+諸愚昧者、涅槃と生死との功徳と過失とを悟了せざる由り、諸行中樂淨常我を執著するによりて有と資具とを喜愛し、涅槃の爲には恐怖あり。然るに彼功徳と過失との不了悟と樂等に對する執著とは諦を見ることによりて止息す。されば輪廻を厭離することを目的とし、及び、涅槃に現向することを目的として四諦に入る為に、念の修習をこそ初めに説きたるなり。
+<span class="folio-anchor">(<code>references/mavt-ja.txt</code> lines 3749–3751)</span>
+</div>
+
+<h4>Translation</h4>
+<div class="translation">
+"Because ordinary people [<em>bāla</em>] fail to comprehend the
+virtues and defects of nirvāṇa and saṃsāra, and through their
+attachment to the saṃskāras as pleasant, pure, permanent, and
+self-possessing, they delight in mundane enjoyment and dread
+nirvāṇa. But that failure to comprehend the virtues-and-defects,
+and that attachment to pleasure and so on, are reversed by the
+seeing of the [noble] truths. Therefore, in order to disenchant
+[the practitioner] from saṃsāra and to turn [them] toward nirvāṇa,
+the cultivation of the foundations of mindfulness is taught
+precisely at the outset, [as the means] for entry into the four
+[noble] truths."
+</div>
+</section>
+<section class="sentence" id="s13">
+<h3>§13 — Kāyena dauṣṭhulyaṃ prabhāvyate iti — dauṣṭhulyaṃ duḥsthitatā <span class="status verified">VERIFIED</span></h3>
+
+<h4>Yamaguchi text (italics = MAVbh pratīka)</h4>
+<div class="yamaguchi">
+<span class="recon">kāyena dāuṣṭhulyaṃ prabhāvyate iti dauṣṭhulyaṃ
+duḥsthitatā |</span>
+<span class="folio-anchor">(p. 167; OCR line 6846)</span>
+</div>
+
+<h4>The MAVbh source (verbatim pratīka)</h4>
+<div class="parallel">
+<span class="src">Vasubandhu MAVbh ad IV.1</span>
+— local <code>references/SA_T06_vmvkbh_u.txt</code> line 806;
+indexed in
+<a href="https://dharmamitra.org/nexus/db/sa/SA_T06_vmvkbh_u/text?active_segment=SA_T06_vmvkbh_u:789">SA_T06_vmvkbh_u</a>.
+<span class="quote">kāyena hi dauṣṭhulyaṃ prabhāvyate /</span>
+Verbatim MAVbh, with the bhāṣya's <em>hi</em> appropriately omitted
+in Sthiramati's pratīka (he is quoting the lemma to gloss it).
+</div>
+
+<h4>Structure</h4>
+<p>Sthiramati quotes the MAVbh sentence <code>kāyena dauṣṭhulyaṃ
+prabhāvyate</code> ("by [observing] the body, <em>dauṣṭhulya</em> is
+made manifest") and immediately glosses <code>dauṣṭhulyaṃ duḥsthitatā</code>
+— "<em>dauṣṭhulya</em> means 'being in a bad state' /
+'dys-functionality.'" Standard Yogācāra lexical gloss; the term
+<em>dauṣṭhulya</em> is a Yogācāra technical term for the bodily-mental
+disability that the bodhipakṣya-cultivation removes.</p>
+
+<h4>Yamaguchi vs. proposed (minor)</h4>
+<div class="compare">
+<div class="before">
+<h5>Yamaguchi 1934 as printed</h5>
+<em>kāyena dāuṣṭhulyaṁ prabhāvyate iti dāuṣṭhulyaṁ duḥsthitatā</em> |
+</div>
+<div class="after">
+<h5>Proposed re-edited text</h5>
+kāyena dauṣṭhulyaṃ prabhāvyate iti dauṣṭhulyaṃ duḥsthitatā |<br>
+<span style="font-size:0.85em;color:#5a4310;">(OCR
+<em>dāuṣṭhulya</em> → standard <em>dauṣṭhulya</em>; the
+<em>ā</em> is an OCR/printing convention.)</span>
+</div>
+</div>
+
+<h4>Yamaguchi's Japanese translation</h4>
+<div class="japanese">
+身によりて重は顯了せらると云ふ、鏖重は惡く住する義なり。
+<span class="folio-anchor">(<code>references/mavt-ja.txt</code> line 3752)</span>
+</div>
+
+<h4>Translation</h4>
+<div class="translation">
+"[The bhāṣya says:] '<em>kāyena dauṣṭhulyaṃ prabhāvyate</em>' —
+[meaning that] <em>dauṣṭhulya</em> [signifies]
+<em>duḥsthitatā</em> ['being in a bad state', dys-functionality]."
+</div>
+</section>
+<section class="sentence" id="s14">
+<h3>§14 — Tathā hi pratidinam abhisaṃskriyamāṇo vikriyate eva kāyaḥ <span class="status verified">VERIFIED</span></h3>
+
+<h4>Yamaguchi text (MS-attested)</h4>
+<div class="yamaguchi">
+<span class="ms-direct">tathā hi pratidinaṁ abhisaṁskriyamāṇo
+vikriyata eva kāya iti <span class="recon">kāyena dāuṣṭhulyaṁ
+prabhāvyate</span> |</span>
+<span class="folio-anchor">(p. 167; OCR lines 6847–6848)</span>
+</div>
+
+<h4>Structure</h4>
+<p>Sthiramati's gloss on what it means for the body to manifest
+<em>dauṣṭhulya</em>: "indeed, the body, being daily made-up
+(<em>abhi-saṃskriyamāṇa</em>, i.e. groomed/conditioned), is in
+fact transformed [continually]" — so its very impermanence is what
+makes <em>dauṣṭhulya</em> apparent to investigation. Sthiramati
+then re-quotes the MAVbh pratīka <code>kāyena dauṣṭhulyaṃ
+prabhāvyate</code> as the conclusion drawn from this gloss.</p>
+
+<h4>Yamaguchi vs. proposed (no change)</h4>
+<div class="compare">
+<div class="before">
+<h5>Yamaguchi 1934 as printed</h5>
+tathā hi pratidinaṁ abhisaṁskriyamāṇo vikriyata eva kāya iti
+<em>kāyena dāuṣṭhulyaṁ prabhāvyate</em> |
+</div>
+<div class="after">
+<h5>Proposed re-edited text</h5>
+tathā hi pratidinam abhisaṃskriyamāṇo vikriyata eva kāya iti
+"kāyena dauṣṭhulyaṃ prabhāvyate" |
+</div>
+</div>
+
+<h4>Yamaguchi's Japanese translation</h4>
+<div class="japanese">
+そは、毎日行作しつゝも身はたゞ變異すとて身によりて鏖重は顯了せらるればなり。
+<span class="folio-anchor">(<code>references/mavt-ja.txt</code> line 3753)</span>
+</div>
+
+<h4>Translation</h4>
+<div class="translation">
+"For [the body], being daily made-up [or conditioned —
+<em>abhi-saṃskriyamāṇa</em>], is indeed transformed [moment by
+moment]; that is why '<em>kāyena dauṣṭhulyaṃ prabhāvyate</em>'
+['by the body, <em>dauṣṭhulya</em> is made manifest']."
+</div>
+</section>
+<section class="sentence" id="s15">
+<h3>§15 — Tataś ca kāya-parīkṣayā duḥkha-satyam avatarati <span class="status verified">VERIFIED</span></h3>
+
+<h4>Yamaguchi text (MS + MAVbh pratīka)</h4>
+<div class="yamaguchi">
+<span class="ms-direct">tataç ca kāyaparīkṣayā</span>
+<span class="recon">duḥkhasatyam avatarati |</span>
+<span class="folio-anchor">(p. 167; OCR lines 6848–6849)</span>
+</div>
+
+<h4>The MAVbh source</h4>
+<div class="parallel">
+<span class="src">Vasubandhu MAVbh ad IV.1</span>
+— local <code>references/SA_T06_vmvkbh_u.txt</code> line 807;
+indexed in
+<a href="https://dharmamitra.org/nexus/db/sa/SA_T06_vmvkbh_u/text?active_segment=SA_T06_vmvkbh_u:789">SA_T06_vmvkbh_u</a>.
+<span class="quote">tatparīkṣayā duḥkhasatyam avatarati /</span>
+MAVbh has <em>tat-parīkṣayā</em> ("by the inspection of that [body]");
+Sthiramati's <em>kāya-parīkṣayā</em> spells out what
+<em>tat-</em> refers to. So the italicised
+<em>duḥkhasatyam avatarati</em> is verbatim MAVbh; Sthiramati's
+<em>tataś ca kāyaparīkṣayā</em> connects it explicitly back to
+<em>kāyena dauṣṭhulyaṃ prabhāvyate</em> of §13–§14.
+</div>
+
+<h4>Yamaguchi vs. proposed (no change)</h4>
+<div class="compare">
+<div class="before">
+<h5>Yamaguchi 1934 as printed</h5>
+tataç ca kāyaparīkṣayā <em>duḥkhasatyam avatarati</em> |
+</div>
+<div class="after">
+<h5>Proposed re-edited text</h5>
+tataś ca kāya-parīkṣayā "duḥkha-satyam avatarati" |
+</div>
+</div>
+
+<h4>Yamaguchi's Japanese translation</h4>
+<div class="japanese">
+されば身を観察することによりて苦諦に入る。
+<span class="folio-anchor">(<code>references/mavt-ja.txt</code> line 3754)</span>
+</div>
+
+<h4>Translation</h4>
+<div class="translation">
+"And so, '[the practitioner] enters into the truth of suffering
+[duḥkha-satya] through investigation of the body.'"
+</div>
+</section>
+<section class="sentence" id="s16">
+<h3>§16 — Tal-lakṣaṇasya hi sadauṣṭhulya-saṃskāratvāt iti <span class="status verified">VERIFIED</span></h3>
+
+<h4>Yamaguchi text (italics = reconstructed)</h4>
+<div class="yamaguchi">
+<span class="recon">kim-artham etad iti āha | tallakṣaṇasya hi
+sadauṣṭhulyasaṃskāratvād iti |</span>
+<span class="folio-anchor">(p. 167; OCR line 6849–6850)</span>
+</div>
+
+<h4>The MAVbh discrepancy</h4>
+<p>Yamaguchi's reconstruction <strong>differs from Nagao's MAVbh
+Sanskrit</strong> in syntactically substantial way:</p>
+<div class="parallel">
+<span class="src">Nagao's MAVbh Sanskrit edition</span>
+— local <code>references/SA_T06_vmvkbh_u.txt</code> line 808;
+indexed in
+<a href="https://dharmamitra.org/nexus/db/sa/SA_T06_vmvkbh_u/text?active_segment=SA_T06_vmvkbh_u:789">SA_T06_vmvkbh_u</a>.
+<span class="quote">tasya sadauṣṭhulyasaṃskāra-LAKṢAṆATVĀT /</span>
+"Because that [body] HAS THE CHARACTERISTIC of being a saṃskāra-with-
+dauṣṭhulya." — subject is <em>tasya [kāyasya]</em>; predicate is
+<em>-lakṣaṇatvāt</em>.
+</div>
+
+<h4>The Tibetan evidence — a substantive MAVbh variant</h4>
+<p>Both Tibetan witnesses are <strong>verbatim identical</strong> at
+this lemma, and both support Yamaguchi's reconstruction
+<em>tallakṣaṇasya … saṃskāratvāt</em> over Nagao's
+<em>tasya … lakṣaṇatvāt</em>:</p>
+
+<div class="parallel">
+<span class="src">Vasubandhu MAVbh-Tib</span>
+— <a href="https://dharmamitra.org/nexus/db/bo/BO_T06_D4027/text?active_segment=BO_T06_D4027:15b-26">BO_T06_D4027:15b-26</a>.
+<span class="quote">ལུས་ཀྱིས་ནི་གནས་ངན་ལེན་རབ་ཏུ་སྟོན་ཏེ། དེ་ཡང་ཡོངས་སུ་
+བརྟགས་པས་སྡུག་བསྔལ་གྱི་བདེན་པ་ལ་འཇུག་གོ །
+<strong>དེའི་མཚན་ཉིད་ནི་གནས་ངན་ལེན་དང་བཅས་པའི་འདུ་བྱེད་ཡིན་པའི་ཕྱིར་རོ།</strong></span>
+The bolded clause translates a Sanskrit
+<strong><em>tal-lakṣaṇasya … saṃskāratvāt</em></strong>, not
+<em>tasya … lakṣaṇatvāt</em>.
+</div>
+
+<div class="parallel">
+<span class="src">Sthiramati MAVT-Tib</span>
+— <a href="https://dharmamitra.org/nexus/db/bo/BO_T06_D4032/text?active_segment=BO_T06_D4032:270b-5">BO_T06_D4032:270b-5</a>.
+<span class="quote">དེ་ཅིའི་ཕྱིར་ཞེ་ན།
+<strong>དེའི་མཚན་ཉིད་ནི་གནས་ངན་ལེན་དང་བཅས་པའི་འདུ་བྱེད་ཡིན་པའི་ཕྱིར་རོ་ཞེས་བྱ་བ་སྟེ།</strong>
+འདི་ལྟར་སྡུག་བསྔལ་གྱི་བདེན་པའི་མཚན་ཉིད་ངོ་བོ་ཉིད་ནི་གནས་ངན་ལེན་
+དང་བཅས་པའི་འདུ་བྱེད་རྣམས་ཡིན་ལ།</span>
+Sthiramati's MAVT-Tib quotes the same lemma identically.
+</div>
+
+<h4>Verdict</h4>
+<div class="justification">
+<strong>Yamaguchi's italics reconstruction is vindicated.</strong>
+Both Tibetan translations — made independently — attest the same
+Sanskrit pre-form <em>tal-lakṣaṇasya … saṃskāratvāt</em>. The
+divergence is therefore at the level of <strong>MAVbh Sanskrit
+transmission</strong>: Sthiramati's MAVbh-Vorlage differed from the
+Sanskrit MS Nagao edited. This is a substantive Sanskrit variant
+attested by <em>both Tibetan translations</em> against the lone
+Nagao MS — worth flagging in any future MAVbh apparatus too.
+</div>
+
+<div class="justification">
+Further internal confirmation from Sthiramati's own gloss in §17:
+<em>yasmād duḥkhasatyasya sadauṣṭhulyāḥ saṃskārā lakṣaṇaṃ
+svabhāvaḥ</em> ("because the saṃskāras with dauṣṭhulya are the
+<em>lakṣaṇa</em>, the nature, <em>of duḥkha-satya</em>") — i.e.
+Sthiramati's gloss presupposes <em>duḥkha-satya / tal-lakṣaṇa</em>
+as the genitive subject, and <em>sa-dauṣṭhulya-saṃskāra</em> as the
+predicate-attribute. Exactly the syntax of <em>tal-lakṣaṇasya …
+saṃskāratvāt</em>.
+</div>
+
+<h4>Yamaguchi vs. proposed (vindication)</h4>
+<div class="compare">
+<div class="before">
+<h5>Yamaguchi 1934 as printed (reconstruction)</h5>
+<em>kim-artham etad iti āha | tal-lakṣaṇasya hi sadauṣṭhulya-saṃskāratvād
+iti |</em>
+</div>
+<div class="after">
+<h5>Proposed re-edited text (= Yamaguchi, vindicated)</h5>
+kim-artham etad iti āha | tal-lakṣaṇasya hi sadauṣṭhulya-saṃskāratvād
+iti |<br>
+<span style="font-size:0.85em;color:#5a4310;">
+(Note: <em>this</em> is the better reading; Nagao's MAVbh Skt
+<em>tasya sadauṣṭhulyasaṃskāralakṣaṇatvāt</em> is itself a variant
+unsupported by either Tibetan translation.)</span>
+</div>
+</div>
+
+<h4>Yamaguchi's Japanese translation</h4>
+<div class="japanese">
+何故なるか。曰く、彼〔身〕の相は鏖重を具有する諸行なればなりと。
+<span class="folio-anchor">(<code>references/mavt-ja.txt</code> line 3755–3756)</span>
+</div>
+
+<h4>Translation</h4>
+<div class="translation">
+"[Reader asks:] 'For what reason is this so?' [Bhāṣyakāra] says:
+'Because the characteristic [of duḥkha-satya] is being a
+saṃskāra-with-dauṣṭhulya.'"
+</div>
+</section>
+<section class="sentence" id="s17">
+<h3>§17 — Yasmād duḥkha-satyasya sadauṣṭhulyāḥ saṃskārā lakṣaṇaṃ svabhāvaḥ … <span class="status verified">VERIFIED</span></h3>
+
+<h4>Yamaguchi text (MS-attested)</h4>
+<div class="yamaguchi">
+<span class="ms-direct">yasmād duḥkha-satyasya sadauṣṭhulyāḥ
+saṁskārā lakṣaṇaṁ svabhāvaḥ kāyena ca dāuṣṭhulyaṁ prabhāvyate |
+tasmāt kāya-parīkṣayā duḥkha-satyam avatarati | dāuṣṭhulyaṁ na
+vijñāyata ity ata āha |</span>
+<span class="folio-anchor">(p. 167; OCR lines 6850–6853)</span>
+</div>
+
+<h4>Structure</h4>
+<p>Sthiramati's <code>yasmāt … tasmāt</code> syllogism. Three steps:</p>
+<ol>
+  <li>The saṃskāras with <em>dauṣṭhulya</em> are the
+  <em>lakṣaṇa</em>, the nature, of <em>duḥkha-satya</em>
+  (= the substance of §16).</li>
+  <li><em>dauṣṭhulya</em> is made manifest by the body (= MAVbh
+  pratīka of §13).</li>
+  <li>Therefore, entry into <em>duḥkha-satya</em> is by
+  body-investigation (= MAVbh of §15).</li>
+</ol>
+<p>The closing <em>dauṣṭhulyaṁ na vijñāyata ity ata āha</em> ("[but]
+'dauṣṭhulya is not [yet] known' — for that reason [the
+bhāṣyakāra] says:") sets up the next MAVbh pratīka in §18
+(<em>dauṣṭhulyaṃ hi saṃskāra-duḥkhatā</em>).</p>
+
+<h4>Internal confirmation of §16</h4>
+<p>Note that <em>duḥkha-satyasya sadauṣṭhulyāḥ saṃskārā lakṣaṇaṃ</em>
+("the saṃskāras with dauṣṭhulya are the <em>lakṣaṇa</em> of
+<em>duḥkha-satya</em>") is precisely Sthiramati paraphrasing the
+syntax of <em>tal-lakṣaṇasya … saṃskāratvāt</em> from §16 — i.e.
+the subject is <em>duḥkha-satya</em> / <em>tal-lakṣaṇa</em>; the
+predicate is <em>sa-dauṣṭhulya-saṃskāra</em>. This is decisive
+internal evidence that Sthiramati's MAVbh-Vorlage had the
+<em>tal-lakṣaṇasya</em> form (cf. §16 finding).</p>
+
+<h4>Yamaguchi vs. proposed (no change)</h4>
+<div class="compare">
+<div class="before">
+<h5>Yamaguchi 1934 as printed</h5>
+yasmād duḥkhasatyasya sadāuṣṭhulyāḥ saṁskārā lakṣaṇaṁ svabhāvaḥ
+kāyena ca dāuṣṭhulyaṁ prabhāvyate | tasmāt kāyaparīkṣayā
+duḥkhasatyam avatarati | dāuṣṭhulyaṁ na vijñāyata ity ata āha |
+</div>
+<div class="after">
+<h5>Proposed re-edited text</h5>
+yasmād duḥkha-satyasya sa-dauṣṭhulyāḥ saṃskārā lakṣaṇaṃ svabhāvaḥ
+kāyena ca dauṣṭhulyaṃ prabhāvyate | tasmāt kāya-parīkṣayā
+duḥkha-satyam avatarati | dauṣṭhulyaṃ na vijñāyata ity ata āha |
+</div>
+</div>
+
+<h4>Yamaguchi's Japanese translation</h4>
+<div class="japanese">
+そは、苦諦の相・自性は鏖重を具有する諸行なり。而して鏖重は身によりて顯了せらるが故に、夫故に身の観察によりて苦諦に入る。人は未だ鏖重を識らざる故に曰へり。
+<span class="folio-anchor">(<code>references/mavt-ja.txt</code> lines 3757–3759)</span>
+</div>
+
+<h4>Translation</h4>
+<div class="translation">
+"Since the saṃskāras with <em>dauṣṭhulya</em> are the
+<em>lakṣaṇa</em>, the very nature, of <em>duḥkha-satya</em>, and
+<em>dauṣṭhulya</em> is made manifest by the body, therefore through
+the investigation of the body [the practitioner] enters into the
+truth of suffering. — But <em>dauṣṭhulya</em> [itself] is not [yet]
+known: for that reason, [the bhāṣyakāra] then says: …"
+</div>
+</section>
+<section class="sentence" id="s18">
+<h3>§18 — Dauṣṭhulyaṃ hi saṃskāra-duḥkhatā iti <span class="status verified">VERIFIED</span></h3>
+
+<h4>Yamaguchi text (italics = MAVbh pratīka)</h4>
+<div class="yamaguchi">
+<span class="recon">dauṣṭhulyaṁ hi <span class="folio-anchor">[Tib. 107, b]</span>
+saṁskāraduḥkhatā iti |</span>
+<span class="folio-anchor">(p. 167; OCR line 6854)</span>
+</div>
+
+<h4>The MAVbh source (verbatim)</h4>
+<div class="parallel">
+<span class="src">Vasubandhu MAVbh ad IV.1</span>
+— local <code>references/SA_T06_vmvkbh_u.txt</code> line 809;
+indexed in
+<a href="https://dharmamitra.org/nexus/db/sa/SA_T06_vmvkbh_u/text?active_segment=SA_T06_vmvkbh_u:789">SA_T06_vmvkbh_u</a>.
+<span class="quote">dauṣṭhulyaṃ hi saṃskāra-duḥkhatā /</span>
+Verbatim MAVbh.
+</div>
+
+<h4>Yamaguchi vs. proposed (no change — vindicated)</h4>
+<div class="compare">
+<div class="before">
+<h5>Yamaguchi 1934 as printed</h5>
+<em>dāuṣṭhulyaṁ hi saṁskāraduḥkhateti</em> |
+</div>
+<div class="after">
+<h5>Proposed re-edited text</h5>
+"dauṣṭhulyaṃ hi saṃskāra-duḥkhatā" iti |
+</div>
+</div>
+
+<h4>Yamaguchi's Japanese translation</h4>
+<div class="japanese">
+鏖重は實に行苦なりと。
+<span class="folio-anchor">(<code>references/mavt-ja.txt</code> line 3760)</span>
+</div>
+
+<h4>Translation</h4>
+<div class="translation">
+"[The bhāṣyakāra says:] 'For <em>dauṣṭhulya</em> is the
+<em>saṃskāra-duḥkhatā</em> [the suffering-of-conditioned-existence].'"
+</div>
+</section>
+<section class="sentence" id="s19">
+<h3>§19 — Saṃskāro bhāvānām utpattiḥ … yathoktam: anartho janma <span class="status verified">VERIFIED</span></h3>
+
+<h4>Yamaguchi text</h4>
+<div class="yamaguchi">
+<span class="ms-direct">saṁskāro</span>
+<span class="recon">bhāvānām utpattiḥ |</span>
+<span class="ms-direct">sa ca sarva-viplava-vastu iti dāuṣṭhulyaṁ
+āryāṇāṁ pratikūlatvāc ca duḥkhatā |</span>
+<span class="ms-direct">yathoktam — anartho janma idaṃ sati hi
+janane santi ripavo jarā-mṛtyu-vyādhi-vyasana-vadha-bandha-
+prabhṛtayaḥ |</span>
+<span class="ms-direct">anarthās te na syur yady avināśo 'nutpādaḥ
+syāt |</span>
+<span class="ms-direct">vṛkṣe 'nutpanne 'gni-vāyu-vana-agni-bhraṃśo
+na syād iti |</span>
+<span class="folio-anchor">(p. 167; OCR lines 6854–6859)</span>
+</div>
+
+<h4>Structure</h4>
+<p>Gloss on the MAVbh pratīka of §18 (<em>dauṣṭhulyaṃ hi
+saṃskāra-duḥkhatā</em>):</p>
+<ol>
+  <li><code>saṃskāro bhāvānām utpattiḥ</code> — "<em>saṃskāra</em> is
+  the arising of beings." Mini-definition. The
+  <em>bhāvānām utpattiḥ</em> gloss is italicised — Yamaguchi
+  reconstructs it (perhaps because the MS had only "saṃskāro …"
+  with the rest lost). Confirmed by the Tibetan if any.</li>
+  <li><code>sa ca sarva-viplava-vastu</code> — "and it (saṃskāra)
+  is the basis of every disturbance." This is <em>dauṣṭhulya</em>.</li>
+  <li><code>… āryāṇāṃ pratikūlatvāc ca duḥkhatā</code> — "and
+  because it is adverse to the noble ones, [it is]
+  <em>duḥkhatā</em>." Hence "saṃskāra-duḥkhatā."</li>
+  <li>Verse-citation <code>yathoktam — anartho janma …</code>:
+  scriptural support that birth is the root evil.</li>
+</ol>
+
+<h4>Verse-citation hunt</h4>
+<div class="warn">
+<strong>Source unidentified.</strong> The verse <code>anartho janma
+idaṃ sati hi janane … vṛkṣe 'nutpanne 'gni-vāyu-vana-agni-bhraṃśo
+na syād</code> does not appear in the indexed Sanskrit corpus
+anywhere except in Sthiramati's own MAVT quotation itself
+(<a href="https://dharmamitra.org/nexus/db/sa/SA_T06_sthmavtyg/text?active_segment=SA_T06_sthmavtyg:3379">SA_T06_sthmavtyg:3379</a>).
+None of the obvious candidates (Bodhicaryāvatāra and pañjikā,
+Aśvaghoṣa's Saundarananda/Buddhacarita, Catuḥśataka, MSABh, YBh)
+yields the distinctive tree-simile clause
+<em>vṛkṣe 'nutpanne … bhraṃśo</em>. The
+<code>yathoktam</code> formula implies a real citation — likely a
+sūtra excerpt or lost prose-source. Worth chasing in the Tibetan
+canonical translator-notes (Derge / Peking apparatus) or in older
+secondary literature on the MAVT.
+</div>
+
+<h4>Yamaguchi vs. proposed (minor)</h4>
+<div class="compare">
+<div class="before">
+<h5>Yamaguchi 1934 as printed</h5>
+saṁskāro <em>bhāvānām utpattiḥ</em> | sa ca sarvaviplavavastu iti
+dāuṣṭhulyaṁ āryāṇāṁ pratikūlatvāc ca duḥkhatā | yathoktam anartho
+jan-<em>medaṁ</em> sati hi janane santi ripavo jarāmṛtyuvyādhi-
+vyasanavadhabandhaprabhṛtayaḥ | anarthās te na syur yady
+avināço 'nutpādaḥ syāt | vṛkṣe 'nutpanne 'gnivāyuvanāgnibhraṁço
+na syād iti |
+</div>
+<div class="after">
+<h5>Proposed re-edited text</h5>
+saṃskāro bhāvānām utpattiḥ | sa ca sarva-viplava-vastu iti
+dauṣṭhulyam āryāṇāṃ pratikūlatvāc ca duḥkhatā | yathoktam —
+"anartho janma | idaṃ sati hi janane santi ripavo jarā-mṛtyu-vyādhi-
+vyasana-vadha-bandha-prabhṛtayaḥ | anarthās te na syur yady
+avināśo 'nutpādaḥ syāt | vṛkṣe 'nutpanne 'gni-vāyu-vana-agni-bhraṃśo
+na syād" iti |<br>
+<span style="font-size:0.85em;color:#5a4310;">
+(OCR <em>*medaṁ*</em> = <em>(janma) + idam</em>; OCR
+<em>avināço</em> = <em>avināśo</em>; minor sandhi resolution.)</span>
+</div>
+</div>
+
+<h4>Yamaguchi's Japanese translation</h4>
+<div class="japanese">
+鏖重は實に行苦なりと。行は諸法の生起なり。そは又一切の害の依處なるが故に鏖重にして、 諸聖人に背戻する故に又苦性なり。 説かれたるが如し、「無常なる生は害なり。所以は生あるときには老、死、病、不幸、殺害、繋縛等の怨敵あればなり。若し無滅無生ならばそれらの害無かるべし。木生じたるに非るときは、火と風と森の火とによる破壊無きが如し」と。
+<span class="folio-anchor">(<code>references/mavt-ja.txt</code> lines 3760–3766)</span>
+</div>
+
+<h4>Translation</h4>
+<div class="translation">
+"[On the bhāṣya's <em>dauṣṭhulyaṃ hi saṃskāra-duḥkhatā</em>:]
+<em>saṃskāra</em> is the arising of beings. And it is the basis of
+every disturbance: thus it is <em>dauṣṭhulya</em>. And, being
+adverse to the noble ones, it is also <em>duḥkhatā</em>. As it is
+said: 'Birth is the [root] evil. For when there is birth, there
+exist enemies — old age, death, disease, calamity, killing, bondage,
+and so forth. These evils would not occur if non-destruction were
+non-arising. [Just as] when a tree has not arisen, the falling-of-
+fire-air-wood-fire does not occur.'"
+</div>
+</section>
+<section class="sentence" id="s20">
+<h3>§20 — Tayeti saṃskāra-duḥkhatayā … (page 205 → 206) <span class="status verified">VERIFIED</span></h3>
+
+<h4>Yamaguchi text (italics = MAVbh pratīka)</h4>
+<div class="yamaguchi">
+<span class="recon">tayeti saṁskāra-duḥkhatayā |</span>
+<span class="ms-direct">na vipariṇāma-duḥkhatā-duḥkha-duḥkhatābhyām |
+tayor avyāpitvāt saṁskāra-duḥkha-[tā-nimittatvāc ca …]</span>
+<span class="folio-anchor">(p. 167–168; OCR lines 6860–6862,
+continues on page 206)</span>
+</div>
+
+<h4>The MAVbh source (verbatim)</h4>
+<div class="parallel">
+<span class="src">Vasubandhu MAVbh ad IV.1</span>
+— local <code>references/SA_T06_vmvkbh_u.txt</code> line 810;
+indexed in
+<a href="https://dharmamitra.org/nexus/db/sa/SA_T06_vmvkbh_u/text?active_segment=SA_T06_vmvkbh_u:789">SA_T06_vmvkbh_u</a>.
+<span class="quote">tayā sarvaṃ sāsravaṃ vastv āryā duḥkhataḥ
+paśyantīti /</span>
+The MAVbh has <em>tayā</em> as instrumental of
+<em>saṃskāra-duḥkhatā</em>: "by it [= by saṃskāra-duḥkhatā], the
+āryas see all defiled things as duḥkha." Sthiramati's
+<code>tayeti</code> is a pratīka quoting that <em>tayā</em> and
+glossing it: "<em>by it</em> means: by saṃskāra-duḥkhatā."
+</div>
+
+<h4>Structure</h4>
+<p>Sthiramati's gloss: <em>tayā</em> in the MAVbh refers
+specifically to <em>saṃskāra-duḥkhatā</em>, not to either of the
+other two duḥkhatās (<em>vipariṇāma-duḥkhatā</em>,
+<em>duḥkha-duḥkhatā</em>). Reason: the other two are not
+pervasive (<em>avyāpitva</em>) and saṃskāra-duḥkhatā is the
+underlying basis (the bottom of page 205 cuts off at
+<em>saṃskāra-duḥkha-[tā-nimittatvāt]</em>, continued p. 206).</p>
+
+<h4>Yamaguchi vs. proposed (no change)</h4>
+<div class="compare">
+<div class="before">
+<h5>Yamaguchi 1934 as printed</h5>
+<em>tayeti saṁskāraduḥkhatayā</em> | na vipariṇāmaduḥkhatā-
+duḥkhaduḥkhatābhyām | tayor avyāpitvāt saṁskāraduḥkha-…
+</div>
+<div class="after">
+<h5>Proposed re-edited text</h5>
+"tayā" iti saṃskāra-duḥkhatayā | na vipariṇāma-duḥkhatā-
+duḥkha-duḥkhatābhyām | tayor avyāpitvāt saṃskāra-duḥkha-…
+[continues on p. 206]
+</div>
+</div>
+
+<h4>Yamaguchi's Japanese translation</h4>
+<div class="japanese">
+彼に由りてとは行苦によりてなり。 苦苦と壊苦とに由るにあらず。 彼〔苦苦と壊苦〕二には遍通無きが故に、又〔彼二の〕因は行苦なるが故に。
+<span class="folio-anchor">(<code>references/mavt-ja.txt</code> lines 3767–3769)</span>
+</div>
+
+<h4>Translation</h4>
+<div class="translation">
+"'By it' (<em>tayā</em>) means 'by saṃskāra-duḥkhatā' [the
+suffering-of-conditioned-existence] — not by
+<em>vipariṇāma-duḥkhatā</em> [the suffering-of-change] or by
+<em>duḥkha-duḥkhatā</em> [the suffering-of-suffering]. For those
+two are not all-pervasive, and saṃskāra-duḥkha[tā is the
+basis of those two…] [continues page 206]"
+</div>
+</section>
+
+
+</body>
+</html>

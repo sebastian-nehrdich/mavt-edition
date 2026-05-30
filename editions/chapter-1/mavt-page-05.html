@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Sthiramati MAVT, Yamaguchi p. 5 — re-edition walk-through</title>
+<style>
+:root { --bg:#fdfdfb; --fg:#1c1c1c; --muted:#6b6b6b; --rule:#d8d3c8; --accent:#6c4a1d; --recon-bg:#f0e7d9; --proposed-bg:#e1ecdb; --warn-bg:#fde6e1; --link:#1d4f8e; }
+body { font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif; background:var(--bg); color:var(--fg); max-width:980px; margin:2.5rem auto; padding:0 1.5rem 4rem; line-height:1.55; }
+h1{font-size:1.6rem;margin-bottom:0.2rem;} h2{font-size:1.2rem;margin-top:2.6rem;padding-bottom:0.2rem;border-bottom:1px solid var(--rule);color:var(--accent);} h3{font-size:1.05rem;margin-top:1.6rem;color:var(--accent);display:flex;align-items:center;flex-wrap:wrap;} h4{font-size:0.95rem;margin:0.8rem 0 0.3rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.05em;}
+.meta { color:var(--muted); font-size:0.85rem; margin-top:0; }
+code { font-family:"SF Mono",Menlo,Consolas,monospace; font-size:0.92em; background:#efeae0; padding:0 0.25rem; border-radius:2px; }
+.yamaguchi { background:var(--recon-bg); padding:0.55rem 0.85rem; border-left:3px solid #b88c1d; margin:0.4rem 0; font-family:"Charis SIL",Georgia,serif; }
+.yamaguchi .recon { font-style:italic; color:#8a3e0c; }
+.yamaguchi .ms-direct { color:#1c1c1c; }
+.tibetan { background:#f6f1ef; padding:0.55rem 0.85rem; border-left:3px solid #8a4a4a; margin:0.4rem 0; font-family:"Jomolhari",Georgia,serif; }
+.proposed { background:var(--proposed-bg); padding:0.55rem 0.85rem; border-left:3px solid #4a7a3a; margin:0.4rem 0; font-family:"Charis SIL",Georgia,serif; }
+.compare { display:grid; grid-template-columns:1fr 1fr; gap:0.6rem; margin:0.6rem 0; }
+.compare > div { padding:0.55rem 0.75rem; border-radius:3px; font-family:"Charis SIL",Georgia,serif; font-size:0.95rem; }
+.compare .before { background:#f4ebe0; border-left:3px solid #b88c1d; }
+.compare .after { background:#e1ecdb; border-left:3px solid #4a7a3a; }
+.compare h5 { margin:0 0 0.3rem 0; font-size:0.78rem; letter-spacing:0.04em; text-transform:uppercase; color:#555; }
+.translation { background:#fafafa; border-left:3px solid #777; padding:0.5rem 0.85rem; margin:0.4rem 0; font-style:italic; color:#333; }
+.justification { background:#f9f5e8; border-left:3px solid #c2a04a; padding:0.5rem 0.85rem; margin:0.4rem 0; font-size:0.93rem; }
+.warn { background:var(--warn-bg); padding:0.45rem 0.75rem; border-left:3px solid #b54c30; margin:0.4rem 0; font-size:0.93rem; }
+.status { display:inline-block; font-size:0.72rem; font-weight:700; letter-spacing:0.06em; padding:0.15rem 0.5rem; border-radius:2px; margin-left:0.5rem; }
+.status.verified { background:#cfe5c7; color:#244a18; } .status.proposed { background:#e9d9b3; color:#6b4a10; } .status.nonliquet { background:#f3d3cb; color:#6a2a18; }
+.intro { background:#f4f0e6; border-left:3px solid var(--accent); padding:0.8rem 1rem; margin:1rem 0 2rem; font-size:0.97rem; }
+.folio-anchor { color:#999; font-size:0.78rem; }
+section.sentence { margin-top:1.6rem; padding-top:0.4rem; border-top:1px dotted #d0d0c0; }
+.tib-wylie { font-size:0.85rem; color:#6b3030; font-family:"Charis SIL",Georgia,serif; font-style:italic; }
+a { color:var(--link); }
+</style>
+
+<style>
+.mavt-img-banner { background:#f0e7d9; border-bottom:2px solid #b88c1d; padding:0.8rem 1rem; margin:-2.5rem -1.5rem 1.6rem; text-align:center; font-family:"Iowan Old Style",Georgia,serif; }
+.mavt-img-banner .mavt-nav { font-size:0.88rem; margin-bottom:0.6rem; color:#6a3f10; }
+.mavt-img-banner .mavt-nav a { color:#5a2d2d; text-decoration:none; padding:0.15rem 0.5rem; background:#e8d8b8; border:1px solid #c8a87a; border-radius:3px; margin:0 0.2rem; display:inline-block; }
+.mavt-img-banner .mavt-nav a:hover { background:#d8c0a0; }
+.mavt-img-banner details { text-align:left; }
+.mavt-img-banner summary { cursor:pointer; font-size:0.92rem; color:#5a3a18; padding:0.3rem 0; user-select:none; }
+.mavt-img-banner summary:hover { color:#3a1a08; }
+.mavt-img-banner .mavt-img-strip { display:flex; flex-wrap:wrap; gap:0.6rem; justify-content:center; margin-top:0.6rem; }
+.mavt-img-banner .mavt-img-strip a { display:inline-block; text-decoration:none; }
+.mavt-img-banner .mavt-img-strip img { max-width:240px; max-height:340px; border:1px solid #b88c1d; border-radius:2px; transition:transform 0.15s; }
+.mavt-img-banner .mavt-img-strip img:hover { transform:scale(1.04); box-shadow:0 2px 8px rgba(0,0,0,0.15); }
+.mavt-img-banner .mavt-img-strip .mavt-img-cap { display:block; font-size:0.78rem; color:#6a3f10; margin-top:0.2rem; text-align:center; }
+.mavt-img-banner .mavt-img-single img { max-width:420px; max-height:560px; }
+</style>
+</head>
+<body>
+<div class="mavt-img-banner"><div class="mavt-nav"><a href="../../index.html">← Index</a><a href="../../all-pages.html">📑 All PDF pages</a></div><details open><summary>📜 Show original Yamaguchi 1934 scan — page 5</summary><div class="mavt-img-single"><a href="../../images/page-043.jpg" target="_blank" title="Click for full-size"><img src="../../images/page-043.jpg" alt="Yamaguchi 1934, p. 5" loading="lazy"><span class="mavt-img-cap">p. 5</span></a></div></details></div>
+
+<h1>Sthiramati, <em>Madhyāntavibhāgaṭīkā</em> — Yamaguchi p.&nbsp;5</h1>
+<p class="meta">OCR lines 1282–1318. Methodology:
+<a href="mavt-reedition-workflow.md"><code>mavt-reedition-workflow.md</code></a>.
+Tibetan witness: BO_T06_D4032:191a-16 → 191b-13.</p>
+
+<div class="intro">
+<p>Page 5 finishes the gloss on the homage-verse (MAVBh kārikā 1):
+<em>asmadādibhyaḥ</em> ("to us and the like"), <em>abhyarhya</em>
+(the verb), and the bhāṣya's second pāda <em>yatiṣye 'rthavivecane</em>
+("I shall exert myself in the discrimination of the meaning") are
+all glossed in MS-attested Sanskrit; then a long block answers
+<em>kimartham idaṃ śāstraṃ praṇītam?</em> ("Why was this śāstra
+composed?") with four sequential answers — (a) to generate the
+Buddhas' samyak-nirvikalpa-jñāna (b) to refute two contradictory
+theses about <em>dharma-nairātmya</em> (c) to remove
+non-understanding and mis-understanding in the audience (alternate
+view) (d) to remove the bodhisattvas' faintheartedness in face of
+the five-aspected jñeya. The page ends with the pratīka of MAV I.2a:
+<em>lakṣaṇaṃ hy āvṛtis tattvam</em>.</p>
+<p>This page is mostly MS-attested; the reconstructed portions are
+short and grammatical (rather than evidential) in nature.</p>
+</div>
+
+<h2>Canonical Tibetan (selected for page 5)</h2>
+<div class="tibetan">
+[BO_T06_D4032:191a-16, on <em>asmadādibhyaḥ</em>:] སུ་ལ་འཆད་པ་ཞེ་ན། བདག་སོགས་ལ་ཞེས་བྱ་བ་སྟེ། བདག་ཐོག་མར་བྱས་པ་གང་ཡིན་པ་དེ་དག་ནི་བདག་ལ་སོགས་པ་སྟེ། འདི་ནི་བདག་ཉིད་ཀྱི་མི་སླུ་བ་ལས་ལུང་མནོས་པར་སྟོན་ཏོ། ། <br>
+[on <em>ca</em> and on <em>abhyarhya</em>:] ཡང་ཞེས་བྱ་བ་ནི་བསྡུ་བའམ། རྩ་བ་བསྐངས་པའམ། ལྷག་པའི་ཚིག་སྟེ། མཛད་པ་དང་། འཆད་པ་ཉི་ཚེ་ལ་མ་ཡིན་གྱི། … མངོན་མཆོད་ཅེས་བྱ་བ་ནི་རྗེད་པའོ། ། མངོན་པར་ཞེས་བྱ་བ་ནི་མདུན་ནམ་མངོན་སུམ་དང་འདྲ་བར་གནས་པའོ། ། མཆོད་པ་ནི་ལུས་དང་ངག་དང་ཡིད་ཀྱིས་རྗེད་པའོ། ། <br>
+[on <em>yatiṣye 'rthavivecane</em>:] བསྟན་བཅོས་མཛད་པ་དང་འཆད་པ་ལ་མངོན་པར་མཆོད་ནས་ཅི་ཞིག་བྱ་ཞེ་ན། དོན་རྣམས་དབྱེ་ཕྱིར་འབད་པར་བྱ། །ཞེས་བྱ་བ་སྨོས་སོ། ། དོན་དབྱེ་བའི་ཕྱིར་རམ། དོན་དགྲོལ་བའི་ཕྱིར་རམ། སོ་སོར་དབྱེ་བའི་ཕྱིར་བསྒྲིམ་པར་བྱ་བའི་ཕྱིར་ཞེས་བྱ་བ་འདི་ནི་རྒྱུའི་དོན་ཏེ། དོན་རྣམ་པར་དབྱེ་བའི་རྒྱུར་ཞེས་བྱ་བའི་ཐ་ཚིག་གོ། ། <br>
+[on <em>kimartham idaṃ śāstraṃ</em>:] ཅིའི་ཕྱིར་བསྟན་བཅོས་འདི་བཤད་ཅེ་ན་སངས་རྒྱས་བཅོམ་ལྡན་འདས་རྣམས་ཀྱི་རྣམ་པར་མི་རྟོག་པའི་ཡེ་ཤེས་བསྐྱེད་པའི་ཕྱིར་ཏེ། ཆོས་ལ་བདག་མེད་པ་བསྟན་པས་རྣམ་པར་མི་རྟོག་པའི་ཡེ་ཤེས་བསྐྱེད་པ་དང་། དེ་གོམས་པས་བག་ཆགས་དང་བཅས་པའི་ཉོན་མོངས་པ་དང་། ཤེས་བྱའི་སྒྲིབ་པ་མ་ལུས་པར་སྤངས་པ་ཐོབ་པར་འགྱུར་རོ། ། <br>
+[on <em>virodhavāda</em>:] ཆོས་ལ་བདག་མེད་པ་ཡང་ཆོས་ཐམས་ཅད་མེད་པ་ཉིད་ཆོས་ལ་བདག་མེད་པ་དང་། ནང་ན་བྱེད་པའི་སྐྱེས་བུ་མེད་པ་ཉིད་ཆོས་རྣམས་ལ་བདག་མེད་པའོ་ཞེས་མི་མཐུན་པར་སྨྲ་བ་དེ་དག་བཀག་པས། ། ཆོས་ལ་བདག་མེད་པ་ཡང་དག་པ་ཇི་ལྟ་བ་བཞིན་དུ་བསྟན་པར་བྱ་བའི་ཕྱིར་བསྟན་བཅོས་བརྩམ་མོ། ། <br>
+[on others' view + the 5 jñeyas:] གཞན་དག་ན་རེ་མཚན་ཉིད་དང་སྒྲིབ་པ་ལ་སོགས་པ་མ་རྟོགས་པ་དང་། ལོག་པར་རྟོགས་པ་རྣམས་ཡང་དག་པར་རྟོགས་པ་སྐྱེད་པས་མ་རྟོགས་པ་རྣམས་དང་། ལོག་པར་རྟོགས་པ་བསལ་བའི་ཕྱིར་རོ་ཞེའོ། ། ཡང་ན་འཇིག་རྟེན་གྱི་ཁམས་དང་སེམས་ཅན་དང་ཆོས་དང་འདུལ་བ་དང་། ཐབས་ཀྱི་བདག་ཉིད་དེ།
+</div>
+
+<!-- ====================================================== -->
+
+<section class="sentence" id="s1">
+<h3>§1 — <em>ceti | … asmadādibhyaḥ</em> (gloss of the kārikā dative) <span class="status verified">VERIFIED</span></h3>
+
+<h4>Yamaguchi text (MS)</h4>
+<div class="yamaguchi"><span class="ms-direct">ceti | kebhyo vaktāram 'asmadādibhya iti vayam ādir yeṣāṁ te 'smadādayas tebhyo 'smadādibhyaḥ |</span>
+<span class="folio-anchor">(OCR 1284–1285)</span></div>
+
+<h4>Tibetan</h4>
+<div class="tibetan">སུ་ལ་འཆད་པ་ཞེ་ན། བདག་སོགས་ལ་ཞེས་བྱ་བ་སྟེ། བདག་ཐོག་མར་བྱས་པ་གང་ཡིན་པ་དེ་དག་ནི་བདག་ལ་སོགས་པ་སྟེ། <span class="tib-wylie"> — su la 'chad pa zhe na | bdag sogs la zhes bya ba ste …</span> (BO_T06_D4032:191a-13)</div>
+
+<h4>No change</h4>
+<div class="justification">Clean MS gloss using <em>bahuvrīhi</em>
+analysis: "we (vayam) are first (ādiḥ) of whom (yeṣām), they are
+'asmad-ādayaḥ', to them — 'asmadādibhyaḥ'". Tib mirrors verbatim.</div>
+
+<h4>Translation</h4>
+<div class="translation">"ca" — [the particle]. To whom is the expounder [worshipped]? "<em>asmadādibhyaḥ</em>" — i.e. those of whom we are the first, "we and the like" — to them, "asmadādibhyaḥ".</div>
+</section>
+
+<!-- ====================================================== -->
+
+<section class="sentence" id="s2">
+<h3>§2 — gloss of the kārikā by <em>asmadādibhyaḥ</em> <span class="status proposed">PROPOSED</span></h3>
+
+<h4>Yamaguchi text (mixed)</h4>
+<div class="yamaguchi"><span class="ms-direct">anenātmano '</span><span class="recon">mṛiṣāyā upadeśo bñāsamāno nirdiṣṭaḥ |</span>
+<span class="folio-anchor">(OCR 1285–1286)</span></div>
+
+<h4>Tibetan</h4>
+<div class="tibetan">འདི་ནི་བདག་ཉིད་ཀྱི་མི་སླུ་བ་ལས་ལུང་མནོས་པར་སྟོན་ཏོ། །
+<span class="tib-wylie"> — 'di ni bdag nyid kyi mi slu ba las lung mnos par ston to</span>
+(BO_T06_D4032:191a-13)</div>
+
+<h4>Two OCR slips to fix; one structural reinterpretation</h4>
+<div class="justification">
+The OCR's <em>mṛiṣāyā</em> with anomalous "<em>ṛi</em>" is just
+<em>mṛṣāyāḥ</em> ("of falsehood"), and with the negative prefix
+<em>a-</em> from preceding <em>ātmano '</em>—, it becomes
+<em>amṛṣāyāḥ</em> ("of [his] truthfulness", gen. sg. f.). The OCR's
+<em>bñāsamāno</em> is plainly <em>bhāsamāno</em> ("being manifest").
+<br><br>
+Structurally, the Tibetan
+<em>'di ni bdag nyid kyi mi slu ba las lung mnos par ston to</em>
+parses as: "this [verse] shows that [Vasubandhu's] teaching has been
+heard from [a teacher of] truthfulness <strong>of [his] very own</strong>".
+The Skt would be
+<em>anenātmano 'mṛṣāyā[ḥ sakāśād] upadeśo bhāsamāno nirdiṣṭaḥ</em> —
+"by this, the teaching is shown as having been heard from a
+truthfulness which is his own". Yamaguchi's reading parses; the only
+real ambiguity is whether <em>bhāsamāno</em> = "manifest" (passive
+sense) or "[the teaching that] shines" (active middle). Both yield
+the same gloss in English.
+</div>
+
+<h4>Proposed reading</h4>
+<div class="proposed"><strong>anenātmano 'mṛṣāyā upadeśo bhāsamāno nirdiṣṭaḥ |</strong></div>
+
+<h4>Translation</h4>
+<div class="translation">By this [phrasing of the kārikā], [Vasubandhu] indicates a teaching that manifests as [coming] from his own truthfulness.</div>
+</section>
+
+<!-- ====================================================== -->
+
+<section class="sentence" id="s3">
+<h3>§3 — <em>abhyarhya</em> = <em>abhyarcya</em>; etymology of <em>abhi-</em> <span class="status verified">VERIFIED</span></h3>
+
+<h4>Yamaguchi text (MS)</h4>
+<div class="yamaguchi"><span class="ms-direct">abhyarhyety abhyarcya | abhitaḥ purataḥ sākṣād iva sthitam | arhitvā arcayitvā kāyavāṅmanobhiḥ |</span>
+<span class="folio-anchor">(OCR 1288–1289)</span></div>
+
+<h4>Tibetan</h4>
+<div class="tibetan">མངོན་མཆོད་ཅེས་བྱ་བ་ནི་རྗེད་པའོ། ། མངོན་པར་ཞེས་བྱ་བ་ནི་མདུན་ནམ་མངོན་སུམ་དང་འདྲ་བར་གནས་པའོ། ། མཆོད་པ་ནི་ལུས་དང་ངག་དང་ཡིད་ཀྱིས་རྗེད་པའོ། ། (BO_T06_D4032:191a-26)</div>
+
+<h4>No change</h4>
+<div class="justification">Verbatim correspondence between Skt and
+Tib glosses. <em>abhitaḥ purataḥ sākṣād iva sthitam</em> renders
+exactly Tib <em>mdun nam mngon sum dang 'dra bar gnas pa'o</em>.
+Note 1 (apparatus): Yamaguchi mentions that the MS placed
+<em>abhyarhya…manobhiḥ</em> at a different location (p. 3 n. 6); he
+moved it here on the basis of the Tibetan. This is the kind of
+editorial move that needs to be noted as Yamaguchi's choice — it
+remains correct given the Tib.</div>
+
+<h4>Translation</h4>
+<div class="translation">"<em>abhyarhya</em>" means "<em>abhyarcya</em>" (having paid homage). <em>abhi-</em>: "from in front, as if directly present". <em>arhitvā</em> = <em>arcayitvā</em> ("having honored") — with body, speech, and mind.</div>
+</section>
+
+<!-- ====================================================== -->
+
+<section class="sentence" id="s4">
+<h3>§4 — bridging question <em>kiṃ kariṣyasi</em> <span class="status verified">VERIFIED</span></h3>
+
+<h4>Yamaguchi text (mixed)</h4>
+<div class="yamaguchi"><span class="recon">śāstrasya praṇetāraṁ</span><sup>(2,b)</sup> <span class="ms-direct">vaktāraṁ [Tib. 20, b] cābhyarcya kiṃ kariṣyasity āha |</span>
+<span class="folio-anchor">(OCR 1289–1290)</span></div>
+
+<h4>No change</h4>
+<div class="justification">Tib (BO_T06_D4032:191a-26 →191a-30):
+<em>bstan bcos mdzad pa dang 'chad pa la mngon par mchod nas ci zhig
+bya zhe na | don rnams dbye phyir 'bad par bya zhes bya ba smos so</em>
+("Having worshipped the composer and the expounder of the śāstra,
+what will [you] do? — he says: 'I shall exert myself in distinguishing
+the meanings'") matches verbatim.</div>
+
+<h4>Translation</h4>
+<div class="translation">"Having paid homage to the composer and to the expounder of the śāstra — what will [you] do?" — to this [question, Vasubandhu] answers:</div>
+</section>
+
+<!-- ====================================================== -->
+
+<section class="sentence" id="s5">
+<h3>§5–§7 — <em>yatiṣye 'rthavivecane</em> gloss + saptamī as causal <span class="status verified">VERIFIED</span></h3>
+
+<h4>Yamaguchi text (MS)</h4>
+<div class="yamaguchi"><span class="ms-direct">yatiṣye 'rthavivecana iti | yatnam ārapsye arthavivecane arthavivaraṇe pṛthag-bhāva-karaṇe vā | iyaṁ ca nimittārthā saptamī | arthavivecana-nimittam ity arthaḥ |</span>
+<span class="folio-anchor">(OCR 1291–1293)</span></div>
+
+<h4>Tibetan</h4>
+<div class="tibetan">དོན་དབྱེ་བའི་ཕྱིར་རམ། དོན་དགྲོལ་བའི་ཕྱིར་རམ། སོ་སོར་དབྱེ་བའི་ཕྱིར་བསྒྲིམ་པར་བྱ་བའི་ཕྱིར་ཞེས་བྱ་བ་འདི་ནི་རྒྱུའི་དོན་ཏེ། དོན་རྣམ་པར་དབྱེ་བའི་རྒྱུར་ཞེས་བྱ་བའི་ཐ་ཚིག་གོ། ། (BO_T06_D4032:191a-30)</div>
+
+<h4>No change</h4>
+<div class="justification">A clean Pāṇinian-style gloss. The three
+Skt glosses (<em>vivecane</em>, <em>vivaraṇe</em>,
+<em>pṛthag-bhāva-karaṇe</em>) map to the three Tib glosses
+(<em>dbye ba'i phyir</em>, <em>dgrol ba'i phyir</em>,
+<em>so sor dbye ba'i phyir</em>). The OCR's <em>pṛithagbhāva-</em>
+with anomalous "<em>ṛi</em>" is the same printing-era convention as
+<em>mṛiṣā</em> in §2 — normalise to <em>pṛthag-</em>.</div>
+
+<h4>Translation</h4>
+<div class="translation">"<em>yatiṣye 'rthavivecane</em>" — "I shall make effort in the discrimination of the meaning, or in [its] explication, or in [its] being set apart". The locative here is a causal locative; the sense is "for the sake of discriminating the meaning".</div>
+</section>
+
+<!-- ====================================================== -->
+
+<section class="sentence" id="s8">
+<h3>§8 — <em>arthaḥ punar atra śāstra-śarīram iti</em> (pratīka introducing MAV I.1) <span class="status verified">VERIFIED</span></h3>
+
+<h4>Yamaguchi text (mixed)</h4>
+<div class="yamaguchi"><span class="recon">arthaḥ punar atra śāstra-śarīram iti</span> | <span class="ms-direct">ete saptārthā asmiṃś chās</span><span class="recon">tra ākhyāyanta iti vacanāt |</span>
+<span class="folio-anchor">(OCR 1294–1295)</span></div>
+
+<h4>No change</h4>
+<div class="justification">The MAVBh-pratīka <em>arthaḥ punar atra
+śāstra-śarīram</em> is verifiable against
+<a href="https://dharmamitra.org/nexus/db/sa/SA_T06_vmvkbh_u/text?active_segment=SA_T06_vmvkbh_u:6">SA_T06_vmvkbh_u:6</a>
+(<em>tatrāditaḥ śāstraśarīraṃ vyavasthāpyate</em>). Tib at
+BO_T06_D4032:191a-35 echoes: <em>don ni 'dir bstan bcos kyi lus yin
+te zhes bya ba don bdun po 'di dag bstan bcos 'di las 'chad do zhes
+'byung ba'i phyir ro</em>.</div>
+
+<h4>Translation</h4>
+<div class="translation">"<em>arthaḥ punar atra śāstra-śarīram</em>" — i.e. "These seven topics are expounded in this śāstra"; hence [the term <em>artha</em> refers to the śāstra's body].</div>
+</section>
+
+<!-- ====================================================== -->
+
+<section class="sentence" id="s9">
+<h3>§9 — <em>kimartham idaṃ śāstraṃ praṇītam</em>: first answer <span class="status verified">VERIFIED</span></h3>
+
+<h4>Yamaguchi text (MS)</h4>
+<div class="yamaguchi"><span class="ms-direct">kimartham idaṁ śāstraṁ praṇītaṁ</span><sup>(2)</sup> <span class="ms-direct">buddhānāṁ bhagavatāṁ samyag-nirvikalpa-jñānotpādanārtham |</span>
+<span class="folio-anchor">(OCR 1295–1297)</span></div>
+<p>n.2: MS <em>samyag-nirvikalpa</em>; Tib <em>rnam par mi rtog pa'i</em>. Tib LACKS <em>samyag</em>.</p>
+
+<h4>One textual variant to note (not emend)</h4>
+<div class="justification">The Tibetan witness lacks the modifier
+<em>samyag</em> ("correct/right") in the compound; it reads only
+<em>rnam par mi rtog pa'i ye shes</em> = <em>nirvikalpa-jñāna</em>.
+This is a real text-historical variant, not a clear error in either
+direction. Sthiramati's usual idiom does include
+<em>samyag-nirvikalpa-jñāna</em> (cf. his MAVT chs. 3 and 5), so the
+Sanskrit reading is plausibly the original and the Tibetan is a
+slight abridgement. Keep <em>samyag-</em> in the body; note the
+variant in apparatus.</div>
+
+<h4>Translation</h4>
+<div class="translation">"For what purpose was this śāstra composed?" — For the sake of generating the correct, non-discursive cognition of the Buddhas, the Blessed Ones.</div>
+</section>
+
+<!-- ====================================================== -->
+
+<section class="sentence" id="s10">
+<h3>§10 — first answer, completion: how the obscurations are eliminated <span class="status verified">VERIFIED</span></h3>
+
+<h4>Yamaguchi text (mixed)</h4>
+<div class="yamaguchi"><span class="ms-direct">dharma-nairātmya-deśanatayā nirvikalpa-jñānotpādāt tad-abhyāsāc ca niḥśeṣa-savāsana-kleśa-jñeyāvaraṇa-prahāṇaṁ</span> <span class="recon">avāpyate |</span>
+<span class="folio-anchor">(OCR 1298–1299)</span></div>
+
+<h4>Tibetan</h4>
+<div class="tibetan">ཆོས་ལ་བདག་མེད་པ་བསྟན་པས་རྣམ་པར་མི་རྟོག་པའི་ཡེ་ཤེས་བསྐྱེད་པ་དང་། དེ་གོམས་པས་བག་ཆགས་དང་བཅས་པའི་ཉོན་མོངས་པ་དང་། ཤེས་བྱའི་སྒྲིབ་པ་མ་ལུས་པར་སྤངས་པ་ཐོབ་པར་འགྱུར་རོ། ། (BO_T06_D4032:191a-37)</div>
+
+<h4>No change</h4>
+<div class="justification">Yamaguchi's <em>avāpyate</em> (passive
+"is attained") at the end matches Tib <em>thob par 'gyur ro</em>.
+The cluster <em>savāsana-kleśa-jñeyāvaraṇa-prahāṇaṁ</em> is the
+standard MAVT bookkeeping formula, present in all Sthiramati's works.</div>
+
+<h4>Translation</h4>
+<div class="translation">By [their] teaching dharma-nairātmya, non-discursive cognition arises; and by cultivating that, the complete elimination of the kleśa- and the jñeya-obscuration, along with their latencies, is attained.</div>
+</section>
+
+<!-- ====================================================== -->
+
+<section class="sentence" id="s11">
+<h3>§11 — second answer: refuting the <em>virodha-vāda</em> on dharma-nairātmya <span class="status proposed">PROPOSED</span></h3>
+
+<h4>Yamaguchi text (mostly reconstructed)</h4>
+<div class="yamaguchi"><span class="recon">ayaṃ punar dharma-nairātmyasya virodha-vādo yat sarva-dharma-nirātmatā dharma-nairātmyam | antar-vyāpāra-puruṣa-vyatiriktatā ca dharma-nairātmyam</span> <span class="ms-direct">ity atas tat-pratiṣedhena tathābhūta-nairātmya-pratipādanārthaṁ śāstrārambhaḥ |</span>
+<span class="folio-anchor">(OCR 1299–1303)</span></div>
+
+<h4>Tibetan</h4>
+<div class="tibetan">ཆོས་ལ་བདག་མེད་པ་ཡང་ཆོས་ཐམས་ཅད་མེད་པ་ཉིད་ཆོས་ལ་བདག་མེད་པ་དང་། ནང་ན་བྱེད་པའི་སྐྱེས་བུ་མེད་པ་ཉིད་ཆོས་རྣམས་ལ་བདག་མེད་པའོ་ཞེས་མི་མཐུན་པར་སྨྲ་བ་དེ་དག་བཀག་པས། ། ཆོས་ལ་བདག་མེད་པ་ཡང་དག་པ་ཇི་ལྟ་བ་བཞིན་དུ་བསྟན་པར་བྱ་བའི་ཕྱིར་བསྟན་བཅོས་བརྩམ་མོ། །
+<span class="tib-wylie"> — chos la bdag med pa yang | chos thams cad med pa nyid chos la bdag med pa dang | nang na byed pa'i skyes bu med pa nyid chos rnams la bdag med pa'o zhes mi mthun par smra ba de dag bkag pas | chos la bdag med pa yang dag pa ji lta ba bzhin du bstan par bya ba'i phyir bstan bcos brtsam mo</span>
+(BO_T06_D4032:191b-2 → 191b-7)</div>
+
+<h4>One concrete proposal: <em>nirātmatā</em> ≈ <em>nāstitā/abhāva</em></h4>
+<div class="justification">Yamaguchi's reconstruction is structurally
+correct — two opposing theses about dharma-nairātmya are reported
+and rejected. But the first thesis as he prints it
+(<em>sarva-dharma-nirātmatā dharma-nairātmyam</em> = "[dharma-nairātmya
+=] the [generic] selflessness of all dharmas") fails to capture the
+Tibetan's pointed first-thesis claim
+<em>chos thams cad med pa nyid chos la bdag med pa</em> = "[dharma-nairātmya
+=] the <strong>non-existence</strong> of all dharmas". The Tibetan
+<em>med pa nyid</em> renders <em>abhāva</em> or <em>nāstitā</em>, not
+<em>nirātmatā</em>. The first thesis is the <strong>nihilistic
+Mādhyamika strawman</strong> that Sthiramati's school is keen to
+attack — and "non-existence" is what makes it nihilistic; "selflessness"
+already concedes the doctrine. Read either:</div>
+<ul>
+<li><strong>(a)</strong> <em>yat sarva-dharma-nāstitā dharma-nairātmyam</em> — "[that thesis according to which] dharma-nairātmya [is] the non-existence of all dharmas".</li>
+<li><strong>(b)</strong> <em>yat sarva-dharma-abhāvo dharma-nairātmyam</em> — same sense, different noun.</li>
+</ul>
+<p>The second thesis (<em>antar-vyāpāra-puruṣa-vyatiriktatā</em>
+"the absence of an internal-active person") matches Tib
+<em>nang na byed pa'i skyes bu med pa nyid</em> with sufficient
+precision; keep as printed.</p>
+
+<h4>Proposed reading</h4>
+<div class="proposed"><strong>ayaṃ punar dharma-nairātmyasya virodha-vādo yat sarva-dharma-nāstitā dharma-nairātmyam | antar-vyāpāra-puruṣa-vyatiriktatā ca dharma-nairātmyam — ity atas tat-pratiṣedhena tathābhūta-nairātmya-pratipādanārthaṁ śāstrārambhaḥ |</strong></div>
+
+<div class="compare">
+<div class="before"><h5>Yamaguchi</h5>yat <strong>sarva-dharma-nirātmatā</strong> dharma-nairātmyam</div>
+<div class="after"><h5>Proposed</h5>yat <strong>sarva-dharma-nāstitā</strong> dharma-nairātmyam</div>
+</div>
+
+<h4>Translation</h4>
+<div class="translation">Now, [there are also] contradictory views about <em>dharma-nairātmya</em>: [some hold] that the <strong>non-existence</strong> of all dharmas is dharma-nairātmya; [others hold] that the <strong>absence of an internal active person</strong> is dharma-nairātmya. The composition of the śāstra is undertaken in order to refute these [views] and to teach <em>nairātmya</em> as it really is.</div>
+</section>
+
+<!-- ====================================================== -->
+
+<section class="sentence" id="s12">
+<h3>§12 — alternative third answer: removing audience non/mis-understanding <span class="status verified">VERIFIED</span></h3>
+
+<h4>Yamaguchi text (MS)</h4>
+<div class="yamaguchi"><span class="ms-direct">lakṣaṇāvaraṇādiṣv apratipanna-vipratipannānāṁ samyag-avabodhotpādanād apratipatti-vipratipatty-apanayārtham ity anye |</span>
+<span class="folio-anchor">(OCR 1304–1305)</span></div>
+
+<h4>Tibetan</h4>
+<div class="tibetan">གཞན་དག་ན་རེ་མཚན་ཉིད་དང་སྒྲིབ་པ་ལ་སོགས་པ་མ་རྟོགས་པ་དང་། ལོག་པར་རྟོགས་པ་རྣམས་ཡང་དག་པར་རྟོགས་པ་སྐྱེད་པས་མ་རྟོགས་པ་རྣམས་དང་། ལོག་པར་རྟོགས་པ་བསལ་བའི་ཕྱིར་རོ་ཞེའོ། ། (BO_T06_D4032:191b-7)</div>
+
+<h4>No change</h4>
+<div class="justification">Yamaguchi's <em>apratipanna-vipratipannānāṁ</em>
+("of those who have not understood and those who have mis-understood")
+matches Tib <em>ma rtogs pa dang log par rtogs pa rnams</em>;
+<em>apratipatti-vipratipatty-apanayārtham</em> matches
+<em>ma rtogs pa rnams dang log par rtogs pa bsal ba'i phyir</em>.</div>
+
+<h4>Translation</h4>
+<div class="translation">Others [say:] [it is composed] in order to remove the non-understanding and mis-understanding of those who have neither understood nor have mis-understood the [seven topics] lakṣaṇa, āvaraṇa and so on, by generating in them right comprehension.</div>
+</section>
+
+<!-- ====================================================== -->
+
+<section class="sentence" id="s13">
+<h3>§13 — fourth answer: the five-aspected jñeya <span class="status verified">VERIFIED</span></h3>
+
+<h4>Yamaguchi text (MS, with n. 3)</h4>
+<div class="yamaguchi"><span class="ms-direct">atha vā pañcākāra-jñeye loka-dhātu-sattva-dharma-vineyopāya-</span><sup>(3)</sup><span class="ms-direct">dhātv-ātmake pratyekam ananta-prabhedatvād durvijñeyam iti bodhisattvānāṁ yaś citta-saṁkocas tad-apanayanārtham āha |</span>
+<span class="folio-anchor">(OCR 1306–1309)</span></div>
+<p>n.3: "dhātu" not translated in the Tibetan — apparatus variant.</p>
+
+<h4>Tibetan</h4>
+<div class="tibetan">ཡང་ན་འཇིག་རྟེན་གྱི་ཁམས་དང་སེམས་ཅན་དང་ཆོས་དང་འདུལ་བ་དང་། ཐབས་ཀྱི་བདག་ཉིད་དེ། … བྱང་ཆུབ་སེམས་དཔའ་རྣམས་ཀྱི་སེམས་ཞུམ་པ་གང་ཡིན་པ་དེ་བསྩལ་བའི་ཕྱིར།
+(BO_T06_D4032:191b-7 → 191b-13)</div>
+
+<h4>One textual issue: <em>vineyopāya-dhātv-ātmake</em> vs Tib's missing <em>dhātu</em></h4>
+<div class="justification">Yamaguchi's reading gives a 5-member
+compound <em>loka-dhātu / sattva / dharma / vineya / upāya-dhātv-</em>;
+the Tibetan gives only 5 items but without a final <em>dhātu</em>
+member: <em>'jig rten gyi khams (loka-dhātu) + sems can (sattva) +
+chos (dharma) + 'dul ba (vineya) + thabs kyi bdag nyid (upāya-ātmaka)</em>.
+The trailing <em>dhātv-ātmake</em> in Sanskrit may itself be an
+intrusion (the compound reads more naturally with just
+<em>upāya-ātmake</em>). Yamaguchi's apparatus n. 3 already notes this
+gap. Either keep the Sanskrit and flag the Tibetan as condensed, or
+emend to <em>upāya-ātmake</em>. The latter is grammatically tidier
+and matches the canonical Tibetan; I prefer it.</div>
+
+<h4>Proposed reading (minor)</h4>
+<div class="proposed"><strong>atha vā pañcākāra-jñeye loka-dhātu-sattva-dharma-vineya-upāy-ātmake pratyekam ananta-prabhedatvād durvijñeyam iti bodhisattvānāṁ yaś citta-saṁkocas tad-apanayanārtham āha |</strong></div>
+
+<h4>Translation</h4>
+<div class="translation">Or [another reason for the composition]: because the five-aspected object-of-knowledge — i.e. that which consists of world-realm (<em>loka-dhātu</em>), sentient beings, dharmas, those-to-be-trained (<em>vineya</em>), and the means (<em>upāya</em>) — has, in each [aspect], endless subdivisions, it is hard to comprehend; in order to remove the bodhisattvas' faintheartedness in face of [this difficulty], [Vasubandhu] says:</div>
+</section>
+
+<!-- ====================================================== -->
+
+<section class="sentence" id="s14">
+<h3>§14 — the kārikā pratīka MAV I.2a: <em>lakṣaṇaṁ hy āvṛtis tattvam</em> <span class="status verified">VERIFIED</span></h3>
+
+<h4>Yamaguchi text</h4>
+<div class="yamaguchi"><u><span class="ms-direct">lakṣaṇaṁ hy āvṛittis tattvam</span></u>
+<span class="folio-anchor">(OCR 1310)</span></div>
+
+<h4>No change</h4>
+<div class="justification">The pratīka is directly attested as MAV
+I.2a in <a href="https://dharmamitra.org/nexus/db/sa/SA_T06_vmvkbh_u/text?active_segment=SA_T06_vmvkbh_u:7">SA_T06_vmvkbh_u:7</a>
+(<em>lakṣaṇaṃ hy āvṛtis tatvaṃ pratipakṣasya bhāvanā</em>).
+Modernise <em>āvṛittis</em> with the same "<em>ṛi</em>" convention →
+<em>āvṛtis</em>. (Note: Yamaguchi's footnote 4 misidentifies this as
+"Kārikā I, 1 a" — his numbering scheme treats the saptārtha-summary
+verse as I.1, then the lakṣaṇa-verse as I.2.)</div>
+
+<h4>Translation</h4>
+<div class="translation">"<em>lakṣaṇaṁ hy āvṛtis tattvam …</em>" — [the bhāṣya now opens MAV I.2 with this pratīka].</div>
+</section>
+
+<!-- ====================================================== -->
+
+<h2>Page-5 summary</h2>
+<table style="border-collapse:collapse;width:100%;font-size:0.92rem;">
+<thead><tr style="background:#efeae0;"><th style="text-align:left;padding:0.3rem 0.6rem;">§</th><th style="text-align:left;padding:0.3rem 0.6rem;">Anchor</th><th style="text-align:left;padding:0.3rem 0.6rem;">Status</th><th style="text-align:left;padding:0.3rem 0.6rem;">Headline change</th></tr></thead>
+<tbody>
+<tr><td>1</td><td><em>ceti | … asmadādibhyaḥ</em></td><td><span class="status verified">VERIFIED</span></td><td>none</td></tr>
+<tr><td>2</td><td><em>anenātmano 'mṛṣāyā upadeśo bhāsamāno nirdiṣṭaḥ</em></td><td><span class="status proposed">PROPOSED</span></td><td>OCR slips: <em>mṛiṣāyā</em> → <em>mṛṣāyāḥ</em>; <em>bñāsamāno</em> → <em>bhāsamāno</em></td></tr>
+<tr><td>3</td><td><em>abhyarhya = abhyarcya …</em></td><td><span class="status verified">VERIFIED</span></td><td>none</td></tr>
+<tr><td>4</td><td>bridging <em>kiṃ kariṣyasi</em></td><td><span class="status verified">VERIFIED</span></td><td>none</td></tr>
+<tr><td>5–7</td><td><em>yatiṣye 'rthavivecane</em> gloss</td><td><span class="status verified">VERIFIED</span></td><td><em>pṛithagbhāva-</em> → <em>pṛthag-bhāva-</em></td></tr>
+<tr><td>8</td><td><em>arthaḥ … śāstra-śarīram iti</em></td><td><span class="status verified">VERIFIED</span></td><td>none</td></tr>
+<tr><td>9</td><td>first answer: <em>samyag-nirvikalpa-jñāna-utpāda</em></td><td><span class="status verified">VERIFIED</span></td><td>Tib variant lacks <em>samyak</em>; note in apparatus</td></tr>
+<tr><td>10</td><td>elimination of kleśa- & jñeya-āvaraṇa</td><td><span class="status verified">VERIFIED</span></td><td>none</td></tr>
+<tr><td>11</td><td><em>virodha-vāda</em> on dharma-nairātmya</td><td><span class="status proposed">PROPOSED</span></td><td><em>sarva-dharma-nirātmatā</em> → <em>sarva-dharma-nāstitā</em></td></tr>
+<tr><td>12</td><td>removing non-/mis-understanding (others)</td><td><span class="status verified">VERIFIED</span></td><td>none</td></tr>
+<tr><td>13</td><td>five-aspected jñeya</td><td><span class="status verified">VERIFIED</span></td><td><em>upāya-dhātv-ātmake</em> → <em>upāya-ātmake</em> (per Tib n. 3)</td></tr>
+<tr><td>14</td><td>MAV I.2a pratīka</td><td><span class="status verified">VERIFIED</span></td><td><em>āvṛittis</em> → <em>āvṛtis</em></td></tr>
+</tbody>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MAVT — Sthiramati's Madhyāntavibhāgaṭīkā, re-edition</title>
+<style>
+:root {
+  --bg:#fdfdfb; --fg:#1c1c1c; --muted:#6b6b6b; --rule:#d8d3c8;
+  --accent:#6c4a1d; --recon-bg:#f0e7d9; --proposed-bg:#e1ecdb;
+  --warn-bg:#fde6e1; --link:#1d4f8e; --card-bg:#fff;
+}
+* { box-sizing:border-box; }
+html { font-size:16px; }
+body { font-family:"Iowan Old Style","Palatino Linotype","Book Antiqua",Palatino,Georgia,serif; background:var(--bg); color:var(--fg); margin:0; line-height:1.55; }
+header { background:linear-gradient(135deg,#3a2a18 0%,#6c4a1d 100%); color:#fdfdfb; padding:2.5rem 1.5rem 2rem; text-align:center; }
+header h1 { font-size:2.0rem; margin:0 0 0.4rem; font-weight:normal; letter-spacing:0.02em; }
+header h1 em { font-style:italic; color:#f3e9d8; }
+header .subtitle { font-size:1.05rem; color:#e8d8b8; margin:0; }
+header .meta-line { font-size:0.85rem; color:#c8b888; margin-top:0.8rem; letter-spacing:0.05em; }
+main { max-width:1080px; margin:0 auto; padding:2rem 1.5rem 4rem; }
+section.intro { background:#f4f0e6; border-left:3px solid var(--accent); padding:1.2rem 1.5rem; margin:1.5rem 0 2rem; font-size:0.98rem; }
+section.intro p { margin:0.6rem 0; }
+h2 { font-size:1.35rem; margin-top:2.6rem; padding-bottom:0.3rem; border-bottom:1px solid var(--rule); color:var(--accent); }
+h3 { font-size:1.05rem; margin-top:1.6rem; color:var(--accent); }
+.chapter-card { background:var(--card-bg); border:1px solid var(--rule); border-radius:4px; padding:1.2rem 1.5rem; margin:1rem 0; }
+.chapter-card h3 { margin-top:0; }
+.chapter-card .summary { color:#555; font-size:0.93rem; margin:0.4rem 0 1rem; }
+table.pages { width:100%; border-collapse:collapse; font-size:0.93rem; margin-top:0.5rem; }
+table.pages th { text-align:left; padding:0.4rem 0.7rem; background:#efeae0; border-bottom:1px solid #c8c0a8; font-weight:600; }
+table.pages td { padding:0.45rem 0.7rem; border-bottom:1px solid #ece7da; vertical-align:middle; }
+table.pages tr:hover { background:#fbf8ef; }
+table.pages td.headline { color:#555; font-size:0.88rem; font-style:italic; }
+.action { display:inline-block; padding:0.2rem 0.6rem; border-radius:3px; font-size:0.84rem; text-decoration:none; margin-right:0.35rem; border:1px solid transparent; transition:background 0.12s; }
+.action.edition { background:#f4ebe0; color:#6a3f10; border-color:#d8b888; }
+.action.edition:hover { background:#e8d8b8; }
+.action.image { background:#f6f1ef; color:#6a3030; border-color:#d0a8a8; }
+.action.image:hover { background:#e8c8c8; }
+.legend { font-size:0.82rem; color:var(--muted); margin:0.5rem 0 1.2rem; }
+.legend code { background:#efeae0; padding:0 0.3rem; border-radius:2px; }
+.status { display:inline-block; font-size:0.7rem; font-weight:700; letter-spacing:0.06em; padding:0.1rem 0.4rem; border-radius:2px; margin-left:0.3rem; }
+.status.verified { background:#cfe5c7; color:#244a18; }
+.status.proposed { background:#e9d9b3; color:#6b4a10; }
+.status.mixed    { background:#dde2eb; color:#2a3a55; }
+.status.nonliquet{ background:#f3d3cb; color:#6a2a18; }
+.about { background:#f5f0e8; border-left:3px solid #6b4a2a; padding:0.9rem 1.2rem; margin:1.5rem 0; font-size:0.92rem; }
+footer { text-align:center; color:var(--muted); font-size:0.85rem; padding:1.5rem; border-top:1px solid var(--rule); margin-top:3rem; }
+a { color:var(--link); text-decoration:none; border-bottom:1px solid transparent; }
+a:hover { border-bottom-color:#c8d3e3; }
+.repo-link { display:inline-block; margin-top:0.6rem; padding:0.3rem 0.8rem; background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.3); border-radius:3px; color:#fdfdfb; font-size:0.85rem; }
+.repo-link:hover { background:rgba(255,255,255,0.22); border-bottom-color:transparent; }
+</style>
+</head>
+<body>
+
+<header>
+<h1>Sthiramati, <em>Madhyāntavibhāgaṭīkā</em></h1>
+<p class="subtitle">A machine-driven, sentence-by-sentence philological re-edition of Yamaguchi 1934</p>
+<p class="meta-line">CHAPTERS 1 + 4 — work in progress</p>
+<a class="repo-link" href="https://github.com/sebastian-nehrdich/mavt-edition">View on GitHub →</a>
+</header>
+
+<main>
+
+<section class="intro">
+<p>This site presents an ongoing re-edition of Sthiramati's
+<em>Madhyāntavibhāgaṭīkā</em> (MAVT), based on Susumu Yamaguchi's
+editio princeps (Nagoya, 1934). The goal is not to retype Yamaguchi
+but to <strong>interrogate his reconstructions</strong>: every
+italicised Sanskrit passage in his print is a conjecture filled into
+a manuscript-lacuna, and most can now be re-examined against the
+canonical Tibetan MAVT, the underlying Vasubandhu bhāṣya, the
+Maitreya kārikā, Sthiramati's other works, and cross-tract
+parallels via the
+<a href="https://dharmamitra.org/">DharmaMitra</a> corpus.</p>
+<p>For each Yamaguchi-page below, open the <strong>edition</strong>
+to read the sentence-by-sentence apparatus and proposed emendations.
+The original scan is embedded at the top of every edition file. You
+can also open any raw page <strong>image</strong> on its own.</p>
+</section>
+
+<p class="legend">
+Action chips:
+<span class="action edition">edition (with scan embedded)</span>
+<span class="action image">raw page image</span>
+</p>
+
+<h2>Chapter 1 — <em>Lakṣaṇa-pariccheda</em></h2>
+
+<div class="chapter-card">
+<h3>Preface (<em>Abhyarcanam-Śāstra-śarīram</em>)</h3>
+<p class="summary">Sthiramati's Mañjuśrī-homage, gloss of Vasubandhu's
+homage-verse (<em>śāstrasyāsya praṇetāram</em>…), three definitions
+of <em>śāstra</em>, three alternative explanations of the saptārtha
+order. Pages 1–9 of Yamaguchi.</p>
+<table class="pages">
+<thead><tr><th>Page</th><th>PDF file p.</th><th>Status</th><th>Headline change</th><th>Open</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>039</td><td><span class="status proposed">3 proposed</span></td><td class="headline">Mañjuśrī-homage + the long opening sentence on <em>uttamajana</em>; <em>bhāṣyam cikīrṣur</em> → <em>vyākhyānaṃ cikīrṣus tat</em>; etc.</td>
+<td><a class="action edition" href="editions/chapter-1/mavt-page-01.html">edition</a><a class="action image" href="images/page-039.jpg">image</a></td></tr>
+<tr><td>2</td><td>040</td><td><span class="status proposed">2 proposed</span></td><td class="headline">Maitreya as <em>praṇetṛ</em>; <em>prajñaptīnām</em> → <em>vijñaptīnām</em>; <em>upadiṣṭāt</em> → <em>upadiṣṭatvāt</em></td>
+<td><a class="action edition" href="editions/chapter-1/mavt-page-02.html">edition</a><a class="action image" href="images/page-040.jpg">image</a></td></tr>
+<tr><td>3</td><td>041</td><td><span class="status proposed">2 proposed</span></td><td class="headline">Second <em>śāstra</em>-definition; <em>bhāsamāno</em> → <em>bhāvyamāno</em>; <em>vidhatva</em> → <em>vividha-tīvra</em></td>
+<td><a class="action edition" href="editions/chapter-1/mavt-page-03.html">edition</a><a class="action image" href="images/page-041.jpg">image</a></td></tr>
+<tr><td>4</td><td>042</td><td><span class="status proposed">3 proposed</span></td><td class="headline"><em>sugata</em> etymology + <em>āmalakī</em> simile; restored OCR-gap; <em>śuk-</em> → <em>sūkṣma-paṭ-</em>; <em>cet;</em> → <em>ca</em></td>
+<td><a class="action edition" href="editions/chapter-1/mavt-page-04.html">edition</a><a class="action image" href="images/page-042.jpg">image</a></td></tr>
+<tr><td>5</td><td>043</td><td><span class="status proposed">2 proposed</span></td><td class="headline">Gloss on <em>asmadādibhyaḥ</em> + <em>abhyarhya</em>; <em>virodhavāda</em> reading: <em>nirātmatā</em> → <em>nāstitā</em></td>
+<td><a class="action edition" href="editions/chapter-1/mavt-page-05.html">edition</a><a class="action image" href="images/page-043.jpg">image</a></td></tr>
+<tr><td>6</td><td>044</td><td><span class="status proposed">2 proposed</span></td><td class="headline"><em>tatrāditaḥ śāstra-śarīraṁ vyavasthāpyate</em>; <em>vācrayārthena</em> → <em>vā āśrayārthena</em></td>
+<td><a class="action edition" href="editions/chapter-1/mavt-page-06.html">edition</a><a class="action image" href="images/page-044.jpg">image</a></td></tr>
+<tr><td>7</td><td>045</td><td><span class="status verified">verified</span></td><td class="headline">Saptārtha enumeration: <em>lakṣaṇa</em>, <em>āvaraṇa</em>-53-fold, <em>tattva</em>-10-fold, <em>pratipakṣa</em>, <em>bhāvanā</em>, <em>avasthā</em>-19-fold, <em>phala</em>-15-fold, <em>yānānuttarya</em></td>
+<td><a class="action edition" href="editions/chapter-1/mavt-page-07.html">edition</a><a class="action image" href="images/page-045.jpg">image</a></td></tr>
+<tr><td>8</td><td>046</td><td><span class="status verified">verified</span></td><td class="headline">First two alternative explanations of the saptārtha order; sūtra-citation on śrāvaka/pratyekabuddha/bodhisattva training</td>
+<td><a class="action edition" href="editions/chapter-1/mavt-page-08.html">edition</a><a class="action image" href="images/page-046.jpg">image</a></td></tr>
+<tr><td>9</td><td>047</td><td><span class="status nonliquet">1 non liquet</span></td><td class="headline">Third alternative explanation of saptārtha order; <em>sattvasya</em> vs <em>bodhisattvasya</em> open</td>
+<td><a class="action edition" href="editions/chapter-1/mavt-page-09.html">edition</a><a class="action image" href="images/page-047.jpg">image</a></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="chapter-card">
+<h3>Chapter 1 body — kārikā I.1 (<em>abhūtaparikalpo 'sti</em>…)</h3>
+<p class="summary">Opens the <em>Lakṣaṇa-pariccheda</em> proper.
+Yamaguchi pp. 10–14. Page 10 is also covered in the per-page format
+below; pages 11–14 in the older multi-page format.</p>
+<table class="pages">
+<thead><tr><th>Page</th><th>PDF file p.</th><th>Status</th><th>Headline change</th><th>Open</th></tr></thead>
+<tbody>
+<tr><td>10</td><td>048</td><td><span class="status verified">verified</span></td><td class="headline">Chapter opens with <em>tatra lakṣaṇam ārabhyāha</em>; <em>sapta-bhāva</em> ≠ MAVBh's <em>sapta-artha</em>; <em>Tib. om.</em> flag on <em>yathoddeśas tathā nirdeśaḥ</em></td>
+<td><a class="action edition" href="editions/chapter-1/mavt-page-10.html">edition</a><a class="action image" href="images/page-048.jpg">image</a></td></tr>
+<tr><td>10–14</td><td>048–052</td><td><span class="status mixed">multi-page</span></td><td class="headline">Older long-form analysis: kārikā I.1 commentary, anti-Vaibhāṣika reading at §11, anti-total-nihilist arguments, sad/asat-lakṣaṇa block</td>
+<td><a class="action edition" href="editions/chapter-1/mavt-ch1-commentary.html">edition</a><a class="action image" href="images/page-048.jpg">image (p. 10)</a></td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>Chapter 4 — <em>Pratipakṣa-bhāvanā-pariccheda</em></h2>
+
+<div class="chapter-card">
+<h3>Chapter 4 opening (Yamaguchi pp. 166–170)</h3>
+<p class="summary">The chapter on the cultivation of the antidotes
+(<em>pratipakṣa-bhāvanā</em>): the 37 <em>bodhipakṣya-dharmāḥ</em>,
+beginning with the four <em>smṛtyupasthāna</em>-s and into the four
+<em>samyak-prahāṇa</em>-s. Now split per page, matching the ch. 1
+preface format.</p>
+<table class="pages">
+<thead><tr><th>Page</th><th>PDF file p.</th><th>Status</th><th>Headline change</th><th>Open</th></tr></thead>
+<tbody>
+<tr><td>166</td><td>204</td><td><span class="status verified">verified</span></td><td class="headline">Chapter-opening setup; <em>tattvānantaram uddiṣṭatvāt</em>; <em>bodhipakṣya</em> = pratipakṣa to the obscurations; 37-fold enumeration; <em>kāya-smṛtyupasthāna</em>'s opening kārikā IV.1a pratīka</td>
+<td><a class="action edition" href="editions/chapter-4/mavt-page-166.html">edition</a><a class="action image" href="images/page-204.jpg">image</a></td></tr>
+<tr><td>167</td><td>205</td><td><span class="status verified">verified</span></td><td class="headline">Continuation of ch.4 opening: <em>bodhipakṣa-bhāvanā</em>, <em>kāya-dauṣṭhulya-vikriyā</em>, beginning of <em>kāya-smṛtyupasthāna</em> proper</td>
+<td><a class="action edition" href="editions/chapter-4/mavt-page-167.html">edition</a><a class="action image" href="images/page-205.jpg">image</a></td></tr>
+<tr><td>168</td><td>206</td><td><span class="status verified">verified</span></td><td class="headline">Continuation of <em>kāya-smṛtyupasthāna</em></td>
+<td><a class="action edition" href="editions/chapter-4/mavt-page-168.html">edition</a><a class="action image" href="images/page-206.jpg">image</a></td></tr>
+<tr><td>169</td><td>207</td><td><span class="status verified">verified</span></td><td class="headline"><em>vedanā</em>- and <em>citta-smṛtyupasthāna</em>; opening of <em>dharma-smṛtyupasthāna</em></td>
+<td><a class="action edition" href="editions/chapter-4/mavt-page-169.html">edition</a><a class="action image" href="images/page-207.jpg">image</a></td></tr>
+<tr><td>170</td><td>208</td><td><span class="status verified">verified</span></td><td class="headline">Close of <em>dharma-smṛtyupasthāna</em>; <em>smṛtyupasthāna</em> definition; opens <em>samyak-prahāṇa</em></td>
+<td><a class="action edition" href="editions/chapter-4/mavt-page-170.html">edition</a><a class="action image" href="images/page-208.jpg">image</a></td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>Browse all 321 PDF pages</h2>
+<div class="chapter-card">
+<p>Every page of the original Yamaguchi 1934 PDF is available as a
+400-DPI JPG (≈ 850 × 1200 px each), regardless of whether it has
+edition coverage yet:</p>
+<p>→ <a href="all-pages.html">Browse all 321 page images</a></p>
+</div>
+
+<h2>Methodology &amp; status</h2>
+<div class="chapter-card">
+<p>The full editing methodology — search protocol, what counts as
+admissible evidence, status tracker per page, lessons learned — is
+in <a href="mavt-reedition-workflow.md"><code>mavt-reedition-workflow.md</code></a>.</p>
+</div>
+
+<section class="about">
+<strong>About this project.</strong> The editorial work is produced by
+an Anthropic Claude agent driving the
+<a href="https://dharmamitra.org/">DharmaMitra</a> <code>/primary/</code>
+search and <code>/cat-translate/</code> APIs over many sessions. The
+sentence-by-sentence apparatus is machine-generated and has not yet
+been reviewed by a human philologist; the original Yamaguchi text and
+the Tibetan witnesses are reproduced from public-domain / canonical
+sources. If you propose readings of your own or spot errors, please
+open an issue or pull request on
+<a href="https://github.com/sebastian-nehrdich/mavt-edition">GitHub</a>.
+</section>
+
+</main>
+
+<footer>
+Editorial work © 2026, released under <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY-4.0</a>.
+Source: <a href="https://github.com/sebastian-nehrdich/mavt-edition">github.com/sebastian-nehrdich/mavt-edition</a>.
+</footer>
+
+</body>
+</html>

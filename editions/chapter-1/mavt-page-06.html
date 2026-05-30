@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Sthiramati MAVT, Yamaguchi p. 6 — re-edition walk-through</title>
+<style>
+:root { --bg:#fdfdfb; --fg:#1c1c1c; --muted:#6b6b6b; --rule:#d8d3c8; --accent:#6c4a1d; --recon-bg:#f0e7d9; --proposed-bg:#e1ecdb; --warn-bg:#fde6e1; --link:#1d4f8e; }
+body { font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif; background:var(--bg); color:var(--fg); max-width:980px; margin:2.5rem auto; padding:0 1.5rem 4rem; line-height:1.55; }
+h1{font-size:1.6rem;margin-bottom:0.2rem;} h2{font-size:1.2rem;margin-top:2.6rem;padding-bottom:0.2rem;border-bottom:1px solid var(--rule);color:var(--accent);} h3{font-size:1.05rem;margin-top:1.6rem;color:var(--accent);display:flex;align-items:center;flex-wrap:wrap;} h4{font-size:0.95rem;margin:0.8rem 0 0.3rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.05em;}
+.meta { color:var(--muted); font-size:0.85rem; margin-top:0; }
+code { font-family:"SF Mono",Menlo,Consolas,monospace; font-size:0.92em; background:#efeae0; padding:0 0.25rem; border-radius:2px; }
+.yamaguchi { background:var(--recon-bg); padding:0.55rem 0.85rem; border-left:3px solid #b88c1d; margin:0.4rem 0; font-family:"Charis SIL",Georgia,serif; }
+.yamaguchi .recon { font-style:italic; color:#8a3e0c; }
+.yamaguchi .ms-direct { color:#1c1c1c; }
+.tibetan { background:#f6f1ef; padding:0.55rem 0.85rem; border-left:3px solid #8a4a4a; margin:0.4rem 0; font-family:"Jomolhari",Georgia,serif; }
+.proposed { background:var(--proposed-bg); padding:0.55rem 0.85rem; border-left:3px solid #4a7a3a; margin:0.4rem 0; font-family:"Charis SIL",Georgia,serif; }
+.compare { display:grid; grid-template-columns:1fr 1fr; gap:0.6rem; margin:0.6rem 0; }
+.compare > div { padding:0.55rem 0.75rem; border-radius:3px; font-family:"Charis SIL",Georgia,serif; font-size:0.95rem; }
+.compare .before { background:#f4ebe0; border-left:3px solid #b88c1d; }
+.compare .after { background:#e1ecdb; border-left:3px solid #4a7a3a; }
+.compare h5 { margin:0 0 0.3rem 0; font-size:0.78rem; letter-spacing:0.04em; text-transform:uppercase; color:#555; }
+.translation { background:#fafafa; border-left:3px solid #777; padding:0.5rem 0.85rem; margin:0.4rem 0; font-style:italic; color:#333; }
+.justification { background:#f9f5e8; border-left:3px solid #c2a04a; padding:0.5rem 0.85rem; margin:0.4rem 0; font-size:0.93rem; }
+.warn { background:var(--warn-bg); padding:0.45rem 0.75rem; border-left:3px solid #b54c30; margin:0.4rem 0; font-size:0.93rem; }
+.status { display:inline-block; font-size:0.72rem; font-weight:700; letter-spacing:0.06em; padding:0.15rem 0.5rem; border-radius:2px; margin-left:0.5rem; }
+.status.verified { background:#cfe5c7; color:#244a18; } .status.proposed { background:#e9d9b3; color:#6b4a10; } .status.nonliquet { background:#f3d3cb; color:#6a2a18; }
+.intro { background:#f4f0e6; border-left:3px solid var(--accent); padding:0.8rem 1rem; margin:1rem 0 2rem; font-size:0.97rem; }
+.folio-anchor { color:#999; font-size:0.78rem; }
+section.sentence { margin-top:1.6rem; padding-top:0.4rem; border-top:1px dotted #d0d0c0; }
+.tib-wylie { font-size:0.85rem; color:#6b3030; font-family:"Charis SIL",Georgia,serif; font-style:italic; }
+a { color:var(--link); }
+</style>
+
+<style>
+.mavt-img-banner { background:#f0e7d9; border-bottom:2px solid #b88c1d; padding:0.8rem 1rem; margin:-2.5rem -1.5rem 1.6rem; text-align:center; font-family:"Iowan Old Style",Georgia,serif; }
+.mavt-img-banner .mavt-nav { font-size:0.88rem; margin-bottom:0.6rem; color:#6a3f10; }
+.mavt-img-banner .mavt-nav a { color:#5a2d2d; text-decoration:none; padding:0.15rem 0.5rem; background:#e8d8b8; border:1px solid #c8a87a; border-radius:3px; margin:0 0.2rem; display:inline-block; }
+.mavt-img-banner .mavt-nav a:hover { background:#d8c0a0; }
+.mavt-img-banner details { text-align:left; }
+.mavt-img-banner summary { cursor:pointer; font-size:0.92rem; color:#5a3a18; padding:0.3rem 0; user-select:none; }
+.mavt-img-banner summary:hover { color:#3a1a08; }
+.mavt-img-banner .mavt-img-strip { display:flex; flex-wrap:wrap; gap:0.6rem; justify-content:center; margin-top:0.6rem; }
+.mavt-img-banner .mavt-img-strip a { display:inline-block; text-decoration:none; }
+.mavt-img-banner .mavt-img-strip img { max-width:240px; max-height:340px; border:1px solid #b88c1d; border-radius:2px; transition:transform 0.15s; }
+.mavt-img-banner .mavt-img-strip img:hover { transform:scale(1.04); box-shadow:0 2px 8px rgba(0,0,0,0.15); }
+.mavt-img-banner .mavt-img-strip .mavt-img-cap { display:block; font-size:0.78rem; color:#6a3f10; margin-top:0.2rem; text-align:center; }
+.mavt-img-banner .mavt-img-single img { max-width:420px; max-height:560px; }
+</style>
+</head>
+<body>
+<div class="mavt-img-banner"><div class="mavt-nav"><a href="../../index.html">← Index</a><a href="../../all-pages.html">📑 All PDF pages</a></div><details open><summary>📜 Show original Yamaguchi 1934 scan — page 6</summary><div class="mavt-img-single"><a href="../../images/page-044.jpg" target="_blank" title="Click for full-size"><img src="../../images/page-044.jpg" alt="Yamaguchi 1934, p. 6" loading="lazy"><span class="mavt-img-cap">p. 6</span></a></div></details></div>
+
+<h1>Sthiramati, <em>Madhyāntavibhāgaṭīkā</em> — Yamaguchi p.&nbsp;6</h1>
+<p class="meta">OCR lines 1320–1353. Methodology:
+<a href="mavt-reedition-workflow.md"><code>mavt-reedition-workflow.md</code></a>.
+Tibetan witness: BO_T06_D4032:191b-13 → 192a-18.</p>
+
+<div class="intro">
+<p>Page 6 is the gloss on the bhāṣya's first sub-section heading,
+<em>tatrāditaḥ śāstra-śarīraṁ vyavasthāpyate</em> ("there, at the
+outset, the body of the śāstra is set forth"). Sthiramati unpacks
+<em>tatra</em>, <em>āditas</em>, <em>śāstra</em>, <em>tac-charīram</em>,
+<em>vyavasthāpanam</em>, then introduces a small dialectical objection
+("if the body is known through the śāstra itself, why introduce it
+beforehand?") and answers it with a horse-charge simile, then turns
+to the bhāṣya's saptārtha enumeration: gloss of <em>ete</em>,
+<em>sapta</em>, <em>arthāḥ</em>, <em>asmiṃ śāstre</em>,
+<em>uddiṣṭāḥ</em>; finally introduces the <em>lakṣaṇa</em> topic.</p>
+<p>The page is mixed: the lemma-citation gloss-pairs are mostly
+italic (Yamaguchi reconstructions), while the substantive
+explanatory sentences are MS-attested.</p>
+</div>
+
+<h2>Canonical Tibetan (selected for page 6)</h2>
+<div class="tibetan">
+[BO_T06_D4032:191b-13 → 191b-33, on the śarīra-vyavasthāpana lemma:]
+དེ་ལ་ཐོག་མ་ཁོ་ནར་བསྟན་བཅོས་ཀྱི་ལུས་རྣམ་པར་གཞག་སྟེ་ཞེས་བྱ་བ་ལ། <br>
+དེ་ལ་ཞེས་བྱ་བ་ནི་བསྟན་བཅོས་ཀྱི་དོན་རྣམ་པར་འབྱེད་པ་དེ་ལའམ། བསྟན་བཅོས་ལའོ། ། <br>
+ཐོག་མ་ཁོ་ནར་ཞེས་བྱ་བ་ནི། དང་པོ་ཁོ་ནར་རོ། ། <br>
+བསྟན་བཅོས་ནི་བཤད་པར་ཟད་དོ། ། <br>
+དེའི་ལུས་ནི་མདོར་བསྡུས་པའམ། དོན་བསྡུས་པའོ། ། <br>
+གནས་ཀྱི་དོན་ནི་ལུས་སོ། ། <br>
+དཔེར་ན་ཕྱི་དང་ནང་གི་སྐྱེ་མཆེད་ཀྱི་གནས་ནི་ཁོག་པ་སྟེ། ལུས་ཞེས་བྱ་བ་དེ་བཞིན་དུ། དོན་གང་དག་ལ་གནས་ཏེ། བསྟན་བཅོས་ལ་འཇུག་པའི་དོན་དེ་རྣམས་ནི་དེའི་ལུས་སོ། ། <br>
+དེ་དག་ཀྱང་དོན་བདུན་པོ་དག་སྟེ། མཚན་ཉིད་ལ་སོགས་པ་དག་གོ། ། <br>
+རྣམ་པར་གཞག་ཅེས་བྱ་བ་ནི་བཅས་པ་སྟེ། བཤད་ཅེས་བྱ་བའི་ཐ་ཚིག་གོ། ། <br>
+[on the disciple-objection:] བསྟན་བཅོས་ཁོང་དུ་ཆུད་པ་ཉིད་ཀྱིས་དེའི་ལུས་ཤེས་པར་མི་འགྱུར་རམ། དེ་བས་ན་ཐོག་མ་དེ་རྣམ་པར་གཞག་པ་ནི་དོན་མེད་དོ། ། <br>
+སློབ་མ་རྣམས་ལ་ཕན་གདགས་པའི་ཕྱིར་དོན་མེད་པ་མ་ཡིན་ནོ། ། སློབ་མས་དོན་ཁོང་དུ་ཆུད་ན་རྒྱས་པར་བརྗོད་ཀྱང་བདེ་བླག་ཏུ་ཁོང་དུ་ཆུད་པར་འགྱུར་ཏེ་དཀྱུས་ཀྱིས་བསྟན་པའི་རྟ་ཐགས་ཐོགས་མེད་པར་རྒྱུག་པ་བཞིན་ཏེ། གཞན་དུ་མ་ཡིན་ནོ་ཞེས་བྱ་བ་དོན་བདུན་པོ་འདི་དག་བསྟན་བཅོས་འདི་ལས་འཆད་དོ་ཞེས་བྱ་བ་ལ་ཞེས་བྱ་བ་ནི། བསྟན་བཅོས་ཀྱི་ལུས་རྫོགས་སོ་ཞེས་བྱ་བ་ནི་ཐ་ཚིག་གོ། ། <br>
+[on <em>lakṣaṇam</em>:] མཚན་ཉིད་ཅེས་བྱ་བ་ནི། འདིས་མཚོན་པར་བྱེད་པས་མཚན་ཉིད་དོ། ། དེ་ཡང་རྣམ་པ་གཉིས་ཏེ། ཀུན་ནས་ཉོན་མོངས་པའི་མཚན་ཉིད་དང་། རྣམ་པར་བྱང་བའི་མཚན་ཉིད་དོ། ། <br>
+</div>
+
+<!-- ====================================================== -->
+
+<section class="sentence" id="s1">
+<h3>§1 — pratīka <em>tatrāditaḥ śāstra-śarīraṁ vyavasthāpyate</em> + opening gloss <span class="status proposed">PROPOSED</span></h3>
+
+<h4>Yamaguchi text</h4>
+<div class="yamaguchi"><span class="ms-direct">iti | tatrāditaḥ śāstrāśarīravyavasthāpanam</span> <span class="recon">iti tatreti śāstrārtha-vivecane śāstre vā |</span>
+<span class="folio-anchor">(OCR 1323–1324)</span></div>
+
+<h4>Tibetan</h4>
+<div class="tibetan">དེ་ལ་ཐོག་མ་ཁོ་ནར་བསྟན་བཅོས་ཀྱི་ལུས་རྣམ་པར་གཞག་སྟེ་ཞེས་བྱ་བ་ལ། དེ་ལ་ཞེས་བྱ་བ་ནི་བསྟན་བཅོས་ཀྱི་དོན་རྣམ་པར་འབྱེད་པ་དེ་ལའམ། བསྟན་བཅོས་ལའོ། ། (BO_T06_D4032:191b-13 → 191b-17)</div>
+
+<h4>Restore the MAVBh pratīka form</h4>
+<div class="justification">The OCR reads <em>tatrāditaḥ
+śāstrāśarīravyavasthāpanam</em> with two issues: (i) the strange long
+<em>-ā</em> in <em>śāstrā-</em> (should be either <em>śāstra-</em> in
+a compound or <em>śāstrasya</em> as gen.); (ii) the form
+<em>vyavasthāpana-</em> as a noun, vs. the MAVBh pratīka
+<em>vyavasthāpyate</em> (verb). The clean reading is either:</div>
+<ul>
+<li>Strict pratīka form (matching <a href="https://dharmamitra.org/nexus/db/sa/SA_T06_vmvkbh_u/text?active_segment=SA_T06_vmvkbh_u:6">MAVBh SA_T06_vmvkbh_u:6</a>): <em>tatrāditaḥ śāstra-śarīraṁ vyavasthāpyate iti</em></li>
+<li>Sthiramati's nominalisation: <em>tatrāditaḥ śāstra-śarīra-vyavasthāpanam iti</em></li>
+</ul>
+<p>Tib <em>de la thog ma kho nar bstan bcos kyi lus rnam par gzhag
+ste</em> uses the verbal form <em>rnam par gzhag ste</em>
+(<em>vyavasthāpyate</em>); MAVBh has the verb. Read the verbal form.</p>
+
+<h4>Proposed reading</h4>
+<div class="proposed"><strong>iti | tatrāditaḥ śāstra-śarīraṁ vyavasthāpyate iti — tatreti śāstra-artha-vivecane śāstre vā |</strong></div>
+
+<h4>Translation</h4>
+<div class="translation">"[End of the homage-verse,] '<em>iti</em>'. [The bhāṣya now reads:] '<em>There, at the outset, the body of the śāstra is set forth</em>'. — '<em>tatra</em>' [here means] either in the discrimination of the śāstra's meaning, or in the śāstra [itself].</div>
+</section>
+
+<!-- ====================================================== -->
+
+<section class="sentence" id="s2">
+<h3>§2 — <em>ādita iti prathamata eva</em> <span class="status verified">VERIFIED</span></h3>
+
+<h4>Yamaguchi text</h4>
+<div class="yamaguchi"><span class="recon">ādita iti prathamata eva |</span>
+<span class="folio-anchor">(OCR 1324)</span></div>
+
+<h4>Tibetan</h4>
+<div class="tibetan">ཐོག་མ་ཁོ་ནར་ཞེས་བྱ་བ་ནི། དང་པོ་ཁོ་ནར་རོ། ། (BO_T06_D4032:191b-17)</div>
+
+<h4>No change</h4>
+<div class="justification">A short Pāṇinian gloss-pair. Tib
+<em>thog ma kho nar / dang po kho nar</em> = <em>āditaḥ / prathamata
+eva</em>, verbatim.</div>
+
+<h4>Translation</h4>
+<div class="translation">"<em>āditaḥ</em>" means "first of all".</div>
+</section>
+
+<!-- ====================================================== -->
+
+<section class="sentence" id="s3">
+<h3>§3–§4 — <em>śāstra</em> = <em>vivaraṇa</em>; <em>tac-charīram</em> = <em>saṃkṣepaḥ</em> <span class="status proposed">PROPOSED</span></h3>
+
+<h4>Yamaguchi text (italic + MS)</h4>
+<div class="yamaguchi"><span class="recon">śāstram vivaraṇam | tac-charīram saṃkṣepaḥ</span> <span class="ms-direct">piṇḍārtho vācrayārthena vā śarīram |</span>
+<span class="folio-anchor">(OCR 1324–1325)</span></div>
+
+<h4>Tibetan</h4>
+<div class="tibetan">བསྟན་བཅོས་ནི་བཤད་པར་ཟད་དོ། ། དེའི་ལུས་ནི་མདོར་བསྡུས་པའམ། དོན་བསྡུས་པའོ། ། གནས་ཀྱི་དོན་ནི་ལུས་སོ། ། (BO_T06_D4032:191b-17 → 191b-22)</div>
+
+<h4>One OCR fix: <em>vācrayārthena</em> → <em>vā āśrayārthena</em></h4>
+<div class="justification">The OCR's <em>vācrayārthena</em> is
+<em>vā + āśrayārthena</em> with sandhi (<em>vā āśrayārthena → vā
+ācrayārthena → vācrayārthena</em>) and the OCR-typical
+<em>ś</em>/<em>c</em> confusion. Tib <em>gnas kyi don ni lus so</em>
+("the meaning [as] support/basis is the body") confirms
+<em>āśraya-arthena</em>. Read <em>vā āśrayārthena</em>.</div>
+<p>Other glosses are clean: <em>śāstram = vivaraṇam</em> matches Tib
+<em>bstan bcos ni bshad par zad do</em> (<em>vivaraṇa = bshad pa</em>,
+literally "exposition"); <em>saṃkṣepaḥ piṇḍārthaḥ</em> matches Tib
+<em>mdor bsdus pa'am don bsdus pa</em> ("abbreviated, condensed-meaning").</p>
+
+<h4>Proposed reading</h4>
+<div class="proposed"><strong>śāstraṁ vivaraṇam | tac-charīraṁ saṃkṣepaḥ piṇḍārtho vā āśrayārthena vā śarīram |</strong></div>
+
+<h4>Translation</h4>
+<div class="translation">"<em>śāstra</em>" [means] "explanation"; "its body" [means] either the abbreviated form, the condensed-meaning, or [the meaning of] "<em>body</em>" taken in the sense of "support".</div>
+</section>
+
+<!-- ====================================================== -->
+
+<section class="sentence" id="s5">
+<h3>§5–§7 — body-analogy + the seven topics <span class="status verified">VERIFIED</span></h3>
+
+<h4>Yamaguchi text (MS)</h4>
+<div class="yamaguchi"><span class="ms-direct">yathā hi bāhya-ādhyātmikāyatanāśrayaḥ kāyaḥ [Tib. 21, a] śarīram ity ucyate | evaṁ yān arthān niśritya śāstraṁ pravartate te 'rthās tasya śarīram | te ca saptārthā lakṣaṇādayaḥ |</span>
+<span class="folio-anchor">(OCR 1326–1328)</span></div>
+
+<h4>No change</h4>
+<div class="justification">Clean MS analogy. Tib at 191b-22 matches
+verbatim: <em>dper na phyi dang nang gi skye mched kyi gnas ni khog
+pa ste, lus zhes bya ba de bzhin du, don gang dag la gnas te, bstan
+bcos la 'jug pa'i don de rnams ni de'i lus so | de dag kyang don
+bdun po dag ste, mtshan nyid la sogs pa dag go</em>.</div>
+
+<h4>Translation</h4>
+<div class="translation">Just as the body (<em>kāya</em>) — which is the locus of the inner and outer sense-bases — is called "<em>śarīra</em>", so the topics on the basis of which the śāstra unfolds are its body. And these are the seven topics, [namely] <em>lakṣaṇa</em> and so on.</div>
+</section>
+
+<!-- ====================================================== -->
+
+<section class="sentence" id="s8">
+<h3>§8–§9 — <em>vyavasthāpanam</em> = <em>prajñapti</em> / <em>ākhyāna</em> <span class="status verified">VERIFIED</span></h3>
+
+<h4>Yamaguchi text</h4>
+<div class="yamaguchi"><span class="recon">vyavasthāpanam iti prajñaptir ucyate | ākhyānam ity arthaḥ |</span>
+<span class="folio-anchor">(OCR 1328–1329)</span></div>
+
+<h4>Tibetan</h4>
+<div class="tibetan">རྣམ་པར་གཞག་ཅེས་བྱ་བ་ནི་བཅས་པ་སྟེ། བཤད་ཅེས་བྱ་བའི་ཐ་ཚིག་གོ། ། (BO_T06_D4032:191b-28)</div>
+
+<h4>No change</h4>
+<div class="justification">Tib <em>rnam par gzhag ces bya ba ni bcas
+pa ste, bshad ces bya ba'i tha tshig go</em>: <em>rnam par gzhag</em>
+= <em>vyavasthāpana</em>, <em>bcas pa</em> = <em>prajñapti / vihita</em>,
+<em>bshad</em> = <em>ākhyāna / vyākhyāna</em>. Yamaguchi's gloss
+matches.</div>
+
+<h4>Translation</h4>
+<div class="translation">"<em>vyavasthāpana</em>" [means] "<em>prajñapti</em>" (designation); the sense is "expounding".</div>
+</section>
+
+<!-- ====================================================== -->
+
+<section class="sentence" id="s10">
+<h3>§10–§11 — objection (vyavasthāpana redundant?) + horse-charge answer <span class="status verified">VERIFIED</span></h3>
+
+<h4>Yamaguchi text (italic objection + MS answer)</h4>
+<div class="yamaguchi"><span class="recon">nanu śāstra-avabodhenaiva</span> <span class="ms-direct">tac charīraṁ vijñāsyata iti nirarthakam ādau tad-vyavasthāpanam | na nirarthakaṁ śiṣyānugrahārthatvād — gatārtho hi śiṣyaḥ sukhaṁ vistaram ucyamānaṁ pratipadyate | dṛṣṭā bhūmiḥ niḥśaṅkaṁ aśvavāhanam</span> <span class="recon">iva nānyatheti |</span><sup>(1)</sup>
+<span class="folio-anchor">(OCR 1329–1333)</span></div>
+<p>n. 1: MS <em>niḥśaṅkaṃ svavāda…</em>, Tib <em>rta thags thogs med par rgyug pa bzhin te</em> = "like a horse running without entangled reins".</p>
+
+<h4>Tibetan</h4>
+<div class="tibetan">བསྟན་བཅོས་ཁོང་དུ་ཆུད་པ་ཉིད་ཀྱིས་དེའི་ལུས་ཤེས་པར་མི་འགྱུར་རམ། … སློབ་མ་རྣམས་ལ་ཕན་གདགས་པའི་ཕྱིར་དོན་མེད་པ་མ་ཡིན་ནོ། ། སློབ་མས་དོན་ཁོང་དུ་ཆུད་ན་རྒྱས་པར་བརྗོད་ཀྱང་བདེ་བླག་ཏུ་ཁོང་དུ་ཆུད་པར་འགྱུར་ཏེ་དཀྱུས་ཀྱིས་བསྟན་པའི་རྟ་ཐགས་ཐོགས་མེད་པར་རྒྱུག་པ་བཞིན་ཏེ། (BO_T06_D4032:191b-28 → 192a-2)</div>
+
+<h4>One micro-note on the simile</h4>
+<div class="justification">The MS-attested form
+<em>aśvavāhanam</em> ("horse-charge / horse-riding") is well-supported
+by Tib <em>rta thags thogs med par rgyug pa bzhin te</em>
+("like a horse running without entangled reins") — Yamaguchi's
+apparatus n. 1 quotes the same Tibetan. The MS variant <em>svavāda</em>
+that Yamaguchi notes is just a copyist's mis-transcription.</div>
+
+<h4>Translation</h4>
+<div class="translation">"Surely [the body of the śāstra] will be known by [the reader's] comprehension of the śāstra itself — so the prior setting-forth [of the body] is purposeless?" — [Reply:] Not so; it serves to benefit the disciple. For when the disciple has already understood [the outline] meaning, he easily takes in the extensive [later] exposition — like a horse that, on a well-known terrain, runs without hesitation. Not otherwise.</div>
+</section>
+
+<!-- ====================================================== -->
+
+<section class="sentence" id="s12">
+<h3>§12–§14 — saptārthā closure + gloss of <em>ete</em>, <em>sapta</em>, <em>arthāḥ</em>, <em>asmin śāstre</em>, <em>uddiṣṭāḥ</em> <span class="status verified">VERIFIED</span></h3>
+
+<h4>Yamaguchi text (italic + MS)</h4>
+<div class="yamaguchi"><span class="recon">ete saptārthā asmiñ śāstra uddiṣṭā</span> <span class="ms-direct">iti śāstra-śarīraṁ samāptam ity arthaḥ |</span><sup>(2)</sup> <span class="ms-direct">eta iti ye lakṣaṇādaya uddiṣṭāḥ | sapteti saṃkhyā paryanta-adhigamārtham upādānam | arthyanta ity arthā adhigamyanta iti yāvat | asmiñ śāstra iti Madhyāntavibhāga-saṁjñake | uddiṣṭā ity upadiṣṭā viniścitā vā |</span>
+<span class="folio-anchor">(OCR 1334–1337)</span></div>
+<p>n. 2: MS <em>samāptyarthaḥ</em>, Tib <em>rdzogs so zhes bya ba'i
+tha tshig go</em> = "the sense is 'it is finished'". n. 3: the
+<em>paryanta-adhigamārtham upādānam</em> phrase is not in the Tibetan.</p>
+
+<h4>No change</h4>
+<div class="justification">The italicised opening
+<em>ete saptārthā asmiñ śāstra uddiṣṭā</em> is itself the MAVBh
+pratīka. Yamaguchi's reading <em>samāptam ity arthaḥ</em> matches
+Tib n. 2 <em>rdzogs so zhes bya ba'i tha tshig go</em>
+(<em>samāptam iti tatra arthaḥ</em>). The gloss-chain
+<em>eta / sapta / arthāḥ / asmiñ śāstre / uddiṣṭāḥ</em> is a clean
+Pāṇinian-style enumeration matching Tib at 192a-4 → 192a-9 verbatim.</div>
+
+<h4>Translation</h4>
+<div class="translation">"<em>ete saptārthā asmiñ śāstra uddiṣṭāḥ</em>" — i.e. the body of the śāstra is [thus] complete. "<em>ete</em>" — those <em>lakṣaṇa</em>-and-so-on which have been laid out; "<em>sapta</em>" — a number, adduced to circumscribe the enumeration; "<em>arthāḥ</em>" — they are sought-after, i.e. they are attained; "<em>asmiñ śāstre</em>" — in [the text] called <em>Madhyāntavibhāga</em>; "<em>uddiṣṭāḥ</em>" — taught, or determined.</div>
+</section>
+
+<!-- ====================================================== -->
+
+<section class="sentence" id="s15">
+<h3>§15–§17 — turning to <em>lakṣaṇam</em>; twofold lakṣaṇa <span class="status verified">VERIFIED</span></h3>
+
+<h4>Yamaguchi text (italic glosses + MS substance)</h4>
+<div class="yamaguchi"><span class="recon">tathā hīti tad-artha-pratipādana-nipātaḥ | lakṣaṇam iti</span> <span class="ms-direct">lakṣyante 'neneti lakṣaṇam | tac ca dvividhaṁ saṁkleśa-lakṣaṇaṁ vyavadāna-lakṣaṇaṁ ca | tatra saṁkleśa-lakṣaṇaṁ nava-vidham |</span>
+<span class="folio-anchor">(OCR 1338–1340)</span></div>
+
+<h4>Tibetan</h4>
+<div class="tibetan">མཚན་ཉིད་ཅེས་བྱ་བ་ནི། འདིས་མཚོན་པར་བྱེད་པས་མཚན་ཉིད་དོ། ། དེ་ཡང་རྣམ་པ་གཉིས་ཏེ། ཀུན་ནས་ཉོན་མོངས་པའི་མཚན་ཉིད་དང་། རྣམ་པར་བྱང་བའི་མཚན་ཉིད་དོ། ། (BO_T06_D4032:192a-9 → 192a-13)</div>
+
+<h4>No change</h4>
+<div class="justification">Clean. <em>lakṣyante 'neneti lakṣaṇam</em>
+("they are characterized by it — hence <em>lakṣaṇa</em>") =
+<em>'dis mtshon par byed pas mtshan nyid do</em>. The twofold split
+into <em>saṁkleśa-lakṣaṇam</em> / <em>vyavadāna-lakṣaṇam</em>
+matches Tib <em>kun nas nyon mongs pa'i mtshan nyid / rnam par byang
+ba'i mtshan nyid</em>.</div>
+
+<h4>Translation</h4>
+<div class="translation">"<em>tathā hi</em>" is a particle that introduces the [argument for] that [foregoing] meaning. "<em>lakṣaṇam</em>" — "by which they are characterized, that is the <em>lakṣaṇa</em> (defining feature)". And this is twofold: the saṁkleśa-lakṣaṇa and the vyavadāna-lakṣaṇa. Of these, the saṁkleśa-lakṣaṇa is ninefold.</div>
+</section>
+
+<!-- ====================================================== -->
+
+<section class="sentence" id="s18">
+<h3>§18–§19 — citing MAV I.1–I.11d <span class="status verified">VERIFIED</span></h3>
+
+<h4>Yamaguchi text (MS)</h4>
+<div class="yamaguchi"><span class="ms-direct">abhūtaparikalpo 'sti ity ārabhya yāvat saptadhābhūta-kalpanāt || iti | śeṣeṇārdhena vyavadāna-lakṣaṇaṁ ākhyātam |</span>
+<span class="folio-anchor">(OCR 1341–1344)</span></div>
+<p>n. 4: <em>abhūtaparikalpo 'sti</em> = Kārikā I, 1a;
+n. 5: <em>saptadhābhūtakalpanāt</em> = Kārikā I, 11d.</p>
+
+<h4>No change</h4>
+<div class="justification">The kārikā-range citation is verifiable
+against <a href="https://dharmamitra.org/nexus/db/sa/SA_T06_vmvkbh_u/text?active_segment=SA_T06_vmvkbh_u:16">SA_T06_vmvkbh_u:16</a>
+(MAV I.1) and the closing of MAV I.11d. (Note: Yamaguchi's numbering
+treats the saptārtha-summary as I.1 and <em>abhūtaparikalpo 'sti</em>
+as I.1 again — a numbering anomaly common in pre-1950 editions.)</div>
+
+<h4>Translation</h4>
+<div class="translation">"Beginning with '<em>abhūtaparikalpo 'sti</em>' as far as '<em>saptadhā-bhūta-kalpanāt</em>'" — so the bhāṣya [demarcates the saṁkleśa-lakṣaṇa section]. By the remaining half [of the chapter, MAV I.12 onwards], the vyavadāna-lakṣaṇa is expounded.</div>
+</section>
+
+<!-- ====================================================== -->
+
+<section class="sentence" id="s20">
+<h3>§20 — preventing a category-confusion <span class="status verified">VERIFIED</span></h3>
+
+<h4>Yamaguchi text (italic + MS)</h4>
+<div class="yamaguchi"><span class="recon">yadi lakṣyante 'neneti lakṣaṇam ity evaṁ sati lakṣaṇasya saṁkleśa-vyavadāna-bhedo bhaved iti nāitad</span> <span class="ms-direct">evam | svabhāva eva hi bhāvānām [→ p. 7]</span>
+<span class="folio-anchor">(OCR 1344–1346)</span></div>
+
+<h4>No change</h4>
+<div class="justification">A short anticipatory objection (if
+<em>lakṣaṇa = "that by which they are characterized"</em>, then the
+<em>lakṣaṇa</em> itself should be subject to the
+<em>saṁkleśa/vyavadāna</em> distinction; reply: no, this is not
+so) — completed on p. 7 with the substantive
+<em>svabhāva</em>-based answer.</div>
+
+<h4>Translation</h4>
+<div class="translation">"If <em>lakṣaṇa</em> means 'that by which they are characterized', then [the same word] would itself admit of the saṁkleśa- vs. vyavadāna- distinction" — this is not so: for the very nature of phenomena [is …] [→ p. 7].</div>
+</section>
+
+<!-- ====================================================== -->
+
+<h2>Page-6 summary</h2>
+<table style="border-collapse:collapse;width:100%;font-size:0.92rem;">
+<thead><tr style="background:#efeae0;"><th style="text-align:left;padding:0.3rem 0.6rem;">§</th><th style="text-align:left;padding:0.3rem 0.6rem;">Anchor</th><th style="text-align:left;padding:0.3rem 0.6rem;">Status</th><th style="text-align:left;padding:0.3rem 0.6rem;">Headline change</th></tr></thead>
+<tbody>
+<tr><td>1</td><td><em>tatrāditaḥ śāstra-śarīraṁ vyavasthāpyate</em></td><td><span class="status proposed">PROPOSED</span></td><td>OCR fix: <em>śāstrāśarīravyavasthāpanam</em> → <em>śāstra-śarīraṁ vyavasthāpyate</em> (verbal pratīka)</td></tr>
+<tr><td>2</td><td><em>ādita iti prathamata eva</em></td><td><span class="status verified">VERIFIED</span></td><td>none</td></tr>
+<tr><td>3–4</td><td><em>śāstra = vivaraṇa; tac-charīram = saṃkṣepa</em></td><td><span class="status proposed">PROPOSED</span></td><td>OCR fix: <em>vācrayārthena</em> → <em>vā āśrayārthena</em></td></tr>
+<tr><td>5–7</td><td>body-analogy + seven topics</td><td><span class="status verified">VERIFIED</span></td><td>none</td></tr>
+<tr><td>8–9</td><td><em>vyavasthāpanam = prajñapti / ākhyāna</em></td><td><span class="status verified">VERIFIED</span></td><td>none</td></tr>
+<tr><td>10–11</td><td>objection + horse-charge simile</td><td><span class="status verified">VERIFIED</span></td><td>none</td></tr>
+<tr><td>12–14</td><td>saptārthā + element-glosses</td><td><span class="status verified">VERIFIED</span></td><td>none</td></tr>
+<tr><td>15–17</td><td><em>lakṣaṇam</em>: twofold</td><td><span class="status verified">VERIFIED</span></td><td>none</td></tr>
+<tr><td>18–19</td><td>MAV I.1–I.11d range citation</td><td><span class="status verified">VERIFIED</span></td><td>none</td></tr>
+<tr><td>20</td><td>anticipatory objection (cross-page)</td><td><span class="status verified">VERIFIED</span></td><td>none</td></tr>
+</tbody>
+</table>
+
+</body>
+</html>

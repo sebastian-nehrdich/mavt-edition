@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sthiramati MAVT, Yamaguchi p. 1 — re-edition walk-through</title>
+  <style>
+    :root {
+      --bg: #fdfdfb; --fg: #1c1c1c; --muted: #6b6b6b; --rule: #d8d3c8;
+      --accent: #6c4a1d; --skt-bg: #f4efe4; --para-bg: #eef2f6;
+      --tib-bg: #f6f1ef; --recon-bg: #f0e7d9; --proposed-bg: #e1ecdb;
+      --warn-bg: #fde6e1; --link: #1d4f8e;
+    }
+    html { font-size: 16px; }
+    body { font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif; background: var(--bg); color: var(--fg); max-width: 980px; margin: 2.5rem auto; padding: 0 1.5rem 4rem; line-height: 1.55; }
+    h1 { font-size: 1.6rem; margin-bottom: 0.2rem; }
+    h2 { font-size: 1.2rem; margin-top: 2.6rem; padding-bottom: 0.2rem; border-bottom: 1px solid var(--rule); color: var(--accent); }
+    h3 { font-size: 1.05rem; margin-top: 1.6rem; color: var(--accent); }
+    h4 { font-size: 0.95rem; margin: 0.8rem 0 0.3rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+    p, ul, ol { margin: 0.5rem 0; }
+    .meta { color: var(--muted); font-size: 0.85rem; margin-top: 0; }
+    .conventions { font-size: 0.88rem; color: var(--muted); }
+    .conventions code { background: #efeae0; padding: 0 0.25rem; border-radius: 2px; }
+    code, .ms { font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 0.92em; }
+    .yamaguchi { background: var(--recon-bg); padding: 0.55rem 0.85rem; border-left: 3px solid #b88c1d; margin: 0.4rem 0; font-family: "Charis SIL", "Gentium Plus", Georgia, serif; }
+    .yamaguchi .recon { font-style: italic; color: #8a3e0c; }
+    .yamaguchi .ms-direct { color: #1c1c1c; }
+    .tibetan { background: var(--tib-bg); padding: 0.55rem 0.85rem; border-left: 3px solid #8a4a4a; margin: 0.4rem 0; font-family: "Jomolhari", "Tibetan Machine Uni", "Iowan Old Style", serif; }
+    .proposed { background: var(--proposed-bg); padding: 0.55rem 0.85rem; border-left: 3px solid #4a7a3a; margin: 0.4rem 0; font-family: "Charis SIL", "Gentium Plus", Georgia, serif; }
+    .proposed strong { color: #2d5020; }
+    .japanese { background: #f5f0e8; padding: 0.55rem 0.85rem; border-left: 3px solid #6b4a2a; margin: 0.4rem 0; font-family: "Hiragino Mincho ProN", "Yu Mincho", "MS Mincho", serif; font-size: 0.97rem; }
+    .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; margin: 0.6rem 0; }
+    .compare > div { padding: 0.55rem 0.75rem; border-radius: 3px; font-family: "Charis SIL", "Gentium Plus", Georgia, serif; font-size: 0.95rem; }
+    .compare .before { background: #f4ebe0; border-left: 3px solid #b88c1d; }
+    .compare .after { background: #e1ecdb; border-left: 3px solid #4a7a3a; }
+    .compare h5 { margin: 0 0 0.3rem 0; font-size: 0.78rem; letter-spacing: 0.04em; text-transform: uppercase; color: #555; }
+    .compare .before h5 { color: #8a3e0c; }
+    .compare .after h5 { color: #2d5020; }
+    .translation { background: #fafafa; border-left: 3px solid #777; padding: 0.5rem 0.85rem; margin: 0.4rem 0; font-style: italic; color: #333; }
+    .parallel { background: var(--para-bg); padding: 0.55rem 0.8rem; border-left: 3px solid #5a7da2; margin: 0.4rem 0; font-size: 0.95rem; }
+    .parallel .src { font-weight: 600; }
+    .parallel .quote { display: block; margin-top: 0.25rem; font-family: "Charis SIL", "Gentium Plus", Georgia, serif; font-style: italic; color: #333; }
+    .justification { background: #f9f5e8; border-left: 3px solid #c2a04a; padding: 0.5rem 0.85rem; margin: 0.4rem 0; font-size: 0.93rem; }
+    .warn { background: var(--warn-bg); padding: 0.45rem 0.75rem; border-left: 3px solid #b54c30; margin: 0.4rem 0; font-size: 0.93rem; }
+    .disclaimer { background: #fff3e0; border: 2px solid #c25c1a; border-radius: 4px; padding: 1rem 1.2rem; margin: 1.2rem 0 2rem; font-size: 0.95rem; }
+    .disclaimer h2 { margin-top: 0; border: none; color: #8a3e0c; font-size: 1.05rem; }
+    .disclaimer p { margin: 0.5rem 0; }
+    .disclaimer ul { margin: 0.4rem 0 0.4rem 1.2rem; padding: 0; }
+    .intro { background: #f4f0e6; border-left: 3px solid var(--accent); padding: 0.8rem 1rem; margin: 1rem 0 2rem; font-size: 0.97rem; }
+    .intro h3 { margin-top: 0.8rem; }
+    .status { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em; padding: 0.15rem 0.5rem; border-radius: 2px; margin-left: 0.5rem; vertical-align: middle; }
+    .status.verified { background: #cfe5c7; color: #244a18; }
+    .status.proposed { background: #e9d9b3; color: #6b4a10; }
+    .status.pending  { background: #f0e4c2; color: #5a4310; }
+    .status.nonliquet{ background: #f3d3cb; color: #6a2a18; }
+    .label { display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.05em; padding: 0.1rem 0.4rem; border-radius: 2px; margin-right: 0.4rem; text-transform: uppercase; }
+    .label.recon { background: #f4dab8; color: #6a3f10; }
+    .label.ms { background: #d2dce8; color: #1f3a55; }
+    .label.tib { background: #e6cccc; color: #5a2d2d; }
+    .label.proposed { background: #c8dcc0; color: #2d5020; }
+    .folio-anchor { color: #999; font-size: 0.78rem; }
+    a { color: var(--link); text-decoration: none; border-bottom: 1px solid #c8d3e3; }
+    a:hover { background: #eef3fa; }
+    section.sentence { margin-top: 2.0rem; padding-top: 0.4rem; border-top: 1px dotted #d0d0c0; }
+    section.sentence h3 { display: flex; align-items: center; flex-wrap: wrap; }
+    .tib-wylie { font-size: 0.85rem; color: #6b3030; font-family: "Charis SIL", Georgia, serif; font-style: italic; }
+  </style>
+
+<style>
+.mavt-img-banner { background:#f0e7d9; border-bottom:2px solid #b88c1d; padding:0.8rem 1rem; margin:-2.5rem -1.5rem 1.6rem; text-align:center; font-family:"Iowan Old Style",Georgia,serif; }
+.mavt-img-banner .mavt-nav { font-size:0.88rem; margin-bottom:0.6rem; color:#6a3f10; }
+.mavt-img-banner .mavt-nav a { color:#5a2d2d; text-decoration:none; padding:0.15rem 0.5rem; background:#e8d8b8; border:1px solid #c8a87a; border-radius:3px; margin:0 0.2rem; display:inline-block; }
+.mavt-img-banner .mavt-nav a:hover { background:#d8c0a0; }
+.mavt-img-banner details { text-align:left; }
+.mavt-img-banner summary { cursor:pointer; font-size:0.92rem; color:#5a3a18; padding:0.3rem 0; user-select:none; }
+.mavt-img-banner summary:hover { color:#3a1a08; }
+.mavt-img-banner .mavt-img-strip { display:flex; flex-wrap:wrap; gap:0.6rem; justify-content:center; margin-top:0.6rem; }
+.mavt-img-banner .mavt-img-strip a { display:inline-block; text-decoration:none; }
+.mavt-img-banner .mavt-img-strip img { max-width:240px; max-height:340px; border:1px solid #b88c1d; border-radius:2px; transition:transform 0.15s; }
+.mavt-img-banner .mavt-img-strip img:hover { transform:scale(1.04); box-shadow:0 2px 8px rgba(0,0,0,0.15); }
+.mavt-img-banner .mavt-img-strip .mavt-img-cap { display:block; font-size:0.78rem; color:#6a3f10; margin-top:0.2rem; text-align:center; }
+.mavt-img-banner .mavt-img-single img { max-width:420px; max-height:560px; }
+</style>
+</head>
+<body>
+<div class="mavt-img-banner"><div class="mavt-nav"><a href="../../index.html">← Index</a><a href="../../all-pages.html">📑 All PDF pages</a></div><details open><summary>📜 Show original Yamaguchi 1934 scan — page 1</summary><div class="mavt-img-single"><a href="../../images/page-039.jpg" target="_blank" title="Click for full-size"><img src="../../images/page-039.jpg" alt="Yamaguchi 1934, p. 1" loading="lazy"><span class="mavt-img-cap">p. 1</span></a></div></details></div>
+
+<h1>Sthiramati, <em>Madhyāntavibhāgaṭīkā</em> — Yamaguchi p.&nbsp;1 (opening)</h1>
+<p class="meta">Re-edition walk-through of Yamaguchi 1934, the very
+opening of the MAVT (Yamaguchi pp. 1 ≈ file p. 39, OCR lines 1157–1191).
+Source: <code>sources/mavt_yamaguchi_ocr.txt</code>. Pass 1, 2026-05-28.
+Methodology: <a href="mavt-reedition-workflow.md"><code>mavt-reedition-workflow.md</code></a>.</p>
+
+<div class="disclaimer">
+<h2>⚠ Pass-1 draft — agent-produced, awaiting human review</h2>
+<p>Every emendation below is justified against the Tibetan canonical
+witness (Derge MAVT, BO_T06_D4032), the MS apparatus footnotes that
+Yamaguchi himself printed, and against any independent Sanskrit
+attestation found through DharmaMitra's <code>/primary/</code>
+search. The MAVT Sanskrit currently in the search index
+(<code>SA_T06_sthmavt</code> / <code>SA_T06_sthmavtyg</code>) is
+identical to the text we are trying to fix and was treated as
+inadmissible evidence throughout.</p>
+<p>Page 1 is unusually difficult because Yamaguchi printed
+<strong>almost the entire page in italics</strong> — i.e. as
+conjectural reconstruction. The MS for this folio is fragmentary
+beyond the few words his apparatus quotes. The proposals below
+therefore lean heavily on the Tibetan (which IS extant and reliable)
+and on internal grammar.</p>
+</div>
+
+<div class="intro">
+<h3>What page 1 contains</h3>
+<p>Sthiramati's preface to the entire ṭīkā. After a brief homage to
+Mañjuśrī, he frames Vasubandhu's bhāṣya opening: noble people, before
+acting, worship their teacher and tutelary deity; Vasubandhu, who is
+such a noble person, therefore opens his bhāṣya with the homage verse
+<em>śāstrasyāsya praṇetāram abhyarhya sugatātmajaṃ / vaktāraṃ
+cāsmadādibhyo yatiṣye 'rthavivecane //</em> — and the rest of page 1
+glosses why that homage was offered (it yields merit; it generates
+reverence among the audience for the sūtra, its composer, its
+expounder, and its commentary). The page ends with the second of two
+parallel <em>atha vā</em> framings.</p>
+<p>Six sentence-units: §1 maṅgala (Sthiramati's own), §2 a long
+introductory sentence framing Vasubandhu's homage, §3 the rhetorical
+"what merit is obtained?", §4 the answer (merit accumulates), §5 the
+consequence (the work is completed without obstacle), §6 the parallel
+<em>atha vā</em> framing.</p>
+</div>
+
+<h2>Conventions</h2>
+<p class="conventions">
+  <span class="label recon">RECON</span> Yamaguchi's italicised
+  reconstruction (<code>*…*</code> in OCR; rendered italic here).
+  <span class="label ms">MS</span> Lévi / Kathmandu MS Sanskrit
+  (the fragment quoted in Yamaguchi's footnote).
+  <span class="label tib">TIB</span> Tibetan MAVT
+  (Derge <code>BO_T06_D4032</code>, fol. 189b).
+  <span class="label proposed">PROPOSED</span> Agent's re-reading.
+  Status chips: <span class="status verified">VERIFIED</span> =
+  agree with Yamaguchi (or only cosmetic change);
+  <span class="status proposed">PROPOSED</span> = substantive
+  emendation offered; <span class="status nonliquet">NON LIQUET</span>
+  = both candidates remain in play.
+</p>
+
+<h2>Canonical Tibetan for page 1</h2>
+<p>The continuous Tibetan from the Derge MAVT covering this entire
+Sanskrit page is the load-bearing parallel witness throughout the
+walk-through. It is consolidated here so that each sentence section
+below can quote it in isolation:</p>
+<div class="tibetan">
+[fol. 189b, opening] <a href="https://dharmamitra.org/nexus/db/bo/BO_T06_D4032/text?active_segment=BO_T06_D4032:189b-0">BO_T06_D4032:189b-0</a><br>
+༄༅༅། །རྒྱ་གར་སྐད་དུ། མ་དྷྱནྣ་ཏ་བི་བྷཾ་ག་ཊཱི་ཀཱ།<br>
+བོད་སྐད་དུ། དབུས་དང་མཐའ་རྣམ་པར་འབྱེད་པའི་འགྲེལ་བཤད།<br>
+འཇམ་དཔལ་གཞོན་ནུར་གྱུར་པ་ལ་ཕྱག་འཚལ་ལོ། །<br>
+ཡ་རབས་དག་ནི་ཕལ་ཆེར་བླ་མ་དང་། །<br>
+དད་པའི་ལྷ་ལ་མཆོད་ནས་ལས་རྣམས་ལ་འཇུག་སྟེ།<br>
+དབུས་དང་མཐའ་རྣམ་པར་འབྱེད་པའི་མདོ་རྣམ་པར་བཤད་པར་འདོད་པས།<br>
+བདག་ལ་ཡང་འདི་ནི་ཡ་རབས་ཀྱི་ཚུལ་ཅན་ནོ་ཞེས་ཤེས་པར་བྱ་བའི་ཕྱིར།<br>
+དེ་མཛད་པ་དང་འཆད་པ་ལ་མཆོད་ནས།<br>
+དེའི་དོན་རྣམ་པར་དབྱེ་བར་ཞུགས་སོ་ཞེས་རབ་ཏུ་བསྟན་པའི་ཕྱིར།<br>
+བསྟན་བཅོས་འདི་ནི་རབ་མཛད་པ། །<br>
+ཞེས་བྱ་བ་ལ་སོགས་པ་སྨོས་སོ། །<br>
+དེ་ལྟར་བྱས་ན་ཡོན་ཏན་ཅི་ཞིག་ཐོབ་ཅེ་ན།<br>
+ཡོན་ཏན་དང་ལྡན་པ་དང་། ཕན་འདོགས་འདོགས་པ་ལ་མཆོད་ན་བསོད་ནམས་འཕེལ་བར་འགྱུར་རོ། །<br>
+བསོད་ནམས་འཕེལ་ན་ཡང་དག་པར་རྩོམ་པ་ལ་བར་ཆད་དང་བགེགས་ཀྱིས་མི་ཚུགས་པར་ཚོགས་ཆུང་ངུ་རྫོགས་པར་འགྱུར་རོ། །<br>
+ཡང་ན་མཛད་པས་གསུངས་པ་དང་། འཆད་པས་བཤད་པ་ཡང་དག་པར་བྱིན་པར་བསྙད་པས།<br>
+མཛད་པ་དང་། འཆད་པ་དང་། མདོ་དང་འབྲེལ་པ་ལ་གུས་པ་བསྐྱེད་པར་བྱ་བའི་ཕྱིར།<br>
+བསྟན་བཅོས་འདི་ནི་རབ་མཛད་པ། ། ཞེས་བྱ་བ་ཐམས་ཅད་སྨོས་སོ། །<br>
+<span class="folio-anchor">— continuous from BO_T06_D4032:189b-0 → 189b-17</span>
+</div>
+
+<!-- ====================================================== -->
+
+<section class="sentence" id="s1">
+<h3>§1 — <em>Ārya-Mañjuśriye kumārabhūtāya namaḥ</em> <span class="status verified">VERIFIED</span></h3>
+
+<h4>Yamaguchi text</h4>
+<div class="yamaguchi">
+<span class="ms-direct">Ārya Mañjuçriye kumārabhūtāya namaḥ ||</span>
+<span class="folio-anchor">(p. 1, line 1; OCR line 1161)</span>
+</div>
+
+<h4>Tibetan</h4>
+<div class="tibetan">
+འཇམ་དཔལ་གཞོན་ནུར་གྱུར་པ་ལ་ཕྱག་འཚལ་ལོ། ། <span class="tib-wylie">— 'jam dpal gzhon nur gyur pa la phyag 'tshal lo</span>
+<br>(BO_T06_D4032:189b-0)
+</div>
+
+<h4>No emendation</h4>
+<div class="justification">
+Sthiramati's own opening homage. The Sanskrit is uncontested. The
+spelling <em>Mañjuçriye</em> (with <em>ç</em>) reflects the
+Lévi/Yamaguchi typographic convention (= <em>ś</em>) — modernise
+silently. The dative form <em>Mañjuśriye</em> is the standard pre-modern
+maṅgala formula across canonical openings and need not be argued.
+</div>
+
+<div class="compare">
+<div class="before"><h5>Yamaguchi</h5>Ārya Mañjuçriye kumārabhūtāya namaḥ ||</div>
+<div class="after"><h5>Re-edited</h5>āryamañjuśriye kumārabhūtāya namaḥ ||</div>
+</div>
+
+<h4>Translation</h4>
+<div class="translation">
+Homage to noble Mañjuśrī in the form of a youth.
+</div>
+</section>
+
+<!-- ====================================================== -->
+
+<section class="sentence" id="s2">
+<h3>§2 — The "noble people first worship" framing <span class="status proposed">PROPOSED</span></h3>
+
+<h4>Yamaguchi text</h4>
+<div class="yamaguchi">
+<span class="recon">uttamajanā hi prāyaśo guruṁ śraddhādevatāṁ cābhyarcya karmasu pravartanta</span><sup>(1)</sup>
+<span class="recon">ity ayam apy aham uttamajananayam</span><sup>(3)</sup>
+<span class="recon">anuvartī Madhyāntavibhāgasūtrabhāṣyaṁ cikīrṣur [iti jñāpanārthaṁ] tatpraṇetur vaktuś ca pūjāṁ kṛtvā tadarthavibhāgāya prayukta iti pratipādayann āha —</span>
+<span class="ms-direct"><strong>śāstrasyāsya praṇetāram</strong></span>
+<span class="recon"> — ityādi |</span>
+<span class="folio-anchor">(p. 1, lines 1–5; OCR lines 1165–1172)</span>
+</div>
+<p>MS apparatus (Yamaguchi notes 1–3):</p>
+<ul>
+  <li><strong>Note 1</strong> on <em>pravartanta</em>: <strong>MS reads <em>pravartata</em></strong> (singular middle).</li>
+  <li><strong>Note 2</strong> on <em>uttamajananayam</em>: MS has only <em>ap…manu</em>°; Tib <em>ya-rabs-kyi tshul</em> = <em>uttamajana-naya-</em>.</li>
+  <li><strong>Note 3</strong> on <em>cikīrṣur</em>: MS has <em>cikīrṣus tat</em>; Tib <em>'dod-pas…shes par bya ba'i phyir | de</em>.</li>
+</ul>
+
+<h4>Tibetan</h4>
+<div class="tibetan">
+ཡ་རབས་དག་ནི་ཕལ་ཆེར་བླ་མ་དང་། །དད་པའི་ལྷ་ལ་མཆོད་ནས་ལས་རྣམས་ལ་འཇུག་སྟེ། <br>
+དབུས་དང་མཐའ་རྣམ་པར་འབྱེད་པའི་མདོ་རྣམ་པར་བཤད་པར་འདོད་པས། <br>
+བདག་ལ་ཡང་འདི་ནི་ཡ་རབས་ཀྱི་ཚུལ་ཅན་ནོ་ཞེས་ཤེས་པར་བྱ་བའི་ཕྱིར། <br>
+དེ་མཛད་པ་དང་འཆད་པ་ལ་མཆོད་ནས། <br>
+དེའི་དོན་རྣམ་པར་དབྱེ་བར་ཞུགས་སོ་ཞེས་རབ་ཏུ་བསྟན་པའི་ཕྱིར། <br>
+བསྟན་བཅོས་འདི་ནི་རབ་མཛད་པ། །ཞེས་བྱ་བ་ལ་སོགས་པ་སྨོས་སོ། ། <br>
+<span class="folio-anchor">(BO_T06_D4032:189b-0 → 189b-9)</span>
+</div>
+
+<h4>Concrete proposals</h4>
+
+<p><strong>(a) Restore the MS singular subject and verb.</strong>
+Yamaguchi's <em>uttamajanā hi …pravartanta</em> (plural) is his own
+correction; the MS, as he himself prints in n.&nbsp;1, has the singular
+middle <em>pravartata</em>. The Tibetan
+<em>ya rabs dag ni phal cher … 'jug ste</em> is not decisive between
+singular and plural: the particle <em>dag</em> after a generic noun
+often marks a class rather than a strict plural, and the verb
+<em>'jug ste</em> is unmarked for number. Sanskrit śāstra-openings of
+this generic type are routinely cast in the third singular
+(<em>uttamajano hi prāyaśo</em>…). The cleaner, MS-preserving reading
+is therefore singular throughout.</p>
+
+<p><strong>(b) Drop the inserted <em>bhāṣyam</em>; rebuild the
+governance of <em>cikīrṣus</em>.</strong> The MS preserves
+<em>cikīrṣus tat</em> (n.&nbsp;3); the word it governs is lost. Yamaguchi
+filled the gap with <em>Madhyāntavibhāga-sūtra-bhāṣyam</em>, giving
+"wishing to compose the MAV-sūtra-bhāṣya". This is questionable on
+three counts:</p>
+<ul>
+  <li>The Tibetan says <em>mdo rnam par bshad par 'dod pas</em> —
+  "by [me] wishing to <strong>vyākhyātum / vivecayitum</strong> the
+  sūtra", with no equivalent of <em>bhāṣyam</em>. The Tibetan word
+  <em>rnam par bshad pa</em> can render either <em>vyākhyāna</em>
+  or <em>bhāṣya</em>, but the structural slot here is governed by
+  <em>'dod pas</em> (= <em>icchatā</em> / <em>cikīrṣatā</em>) and the
+  object slot has no separate noun glossing <em>bhāṣyam</em>.</li>
+  <li>Yamaguchi's own Japanese translation of the same passage glosses
+  the phrase as <em>中邊分別經を釋せん</em>と願 — "wishing to
+  <strong>explain</strong> the MAV-sūtra", not "wishing to
+  <strong>compose</strong> the bhāṣya". His Sanskrit and his Japanese
+  do not agree.</li>
+  <li>Sthiramati is not composing the bhāṣya — Vasubandhu did. Sthiramati
+  is composing a <em>ṭīkā</em> on the bhāṣya, which "explicates"
+  (<em>vyākhyā</em>) the sūtra. The verbal frame should match.</li>
+</ul>
+
+<p><strong>(c) The <em>uttamajananayam anuvartī</em> formation</strong>
+follows Yamaguchi's reading of the Tibetan <em>ya rabs kyi tshul</em>
++ his decision to make it a present participle. Tibetan
+<em>tshul-can</em> renders the possessive suffix <em>-vat</em>; the
+chosen <em>-anuvartin</em> ("following after") is permissible but not
+the most literal reverse-gloss. <em>uttamajananayavān</em> would map
+the Tibetan more literally. We retain Yamaguchi's reading here and
+note the alternative.</p>
+
+<h4>Independent Sanskrit parallels</h4>
+<div class="parallel">
+<span class="src">Nyāyakalikā (Jayanta Bhaṭṭa)</span> — same śāstra-opening
+topos: <em>śāstrārambhe praṇamato devatāṃ śāstrasya praṇetāraṃ guruṃ
+ca stautīkṣasya pūrvoddeśaṃ namasyati …</em>
+<a href="https://dharmamitra.org/nexus/db//sa/SA_GSP29_nyaka/text?active_segment=SA_GSP29_nyaka:360">SA_GSP29_nyaka:360</a>.
+Independent confirmation that
+<em>devatāṃ guruṃ ca praṇam-/abhyarc-</em> at the head of a treatise
+is a stock topos; Sthiramati's wording belongs to the same family
+but does not match it verbatim. No verbatim Sanskrit parallel for
+<em>uttamajananayam anuvartī</em> surfaces in the corpus outside
+MAVT itself — it is plausibly Sthiramati's own coinage.
+</div>
+
+<h4>Proposed reading</h4>
+<div class="proposed">
+<strong>āryamañjuśriye kumārabhūtāya namaḥ ||</strong><br>
+<strong>uttamajano hi prāyaśo guruṃ śraddhādevatāṃ cābhyarcya karmasu
+pravartata</strong> ity ayam apy aham uttamajananayam anuvartī
+<strong>madhyāntavibhāgasūtravyākhyānaṃ cikīrṣus tat</strong>praṇetur
+vaktuś ca pūjāṃ kṛtvā tadarthavibhāgāya prayukta iti pratipādayann
+āha — <span class="ms-direct"><strong>śāstrasyāsya praṇetāram</strong></span>
+ityādi |
+</div>
+
+<h4>Justification</h4>
+<div class="justification">
+(a) <em>uttamajano … pravartata</em>: MS-preserved verb (Yamaguchi
+n.&nbsp;1) restored, with matching singular subject; Tibetan does not
+oppose. (b) <em>sūtravyākhyānaṃ cikīrṣus tat</em>: Tibetan
+<em>mdo rnam par bshad par 'dod pas</em> + the MS-preserved fragment
+<em>cikīrṣus tat</em> can be reconstructed as a single tatpuruṣa
+compound governed by <em>cikīrṣur</em>, with <em>tat</em> resuming as
+the genitive antecedent of the next clause's <em>tat-praṇetur</em>.
+This (i) preserves both MS-attested words intact, (ii) matches the
+Tibetan verb (<em>vyākhyātum</em> / <em>vyākhyāna</em>, not
+<em>bhāṣyam</em>), and (iii) agrees with Yamaguchi's own Japanese
+construal. (c) The bracketed <em>[iti jñāpanārthaṁ]</em> remains —
+it is supported by Tibetan <em>zhes shes par bya ba'i phyir</em>;
+Yamaguchi's bracketing should be retained.
+</div>
+
+<div class="compare">
+<div class="before">
+<h5>Yamaguchi 1934</h5>
+…<em>aham uttamajananayam anuvartī</em>
+<strong>madhyāntavibhāgasūtrabhāṣyaṁ cikīrṣur</strong>
+[iti jñāpanārthaṁ] tatpraṇetur vaktuś ca pūjāṁ kṛtvā…
+</div>
+<div class="after">
+<h5>Proposed</h5>
+…<em>aham uttamajananayam anuvartī</em>
+<strong>madhyāntavibhāgasūtravyākhyānaṃ cikīrṣus tat</strong>praṇetur
+vaktuś ca pūjāṃ kṛtvā…
+</div>
+</div>
+
+<h4>Yamaguchi's Japanese</h4>
+<div class="japanese">
+勝れたる人々は、多く、師長と信心の神殿性とに尊敬を作して諸作業に志を懸け、中邊分別經を釋せんと願故に、我も是れ勝人の作法に従ふものなりと知らしめん爲に、彼〔經論〕の造者と説者とに供養を作して、彼〔論〕の義を分別することに任ぜら、と示さんとて〔者世親は〕言へり、此論の造者に云々と。
+</div>
+
+<h4>Translation</h4>
+<div class="translation">
+Excellent persons, as a rule, take up their tasks only after having
+worshipped their teacher and the deity of their devotion: I too,
+wishing to compose an explanation of the
+<em>Madhyāntavibhāga-sūtra</em>, in order to make known that I am
+[acting] in the manner of such an excellent person, have first paid
+homage to its composer [Maitreya] and its expounder [Vasubandhu] —
+this is what [Vasubandhu, in turn], in order to indicate that he is
+engaged in distinguishing the meaning of [the sūtra], makes clear when
+he says <em>"To the author of this treatise…"</em> and so on.
+</div>
+
+</section>
+
+<!-- ====================================================== -->
+
+<section class="sentence" id="s3">
+<h3>§3 — <em>evaṁ kṛtvā ko guṇaḥ prāpyata iti</em> <span class="status verified">VERIFIED</span></h3>
+
+<h4>Yamaguchi text</h4>
+<div class="yamaguchi">
+<span class="recon">ityādi | evaṁ kṛtvā ko guṇaḥ prāpyata iti |</span>
+<span class="folio-anchor">(p. 1, lines 5–6; OCR line 1173)</span>
+</div>
+
+<h4>Tibetan</h4>
+<div class="tibetan">
+དེ་ལྟར་བྱས་ན་ཡོན་ཏན་ཅི་ཞིག་ཐོབ་ཅེ་ན། <br>
+<span class="tib-wylie">de ltar byas na yon tan ci zhig thob ce na</span> <br>
+(BO_T06_D4032:189b-9)
+</div>
+
+<h4>No substantive change</h4>
+<div class="justification">
+A short rhetorical question, fully back-translated. The Tibetan
+<em>de ltar byas na</em> = <em>evaṁ kṛtvā</em> (active perfect
+absolutive), <em>yon tan ci zhig 'thob</em> = <em>ko guṇaḥ prāpyate</em>
+(passive present), <em>ce na</em> = <em>iti</em>. Reading is
+uncontested. The MAVT-internal grep confirms <em>evaṁ kṛtvā</em> is
+Sthiramati's standard transition formula.
+</div>
+
+<div class="compare">
+<div class="before"><h5>Yamaguchi</h5>evaṁ kṛtvā ko guṇaḥ prāpyata iti |</div>
+<div class="after"><h5>Re-edited</h5>evaṃ kṛtvā ko guṇaḥ prāpyata iti |</div>
+</div>
+
+<h4>Translation</h4>
+<div class="translation">
+"What benefit is obtained by doing this?", he asks.
+</div>
+</section>
+
+<!-- ====================================================== -->
+
+<section class="sentence" id="s4">
+<h3>§4 — <em>guṇavato hitakāriṇaś ca pūjayatām eṣāṃ puṇyam upacīyate</em> <span class="status proposed">PROPOSED</span></h3>
+
+<h4>Yamaguchi text</h4>
+<div class="yamaguchi">
+<span class="recon">guṇavadbhyo hitakāribhyaś ca pūjayānānāṁ</span><sup>(4)</sup>
+<span class="recon">eṣāṁ puṇyam upacīyate |</span>
+<span class="folio-anchor">(p. 1, lines 6–7; OCR lines 1173–1175)</span>
+</div>
+<p>MS apparatus (note 4): MS has only the trailing <em>…yeṣām</em>.
+No Tibetan equivalent supplied by Yamaguchi at this footnote.</p>
+
+<h4>Tibetan</h4>
+<div class="tibetan">
+ཡོན་ཏན་དང་ལྡན་པ་དང་། ཕན་འདོགས་འདོགས་པ་ལ་མཆོད་ན་བསོད་ནམས་འཕེལ་བར་འགྱུར་རོ། ། <br>
+<span class="tib-wylie">yon tan dang ldan pa dang | phan 'dogs 'dogs pa la mchod na bsod nams 'phel bar 'gyur ro</span><br>
+(BO_T06_D4032:189b-9)
+</div>
+
+<h4>Concrete proposals</h4>
+<p><strong>(a) Drop the datives.</strong> Yamaguchi prints the
+worshipped persons in the dative (<em>guṇavadbhyo hitakāribhyaś
+ca</em>). Sanskrit <em>pūjayati</em> takes its object in the
+<em>accusative</em>, not the dative. The Tibetan <em>la</em> is
+ambiguous between dat./loc./acc., so it does not force the dative.
+Read instead <em>guṇavato hitakāriṇaś ca</em> (acc. pl., m.).</p>
+<p><strong>(b) Replace the unidiomatic middle participle.</strong>
+<em>pūjayānānām</em> is a present middle participle in the genitive
+plural. The middle of √<em>pūj</em> is rare and not idiomatic of the
+"worshipping" sense (which is normally active). The MS-fragment
+<em>…yeṣām</em> can equally well represent the active participle
+<em>pūjayatām</em> (gen. pl. of <em>pūjayat-</em>) — the final
+<em>-tām eṣām</em> sequence, mangled in damage, is at least as
+plausible as <em>-nānām eṣām</em>. Active <em>pūjayatām</em> is the
+register-appropriate form in commentarial Sanskrit.</p>
+<p><strong>(c) Resulting reading:</strong>
+<em>guṇavato hitakāriṇaś ca pūjayatām eṣāṃ puṇyam upacīyate</em> —
+"of these people who worship the virtuous and the benefactors, merit
+accumulates." This is also the reading independently produced by an
+earlier machine pass logged in
+<code>references/T06sthmavt-yg-trans.tsv</code> §2 (the TSV is treated
+here as <em>orientation, not evidence</em>, but the convergence is
+suggestive).</p>
+
+<h4>Internal MAVT check</h4>
+<div class="justification">
+A grep across the entire MAVT OCR (<code>mavt_yamaguchi_ocr.txt</code>)
+for the form <em>pūjayānānām</em> returns only this one occurrence
+(OCR line 1175). The form is not echoed anywhere else in Sthiramati's
+own surviving Sanskrit. By contrast, present active participles of
+<em>pūj-</em> (with normal active morphology) are common in the
+Yogācāra commentarial corpus. The absence of corroboration is
+evidence — Yamaguchi's <em>pūjayānānām</em> was a reconstruction of
+desperation, not a confirmed reading.
+</div>
+
+<h4>Proposed reading</h4>
+<div class="proposed">
+<strong>guṇavato hitakāriṇaś ca pūjayatām eṣāṃ puṇyam upacīyate |</strong>
+</div>
+
+<div class="compare">
+<div class="before">
+<h5>Yamaguchi 1934</h5>
+guṇavadbhyo hitakāribhyaś ca pūjayānānāṁ eṣāṁ puṇyam upacīyate
+</div>
+<div class="after">
+<h5>Proposed</h5>
+guṇavato hitakāriṇaś ca pūjayatām eṣāṃ puṇyam upacīyate
+</div>
+</div>
+
+<h4>Yamaguchi's Japanese</h4>
+<div class="japanese">
+〔曰く〕有徳者と利益を作す人とに供養する人々には茲に福徳増上す。
+</div>
+
+<h4>Translation</h4>
+<div class="translation">
+"For those who worship the virtuous and those who do good, merit
+accumulates."
+</div>
+</section>
+
+<!-- ====================================================== -->
+
+<section class="sentence" id="s5">
+<h3>§5 — <em>puṇye upacite samārambhe… alpena prayāsena samāpayanti</em> <span class="status proposed">PROPOSED</span></h3>
+
+<h4>Yamaguchi text</h4>
+<div class="yamaguchi">
+<span class="recon">puṇya upacite</span><sup>(5)</sup>
+<span class="recon">samārambhād vighnavināyakāir anupahatān alpena prayāsena samāpayantīti |</span>
+<span class="folio-anchor">(p. 1, lines 7–10; OCR lines 1175–1178)</span>
+</div>
+<p>MS apparatus (note 5): MS preserves <em>…cīyate………nārambha</em>;
+Tib <em>'phel-na yang-dag-par rtson</em> (Yamaguchi observes:
+"<em>rtson</em>" is probably for "<em>rtsom</em>").</p>
+
+<h4>Tibetan</h4>
+<div class="tibetan">
+བསོད་ནམས་འཕེལ་ན་ཡང་དག་པར་རྩོམ་པ་ལ་བར་ཆད་དང་བགེགས་ཀྱིས་མི་ཚུགས་པར་ཚོགས་ཆུང་ངུ་རྫོགས་པར་འགྱུར་རོ། ། <br>
+<span class="tib-wylie">bsod nams 'phel na yang dag par rtsom pa la bar chad dang bgegs kyis mi tshugs par tshogs chung ngu rdzogs par 'gyur ro</span><br>
+(BO_T06_D4032:189b-14)
+</div>
+
+<h4>Concrete proposals</h4>
+<p><strong>(a) Read <em>samārambhe</em> (loc.) for
+<em>samārambhād</em> (abl.).</strong> The Tibetan
+<em>yang dag par rtsom pa <strong>la</strong></em> uses the <em>la</em>
+particle, which renders Skt locative far more naturally than ablative.
+Yamaguchi's ablative is a stylistic preference; the Tibetan and the
+parallelism with the preceding <em>puṇya upacite</em> (loc. absolute)
+both point to <em>samārambhe</em>. Best as a continuation of the
+locative absolute: <em>puṇya upacite samārambhe</em>… — "when merit
+has been accumulated [and] when the undertaking is in train…".</p>
+<p><strong>(b) Read <em>anupahatāḥ</em> (nom. pl.) for
+<em>anupahatān</em> (acc. pl.).</strong> The participle agrees with
+the (implicit) plural subject of <em>samāpayanti</em> — i.e. the
+worshippers of §4 (<em>eṣām</em>). An accusative makes no sense
+syntactically; this is almost certainly an OCR or typesetting slip,
+not a deliberate reading. The Tibetan <em>mi tshugs par</em>
+(adverbial, "unobstructedly") is consistent with either case but
+favours a predicative nominative.</p>
+<p><strong>(c) The verb form <em>samāpayanti</em></strong>
+("they complete [it]") is supportable: the Tib <em>rdzogs par 'gyur ro</em>
+is impersonal-passive in form but can render an active Sanskrit verb
+whose subject is understood. Yamaguchi's reading stands.</p>
+
+<h4>Proposed reading</h4>
+<div class="proposed">
+<strong>puṇya upacite samārambhe vighnavināyakair anupahatā
+alpena prayāsena samāpayantīti |</strong>
+</div>
+
+<h4>Justification</h4>
+<div class="justification">
+The two changes (loc. <em>samārambhe</em>; nom. <em>anupahatāḥ</em>)
+are minor but tidy up grammatical irregularities Yamaguchi himself
+flagged in his own apparatus (n.&nbsp;5 reproduces the MS fragment
+ending in <em>…nārambha</em>, which is just as compatible with
+<em>samārambhe</em> as with <em>samārambhāt</em>). No independent
+Sanskrit parallel to this exact sentence surfaces in the
+<code>/primary/</code> search; the formula is plausibly Sthiramati's
+own. An internal grep over MAVT for <em>samārambh-</em> in any case
+returns no second occurrence — the page is a sole witness, so the
+case must be decided on Tibetan and grammar alone.
+</div>
+
+<div class="compare">
+<div class="before">
+<h5>Yamaguchi 1934</h5>
+puṇya upacite samārambhād vighnavināyakāir anupahatān alpena
+prayāsena samāpayantīti
+</div>
+<div class="after">
+<h5>Proposed</h5>
+puṇya upacite samārambhe vighnavināyakair anupahatā alpena prayāsena
+samāpayantīti
+</div>
+</div>
+
+<h4>Yamaguchi's Japanese</h4>
+<div class="japanese">
+福徳増上するときは、正趣するが故に、障碍によりて害せられざる人々を、闘敬―論の體 少しの努力を以て究竟に趣かしむ。
+</div>
+<p class="meta">Yamaguchi's Japanese here uses an awkward causative
+("causes them to reach completion"), reflecting his uncertainty about
+the Sanskrit subject. The simpler grammar of the proposed reading
+yields a more idiomatic translation.</p>
+
+<h4>Translation</h4>
+<div class="translation">
+And when merit has been accumulated, [those people], unhindered by
+obstacles or obstacle-makers in their undertaking, complete [their
+work] with little effort.
+</div>
+</section>
+
+<!-- ====================================================== -->
+
+<section class="sentence" id="s6">
+<h3>§6 — the <em>atha vā</em> reframing <span class="status nonliquet">NON LIQUET</span></h3>
+
+<h4>Yamaguchi text</h4>
+<div class="yamaguchi">
+<span class="recon">atha vā praṇetṛpraṇeya[vaktṛvākyasamādāna]pravacanāt</span><sup>(6)</sup>
+<span class="recon">sūtrapraṇetṛvaktṛvṛttiṣu gauravotpādanārtham āha |</span>
+<span class="folio-anchor">(p. 1, lines 11–12; OCR lines 1180–1181)</span>
+</div>
+<p>MS apparatus (note 6): MS preserves only <em>praṇeyapravacanāt</em>;
+Tib <em>gsuṅs-pa daṅ ḥchad-pas bçal-pa yaṅ-dag-par byin-par bçad-pas</em>.</p>
+
+<h4>Tibetan</h4>
+<div class="tibetan">
+ཡང་ན་མཛད་པས་གསུངས་པ་དང་། འཆད་པས་བཤད་པ་ཡང་དག་པར་བྱིན་པར་བསྙད་པས། <br>
+མཛད་པ་དང་། འཆད་པ་དང་། མདོ་དང་འབྲེལ་པ་ལ་གུས་པ་བསྐྱེད་པར་བྱ་བའི་ཕྱིར། <br>
+བསྟན་བཅོས་འདི་ནི་རབ་མཛད་པ། ། ཞེས་བྱ་བ་ཐམས་ཅད་སྨོས་སོ། ། <br>
+<span class="tib-wylie">yang na mdzad pas gsungs pa dang | 'chad pas bshad pa yang dag par byin par bsnyad pas | mdzad pa dang | 'chad pa dang | mdo dang 'brel pa la gus pa bskyed par bya ba'i phyir | bstan bcos 'di ni rab mdzad pa zhes bya ba thams cad smos so</span><br>
+(BO_T06_D4032:189b-14 → 189b-17)
+</div>
+
+<h4>The difficulty</h4>
+<div class="warn">
+The Tibetan here is itself dense and admits more than one Sanskrit
+back-construal. The MS preserves only <em>praṇeyapravacanāt</em> —
+two words — and the rest is open. Yamaguchi's compound
+<em>praṇetṛ-praṇeya-[vaktṛ-vākya-samādāna-]pravacanāt</em> tries to
+unify the whole Tibetan in a single compound, with a square-bracketed
+insertion (<em>vaktṛvākyasamādāna-</em>) to absorb the Tibetan
+<em>yang dag par byin par bsnyad pas</em>. The result is awkward —
+both gerundive (<em>praṇeya</em> "to be composed") and the parallel
+asymmetry between agent-compounds (praṇetṛ, vaktṛ) and verbal-noun
+compounds (vākyasamādāna, pravacana) are unusual.
+</div>
+
+<h4>Concrete improvement (one change defensible)</h4>
+<p><strong>Read <em>praṇīta-</em> for <em>praṇeya-</em>.</strong> The
+Tibetan <em>mdzad pas gsungs pa</em> is past-passive ("what was
+composed by the composer"), not gerundive ("what is to be composed").
+The MS-preserved <em>praṇeya</em> is itself reconstructed by Yamaguchi
+from the trailing <em>°eyapravacanāt</em>; the same letters can read
+<em>praṇīta-pravacanāt</em> if the preceding word ended in <em>-i</em>
++ ta becoming <em>-iyat</em> (read as <em>-eya</em>). The past
+passive is also better Sanskrit for what is clearly being described.</p>
+
+<p>The rest of the compound — Yamaguchi's bracketed
+<em>vaktṛ-vākya-samādāna-</em> — remains genuinely contested. Two
+alternatives, neither decisively better:</p>
+<ul>
+  <li><em>praṇetrā praṇītasya vaktrā vyākhyātasya ca samyag-dāna-pravacanāt</em>
+  — "from the proper imparting and discoursing of what was composed
+  by the composer and what was expounded by the expounder" (matches
+  the Tibetan word order more literally; sacrifices Yamaguchi's
+  single-compound elegance).</li>
+  <li><em>praṇetṛ-praṇīta-vaktṛ-vyākhyāta-samyag-grahaṇa-pravacanāt</em>
+  — "from the proper reception and expounding of what was composed
+  by the composer and what was expounded by the expounder" (preserves
+  Yamaguchi's single-compound move; renders Tib <em>byin par bsnyad
+  pas</em> as <em>grahaṇa-pravacana</em>).</li>
+</ul>
+
+<h4>Proposed reading (minimal)</h4>
+<div class="proposed">
+<strong>atha vā praṇetṛ-praṇīta-[vaktṛ-vākya-samādāna-]pravacanāt
+sūtra-praṇetṛ-vaktṛ-vṛttiṣu gauravotpādanārtham āha —
+<span class="ms-direct">śāstrasyāsya praṇetāram</span>
+iti sarvam |</strong>
+</div>
+
+<h4>Justification</h4>
+<div class="justification">
+The one change argued here (<em>praṇeya</em> → <em>praṇīta</em>) is
+narrow and well-supported: the Tibetan past-participial
+<em>gsungs pa</em> demands a past participle, not a gerundive, and
+the MS-fragment is equally compatible with either. The remainder of
+the compound is marked as <em>non liquet</em>: the Tibetan admits
+multiple Sanskrit back-readings and the MS preserves too little for
+a confident reconstruction. A human editor should choose between the
+two alternatives offered above; the agent has no philological reason
+to prefer one over the other.
+</div>
+
+<div class="compare">
+<div class="before">
+<h5>Yamaguchi 1934</h5>
+atha vā praṇetṛ-praṇeya-[vaktṛvākyasamādāna-]pravacanāt
+sūtrapraṇetṛvaktṛvṛttiṣu gauravotpādanārtham āha
+</div>
+<div class="after">
+<h5>Proposed (minimal change)</h5>
+atha vā praṇetṛ-praṇīta-[vaktṛvākyasamādāna-]pravacanāt
+sūtrapraṇetṛvaktṛvṛttiṣu gauravotpādanārtham āha
+</div>
+</div>
+
+<h4>Yamaguchi's Japanese</h4>
+<div class="japanese">
+或は又、造者の作るところと説者の語るところとを正受する為によるが故に、造者と経と説者ととに尊敬を生ぜんとて此論の造者にとの凡てを設けるなり。
+</div>
+
+<h4>Translation</h4>
+<div class="translation">
+Or rather: in order to generate reverence — in the audience — for
+the sūtra's composer, its expounder, and the commentary [together],
+through the proper transmission of what was composed by the composer
+and what was [received as] the expounder's words, [Vasubandhu] makes
+the entire utterance "To the author of this treatise…".
+</div>
+</section>
+
+<!-- ====================================================== -->
+
+<h2>Page-1 summary</h2>
+<table style="border-collapse: collapse; width: 100%; font-size: 0.92rem;">
+<thead>
+<tr style="background: #efeae0;">
+<th style="text-align:left; padding: 0.3rem 0.6rem; border-bottom: 1px solid #c8c0a8;">§</th>
+<th style="text-align:left; padding: 0.3rem 0.6rem; border-bottom: 1px solid #c8c0a8;">Anchor</th>
+<th style="text-align:left; padding: 0.3rem 0.6rem; border-bottom: 1px solid #c8c0a8;">Status</th>
+<th style="text-align:left; padding: 0.3rem 0.6rem; border-bottom: 1px solid #c8c0a8;">Headline change</th>
+</tr>
+</thead>
+<tbody>
+<tr><td style="padding:0.3rem 0.6rem;">1</td><td style="padding:0.3rem 0.6rem;">Mañjuśrī maṅgala</td><td style="padding:0.3rem 0.6rem;"><span class="status verified">VERIFIED</span></td><td style="padding:0.3rem 0.6rem;">none</td></tr>
+<tr><td style="padding:0.3rem 0.6rem;">2</td><td style="padding:0.3rem 0.6rem;">uttamajano hi … pratipādayann āha</td><td style="padding:0.3rem 0.6rem;"><span class="status proposed">PROPOSED</span></td><td style="padding:0.3rem 0.6rem;"><em>uttamajanā…pravartanta</em> → <em>uttamajano…pravartata</em> (MS); <em>bhāṣyaṁ cikīrṣur</em> → <em>vyākhyānaṃ cikīrṣus tat</em> (Tib)</td></tr>
+<tr><td style="padding:0.3rem 0.6rem;">3</td><td style="padding:0.3rem 0.6rem;">evaṁ kṛtvā ko guṇaḥ prāpyata iti</td><td style="padding:0.3rem 0.6rem;"><span class="status verified">VERIFIED</span></td><td style="padding:0.3rem 0.6rem;">none</td></tr>
+<tr><td style="padding:0.3rem 0.6rem;">4</td><td style="padding:0.3rem 0.6rem;">guṇavato … puṇyam upacīyate</td><td style="padding:0.3rem 0.6rem;"><span class="status proposed">PROPOSED</span></td><td style="padding:0.3rem 0.6rem;">datives → accusatives; middle <em>pūjayānānām</em> → active <em>pūjayatām</em></td></tr>
+<tr><td style="padding:0.3rem 0.6rem;">5</td><td style="padding:0.3rem 0.6rem;">puṇya upacite … samāpayantīti</td><td style="padding:0.3rem 0.6rem;"><span class="status proposed">PROPOSED</span></td><td style="padding:0.3rem 0.6rem;">abl. <em>samārambhād</em> → loc. <em>samārambhe</em>; acc. <em>anupahatān</em> → nom. <em>anupahatāḥ</em></td></tr>
+<tr><td style="padding:0.3rem 0.6rem;">6</td><td style="padding:0.3rem 0.6rem;">atha vā … gauravotpādanārtham āha</td><td style="padding:0.3rem 0.6rem;"><span class="status nonliquet">NON LIQUET</span></td><td style="padding:0.3rem 0.6rem;">gerundive <em>praṇeya</em> → past <em>praṇīta</em>; bracketed insertion left as Yamaguchi's, flagged</td></tr>
+</tbody>
+</table>
+
+<h2>Lessons for the workflow doc</h2>
+<ul>
+<li>The canonical Tibetan MAVT (<code>BO_T06_D4032</code>) is by far
+the most useful single witness for any sentence on this page. A direct
+Tibetan-side <code>/primary/</code> query, with
+<code>include_files: ["BO_T06_D4032"]</code>, returns continuous
+overlapping segments around fol. 189b; one or two such calls per page
+will recover the full Tibetan equivalent. Add this to the workflow as
+a <strong>standard first-step</strong> rather than an ad-hoc move.</li>
+<li>Yamaguchi's own Japanese translation (in
+<code>references/mavt-ja.txt</code>) sometimes <strong>disagrees with
+his own Sanskrit reconstruction</strong> (see §2). The Japanese is
+often closer to the Tibetan than the Sanskrit is. Worth checking
+routinely as a tertiary confirmation.</li>
+<li>The MAVT-Sanskrit segment in the corpus (<code>SA_T06_sthmavtyg</code>)
+is Yamaguchi's text re-indexed. It will <em>always</em> top the
+Sanskrit semantic search. The protocol of skipping
+<code>source: SA_T06_sthmavt*</code> hits is essential and worked
+cleanly here.</li>
+<li>OCR italic detection on this page is mostly reliable (whole
+multi-line stretches in <code>*…*</code>), but the footnotes' italic
+wrapping is purely typographic and conveys no editorial signal.
+Confirmed by inspection.</li>
+</ul>
+
+</body>
+</html>

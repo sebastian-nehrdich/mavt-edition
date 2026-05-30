@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Sthiramati MAVT, Yamaguchi p. 7 — re-edition walk-through</title>
+<style>
+:root { --bg:#fdfdfb; --fg:#1c1c1c; --muted:#6b6b6b; --rule:#d8d3c8; --accent:#6c4a1d; --recon-bg:#f0e7d9; --proposed-bg:#e1ecdb; --warn-bg:#fde6e1; --link:#1d4f8e; }
+body { font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif; background:var(--bg); color:var(--fg); max-width:980px; margin:2.5rem auto; padding:0 1.5rem 4rem; line-height:1.55; }
+h1{font-size:1.6rem;margin-bottom:0.2rem;} h2{font-size:1.2rem;margin-top:2.6rem;padding-bottom:0.2rem;border-bottom:1px solid var(--rule);color:var(--accent);} h3{font-size:1.05rem;margin-top:1.6rem;color:var(--accent);display:flex;align-items:center;flex-wrap:wrap;} h4{font-size:0.95rem;margin:0.8rem 0 0.3rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.05em;}
+.meta { color:var(--muted); font-size:0.85rem; margin-top:0; }
+code { font-family:"SF Mono",Menlo,Consolas,monospace; font-size:0.92em; background:#efeae0; padding:0 0.25rem; border-radius:2px; }
+.yamaguchi { background:var(--recon-bg); padding:0.55rem 0.85rem; border-left:3px solid #b88c1d; margin:0.4rem 0; font-family:"Charis SIL",Georgia,serif; }
+.yamaguchi .recon { font-style:italic; color:#8a3e0c; }
+.yamaguchi .ms-direct { color:#1c1c1c; }
+.tibetan { background:#f6f1ef; padding:0.55rem 0.85rem; border-left:3px solid #8a4a4a; margin:0.4rem 0; font-family:"Jomolhari",Georgia,serif; }
+.proposed { background:var(--proposed-bg); padding:0.55rem 0.85rem; border-left:3px solid #4a7a3a; margin:0.4rem 0; font-family:"Charis SIL",Georgia,serif; }
+.compare { display:grid; grid-template-columns:1fr 1fr; gap:0.6rem; margin:0.6rem 0; }
+.compare > div { padding:0.55rem 0.75rem; border-radius:3px; font-family:"Charis SIL",Georgia,serif; font-size:0.95rem; }
+.compare .before { background:#f4ebe0; border-left:3px solid #b88c1d; }
+.compare .after { background:#e1ecdb; border-left:3px solid #4a7a3a; }
+.compare h5 { margin:0 0 0.3rem 0; font-size:0.78rem; letter-spacing:0.04em; text-transform:uppercase; color:#555; }
+.translation { background:#fafafa; border-left:3px solid #777; padding:0.5rem 0.85rem; margin:0.4rem 0; font-style:italic; color:#333; }
+.justification { background:#f9f5e8; border-left:3px solid #c2a04a; padding:0.5rem 0.85rem; margin:0.4rem 0; font-size:0.93rem; }
+.warn { background:var(--warn-bg); padding:0.45rem 0.75rem; border-left:3px solid #b54c30; margin:0.4rem 0; font-size:0.93rem; }
+.status { display:inline-block; font-size:0.72rem; font-weight:700; letter-spacing:0.06em; padding:0.15rem 0.5rem; border-radius:2px; margin-left:0.5rem; }
+.status.verified { background:#cfe5c7; color:#244a18; } .status.proposed { background:#e9d9b3; color:#6b4a10; } .status.nonliquet { background:#f3d3cb; color:#6a2a18; }
+.intro { background:#f4f0e6; border-left:3px solid var(--accent); padding:0.8rem 1rem; margin:1rem 0 2rem; font-size:0.97rem; }
+.folio-anchor { color:#999; font-size:0.78rem; }
+section.sentence { margin-top:1.6rem; padding-top:0.4rem; border-top:1px dotted #d0d0c0; }
+.tib-wylie { font-size:0.85rem; color:#6b3030; font-family:"Charis SIL",Georgia,serif; font-style:italic; }
+a { color:var(--link); }
+</style>
+
+<style>
+.mavt-img-banner { background:#f0e7d9; border-bottom:2px solid #b88c1d; padding:0.8rem 1rem; margin:-2.5rem -1.5rem 1.6rem; text-align:center; font-family:"Iowan Old Style",Georgia,serif; }
+.mavt-img-banner .mavt-nav { font-size:0.88rem; margin-bottom:0.6rem; color:#6a3f10; }
+.mavt-img-banner .mavt-nav a { color:#5a2d2d; text-decoration:none; padding:0.15rem 0.5rem; background:#e8d8b8; border:1px solid #c8a87a; border-radius:3px; margin:0 0.2rem; display:inline-block; }
+.mavt-img-banner .mavt-nav a:hover { background:#d8c0a0; }
+.mavt-img-banner details { text-align:left; }
+.mavt-img-banner summary { cursor:pointer; font-size:0.92rem; color:#5a3a18; padding:0.3rem 0; user-select:none; }
+.mavt-img-banner summary:hover { color:#3a1a08; }
+.mavt-img-banner .mavt-img-strip { display:flex; flex-wrap:wrap; gap:0.6rem; justify-content:center; margin-top:0.6rem; }
+.mavt-img-banner .mavt-img-strip a { display:inline-block; text-decoration:none; }
+.mavt-img-banner .mavt-img-strip img { max-width:240px; max-height:340px; border:1px solid #b88c1d; border-radius:2px; transition:transform 0.15s; }
+.mavt-img-banner .mavt-img-strip img:hover { transform:scale(1.04); box-shadow:0 2px 8px rgba(0,0,0,0.15); }
+.mavt-img-banner .mavt-img-strip .mavt-img-cap { display:block; font-size:0.78rem; color:#6a3f10; margin-top:0.2rem; text-align:center; }
+.mavt-img-banner .mavt-img-single img { max-width:420px; max-height:560px; }
+</style>
+</head>
+<body>
+<div class="mavt-img-banner"><div class="mavt-nav"><a href="../../index.html">← Index</a><a href="../../all-pages.html">📑 All PDF pages</a></div><details open><summary>📜 Show original Yamaguchi 1934 scan — page 7</summary><div class="mavt-img-single"><a href="../../images/page-045.jpg" target="_blank" title="Click for full-size"><img src="../../images/page-045.jpg" alt="Yamaguchi 1934, p. 7" loading="lazy"><span class="mavt-img-cap">p. 7</span></a></div></details></div>
+
+<h1>Sthiramati, <em>Madhyāntavibhāgaṭīkā</em> — Yamaguchi p.&nbsp;7</h1>
+<p class="meta">OCR lines 1355–1390. Methodology:
+<a href="mavt-reedition-workflow.md"><code>mavt-reedition-workflow.md</code></a>.
+Tibetan witness: BO_T06_D4032:192a-26 → 192b-19.</p>
+
+<div class="intro">
+<p>Page 7 is the central enumeration page of the preface. It
+finishes the <em>lakṣaṇa</em>-gloss begun at the end of p. 6 (with
+the earth-element <em>kharalakṣaṇa</em> analogy and the
+<em>svalakṣaṇa / sāmānyalakṣaṇa</em> distinction); then runs through
+the remaining five of the seven topics —
+<em>āvaraṇa</em> (53-fold),
+<em>tattva</em> (10-fold),
+<em>pratipakṣa</em>-as-mārga,
+<em>bhāvanā</em>,
+<em>avasthā</em> (19-fold, beginning with gotra),
+<em>phala-prāpti</em> (15-fold),
+<em>yāna-anuttarya</em> (3-fold) — with brief Pāṇinian-style
+nirvacana glosses on each. The lower third of the page then explains
+why this <em>anukrama</em> (order of presentation) was chosen: it
+conduces to <em>lokottara-jñāna</em>, modelled on the bodhisattva's
+own training-sequence (<em>adhimukticaryābhūmi</em> → <em>śīla</em>
+→ knowledge of saṁkleśa/vyavadāna → āvaraṇa-jñāna → tattva-jñāna).</p>
+<p>The page is mixed: the lemma-gloss pairs are mostly italic
+(short Pāṇinian formulae), the substantive sentences are MS-attested.</p>
+</div>
+
+<h2>Canonical Tibetan (selected for page 7)</h2>
+<div class="tibetan">
+[192a-26 → 192b-0, lakṣaṇa-glosses:]
+དཔེར་ན་སའི་ཁམས་ཀྱི་མཚན་ཉིད་ནི་སྲ་བ་སྟེ། སྲ་བ་ཉིད་ལས་སའི་ཁམས་གུད་ན་མེད་པ་ལྟ་བུའོ། ། <br>
+ཡང་ན་དེས་མཚོན་པར་བྱ་བས་མཚན་ཉིད་དེ། དེ་ལྟར་ཀུན་ནས་ཉོན་མོངས་པ་དང་། རྣམ་པར་བྱང་བ་ཡང་ཀུན་ནས་ཉོན་མོངས་པ་དང་། རྣམ་པར་བྱང་བའི་བདག་ཉིད་ཀྱིས་མཚོན་པར་བྱ་བས་མཚན་ཉིད་དུ་འགྱུར་རོ། ། <br>
+ཡང་ན་ཀུན་ནས་ཉོན་མོངས་པ་དང་རྣམ་པར་བྱང་བ་གཉིས་ལས་མཚན་ཉིད་རྣམ་པ་གཉིས་ཏེ། རང་གི་མཚན་ཉིད་དང་སྤྱིའི་མཚན་ཉིད་དོ། ། <br>
+[āvaraṇa-gloss:] སྒྲིབ་པ་ཞེས་བྱ་བ་ནི་དགེ་བའི་ཆོས་རྣམས་ལ་སྒྲིབ་པར་བྱེད་པའམ། འདིས་དགེ་བའི་ཆོས་རྣམས་བསྒྲིབ་པས་སྒྲིབ་པ་སྟེ། སྐྱེ་བ་ལ་བགེགས་བྱེད་པའི་ཕྱིར་སྒྲིབ་པའོ། ། དེ་ཡང་ལྔ་བཅུ་རྩ་གསུམ་མོ། ། <br>
+[tattva-gloss:] དེ་ཁོ་ན་ཞེས་བྱ་བ་ནི་འདི་ཉིད་དེ་ཡིན་པས་དེའོ། །
+</div>
+
+<!-- ====================================================== -->
+
+<section class="sentence" id="s1">
+<h3>§1–§4 — <em>lakṣaṇa</em>-glosses: kharalakṣaṇa analogy, svalakṣaṇa / sāmānya-lakṣaṇa <span class="status verified">VERIFIED</span></h3>
+
+<h4>Yamaguchi text (MS + italic)</h4>
+<div class="yamaguchi"><span class="ms-direct">lakṣaṇam [Tib. 21, b] tad yathā pṛthivī-dhātoḥ khara-lakṣaṇo na ca kharatvāt pṛthivī-dhātoḥ pṛthag astīti<sup>(1)</sup> | atha vā lakṣyate tad iti lakṣaṇam | evaṁ hi saṁkleśo vyavadānaṁ ca saṁkleśa-vyava-</span><span class="recon">dānātmatvena lakṣyata iti lakṣaṇam | atha vā dvayoḥ saṁkleśa-vyavadānayor lakṣaṇaṁ dvividhaṁ svalakṣaṇaṁ ca sāmānya-lakṣaṇaṁ ca |</span>
+<span class="folio-anchor">(OCR 1357–1362)</span></div>
+<p>n. 1: MS <em>dhātu…lakṣaṇo na ca…tvāt</em>, Tib <em>khams kyi mtshan nyid sra ba ste</em> = "the earth-element's defining feature is hardness".</p>
+
+<h4>Tibetan</h4>
+<div class="tibetan">དཔེར་ན་སའི་ཁམས་ཀྱི་མཚན་ཉིད་ནི་སྲ་བ་སྟེ། སྲ་བ་ཉིད་ལས་སའི་ཁམས་གུད་ན་མེད་པ་ལྟ་བུའོ། ། ཡང་ན་དེས་མཚོན་པར་བྱ་བས་མཚན་ཉིད་དེ། … ཡང་ན་ཀུན་ནས་ཉོན་མོངས་པ་དང་རྣམ་པར་བྱང་བ་གཉིས་ལས་མཚན་ཉིད་རྣམ་པ་གཉིས་ཏེ། རང་གི་མཚན་ཉིད་དང་སྤྱིའི་མཚན་ཉིད་དོ། ། (BO_T06_D4032:192a-26 → 192a-30)</div>
+
+<h4>No change</h4>
+<div class="justification">A clean threefold gloss of
+<em>lakṣaṇa</em>: (i) defining feature inseparable from substrate
+(kharatva-of-pṛthivīdhātu analogy); (ii) "that which characterises";
+(iii) the saṁkleśa/vyavadāna pair as <em>svalakṣaṇa</em> +
+<em>sāmānyalakṣaṇa</em>. Tibetan word-by-word: <em>sa'i khams kyi
+mtshan nyid sra ba</em> = <em>pṛthivī-dhātoḥ khara-lakṣaṇaḥ</em>;
+<em>rang gi mtshan nyid</em> = <em>svalakṣaṇa</em>; <em>spyi'i mtshan
+nyid</em> = <em>sāmānya-lakṣaṇa</em>. All verified.</div>
+
+<h4>Translation</h4>
+<div class="translation">"<em>lakṣaṇa</em>": just as the defining feature of the earth-element is hardness — and the earth-element is not separate from its hardness — so [too with the seven topics' lakṣaṇa-s]. Or: "lakṣaṇa" is "that which is characterized by it". For thus saṁkleśa and vyavadāna are themselves characterized by being saṁkleśa- and vyavadāna-natured — hence "lakṣaṇa". Or: the lakṣaṇa of the pair (saṁkleśa, vyavadāna) is twofold: svalakṣaṇa and sāmānya-lakṣaṇa.</div>
+</section>
+
+<!-- ====================================================== -->
+
+<section class="sentence" id="s5">
+<h3>§5–§6 — <em>āvaraṇa</em>: 53-fold <span class="status verified">VERIFIED</span></h3>
+
+<h4>Yamaguchi text (MS, with bracket inserts)</h4>
+<div class="yamaguchi"><span class="ms-direct">āvaraṇam iti [idam] āvṛṇoti kuśalān dharmān | vriyante [v]ānena kuśala-dharmā utpatti-vibandhād ity āvaraṇam |<sup>(3)</sup> tat punas tri-pañcāśat-prakāram |</span>
+<span class="folio-anchor">(OCR 1362–1364)</span></div>
+<p>n. 3: MS <em>vriyante 'nena</em>, Tib <em>'am | 'dis…bsgribs</em>.</p>
+
+<h4>Tibetan</h4>
+<div class="tibetan">སྒྲིབ་པ་ཞེས་བྱ་བ་ནི་དགེ་བའི་ཆོས་རྣམས་ལ་སྒྲིབ་པར་བྱེད་པའམ། འདིས་དགེ་བའི་ཆོས་རྣམས་བསྒྲིབ་པས་སྒྲིབ་པ་སྟེ། སྐྱེ་བ་ལ་བགེགས་བྱེད་པའི་ཕྱིར་སྒྲིབ་པའོ། ། དེ་ཡང་ལྔ་བཅུ་རྩ་གསུམ་མོ། ། (BO_T06_D4032:192b-0)</div>
+
+<h4>No change</h4>
+<div class="justification">A neat double <em>nirukti</em>: (a) active
+"it obstructs the wholesome dharmas" (Tib: <em>dge ba'i chos rnams
+la sgrib par byed pa</em>); (b) passive "the wholesome dharmas are
+obstructed by it" (Tib: <em>'dis dge ba'i chos rnams bsgribs pas</em>).
+The 53-fold count <em>tat punas tri-pañcāśat-prakāram</em> matches
+Tib <em>lnga bcu rtsa gsum mo</em>.</div>
+
+<h4>Translation</h4>
+<div class="translation">"<em>āvaraṇa</em>": it obstructs the wholesome dharmas; or, the wholesome dharmas are obstructed by it, on account of its blocking [their] arising — hence "obstruction". It is fifty-three-fold.</div>
+</section>
+
+<!-- ====================================================== -->
+
+<section class="sentence" id="s7">
+<h3>§7–§8 — <em>tattvam</em>: 10-fold <span class="status verified">VERIFIED</span></h3>
+
+<h4>Yamaguchi text (MS + italic)</h4>
+<div class="yamaguchi"><span class="ms-direct">tattvam iti tad evedaṁ tat | tasya bhāvas tattvam</span> <span class="recon">aviparyāsa ity arthaḥ</span> | <span class="ms-direct">tac ca daśa-prakāram |</span>
+<span class="folio-anchor">(OCR 1364–1365)</span></div>
+
+<h4>Tibetan</h4>
+<div class="tibetan">དེ་ཁོ་ན་ཞེས་བྱ་བ་ནི་འདི་ཉིད་དེ་ཡིན་པས་དེའོ། ། (BO_T06_D4032:192b-0)</div>
+
+<h4>No change</h4>
+<div class="justification">Standard analytical gloss: "<em>tat eva
+idam tat</em>" — "this very thing is that"; abstract <em>tattvam</em>
+= "the state of being-that" = <em>aviparyāsa</em> ("non-error"). The
+10-fold count is the standard Yogācāra tattva-enumeration.</div>
+
+<h4>Translation</h4>
+<div class="translation">"<em>tattva</em>": that very (<em>tad eva</em>) <em>idam</em> is the <em>tat</em>; its abstract form is <em>tattva</em>, the meaning being "non-error". It is tenfold.</div>
+</section>
+
+<!-- ====================================================== -->
+
+<section class="sentence" id="s9">
+<h3>§9–§10 — <em>pratipakṣaḥ</em> = mārga; <em>bhāvanā</em> = <em>tad-abhyāsaḥ</em> <span class="status verified">VERIFIED</span></h3>
+
+<h4>Yamaguchi text (italic + MS)</h4>
+<div class="yamaguchi"><span class="recon">vipakṣa-prahāṇārthaṁ pakṣaḥ pratipakṣaḥ</span> <span class="ms-direct">sa mārgaḥ |</span> <span class="recon">tad-abhyāso bhāvanā</span> |
+<span class="folio-anchor">(OCR 1366–1367)</span></div>
+
+<h4>No change</h4>
+<div class="justification">The Pāṇinian gloss "<em>vipakṣa-prahāṇa-arthaṁ
+pakṣaḥ pratipakṣaḥ</em>" ("the pakṣa for the purpose of eliminating
+the vipakṣa — hence pratipakṣa") is a standard <em>nirvacana</em>.
+<em>tad-abhyāsaḥ bhāvanā</em> ("cultivation of that is
+<em>bhāvanā</em>") is again standard.</div>
+
+<h4>Translation</h4>
+<div class="translation">"<em>pratipakṣa</em>" — the [right] party (<em>pakṣa</em>) [held] for the purpose of eliminating the contrary party (<em>vipakṣa</em>) — hence <em>pratipakṣa</em>; that is the path. The cultivation of it is the <em>bhāvanā</em>.</div>
+</section>
+
+<!-- ====================================================== -->
+
+<section class="sentence" id="s11">
+<h3>§11 — <em>avasthā</em>: 19-fold, beginning with <em>gotra-avasthā</em> <span class="status verified">VERIFIED</span></h3>
+
+<h4>Yamaguchi text (MS)</h4>
+<div class="yamaguchi"><span class="ms-direct">avasthā tasyāiva saṁtānenotpatti-viśeṣaḥ | sā punar ekānna-viṁśati-prakārā gotrāvasthā-ādikā |</span>
+<span class="folio-anchor">(OCR 1367–1368)</span></div>
+
+<h4>No change</h4>
+<div class="justification"><em>avasthā</em> = "a special arising of
+that very [pratipakṣa-bhāvanā] through the [bodhisattva's]
+continuum"; 19-fold beginning with <em>gotra-avasthā</em>. This is
+the standard Yogācāra avasthā-enumeration as found in
+<em>Bodhisattvabhūmi</em> and elsewhere.</div>
+
+<h4>Translation</h4>
+<div class="translation"><em>avasthā</em> is a special arising of that very [pratipakṣa-bhāvanā] through the [bodhisattva's mental] continuum; it is nineteen-fold, beginning with the <em>gotra</em>-stage.</div>
+</section>
+
+<!-- ====================================================== -->
+
+<section class="sentence" id="s12">
+<h3>§12 — <em>phala-prāpti</em>: 15-fold, beginning with <em>vipāka-phala</em> <span class="status verified">VERIFIED</span></h3>
+
+<h4>Yamaguchi text (MS + italic)</h4>
+<div class="yamaguchi"><span class="ms-direct">phalasya lābhaḥ phala-prāptiḥ |<sup>(4)</sup> tat punaḥ pañcadaśa-prakāraṁ</span> <span class="recon">vipāka-phalādi</span> |
+<span class="folio-anchor">(OCR 1368–1369)</span></div>
+<p>n. 4: MS <em>prāptes</em>; Tib <em>'bras bu rnyed pa'o</em>.</p>
+
+<h4>One textual note</h4>
+<div class="justification">The MS reading <em>prāpteḥ</em> (gen.) is
+syntactically awkward — Yamaguchi has implicitly corrected to
+nominative <em>prāptiḥ</em>, which matches Tib <em>'bras bu rnyed
+pa'o</em> ("the obtaining of the fruit"). Accept the correction.</div>
+
+<h4>Translation</h4>
+<div class="translation">"<em>phala-prāpti</em>" is the obtaining of the fruit; it is fifteen-fold, beginning with the maturational fruit (<em>vipāka-phala</em>).</div>
+</section>
+
+<!-- ====================================================== -->
+
+<section class="sentence" id="s13">
+<h3>§13–§14 — <em>yāna-anuttarya</em>: 3-fold <span class="status verified">VERIFIED</span></h3>
+
+<h4>Yamaguchi text (italic + MS)</h4>
+<div class="yamaguchi"><span class="recon">yāna-anuttaryam iti — gamyate 'neneti yānam | yānaṁ ca tad ānuttaryaṁ ceti yāna-anuttaryam</span> |<sup>(5)</sup> <span class="ms-direct">tat punas trividhaṁ pratipatty-ānuttarya-ādi |</span>
+<span class="folio-anchor">(OCR 1369–1371)</span></div>
+<p>n. 5: MS <em>ānantaryam</em>, Tib <em>bla na med pa</em>.</p>
+
+<h4>One real philological correction: MS slip <em>ānantaryam</em></h4>
+<div class="justification">The MS variant <em>ānantaryam</em>
+("immediate succession") is a clear copyist's slip — Tib <em>bla na
+med pa</em> ("unsurpassed") = Sanskrit <em>anuttarya</em>, not
+<em>ānantarya</em>. Yamaguchi has corrected this silently. The
+double-nirvacana <em>gamyate 'neneti yānam</em> ("one goes by this —
+hence <em>yāna</em>") + <em>yānaṁ ca tad ānuttaryaṁ ca</em> ("a yāna,
+and that one unsurpassed") is the standard Pāṇinian formulation.</div>
+
+<h4>Translation</h4>
+<div class="translation">"<em>yāna-anuttarya</em>": <em>yāna</em> = "one goes by [this]" — hence "vehicle"; and "it is a vehicle and it is unsurpassed" — hence "<em>yāna-anuttarya</em>". It is threefold, beginning with the unsurpassed-ness of [bodhisattva] practice (<em>pratipatty-anuttarya</em>).</div>
+</section>
+
+<!-- ====================================================== -->
+
+<section class="sentence" id="s15">
+<h3>§15 — restriction-and-order: <em>saptamo 'rtha iti niyamārtham anukramārthaṁ ca</em> <span class="status verified">VERIFIED</span></h3>
+
+<h4>Yamaguchi text (MS)</h4>
+<div class="yamaguchi"><span class="ms-direct">saptamo 'rtha iti niyamārtham anukramārthaṁ cāha | etāvanta evārthā nirdiśyante nāto 'nya iti |</span>
+<span class="folio-anchor">(OCR 1372–1373)</span></div>
+
+<h4>No change</h4>
+<div class="justification">The bhāṣya's adjective <em>saptamaḥ</em>
+("seventh") is glossed as serving two functions: <em>niyama</em>
+(restriction: "only these many topics") + <em>anukrama</em>
+(ordering: "in this sequence"). Standard analytic move.</div>
+
+<h4>Translation</h4>
+<div class="translation">By [the word] "<em>seventh-topic</em>", [Vasubandhu] indicates both restriction and order: only this many topics are taught, not more.</div>
+</section>
+
+<!-- ====================================================== -->
+
+<section class="sentence" id="s16">
+<h3>§16–§17 — why this <em>anukrama</em>: bodhisattva training-sequence <span class="status verified">VERIFIED</span></h3>
+
+<h4>Yamaguchi text (italic + MS)</h4>
+<div class="yamaguchi"><span class="ms-direct">anukramaḥ punar ayaṁ</span> <span class="recon">lokottara-jñāna-anukūlārtham | tathā hi bodhisattvenādhimukti-caryā-bhūmi-sthitena śīla-pratiṣṭhitena prathamaṁ saṁkleśa-vyavadāna-kuśalena bhavitavyam</span> | <span class="ms-direct">tataḥ kuśalānāṁ dharmāṇāṁ yasya yad āvaraṇaṁ tasya taj jñeyam | tasyāprahāṇād vimukter asaṁbhavād avijñānaṁ ca prahātuṁ na śakyate doṣādarśanāt |</span>
+<span class="folio-anchor">(OCR 1375–1380)</span></div>
+
+<h4>No change</h4>
+<div class="justification">The italic block reconstructs Sthiramati's
+explanation of why the seven topics are presented in <em>that
+particular order</em>: the bodhisattva training-sequence (adhimukti-caryā-bhūmi
+→ śīla-pratiṣṭha → saṁkleśa/vyavadāna-knowledge → āvaraṇa-knowledge
+→ tattva-knowledge → mārga-bhāvanā → avasthā → phala →
+yāna-anuttarya). The reconstruction is grammatically tight and
+matches the standard Yogācāra path-stage vocabulary. The
+MS-attested continuation (the logic of why <em>āvaraṇa</em> must come
+after <em>lakṣaṇa-knowledge</em>) flows naturally from it.</div>
+
+<h4>Translation</h4>
+<div class="translation">This order, moreover, is [chosen] for the sake of conducing to supramundane knowledge. Specifically: the bodhisattva, established on the bhūmi of practice-by-confidence (<em>adhimukti-caryā-bhūmi</em>) and rooted in morality, must first become skilled in saṁkleśa and vyavadāna. Then he must come to know which obscuration belongs to which wholesome dharma — for without abandoning [the obscuration] there is no liberation, and ignorance itself cannot be abandoned without seeing its faults.</div>
+</section>
+
+<!-- ====================================================== -->
+
+<section class="sentence" id="s19">
+<h3>§19–§20 — <em>tattva</em> = the ālambana whereby the citta is liberated; <em>tatas tenālambanena</em> [→ p. 8] <span class="status verified">VERIFIED</span></h3>
+
+<h4>Yamaguchi text (italic)</h4>
+<div class="yamaguchi"><span class="ms-direct">tatas</span> <span class="recon">tad-āvaraṇād [Tib. 22, a] yenālambanena cittaṁ vimucyate tat tattvaṁ veditavyam | tatas tenālambanena tad [→ p. 8]</span>
+<span class="folio-anchor">(OCR 1380–1382)</span></div>
+
+<h4>No change</h4>
+<div class="justification">Defines <em>tattva</em> operationally:
+the ālambana by which the citta is liberated <em>from</em> the
+[relevant] āvaraṇa is "that which is to be known as <em>tattva</em>".
+This is a Sthiramati-flavoured gloss that connects the
+<em>tattva</em>-topic to the meditative-soteriology framework.
+Sentence continues onto p. 8.</div>
+
+<h4>Translation</h4>
+<div class="translation">Then: the cognitive object (<em>ālambana</em>) by means of which the mind is liberated from that obscuration is to be known as <em>tattva</em>. Then, by that ālambana, that [obscuration]… [→ p. 8].</div>
+</section>
+
+<!-- ====================================================== -->
+
+<h2>Page-7 summary</h2>
+<table style="border-collapse:collapse;width:100%;font-size:0.92rem;">
+<thead><tr style="background:#efeae0;"><th style="text-align:left;padding:0.3rem 0.6rem;">§</th><th style="text-align:left;padding:0.3rem 0.6rem;">Anchor</th><th style="text-align:left;padding:0.3rem 0.6rem;">Status</th><th style="text-align:left;padding:0.3rem 0.6rem;">Headline change</th></tr></thead>
+<tbody>
+<tr><td>1–4</td><td>lakṣaṇa-glosses (earth-element + svalakṣ./sāmānyalakṣ.)</td><td><span class="status verified">VERIFIED</span></td><td>none</td></tr>
+<tr><td>5–6</td><td>āvaraṇa (53-fold)</td><td><span class="status verified">VERIFIED</span></td><td>none</td></tr>
+<tr><td>7–8</td><td>tattva (10-fold)</td><td><span class="status verified">VERIFIED</span></td><td>none</td></tr>
+<tr><td>9–10</td><td>pratipakṣa / mārga; bhāvanā</td><td><span class="status verified">VERIFIED</span></td><td>none</td></tr>
+<tr><td>11</td><td>avasthā (19-fold)</td><td><span class="status verified">VERIFIED</span></td><td>none</td></tr>
+<tr><td>12</td><td>phala-prāpti (15-fold)</td><td><span class="status verified">VERIFIED</span></td><td>MS <em>prāpteḥ</em> → <em>prāptiḥ</em> (Yamaguchi's silent fix; keep)</td></tr>
+<tr><td>13–14</td><td>yāna-anuttarya (3-fold)</td><td><span class="status verified">VERIFIED</span></td><td>MS slip <em>ānantaryam</em> → <em>anuttaryam</em></td></tr>
+<tr><td>15</td><td>niyamārtham / anukramārtham</td><td><span class="status verified">VERIFIED</span></td><td>none</td></tr>
+<tr><td>16–17</td><td>bodhisattva training-sequence</td><td><span class="status verified">VERIFIED</span></td><td>none</td></tr>
+<tr><td>19–20</td><td><em>tattva</em> = ālambana of vimukti</td><td><span class="status verified">VERIFIED</span></td><td>none</td></tr>
+</tbody>
+</table>
+
+<p class="meta"><strong>Page 7 has no substantive emendation
+proposals.</strong> The italic content is mostly short Pāṇinian
+glosses that Yamaguchi reconstructs reliably from clean Tibetan
+witnesses. Substantive content is MS-attested.</p>
+
+</body>
+</html>

@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sthiramati MAVT chapter 4 — re-edition walk-through</title>
+  <style>
+    :root {
+      --bg: #fdfdfb;
+      --fg: #1c1c1c;
+      --muted: #6b6b6b;
+      --rule: #d8d3c8;
+      --accent: #6c4a1d;
+      --skt-bg: #f4efe4;
+      --para-bg: #eef2f6;
+      --tib-bg: #f6f1ef;
+      --recon-bg: #f0e7d9;
+      --proposed-bg: #e1ecdb;
+      --warn-bg: #fde6e1;
+      --link: #1d4f8e;
+    }
+    html { font-size: 16px; }
+    body {
+      font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
+      background: var(--bg);
+      color: var(--fg);
+      max-width: 960px;
+      margin: 2.5rem auto;
+      padding: 0 1.5rem 4rem;
+      line-height: 1.55;
+    }
+    h1 { font-size: 1.6rem; margin-bottom: 0.2rem; }
+    h2 {
+      font-size: 1.2rem;
+      margin-top: 2.6rem;
+      padding-bottom: 0.2rem;
+      border-bottom: 1px solid var(--rule);
+      color: var(--accent);
+    }
+    h3 { font-size: 1.05rem; margin-top: 1.6rem; color: var(--accent); }
+    h4 { font-size: 0.95rem; margin: 0.8rem 0 0.3rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+    p, ul, ol { margin: 0.5rem 0; }
+    .meta { color: var(--muted); font-size: 0.85rem; margin-top: 0; }
+    .conventions { font-size: 0.88rem; color: var(--muted); }
+    .conventions code { background: #efeae0; padding: 0 0.25rem; border-radius: 2px; }
+    code, .ms { font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 0.92em; }
+    .yamaguchi {
+      background: var(--recon-bg);
+      padding: 0.55rem 0.85rem;
+      border-left: 3px solid #b88c1d;
+      margin: 0.4rem 0;
+      font-family: "Charis SIL", "Gentium Plus", Georgia, serif;
+    }
+    .yamaguchi .recon { font-style: italic; color: #8a3e0c; }
+    .yamaguchi .ms-direct { color: #1c1c1c; }
+    .tibetan {
+      background: var(--tib-bg);
+      padding: 0.55rem 0.85rem;
+      border-left: 3px solid #8a4a4a;
+      margin: 0.4rem 0;
+      font-family: "Jomolhari", "Tibetan Machine Uni", "Iowan Old Style", serif;
+    }
+    .proposed {
+      background: var(--proposed-bg);
+      padding: 0.55rem 0.85rem;
+      border-left: 3px solid #4a7a3a;
+      margin: 0.4rem 0;
+      font-family: "Charis SIL", "Gentium Plus", Georgia, serif;
+    }
+    .proposed strong { color: #2d5020; }
+    .japanese {
+      background: #f5f0e8;
+      padding: 0.55rem 0.85rem;
+      border-left: 3px solid #6b4a2a;
+      margin: 0.4rem 0;
+      font-family: "Hiragino Mincho ProN", "Yu Mincho", "MS Mincho", serif;
+      font-size: 0.97rem;
+    }
+    .compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem;
+      margin: 0.6rem 0;
+    }
+    .compare > div {
+      padding: 0.55rem 0.75rem;
+      border-radius: 3px;
+      font-family: "Charis SIL", "Gentium Plus", Georgia, serif;
+      font-size: 0.95rem;
+    }
+    .compare .before {
+      background: #f4ebe0;
+      border-left: 3px solid #b88c1d;
+    }
+    .compare .after {
+      background: #e1ecdb;
+      border-left: 3px solid #4a7a3a;
+    }
+    .compare h5 {
+      margin: 0 0 0.3rem 0;
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #555;
+    }
+    .compare .before h5 { color: #8a3e0c; }
+    .compare .after h5 { color: #2d5020; }
+    .translation {
+      background: #fafafa;
+      border-left: 3px solid #777;
+      padding: 0.5rem 0.85rem;
+      margin: 0.4rem 0;
+      font-style: italic;
+      color: #333;
+    }
+    .parallel {
+      background: var(--para-bg);
+      padding: 0.55rem 0.8rem;
+      border-left: 3px solid #5a7da2;
+      margin: 0.4rem 0;
+      font-size: 0.95rem;
+    }
+    .parallel .src { font-weight: 600; }
+    .parallel .quote {
+      display: block;
+      margin-top: 0.25rem;
+      font-family: "Charis SIL", "Gentium Plus", Georgia, serif;
+      font-style: italic;
+      color: #333;
+    }
+    .justification {
+      background: #f9f5e8;
+      border-left: 3px solid #c2a04a;
+      padding: 0.5rem 0.85rem;
+      margin: 0.4rem 0;
+      font-size: 0.93rem;
+    }
+    .warn {
+      background: var(--warn-bg);
+      padding: 0.45rem 0.75rem;
+      border-left: 3px solid #b54c30;
+      margin: 0.4rem 0;
+      font-size: 0.93rem;
+    }
+    .disclaimer {
+      background: #fff3e0;
+      border: 2px solid #c25c1a;
+      border-radius: 4px;
+      padding: 1rem 1.2rem;
+      margin: 1.2rem 0 2rem;
+      font-size: 0.95rem;
+    }
+    .disclaimer h2 { margin-top: 0; border: none; color: #8a3e0c; font-size: 1.05rem; }
+    .disclaimer p { margin: 0.5rem 0; }
+    .disclaimer ul { margin: 0.4rem 0 0.4rem 1.2rem; padding: 0; }
+    .intro {
+      background: #f4f0e6;
+      border-left: 3px solid var(--accent);
+      padding: 0.8rem 1rem;
+      margin: 1rem 0 2rem;
+      font-size: 0.97rem;
+    }
+    .intro h3 { margin-top: 0.8rem; }
+    .status {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      padding: 0.15rem 0.5rem;
+      border-radius: 2px;
+      margin-left: 0.5rem;
+      vertical-align: middle;
+    }
+    .status.verified { background: #cfe5c7; color: #244a18; }
+    .status.pending  { background: #f0e4c2; color: #5a4310; }
+    .label {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      padding: 0.1rem 0.4rem;
+      border-radius: 2px;
+      margin-right: 0.4rem;
+      text-transform: uppercase;
+    }
+    .label.recon { background: #f4dab8; color: #6a3f10; }
+    .label.ms { background: #d2dce8; color: #1f3a55; }
+    .label.tib { background: #e6cccc; color: #5a2d2d; }
+    .label.proposed { background: #c8dcc0; color: #2d5020; }
+    .folio-anchor { color: #999; font-size: 0.78rem; }
+    a { color: var(--link); text-decoration: none; border-bottom: 1px solid #c8d3e3; }
+    a:hover { background: #eef3fa; }
+    section.sentence { margin-top: 2.0rem; padding-top: 0.4rem; border-top: 1px dotted #d0d0c0; }
+    section.sentence h3 { display: flex; align-items: center; flex-wrap: wrap; }
+  </style>
+
+
+
+<style>
+.mavt-img-banner { background:#f0e7d9; border-bottom:2px solid #b88c1d; padding:0.8rem 1rem; margin:-2.5rem -1.5rem 1.6rem; text-align:center; font-family:"Iowan Old Style",Georgia,serif; }
+.mavt-img-banner .mavt-nav { font-size:0.88rem; margin-bottom:0.6rem; color:#6a3f10; }
+.mavt-img-banner .mavt-nav a { color:#5a2d2d; text-decoration:none; padding:0.15rem 0.5rem; background:#e8d8b8; border:1px solid #c8a87a; border-radius:3px; margin:0 0.2rem; display:inline-block; }
+.mavt-img-banner .mavt-nav a:hover { background:#d8c0a0; }
+.mavt-img-banner details { text-align:left; }
+.mavt-img-banner summary { cursor:pointer; font-size:0.92rem; color:#5a3a18; padding:0.3rem 0; user-select:none; }
+.mavt-img-banner summary:hover { color:#3a1a08; }
+.mavt-img-banner .mavt-img-strip { display:flex; flex-wrap:wrap; gap:0.6rem; justify-content:center; margin-top:0.6rem; }
+.mavt-img-banner .mavt-img-strip a { display:inline-block; text-decoration:none; }
+.mavt-img-banner .mavt-img-strip img { max-width:420px; max-height:560px; border:1px solid #b88c1d; border-radius:2px; transition:transform 0.15s; }
+.mavt-img-banner .mavt-img-strip img:hover { transform:scale(1.02); box-shadow:0 2px 8px rgba(0,0,0,0.15); }
+.mavt-img-banner .mavt-img-strip .mavt-img-cap { display:block; font-size:0.78rem; color:#6a3f10; margin-top:0.2rem; text-align:center; }
+.mavt-img-banner .mavt-img-single img { max-width:560px; max-height:760px; }
+</style>
+</head>
+<body>
+<div class="mavt-img-banner"><div class="mavt-nav"><a href="../../index.html">← Index</a><a href="../../all-pages.html">📑 All PDF pages</a></div><details open><summary>📜 Show original Yamaguchi 1934 scan — page 169</summary><div class="mavt-img-strip mavt-img-single"><a href="../../images/page-207.jpg" target="_blank" title="Click for full-size"><img src="../../images/page-207.jpg" alt="Yamaguchi 1934, p. 169" loading="lazy"><span class="mavt-img-cap">p. 169</span></a></div></details></div>
+<h1>Sthiramati, <em>Madhyāntavibhāgaṭīkā</em> — Yamaguchi p.&nbsp;169 <span style="font-size:0.7em;color:#888;">(chapter 4)</span></h1>
+<p class="meta">Yamaguchi 1934 file p. 207. Chapter 4 (<em>Pratipakṣa-bhāvanā-pariccheda</em>) — vedanā / citta / opening of dharma-smṛtyupasthāna. Methodology: <a href="../../mavt-reedition-workflow.md"><code>mavt-reedition-workflow.md</code></a>.</p>
+<h2>Page 207 (Yamaguchi p. 169) — vedanā / citta / opens dharma smṛtyupasthāna</h2>
+<p class="meta">Three-vedanā analysis → samudaya-satya; citta-parīkṣā →
+nirodha-satya; dharma-parīkṣā opens → mārga-satya (continues p. 208).</p>
+
+<section class="sentence" id="s32">
+<h3>§32 — Three vedanās × three tṛṣṇās <span class="status verified">VERIFIED</span></h3>
+
+<h4>Yamaguchi text (mixed)</h4>
+<div class="yamaguchi">
+<span class="ms-direct">[sukhā vedanā tat-saṃyoga-aviyoga-]</span>
+<span class="recon">tṛṣṇāyā hetuḥ |</span>
+<span class="ms-direct">duḥkhā</span>
+<span class="recon">tad-asaṃyoga-viyoga-tṛṣṇāyā hetuḥ |</span>
+<span class="ms-direct">aduḥkhāsukhā</span>
+<span class="recon">tad-avasthā-abhirati-tṛṣṇāyāḥ tat-saṃyoga-
+aviyoga-tṛṣṇāyāś ca</span>
+<span class="ms-direct">kasyāṃ cit samāpattau hetur iti |</span>
+<span class="folio-anchor">(p. 169; OCR lines 6908–6910)</span>
+</div>
+
+<h4>Structure</h4>
+<p>The three-vedanā × three-tṛṣṇā analysis:</p>
+<ul>
+  <li><strong>sukhā vedanā</strong> → tṛṣṇā for non-separation
+  (<em>saṃyogāviyoga-tṛṣṇā</em>).</li>
+  <li><strong>duḥkhā vedanā</strong> → tṛṣṇā for non-encounter and
+  separation (<em>asaṃyoga-viyoga-tṛṣṇā</em>).</li>
+  <li><strong>aduḥkhāsukhā vedanā</strong> → in some samāpatti, a
+  cause of either tṛṣṇā for staying in that state
+  (<em>tadavasthā-abhirati-tṛṣṇā</em>) or tṛṣṇā for non-separation.</li>
+</ul>
+<p>Standard Abhidharma teaching, cf. <em>Abhidharmakośa</em> /
+<em>Yogācārabhūmi</em>.</p>
+
+<h4>Yamaguchi vs. proposed (no change)</h4>
+<div class="compare">
+<div class="before">
+<h5>Yamaguchi 1934 as printed</h5>
+… tṛṣṇāyā <em>hetuḥ</em> | duḥkhā <em>tadasaṁyogaviyogatṛṣṇāyā
+hetuḥ</em> | aduḥkhāsukhā <em>tadavasthābhiratitṛṣṇāyās
+tatsaṁyogāviyogatṛṣṇāyāś</em> ca kasyāṁ cit samāpattau hetur iti |
+</div>
+<div class="after">
+<h5>Proposed re-edited text</h5>
+[sukhā vedanā tat-saṃyoga-aviyoga-]tṛṣṇāyā hetuḥ | duḥkhā
+tad-asaṃyoga-viyoga-tṛṣṇāyā hetuḥ | aduḥkhāsukhā
+tad-avasthā-abhirati-tṛṣṇāyāḥ tat-saṃyoga-aviyoga-tṛṣṇāyāś ca
+kasyāṃ cit samāpattau hetur iti |
+</div>
+</div>
+
+<h4>Yamaguchi's Japanese translation</h4>
+<div class="japanese">
+その中、樂受はそれと和合して離れざらんとの渇愛の因なり。 苦〔受〕はそれと和合せず離れんとの渇愛の因なり。 非苦非樂〔受〕は或等至に於てそれの分位を愛樂する渇愛、及び、それと和合して離れざらんとの愛の因なり。
+<span class="folio-anchor">(<code>references/mavt-ja.txt</code> lines 3792–3794)</span>
+</div>
+
+<h4>Translation</h4>
+<div class="translation">
+"[Pleasant vedanā is] the cause of [the craving] for
+non-separation from it. Painful [vedanā] is the cause of the
+craving for non-encounter [with it] and separation [from it].
+Neither-painful-nor-pleasant [vedanā] is, in some samāpatti, the
+cause of the craving for staying in that state and of the craving
+for non-separation from it."
+</div>
+</section>
+
+<section class="sentence" id="s33">
+<h3>§33 — Sa duḥkha-vedanayā spṛṣṭaḥ kāma-sukham abhinandati iti vacanāt <span class="status verified">VERIFIED</span></h3>
+
+<h4>Yamaguchi text (sūtra citation + MAVbh paraphrase)</h4>
+<div class="yamaguchi">
+<span class="ms-direct">sa <span class="folio-anchor">[Tib. 108, b]</span>
+duḥkha-vedanayā spṛṣṭaḥ kāma-sukham abhinandati iti vacanāt</span>
+<span class="ms-direct">duḥkhā api</span>
+<span class="recon">vedanā sukhāya tṛṣṇāyā hetur bhavati |
+tat-parīkṣayā samudaya-satyam avatarati |</span>
+<span class="folio-anchor">(p. 169; OCR lines 6910–6913, with
+Yamaguchi fn. 1)</span>
+</div>
+
+<h4>Apparatus note (Yamaguchi fn. 1)</h4>
+<p>fn. 1: MS reads <code>spaṣṭaḥ</code>; Tib. <code>reg-na</code>
+(= <em>spṛṣṭaḥ</em>). Yamaguchi adopts the Tibetan reading
+<em>spṛṣṭaḥ</em> — clearly correct in context (the sūtra has
+<em>spṛṣṭa</em>, "touched [by]").</p>
+
+<h4>The sūtra citation</h4>
+<div class="parallel">
+<span class="src">Sūtra-citation: vedanā → kāma-sukha-abhinandana</span>
+The phrase <em>sa duḥkha-vedanayā spṛṣṭaḥ kāma-sukham
+abhinandati</em> is from the standard Sūtra-piṭaka discussion of
+the avidyā-saṃsparśa → vedanā → tṛṣṇā chain. Cited e.g. in
+Vasubandhu's <em>Abhidharmakośabhāṣya</em> ch. 9 (cf. Yamaguchi
+Japanese fn. 3837 referencing AKBh ch. 9 = T 30.284). The Pāli
+parallel is at Saṃyutta-Nikāya 36.6 (Salla-sutta).
+</div>
+
+<h4>Yamaguchi vs. proposed</h4>
+<div class="compare">
+<div class="before">
+<h5>Yamaguchi 1934 as printed</h5>
+sa duḥkhavedanayā spṛṣṭaḥ kāmasukham abhinandatīti vacanāt
+duḥkhāpi <em>vedanā sukhāya tṛṣṇāyā hetur bhavati | tatparīkṣayā
+samudayasatyam avatarati</em> |
+</div>
+<div class="after">
+<h5>Proposed re-edited text</h5>
+"sa duḥkha-vedanayā spṛṣṭaḥ kāma-sukham abhinandati" iti vacanāt,
+duḥkhā api vedanā sukhāya tṛṣṇāyā hetur bhavati | tat-parīkṣayā
+samudaya-satyam avatarati |
+</div>
+</div>
+
+<h4>Yamaguchi's Japanese translation</h4>
+<div class="japanese">
+「彼苦受に觸れたるとき欲樂を喜す」との語あるが故に、苦受も渇愛の因となる。彼を観ずることによりて集諦に入る。
+<span class="folio-anchor">(<code>references/mavt-ja.txt</code> lines 3795–3796)</span>
+</div>
+
+<h4>Translation</h4>
+<div class="translation">
+"On the strength of the [sūtra-]saying: '[the unlearned ordinary
+person,] when touched by painful vedanā, delights in kāma-sukha
+[= sensual pleasure],' even painful vedanā too is a cause of
+craving — [namely] of craving for pleasure. By examining it, [the
+practitioner] enters the truth of origin."
+</div>
+</section>
+
+<section class="sentence" id="s34">
+<h3>§34 — Sa hi vedanāṃ svarūpataḥ kāraṇataḥ … upaparīkṣamāṇaḥ <span class="status verified">VERIFIED</span></h3>
+
+<h4>Yamaguchi text (MS + brief italics)</h4>
+<div class="yamaguchi">
+<span class="ms-direct">sa hi vedanāṃ svarūpataḥ kāraṇataḥ</span>
+<span class="ms-direct">kāryato 'nityato duḥkhataś ca
+upaparīkṣamāṇaḥ samudaya-satyam avatarati |</span>
+<span class="recon">tṛṣṇāṃ tat-kāryatvena avagacchati iti arthaḥ |</span>
+<span class="folio-anchor">(p. 169; OCR lines 6913–6916, with
+Yamaguchi fn. 2)</span>
+</div>
+
+<h4>Apparatus note (Yamaguchi fn. 2)</h4>
+<p>fn. 2: MS reads <code>kāraṇato</code>; Tib.
+<code>ḥbras-bu … ñid-du</code> (= <em>kāryataḥ</em>). Yamaguchi
+suggests the MS lost <em>kāryataḥ</em> and the Tib. lost
+<em>kāraṇataḥ</em> — both readings should stand together,
+parallel to a similar list at p. 170 line 11. Yamaguchi
+accordingly inserts both.</p>
+
+<h4>Structure</h4>
+<p>Five-fold examination of vedanā as the route into
+samudaya-satya:</p>
+<ol>
+  <li><em>svarūpataḥ</em> — by its own nature</li>
+  <li><em>kāraṇataḥ</em> — by its cause (= avidyā-saṃsparśa)</li>
+  <li><em>kāryataḥ</em> — by its effect (= tṛṣṇā)</li>
+  <li><em>anityataḥ</em> — by its impermanence</li>
+  <li><em>duḥkhataḥ</em> — by its painfulness</li>
+</ol>
+<p>The gloss <em>tṛṣṇāṃ tat-kāryatvena avagacchati</em> ("[the
+practitioner] cognizes <em>tṛṣṇā</em> as [vedanā's] effect")
+explains specifically how the <em>kāryataḥ</em>-examination opens
+onto samudaya-satya.</p>
+
+<h4>Yamaguchi vs. proposed (no change apart from Yamaguchi's own
+fn. 2 emendation)</h4>
+<div class="compare">
+<div class="before">
+<h5>Yamaguchi 1934 as printed (with his fn. 2 added back)</h5>
+sa hi vedanāṁ svarūpataḥ kāraṇataḥ [kāryato] 'nityato duḥkhataç
+copaparīkṣamāṇaḥ samudayasatyam avatarati | <em>tṛṣṇāṁ
+tatkāryatvenāvagacchatīty arthaḥ</em> |
+</div>
+<div class="after">
+<h5>Proposed re-edited text</h5>
+sa hi vedanāṃ svarūpataḥ kāraṇataḥ kāryato 'nityato duḥkhataś ca
+upaparīkṣamāṇaḥ samudaya-satyam avatarati | "tṛṣṇāṃ tat-kāryatvena
+avagacchati" iti arthaḥ |
+</div>
+</div>
+
+<h4>Yamaguchi's Japanese translation</h4>
+<div class="japanese">
+彼〔修行者〕受を、自性と因と果とより、また無常及び苦なりと観察するとき集諦に入る。渇愛を彼〔受〕の果體として悟了すとの義なり。
+<span class="folio-anchor">(<code>references/mavt-ja.txt</code> lines 3797–3798)</span>
+</div>
+
+<h4>Translation</h4>
+<div class="translation">
+"For he, examining vedanā by its self-nature, by its cause, by its
+effect, by its impermanence, and by its painfulness, enters the
+truth of origin. The sense is: '[he] cognizes <em>tṛṣṇā</em> as
+[vedanā's] effect.'"
+</div>
+</section>
+
+<section class="sentence" id="s35">
+<h3>§35 — Tṛṣṇā hi sūtre samudaya-satyam ity uktā (sūtra-citation) <span class="status verified">VERIFIED</span></h3>
+
+<h4>Yamaguchi text (italicised sūtra-reference)</h4>
+<div class="yamaguchi">
+<span class="recon">tṛṣṇā hi sūtre samudaya-satyam ity uktā |</span>
+<span class="ms-direct">ko duḥkha-samudayaḥ |</span>
+<span class="recon">paṭhyate "tṛṣṇā pāunarbhavikā ānandā rāga-
+sahagatā" iti vistaraḥ |</span>
+<span class="ms-direct">evaṃ vedanā-smṛtyupasthānena
+samudaya-satyam avatarati |</span>
+<span class="folio-anchor">(p. 169; OCR lines 6916–6918)</span>
+</div>
+
+<h4>The sūtra citation</h4>
+<div class="parallel">
+<span class="src">Dharmacakra-pravartana-sūtra / second noble truth definition</span>
+The classical definition: <em>yā 'yaṃ tṛṣṇā pāunarbhavikī
+nandī-rāga-sahagatā tatra-tatra-abhinandinī</em> ("the craving
+that is rebirth-producing, accompanied by delight-and-passion,
+delighting here and there"). Pāli at Saṃyutta-Nikāya 56.11
+(Dhammacakkappavattana-sutta) and elsewhere
+(<em>yāyaṃ taṇhā ponobhavikā nandīrāgasahagatā
+tatratatrābhinandinī</em>, cf. Yamaguchi Japanese fn. 3850
+quoting MN 141). Cited verbatim across Yogācāra / Abhidharma
+literature.
+</div>
+
+<h4>Apparatus note (Yamaguchi fn. 3)</h4>
+<p>fn. 3: MS reads <code>°viveka</code>; Tib.
+<code>yaṅ-ḥbyuṅ-baḥi</code> (= <em>pāunarbhavika</em>). Yamaguchi
+adopts the Tibetan reading — clearly correct, since the sūtra-text
+is standard.</p>
+
+<h4>Yamaguchi vs. proposed</h4>
+<div class="compare">
+<div class="before">
+<h5>Yamaguchi 1934 as printed</h5>
+<em>tṛṣṇā hi sūtre samudayasatyam ity uktā</em> | ko
+duḥkhasamudayaḥ | <em>paṭhyate tṛṣṇā pāunarbhavikānandā
+rāgasahagateti vistaraḥ</em> | evaṁ vedanāsmṛtyupasthānena
+samudayasatyam avatarati |
+</div>
+<div class="after">
+<h5>Proposed re-edited text</h5>
+"tṛṣṇā hi sūtre samudaya-satyam" ity uktā | "ko duḥkha-samudayaḥ?
+paṭhyate: tṛṣṇā pāunarbhavikā ānandā rāga-sahagatā" iti vistaraḥ |
+evaṃ vedanā-smṛtyupasthānena samudaya-satyam avatarati |
+</div>
+</div>
+
+<h4>Yamaguchi's Japanese translation</h4>
+<div class="japanese">
+實に渇愛は經中にも集諦なりと説かれたり。 云何が苦の集なる。 後有を喜ぶ渇愛にして貪と倶なるものなり等と誦せらる。 かくの如く受念處によりて集諦に入る。
+<span class="folio-anchor">(<code>references/mavt-ja.txt</code> lines 3800–3803)</span>
+</div>
+
+<h4>Translation</h4>
+<div class="translation">
+"For in the sūtra, tṛṣṇā is said to be the truth of origin. [As
+the sūtra has it:] 'What is the origin of suffering? It is recited:
+the craving that is rebirth-producing, accompanied by delight and
+passion' — and so on. Thus, by the foundation-of-mindfulness on
+vedanā, [the practitioner] enters the truth of origin."
+</div>
+</section>
+
+<section class="sentence" id="s36">
+<h3>§36 — Ātmābhiniveśa-vastu cittam (citta-smṛtyupasthāna opens) <span class="status verified">VERIFIED</span></h3>
+
+<h4>Yamaguchi text (MAVbh pratīka + gloss)</h4>
+<div class="yamaguchi">
+<span class="ms-direct">ātmābhiniveśa-vastu cittam iti</span>
+<span class="ms-direct">anyasya nityādi-guṇa-viśiṣṭasya ātmano
+'bhāvāt</span>
+<span class="recon">ātmābhiniveśa-ālambanaṃ cittam eva |</span>
+<span class="ms-direct">tasmāt</span>
+<span class="recon">tat-parīkṣayā</span>
+<span class="ms-direct">nirodha-satyam avatarati śāntatvena |</span>
+<span class="folio-anchor">(p. 169; OCR lines 6920–6922)</span>
+</div>
+
+<h4>The MAVbh source</h4>
+<div class="parallel">
+<span class="src">Vasubandhu MAVbh ad IV.1</span>
+— local <code>references/SA_T06_vmvkbh_u.txt</code> line 812;
+indexed in
+<a href="https://dharmamitra.org/nexus/db/sa/SA_T06_vmvkbh_u/text?active_segment=SA_T06_vmvkbh_u:789">SA_T06_vmvkbh_u</a>.
+<span class="quote">ātmābhiniveśavastu cittaṃ tatparīkṣayā
+nirodhasatyam avataraty ātmocchedabhayāpagamāt /</span>
+Verbatim MAVbh. Sthiramati glosses each piece: "<em>citta is the
+locus of ātma-clinging</em> [pratīka] — because there is no other
+ātman endowed with the qualities of permanence etc., the ālambana
+of ātma-clinging is citta itself."
+</div>
+
+<h4>Yamaguchi vs. proposed (no change)</h4>
+<div class="compare">
+<div class="before">
+<h5>Yamaguchi 1934 as printed</h5>
+ātmābhiniveçavastu cittam iti anyasya nityādiguṇaviçiṣṭasya
+ātmano 'bhāvād <em>ātmābhiniveçālambanaṁ cittam eva</em> | tasmāt
+<em>tatparīkṣayā</em> nirodhasatyam avatarati çāntatvena |
+</div>
+<div class="after">
+<h5>Proposed re-edited text</h5>
+"ātmābhiniveśa-vastu cittam" iti — anyasya nityādi-guṇa-viśiṣṭasya
+ātmano 'bhāvād ātmābhiniveśa-ālambanaṃ cittam eva | tasmāt
+tat-parīkṣayā nirodha-satyam avatarati śāntatvena |
+</div>
+</div>
+
+<h4>Yamaguchi's Japanese translation</h4>
+<div class="japanese">
+我を執著する依處は心なりと云ふ、常等の殊勝なる德有る我は別に無きが故に我執の所縁は心のみ。 されば彼〔心〕を觀察することによりて滅諦を寂靜性として悟入す。
+<span class="folio-anchor">(<code>references/mavt-ja.txt</code> lines 3804–3805)</span>
+</div>
+
+<h4>Translation</h4>
+<div class="translation">
+"[MAVbh:] '<em>citta is the locus of clinging-to-self</em>' —
+because there is no other self-endowed-with-the-qualities-of-
+permanence-and-so-on, the object of self-clinging is citta itself.
+Therefore, by examining it, [the practitioner] enters the truth
+of cessation [understood] as quiescence."
+</div>
+</section>
+
+<section class="sentence" id="s37">
+<h3>§37 — Atra eva kāraṇam āha: ātmoccheda-bhaya-apagamād iti <span class="status verified">VERIFIED</span></h3>
+
+<h4>Yamaguchi text (gloss on MAVbh continuation)</h4>
+<div class="yamaguchi">
+<span class="ms-direct">atra eva kāraṇam āha |</span>
+<span class="recon">ātmoccheda-bhaya-apagamād iti |</span>
+<span class="ms-direct">citte hi anityatvādi-parīkṣayā
+ātmābhiniveśo vyāvartate duḥkha-saṃjñā pravartate | ataś ca
+ātmoccheda-bhaya-apagamād</span>
+<span class="recon">duḥkha-mātrasya ucchedān</span>
+<span class="ms-direct">nirodha-satyaṃ śāntatvena
+avatarati iti |</span>
+<span class="folio-anchor">(p. 169; OCR lines 6922–6926, with
+Yamaguchi fn. 4)</span>
+</div>
+
+<h4>Apparatus note (Yamaguchi fn. 4)</h4>
+<p>fn. 4: MS reads <code>śāntatvaṃ cāvatarati</code>; Tib.
+<code>[ḥgog-paḥi bden-pa-la] çi-ba-ñid-du hjug-pa-ste</code>
+(= "[enters] the [truth of cessation] as quiescence"). Yamaguchi
+restores the longer Tibetan-attested reading
+<code>duḥkha-mātrasya ucchedāt nirodha-satyaṃ śāntatvena
+avatarati</code>.</p>
+
+<h4>Structure</h4>
+<p>The why-question and answer for citta→nirodha:</p>
+<ol>
+  <li>By examining citta for impermanence etc., the
+  ātma-abhiniveśa ceases and the perception of suffering arises.</li>
+  <li>Therefore, with the fear of self-annihilation gone (=
+  MAVbh's <em>ātmoccheda-bhaya-apagamāt</em>), and through the
+  cessation of mere-suffering (Yamaguchi's reconstruction
+  <em>duḥkha-mātrasya ucchedāt</em>), [the practitioner] enters
+  the truth of cessation as quiescence.</li>
+</ol>
+
+<h4>Yamaguchi vs. proposed (Yamaguchi's reconstruction stands)</h4>
+<div class="compare">
+<div class="before">
+<h5>Yamaguchi 1934 as printed</h5>
+atrāiva kāraṇam āha | <em>ātmocchedabhayāpagamād</em> iti | citte
+hy anityatvādiparīkṣayā'tmābhiniveço vyāvartate duḥkhasaṁjñā
+pravartate | ataç cātmocchedabhayāpagamād
+<em>duḥkhamātrāsyocchedān</em> nirodhasatyaṁ
+çāntatvenāvataratīti |
+</div>
+<div class="after">
+<h5>Proposed re-edited text</h5>
+atra eva kāraṇam āha — "ātmoccheda-bhaya-apagamād" iti | citte hi
+anityatvādi-parīkṣayā ātmābhiniveśo vyāvartate duḥkha-saṃjñā
+pravartate | ataś ca ātmoccheda-bhaya-apagamād
+duḥkha-mātrasya ucchedān nirodha-satyaṃ śāntatvena
+avatarati iti |
+</div>
+</div>
+
+<h4>Yamaguchi's Japanese translation</h4>
+<div class="japanese">
+此處に因を設けり、我の断絶することに對する怖を離るが故にと。 所以は心を無常等と觀察することによりて我執止息し苦想起るが故なり。 されば我の断絶することに對する怖を離るゝにより、 苦のみの斷絶なるが故に滅諦を寂靜として悟入すと。
+<span class="folio-anchor">(<code>references/mavt-ja.txt</code> lines 3806–3808)</span>
+</div>
+
+<h4>Translation</h4>
+<div class="translation">
+"[The bhāṣyakāra] states the very reason for this [pratīka]:
+'because of the removal of the fear of self-annihilation.' For,
+through the examination of citta as impermanent etc., the
+self-clinging ceases and the perception of [it as] suffering
+arises. Therefore, through the removal of the fear of
+self-annihilation, by the cessation of mere-suffering, [the
+practitioner] enters the truth of cessation [understood] as
+quiescence."
+</div>
+</section>
+
+<section class="sentence" id="s38">
+<h3>§38 — Evaṃ citta-smṛtyupasthānena nirodha-satyam avatarati (closing pratīka) <span class="status verified">VERIFIED</span></h3>
+
+<h4>Yamaguchi text</h4>
+<div class="yamaguchi">
+<span class="ms-direct">evaṃ citta-smṛtyupasthānena
+nirodha-satyam avatarati iti |</span>
+<span class="folio-anchor">(p. 169; OCR lines 6926–6927, with
+Yamaguchi fn. 5)</span>
+</div>
+
+<h4>Apparatus note (Yamaguchi fn. 5)</h4>
+<p>fn. 5: MS reads <code>cittasmṛty</code>; Tib.
+<code>sems dran-pa</code>. The MS reading is fine
+(<em>citta-smṛti-upasthāna</em>); the Tibetan paraphrases.</p>
+
+<h4>Yamaguchi vs. proposed (no change)</h4>
+<div class="compare">
+<div class="before">
+<h5>Yamaguchi 1934 as printed</h5>
+evaṁ cittasmṛtyupasthānena nirodhasatyam avataratīti |
+</div>
+<div class="after">
+<h5>Proposed re-edited text</h5>
+"evaṃ citta-smṛtyupasthānena nirodha-satyam avatarati" iti |
+</div>
+</div>
+
+<h4>Yamaguchi's Japanese translation</h4>
+<div class="japanese">
+かくの如く心念處によりて滅諦に入るとなり。
+<span class="folio-anchor">(<code>references/mavt-ja.txt</code> line 3809)</span>
+</div>
+
+<h4>Translation</h4>
+<div class="translation">
+"Thus, by the foundation-of-mindfulness on citta, [the
+practitioner] enters the truth of cessation."
+</div>
+</section>
+
+<section class="sentence" id="s39">
+<h3>§39 — Dharma-parīkṣayā … mārga-satyam avatarati (dharma section opens) <span class="status verified">VERIFIED</span></h3>
+
+<h4>Yamaguchi text</h4>
+<div class="yamaguchi">
+<span class="ms-direct">dharma-parīkṣayā sāṃkleśika-vyāvadānika-
+dharma-asammohān mārga-satyam avatarati iti |</span>
+<span class="ms-direct">tatra sāṃkleśikā dharmāḥ kleśa-upakleśāḥ |
+<span class="folio-anchor">[Tib. 109, a]</span></span>
+<span class="recon">vyāvadānikās tu kleśa-upakleśa-pratipakṣa-
+…</span>
+<span class="folio-anchor">(p. 169 → 170; OCR lines 6929–6931,
+continues on page 208)</span>
+</div>
+
+<h4>The MAVbh source</h4>
+<div class="parallel">
+<span class="src">Vasubandhu MAVbh ad IV.1</span>
+— local <code>references/SA_T06_vmvkbh_u.txt</code> line 813;
+indexed in
+<a href="https://dharmamitra.org/nexus/db/sa/SA_T06_vmvkbh_u/text?active_segment=SA_T06_vmvkbh_u:789">SA_T06_vmvkbh_u</a>.
+<span class="quote">dharma-parīkṣayā sāṃkleśika-vaiyavadānika-
+dharma-asammohāt / mārga-satyam avataraty ataḥ /</span>
+Note MAVbh has <em>vaiyavadānika-</em> (longer form, with vṛddhi);
+Sthiramati uses <em>vyāvadānika-</em> (shorter form, no vṛddhi).
+This is just an orthographic variant — both forms are attested
+in Yogācāra Sanskrit.
+</div>
+
+<h4>Structure</h4>
+<p>Opens the dharma-smṛtyupasthāna → mārga-satya section. The two
+classes of dharmas to be distinguished:</p>
+<ul>
+  <li><em>sāṃkleśika</em> dharmas = <em>kleśa-upakleśāḥ</em>
+  (defilements and secondary defilements).</li>
+  <li><em>vyāvadānika</em> dharmas = <em>kleśa-upakleśa-pratipakṣa-</em>
+  [their counteragents] — continues on p. 208.</li>
+</ul>
+
+<h4>Yamaguchi vs. proposed (no change)</h4>
+<div class="compare">
+<div class="before">
+<h5>Yamaguchi 1934 as printed</h5>
+dharmaparīkṣayā sāṁkleçikavyāvadānikadharmāsammohān
+mārgasatyam avataratīti | tatra sāṁkleçikā dharmāḥ kleçopakleçāḥ
+| <em>vyāvadānikās tu kleçopakleçapratipakṣa-…</em>
+</div>
+<div class="after">
+<h5>Proposed re-edited text</h5>
+"dharma-parīkṣayā sāṃkleśika-vyāvadānika-dharma-asammohān
+mārga-satyam avatarati" iti | tatra sāṃkleśikā dharmāḥ
+kleśa-upakleśāḥ | vyāvadānikās tu kleśa-upakleśa-pratipakṣa-…
+[continues p. 208]
+</div>
+</div>
+
+<h4>Yamaguchi's Japanese translation</h4>
+<div class="japanese">
+法を觀察することによりて雑染と清浄との法に對して愚迷せざるが故に道諦に入ると云ふ、その中、雑染法は煩惱と隨煩惱となり。 然るに清浄〔法〕は煩惱と隨煩惱との對治となれる…
+<span class="folio-anchor">(<code>references/mavt-ja.txt</code> lines 3810–3811)</span>
+</div>
+
+<h4>Translation</h4>
+<div class="translation">
+"'By the examination of dharmas, through non-confusion regarding
+defiling (<em>sāṃkleśika</em>) and purifying (<em>vyāvadānika</em>)
+dharmas, [the practitioner] enters the truth of the path.' Among
+these, the defiling dharmas are the <em>kleśa</em>s and
+<em>upakleśa</em>s. The purifying [dharmas] are the counteragents
+to those defilements and secondary defilements… [continues on
+p. 208]"
+</div>
+</section>
+<section class="sentence" id="s33"><h3>§33 — Sa duḥkha-vedanayā spṛṣṭaḥ kāma-sukham abhinandati (sūtra citation) <span class="status pending">PENDING</span></h3></section>
+<section class="sentence" id="s34"><h3>§34 — Sa hi vedanāṃ svarūpataḥ kāraṇataḥ … upaparīkṣamāṇaḥ <span class="status pending">PENDING</span></h3></section>
+<section class="sentence" id="s35"><h3>§35 — Tṛṣṇā sūtre samudaya-satyam ity uktā (paṭhyate tṛṣṇā pāunarbhavikā …) <span class="status pending">PENDING</span></h3></section>
+<section class="sentence" id="s36"><h3>§36 — Ātmābhiniveśa-vastu cittam (citta-smṛtyupasthāna opens) <span class="status pending">PENDING</span></h3></section>
+<section class="sentence" id="s37"><h3>§37 — Atra eva kāraṇam āha: ātmoccheda-bhaya-apagamāt iti <span class="status pending">PENDING</span></h3></section>
+<section class="sentence" id="s38"><h3>§38 — Evaṃ citta-smṛtyupasthānena nirodha-satyam avatarati <span class="status pending">PENDING</span></h3></section>
+<section class="sentence" id="s39"><h3>§39 — Dharma-parīkṣayā … mārga-satyam avatarati (dharma section opens, → p. 208) <span class="status pending">PENDING</span></h3></section>
+
+
+</body>
+</html>
