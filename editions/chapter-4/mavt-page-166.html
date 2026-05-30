@@ -1,1106 +1,219 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Sthiramati MAVT chapter 4 — re-edition walk-through</title>
-  <style>
-    :root {
-      --bg: #fdfdfb;
-      --fg: #1c1c1c;
-      --muted: #6b6b6b;
-      --rule: #d8d3c8;
-      --accent: #6c4a1d;
-      --skt-bg: #f4efe4;
-      --para-bg: #eef2f6;
-      --tib-bg: #f6f1ef;
-      --recon-bg: #f0e7d9;
-      --proposed-bg: #e1ecdb;
-      --warn-bg: #fde6e1;
-      --link: #1d4f8e;
-    }
-    html { font-size: 16px; }
-    body {
-      font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
-      background: var(--bg);
-      color: var(--fg);
-      max-width: 960px;
-      margin: 2.5rem auto;
-      padding: 0 1.5rem 4rem;
-      line-height: 1.55;
-    }
-    h1 { font-size: 1.6rem; margin-bottom: 0.2rem; }
-    h2 {
-      font-size: 1.2rem;
-      margin-top: 2.6rem;
-      padding-bottom: 0.2rem;
-      border-bottom: 1px solid var(--rule);
-      color: var(--accent);
-    }
-    h3 { font-size: 1.05rem; margin-top: 1.6rem; color: var(--accent); }
-    h4 { font-size: 0.95rem; margin: 0.8rem 0 0.3rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
-    p, ul, ol { margin: 0.5rem 0; }
-    .meta { color: var(--muted); font-size: 0.85rem; margin-top: 0; }
-    .conventions { font-size: 0.88rem; color: var(--muted); }
-    .conventions code { background: #efeae0; padding: 0 0.25rem; border-radius: 2px; }
-    code, .ms { font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 0.92em; }
-    .yamaguchi {
-      background: var(--recon-bg);
-      padding: 0.55rem 0.85rem;
-      border-left: 3px solid #b88c1d;
-      margin: 0.4rem 0;
-      font-family: "Charis SIL", "Gentium Plus", Georgia, serif;
-    }
-    .yamaguchi .recon { font-style: italic; color: #8a3e0c; }
-    .yamaguchi .ms-direct { color: #1c1c1c; }
-    .tibetan {
-      background: var(--tib-bg);
-      padding: 0.55rem 0.85rem;
-      border-left: 3px solid #8a4a4a;
-      margin: 0.4rem 0;
-      font-family: "Jomolhari", "Tibetan Machine Uni", "Iowan Old Style", serif;
-    }
-    .proposed {
-      background: var(--proposed-bg);
-      padding: 0.55rem 0.85rem;
-      border-left: 3px solid #4a7a3a;
-      margin: 0.4rem 0;
-      font-family: "Charis SIL", "Gentium Plus", Georgia, serif;
-    }
-    .proposed strong { color: #2d5020; }
-    .japanese {
-      background: #f5f0e8;
-      padding: 0.55rem 0.85rem;
-      border-left: 3px solid #6b4a2a;
-      margin: 0.4rem 0;
-      font-family: "Hiragino Mincho ProN", "Yu Mincho", "MS Mincho", serif;
-      font-size: 0.97rem;
-    }
-    .compare {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.6rem;
-      margin: 0.6rem 0;
-    }
-    .compare > div {
-      padding: 0.55rem 0.75rem;
-      border-radius: 3px;
-      font-family: "Charis SIL", "Gentium Plus", Georgia, serif;
-      font-size: 0.95rem;
-    }
-    .compare .before {
-      background: #f4ebe0;
-      border-left: 3px solid #b88c1d;
-    }
-    .compare .after {
-      background: #e1ecdb;
-      border-left: 3px solid #4a7a3a;
-    }
-    .compare h5 {
-      margin: 0 0 0.3rem 0;
-      font-size: 0.78rem;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      color: #555;
-    }
-    .compare .before h5 { color: #8a3e0c; }
-    .compare .after h5 { color: #2d5020; }
-    .translation {
-      background: #fafafa;
-      border-left: 3px solid #777;
-      padding: 0.5rem 0.85rem;
-      margin: 0.4rem 0;
-      font-style: italic;
-      color: #333;
-    }
-    .parallel {
-      background: var(--para-bg);
-      padding: 0.55rem 0.8rem;
-      border-left: 3px solid #5a7da2;
-      margin: 0.4rem 0;
-      font-size: 0.95rem;
-    }
-    .parallel .src { font-weight: 600; }
-    .parallel .quote {
-      display: block;
-      margin-top: 0.25rem;
-      font-family: "Charis SIL", "Gentium Plus", Georgia, serif;
-      font-style: italic;
-      color: #333;
-    }
-    .justification {
-      background: #f9f5e8;
-      border-left: 3px solid #c2a04a;
-      padding: 0.5rem 0.85rem;
-      margin: 0.4rem 0;
-      font-size: 0.93rem;
-    }
-    .warn {
-      background: var(--warn-bg);
-      padding: 0.45rem 0.75rem;
-      border-left: 3px solid #b54c30;
-      margin: 0.4rem 0;
-      font-size: 0.93rem;
-    }
-    .disclaimer {
-      background: #fff3e0;
-      border: 2px solid #c25c1a;
-      border-radius: 4px;
-      padding: 1rem 1.2rem;
-      margin: 1.2rem 0 2rem;
-      font-size: 0.95rem;
-    }
-    .disclaimer h2 { margin-top: 0; border: none; color: #8a3e0c; font-size: 1.05rem; }
-    .disclaimer p { margin: 0.5rem 0; }
-    .disclaimer ul { margin: 0.4rem 0 0.4rem 1.2rem; padding: 0; }
-    .intro {
-      background: #f4f0e6;
-      border-left: 3px solid var(--accent);
-      padding: 0.8rem 1rem;
-      margin: 1rem 0 2rem;
-      font-size: 0.97rem;
-    }
-    .intro h3 { margin-top: 0.8rem; }
-    .status {
-      display: inline-block;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      padding: 0.15rem 0.5rem;
-      border-radius: 2px;
-      margin-left: 0.5rem;
-      vertical-align: middle;
-    }
-    .status.verified { background: #cfe5c7; color: #244a18; }
-    .status.pending  { background: #f0e4c2; color: #5a4310; }
-    .label {
-      display: inline-block;
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      padding: 0.1rem 0.4rem;
-      border-radius: 2px;
-      margin-right: 0.4rem;
-      text-transform: uppercase;
-    }
-    .label.recon { background: #f4dab8; color: #6a3f10; }
-    .label.ms { background: #d2dce8; color: #1f3a55; }
-    .label.tib { background: #e6cccc; color: #5a2d2d; }
-    .label.proposed { background: #c8dcc0; color: #2d5020; }
-    .folio-anchor { color: #999; font-size: 0.78rem; }
-    a { color: var(--link); text-decoration: none; border-bottom: 1px solid #c8d3e3; }
-    a:hover { background: #eef3fa; }
-    section.sentence { margin-top: 2.0rem; padding-top: 0.4rem; border-top: 1px dotted #d0d0c0; }
-    section.sentence h3 { display: flex; align-items: center; flex-wrap: wrap; }
-  </style>
-
-
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MAVT ch. 4, p. 166 — re-edition</title>
 <style>
-.mavt-img-banner { background:#f0e7d9; border-bottom:2px solid #b88c1d; padding:0.8rem 1rem; margin:-2.5rem -1.5rem 1.6rem; text-align:center; font-family:"Iowan Old Style",Georgia,serif; }
+:root {
+  --bg:#fdfdfb; --fg:#1c1c1c; --muted:#6b6b6b; --rule:#d8d3c8;
+  --accent:#6c4a1d; --link:#1d4f8e;
+  --skt-bg:#f4efe4; --tib-bg:#f6f1ef; --en-bg:#f0f5ef;
+}
+* { box-sizing:border-box; }
+body { font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif; background:var(--bg); color:var(--fg); max-width:1100px; margin:0 auto; padding:0 1.5rem 4rem; line-height:1.55; }
+.mavt-img-banner { background:#f0e7d9; border-bottom:2px solid #b88c1d; padding:0.8rem 1rem; margin:0 -1.5rem 1.6rem; text-align:center; font-family:"Iowan Old Style",Georgia,serif; }
 .mavt-img-banner .mavt-nav { font-size:0.88rem; margin-bottom:0.6rem; color:#6a3f10; }
 .mavt-img-banner .mavt-nav a { color:#5a2d2d; text-decoration:none; padding:0.15rem 0.5rem; background:#e8d8b8; border:1px solid #c8a87a; border-radius:3px; margin:0 0.2rem; display:inline-block; }
 .mavt-img-banner .mavt-nav a:hover { background:#d8c0a0; }
 .mavt-img-banner details { text-align:left; }
 .mavt-img-banner summary { cursor:pointer; font-size:0.92rem; color:#5a3a18; padding:0.3rem 0; user-select:none; }
 .mavt-img-banner summary:hover { color:#3a1a08; }
-.mavt-img-banner .mavt-img-strip { display:flex; flex-wrap:wrap; gap:0.6rem; justify-content:center; margin-top:0.6rem; }
-.mavt-img-banner .mavt-img-strip a { display:inline-block; text-decoration:none; }
-.mavt-img-banner .mavt-img-strip img { max-width:420px; max-height:560px; border:1px solid #b88c1d; border-radius:2px; transition:transform 0.15s; }
-.mavt-img-banner .mavt-img-strip img:hover { transform:scale(1.02); box-shadow:0 2px 8px rgba(0,0,0,0.15); }
-.mavt-img-banner .mavt-img-strip .mavt-img-cap { display:block; font-size:0.78rem; color:#6a3f10; margin-top:0.2rem; text-align:center; }
-.mavt-img-banner .mavt-img-single img { max-width:560px; max-height:760px; }
+.mavt-img-banner img { max-width:560px; max-height:780px; border:1px solid #b88c1d; border-radius:2px; margin-top:0.5rem; }
+h1 { font-size:1.5rem; margin:1rem 0 0.2rem; }
+h1 em { font-style:italic; color:#6c4a1d; }
+.meta { color:var(--muted); font-size:0.85rem; margin-top:0; }
+.intro { background:#f4f0e6; border-left:3px solid var(--accent); padding:0.9rem 1.2rem; margin:1.2rem 0 2rem; font-size:0.95rem; }
+.conventions { background:#f7f3ea; border:1px solid #e5dcc6; border-radius:3px; padding:0.7rem 1rem; margin:1rem 0; font-size:0.85rem; color:#5a4310; }
+.conventions code, .conventions span { background:#efeae0; padding:0 0.3rem; border-radius:2px; }
+
+section.sentence { background:#fff; border:1px solid var(--rule); border-radius:4px; padding:0.8rem 1rem; margin:1rem 0; }
+section.sutra-sentence { background:#fbf6e8; border-color:#d8b888; }
+.sen-header { display:flex; align-items:baseline; gap:0.8rem; flex-wrap:wrap; padding-bottom:0.4rem; border-bottom:1px dotted #e5dcc6; margin-bottom:0.6rem; }
+.sen-num { font-weight:700; color:#6c4a1d; font-size:1.05rem; }
+.sen-meta { font-size:0.78rem; color:var(--muted); }
+.sen-meta span { margin-right:0.6rem; }
+.row { display:grid; grid-template-columns:90px 1fr; gap:0.6rem; margin:0.45rem 0; align-items:start; }
+.row-label { font-size:0.76rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--muted); padding-top:0.25rem; font-weight:600; }
+.row-body { padding:0.4rem 0.7rem; border-radius:3px; font-family:"Charis SIL","Gentium Plus",Georgia,serif; font-size:1.0rem; line-height:1.5; }
+.row-skt .row-body { background:var(--skt-bg); }
+.row-tib .row-body { background:var(--tib-bg); font-family:"Jomolhari",Georgia,serif; }
+.row-en .row-body { background:var(--en-bg); font-style:italic; color:#2a3a2a; }
+
+.recon { color:#8a3e0c; font-style:italic; }
+.muula { font-weight:600; color:#2a3a55; background:#dde2eb; padding:0 0.2rem; border-radius:2px; }
+.sutra { font-weight:600; color:#244a18; background:#cfe5c7; padding:0 0.2rem; border-radius:2px; }
+.red { color:#6b4a10; }
+.quote { font-style:italic; color:#2a3a3a; }
+.ed { border-bottom:1px dotted #b88c1d; }
+.ed-src { font-size:0.78rem; color:#8a6f3a; vertical-align:super; }
+.apparatus { display:inline-block; vertical-align:super; margin-left:0.2rem; }
+.apparatus summary { cursor:pointer; font-size:0.7rem; color:#b88c1d; padding:0 0.2rem; background:#f4ebe0; border:1px solid #d8b888; border-radius:2px; list-style:none; user-select:none; }
+.apparatus summary::-webkit-details-marker { display:none; }
+.apparatus summary::marker { content:""; }
+.apparatus summary:hover { background:#e8d8b8; }
+.apparatus[open] summary { background:#e8d8b8; }
+.apparatus > .var-entry, .apparatus > .note-entry { display:block; background:#fefbf3; border:1px solid #e0d4b3; padding:0.4rem 0.6rem; margin-top:0.4rem; font-size:0.86rem; font-style:normal; }
+.var-src { font-weight:700; color:#6a3f10; }
+.note-entry { color:#3a3a3a; }
+.ref { color:#1d4f8e; cursor:help; border-bottom:1px dotted #1d4f8e; font-style:italic; font-size:0.94em; }
+.xs, .xt { text-decoration:none; border-bottom:1px dotted #5a2d2d; color:#3a3a3a; font-style:italic; }
+.xs:hover, .xt:hover { background:#f0e0e0; border-bottom-style:solid; }
+.xe-note { display:inline-block; margin:0 0.2rem; vertical-align:baseline; }
+.xe-note summary { cursor:pointer; font-size:0.74rem; color:#5a4310; padding:0 0.3rem; background:#f7f3ea; border:1px solid #d8c8a8; border-radius:2px; list-style:none; user-select:none; display:inline; }
+.xe-note summary::-webkit-details-marker { display:none; }
+.xe-note[open] { display:block; background:#fbf6e8; border:1px solid #d8c8a8; border-radius:3px; padding:0.4rem 0.7rem; margin:0.4rem 0; }
+.xe-note[open] summary { background:transparent; border:none; padding:0 0 0.2rem; }
+.xf-note { font-size:0.86em; color:#666; }
+.edref { font-size:0.86rem; color:#5a3a3a; background:#f0eae0; padding:0 0.3rem; border-radius:2px; }
+.parallels { margin:0.5rem 0 0.2rem 0; border-left:3px solid #5a7da2; padding:0.4rem 0.7rem; background:#eef2f6; border-radius:2px; }
+.parallels-head { font-size:0.78rem; color:#2a3a55; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.3rem; font-weight:600; }
+.parallel-entry { margin:0.4rem 0; padding-bottom:0.3rem; border-bottom:1px dotted #c0cad8; }
+.parallel-entry:last-child { border-bottom:none; }
+.parallel-src { font-size:0.82rem; color:#2a3a55; font-weight:600; }
+.parallel-src-inline { font-size:0.8rem; color:#5a2d2d; font-weight:600; margin-right:0.4rem; }
+.parallel-txt { font-size:0.93rem; color:#333; margin-top:0.2rem; }
+.parallel-txt a { color:#1d4f8e; text-decoration:none; }
+.parallel-txt a:hover { text-decoration:underline; }
+.var-stray { font-size:0.82rem; color:#888; }
+a { color:var(--link); text-decoration:none; }
+a:hover { text-decoration:underline; }
 </style>
 </head>
 <body>
-<div class="mavt-img-banner"><div class="mavt-nav"><a href="../../index.html">← Index</a><a href="../../all-pages.html">📑 All PDF pages</a></div><details open><summary>📜 Show original Yamaguchi 1934 scan — page 166</summary><div class="mavt-img-strip mavt-img-single"><a href="../../images/page-204.jpg" target="_blank" title="Click for full-size"><img src="../../images/page-204.jpg" alt="Yamaguchi 1934, p. 166" loading="lazy"><span class="mavt-img-cap">p. 166</span></a></div></details></div>
+
+<div class="mavt-img-banner">
+<div class="mavt-nav">
+<a href="../../index.html">← Index</a>
+<a href="../../all-pages.html">📑 All PDF pages</a>
+</div>
+<details open>
+<summary>📜 Original Yamaguchi 1934 scan — page 166</summary>
+<a href="../../images/page-204.jpg" target="_blank" title="Click for full-size"><img src="../../images/page-204.jpg" alt="Yamaguchi 1934, p. 166" loading="lazy"></a>
+</details>
+</div>
+
 <h1>Sthiramati, <em>Madhyāntavibhāgaṭīkā</em> — Yamaguchi p.&nbsp;166 <span style="font-size:0.7em;color:#888;">(chapter 4)</span></h1>
-<p class="meta">Yamaguchi 1934 file p. 204. Chapter 4 (<em>Pratipakṣa-bhāvanā-pariccheda</em>) — opening of chapter 4 (pratipakṣa-bhāvanā, 37 bodhipakṣya-dharmā). Methodology: <a href="../../mavt-reedition-workflow.md"><code>mavt-reedition-workflow.md</code></a>.</p>
-<h2>Page 204 (Yamaguchi p. 166) — opening of chapter 4</h2>
-<p class="meta">9 sentence-units. Walk-through begins at the
-chapter-opening prose.</p>
+<p class="meta">Yamaguchi 1934 file p. 204. Chapter 4 (<em>Pratipakṣa-bhāvanā-pariccheda</em>).
+Edited from Sebastian Nehrdich's TEI-style critical edition; all variants and citations preserved.
+Sanskrit/Tibetan quotations link to a search on
+<a href="https://dharmamitra.org/" target="_blank">DharmaMitra</a> /
+<a href="https://dharmanexus.net/" target="_blank">DharmaNexus</a>.</p>
+
+<div class="intro">Opening of chapter 4 (<em>Pratipakṣa-bhāvanā-pariccheda</em>); introduction of the 37 <em>bodhipakṣya-dharmā</em>; kārikā IV.1 (<em>dauṣṭhulyāt tarṣa-hetutvāt</em> …) cited; <em>kāya-smṛtyupasthāna</em> begins. Sentences §1–§22.</div>
+
+<div class="conventions">
+<strong>Conventions:</strong>
+<span class="recon">italic orange</span> = reconstructed by Yamaguchi from the Tibetan (italic in his print) ·
+<span class="muula">blue background</span> = mūla text (the kārikā that Sthiramati is commenting on) ·
+<span class="sutra">green background</span> = sūtra-quotation ·
+<span class="ed">dotted-underline</span> = editor's chosen reading (click 📋 for apparatus) ·
+<span class="ref">italic blue</span> = reference to another work (hover for full name) ·
+<span class="xs">dotted-underline italic</span> = inline Sanskrit/Tibetan citation (click for DharmaMitra search)
+</div>
+
 
 <section class="sentence" id="s1">
-<h3>§1 — Chapter-opening setup <span class="status verified">VERIFIED</span></h3>
-
-<h4>Yamaguchi text (italics = reconstructed from Tibetan)</h4>
-<div class="yamaguchi">
-<span class="ms-direct">tattvapratipādanānantaraṁ pratipakṣabhāvanā</span>
-<span class="recon">vaktavyā</span> |
-<span class="recon">tatrāvasthā phalaprāptis ca</span> |
-<span class="recon">atas tatpratipadānārtham</span>
-<span class="ms-direct">caturthaparicchedārambhaḥ</span> |
-<span class="folio-anchor">(p. 166; OCR lines 6803–6805)</span>
-</div>
-
-<h4>Tibetan evidence</h4>
-<p>Source located: <strong>BO_T06_D4032</strong> (Sthiramati MAVT in
-the Tengyur, Toh 4032). Chapter 4 opening at segments
-<a href="https://dharmamitra.org/nexus/db/bo/BO_T06_D4032/text?active_segment=BO_T06_D4032:270a-0">BO_T06_D4032:270a-0</a>
-through
-<a href="https://dharmamitra.org/nexus/db/bo/BO_T06_D4032/text?active_segment=BO_T06_D4032:270a-7">:270a-7</a>.</p>
-
-<div class="tibetan">
-དེ་ཁོ་ན་བཤད་པའི་འོག་ཏུ་གཉེན་པོ་བསྒོམ་པ་དང་། དེའི་གནས་དང་འབྲས་བུ་ཐོབ་པ་
-བཤད་དགོས་ཏེ། དེ་བས་ན་དེ་བསྟན་པའི་ཕྱིར་ལེའུར་བཅད་པ་བཞི་པ་བརྩམས་སོ།
-</div>
-
-<p>Gloss: "After reality has been explained, (i) the cultivation of
-counteragents, and (ii) its <em>avasthā</em>, and (iii) attainment of
-fruit must be explained; therefore, in order to teach those, the fourth
-chapter is undertaken." Note that the Tibetan has <strong>one</strong>
-verb (<code>bshad dgos te</code>, gerundive of obligation) governing
-three coordinated subjects — not three separate clauses as Yamaguchi's
-punctuation suggests.</p>
-
-<h4>Per-italics evidence and proposed re-readings</h4>
-
-<div class="justification">
-<strong>(a) <code>*vaktavyā*</code> → <code>vaktavyāḥ</code>
-(or alternatively <code>vaktavyam</code>)</strong><br>
-The Tibetan <code>bshad dgos te</code> is a single gerundive governing
-all three subjects. Yamaguchi's singular <code>vaktavyā</code> agrees
-only with <code>pratipakṣabhāvanā</code> and leaves the next two
-subjects verbless. Plural <code>vaktavyāḥ</code> fits the three-fold
-nominative-feminine construction; the impersonal neuter
-<code>vaktavyam</code> is also possible (MS-attested at MAVT line
-5143: <code>lakṣaṇatattvānantaram aviparyāsatattvaṁ vaktavyam</code>).
-The plural is preferable because the Tibetan back-reference
-<code>de bas na de bstan pa'i phyir</code> presupposes a plural
-antecedent ("teach <em>those</em>").
-</div>
-
-<div class="justification">
-<strong>(b) <code>*tatrāvasthā* *phalaprāptis* *ca*</code> →
-<code>tasyāś cāvasthā phalaprāptiś ca</code></strong><br>
-The Tibetan <code>de'i gnas dang 'bras bu thob pa</code> is genitive
-(<code>de'i</code> = <code>tasyāḥ</code>, fem. sg. ablative/genitive
-back-reference to <em>pratipakṣabhāvanā</em>), not locative
-(<code>tatra</code> = <code>de la / der</code>). The decisive
-internal evidence is the very next sentence of the MAVT — itself
-MS-attested, not reconstructed — which reads
-<code>tadavasthāphalaprāptyor uddeśaḥ</code> (line 6806 of the source
-file): Sthiramati uses <code>tad-</code> (compounded) precisely where
-Yamaguchi here puts <code>tatra</code>. Re-reading as
-<code>tasyāś cāvasthā phalaprāptiś ca</code> coordinates the three
-subjects under one gerundive and matches both the Tibetan and the
-following MS-attested form. (Yamaguchi's three-<em>daṇḍa</em>
-punctuation should also be replaced by single coordinators.)
-</div>
-
-<div class="justification">
-<strong>(c) <code>*tatpratipadānārtham*</code> →
-<code>tatpratipādanārtham</code></strong><br>
-This is a clear OCR / typesetting corruption: <code>pratipadāna-</code>
-is not a Sanskrit word, while <code>pratipādana-</code> ("expounding,
-causing to understand") is the standard nominal of
-<em>pra-vi-pad</em> causative. The MAVT itself has the form
-<code>tatpratipādanārtham</code> in three MS-attested (non-italic)
-locations: source-file lines
-<strong>1671</strong> (<code>atas tatpratipādanārtham āha</code>),
-<strong>2204</strong>, and <strong>3667</strong>
-(<code>tatpratipādanārtham ārabhyate</code>). The Tibetan
-<code>de bstan pa'i phyir</code> is neutral on number and supports
-either <code>tat-</code> or <code>teṣām</code>; Sthiramati's
-established idiom across the MAVT consistently uses <code>tat-</code>
-(generic neuter back-reference). Verdict: mechanical correction to
-<code>tatpratipādanārtham</code>, not even a "variant" but a printing
-error.
-</div>
-
-<h4>Yamaguchi vs. proposed (side-by-side)</h4>
-<div class="compare">
-<div class="before">
-<h5>Yamaguchi 1934 as printed</h5>
-tattvapratipādanānantaraṁ pratipakṣabhāvanā <em>vaktavyā</em> |
-<em>tatrāvasthā phalaprāptis ca</em> | <em>atas tatpratipadānārtham</em>
-caturthaparicchedārambhaḥ |
-</div>
-<div class="after">
-<h5>Proposed re-edited text</h5>
-tattvapratipādanānantaraṁ pratipakṣabhāvanā <strong>tasyāś cāvasthā
-phalaprāptiś ca vaktavyāḥ</strong> | <strong>atas
-tatpratipādanārthaṁ</strong> caturthaparicchedārambhaḥ |
-</div>
-</div>
-
-<h4>Yamaguchi's Japanese translation</h4>
-<div class="japanese">
-眞實示の次に對治の修習とそれの分位と得果とを説かざるべからず。
-夫故にそれを説示せん爲に第四品の製作あり。
-<span class="folio-anchor">(<code>references/mavt-ja.txt</code> lines 3734–3735)</span>
-</div>
-
-<h4>Translation</h4>
-<div class="translation">
-"After [the chapter on] the establishment of reality, [the chapter on]
-the cultivation of counteragents, together with its developmental
-stages (<em>avasthā</em>) and the attainment of its fruits
-(<em>phalaprāpti</em>), must be expounded; therefore, in order to
-expound those, the fourth chapter is undertaken."
-</div>
-
-<h4>Notes / open questions for the reviewer</h4>
-<ul>
-  <li><strong>vaktavyāḥ vs vaktavyam:</strong> the Tibetan does not
-  disambiguate. Plural matches the three subjects more naturally;
-  impersonal matches the MAVT-internal parallel at line 5143.
-  Editor's call.</li>
-  <li><strong>tasyāś ca vs tatra:</strong> the immediately following
-  MS-attested compound <code>tadavasthāphalaprāptyor</code> (line
-  6806) decisively favours <code>tad-/tasyāḥ</code> over
-  <code>tatra</code>. Yamaguchi's <code>tatra</code> appears to be a
-  loose rendering of Tibetan <code>de'i</code>.</li>
-  <li><strong>Punctuation:</strong> the Tibetan has one sentence with
-  one gerundive. Yamaguchi's three-<em>daṇḍa</em> structure is a
-  modernising over-segmentation not supported by the Tibetan.</li>
-  <li><strong>tatpratipadāna → tatpratipādana:</strong> a clear
-  printing / OCR error in Yamaguchi. No status as a "variant" — just
-  a correction.</li>
-</ul>
+  <header class="sen-header">
+    <span class="sen-num">§1</span>
+    <span class="sen-meta"><span class="meta-pandeya">Pandeya p. 125</span></span>
+  </header>
+  <div class="row row-skt"><div class="row-label">Sanskrit</div><div class="row-body">tattvapratipādanānantaraṃ pratipakṣabhāva<span class="recon">nā </span><span class="ed"><em>tadavasthā phalaprāptiś ca vaktavyāḥ</em><span class="ed-src">[Y Pa]</span> <details class="apparatus"><summary>📋</summary><span class="var-entry"><span class="var-src">Y Pa:</span> <span class="var-text"><em>vaktavyā tatrāvasthā phalaprāptiśca</em></span></span><span class="note-entry">cf. Y94.6: <a class="xs" href="https://dharmamitra.org/search?q=vaktavya" target="_blank" title="Search for this Sanskrit passage on DharmaMitra">vaktavya</a> (D: <a class="xt" href="https://dharmamitra.org/search?q=bshad+dgos" target="_blank" title="Search for this Tibetan passage on DharmaMitra">bshad dgos</a>). As can be seen in crit. ed. line <span class="edref">→ phala</span> the compound <a class="xs" href="https://dharmamitra.org/search?q=tad-avasth%C4%81-phala-pr%C4%81ptyor" target="_blank" title="Search for this Sanskrit passage on DharmaMitra">tad-avasthā-phala-prāptyor</a> is rendered with Tib. <a class="xt" href="https://dharmamitra.org/search?q=de%27i+gnas+dang+%27bras+bu+thob+pa+gnyis" target="_blank" title="Search for this Tibetan passage on DharmaMitra">de&#x27;i gnas dang &#x27;bras bu thob pa gnyis</a>.  Y's reconstruction is possibly based on the Śāstraśarīraṃ of the <span class="ref" title="Madhyāntavibhāgabhāṣya (Vasubandhu)">Madhyāntavibhāgabhāṣya (Vasubandhu)</span>: <a class="xs" href="https://dharmamitra.org/search?q=pratipak%E1%B9%A3asya+bh%C4%81van%C4%81+%7C+tatr%C4%81vasth%C4%81+phalapr%C4%81ptir" target="_blank" title="Search for this Sanskrit passage on DharmaMitra">pratipakṣasya bhāvanā | tatrāvasthā phalaprāptir</a> (Na17.7-8).</span></details></span> |</div></div>
+  <div class="row row-tib"><div class="row-label">Tibetan</div><div class="row-body">[D270a2] de kho na bshad pa'i 'og tu gnyen po bsgom pa <span class="recon">dang / de'i <span class="ed">gnas [P114b8]  dang 'bras bu <span class="ed-src">[D]</span> <details class="apparatus"><summary>📋</summary><span class="var-entry"><span class="var-src">P:</span> <span class="var-text">gnas pa'i bras bu</span></span></details></span> thob pa bshad dgos te /</span></div></div>
+  <div class="row row-en"><div class="row-label">English</div><div class="row-body">Directly after the teaching of reality, the cultivation of the antidotes, <span class="recon">its states and the attainment of [it's] results are to be taught.</span></div></div>
 </section>
+
 <section class="sentence" id="s2">
-<h3>§2 — Tattvānantaram uddiṣṭatvāt … uddeśaḥ <span class="status verified">VERIFIED</span></h3>
-
-<h4>Yamaguchi text (entirely MS-attested — no reconstruction)</h4>
-<div class="yamaguchi">
-<span class="ms-direct">tattvānantaram uddiṣṭatvāt
-pratipakṣabhāvanāpratibaddhatvāc ca tadavasthāphalaprāptyor uddeśaḥ |</span>
-<span class="folio-anchor">(p. 166; OCR lines 6805–6806)</span>
-</div>
-
-<h4>Tibetan</h4>
-<p>Located at
-<a href="https://dharmamitra.org/nexus/db/bo/BO_T06_D4032/text?active_segment=BO_T06_D4032:270a-7">BO_T06_D4032:270a-7</a>
-(continuous with §1).</p>
-<div class="tibetan">
-དེ་ཁོ་ནའི་འོག་ཏུ་བསྟན་པ་དང་གཉེན་པོ་བསྒོམ་པ་ལ་རག་ལུས་པའི་ཕྱིར་
-དེའི་གནས་དང་འབྲས་བུ་ཐོབ་པ་གཉིས་ཀྱང་སྨོས་སོ།
-</div>
-
-<h4>Alignment</h4>
-<ul>
-  <li><code>tattvānantaram uddiṣṭatvāt</code> ↔
-  <code>de kho na'i 'og tu bstan pa(s) … phyir</code> — confirmed.
-  Tibetan reads the ablative-of-cause as a single trailing
-  <code>phyir</code> shared across both conjuncts.</li>
-  <li><code>pratipakṣabhāvanā-pratibaddhatvāt</code> ↔
-  <code>gnyen po bsgom pa la rag lus pa'i phyir</code> — confirmed
-  verbatim. <em>rag las/lus pa</em> is Sthiramati's standard gloss
-  for <em>pratibaddha-</em> ("dependent on, bound to").</li>
-  <li><code>tadavasthāphalaprāptyor uddeśaḥ</code> ↔
-  <code>de'i gnas dang 'bras bu thob pa gnyis kyang smos so</code>
-  — confirmed verbatim. <em>gnas</em> = <em>avasthā</em>,
-  <em>'bras bu thob pa</em> = <em>phalaprāpti</em>; the dual
-  <em>-yor</em> rendered analytically as <em>gnyis kyang … smos so</em>.</li>
-</ul>
-
-<h4>Yamaguchi vs. proposed (no change required)</h4>
-<div class="compare">
-<div class="before">
-<h5>Yamaguchi 1934 as printed</h5>
-tattvānantaram uddiṣṭatvāt pratipakṣabhāvanāpratibaddhatvāc ca
-tadavasthāphalaprāptyor uddeśaḥ |
-</div>
-<div class="after">
-<h5>Proposed re-edited text</h5>
-tattvānantaram uddiṣṭatvāt pratipakṣabhāvanāpratibaddhatvāc ca
-tadavasthāphalaprāptyor uddeśaḥ |
-</div>
-</div>
-
-<h4>Yamaguchi's Japanese translation</h4>
-<div class="japanese">
-〔對治修習は本論初題の論體の七義中〕真實の次に標示せられたるが故に、
-而して彼〔對治修習〕の分位と得果とは對治修習に依屬せる義あるが故に〔本論〕
-第四品中に示す。
-<span class="folio-anchor">(<code>references/mavt-ja.txt</code> line 3736)</span>
-</div>
-
-<h4>Translation</h4>
-<div class="translation">
-"Because [they] are taught immediately after [the chapter on] reality,
-and because [they] are bound up with the cultivation of the
-counteragents, the two — [its] <em>avasthā</em> (developmental
-stage) and [its] <em>phalaprāpti</em> (attainment of the fruit) —
-are also mentioned [in the piṇḍārtha as belonging to chapter 4]."
-</div>
-
-<h4>Notes</h4>
-<ul>
-  <li>Sentence is MS-attested throughout; no emendation needed. Tibetan
-  confirms verbatim, and Sthiramati's internal idiom (cf. line 6816 in
-  §7 of this chapter: <code>tattvānantaram uddiṣṭatvāt</code>; line 6084;
-  line 6673) supports each constituent.</li>
-  <li>Standard Sthiramati diction: this is exactly how he opens
-  paricchedas elsewhere in the MAVT — a brief argument from the
-  piṇḍārtha's enumeration justifying why the chapter handles the items
-  it does.</li>
-</ul>
+  <header class="sen-header">
+    <span class="sen-num">§2</span>
+    <span class="sen-meta"><span class="meta-ms">MS fol. 56r4</span></span>
+  </header>
+  <div class="row row-skt"><div class="row-label">Sanskrit</div><div class="row-body"><span class="recon">atas </span> <span class="ed"><em>tatpratipādanārthaṃ</em> <details class="apparatus"><summary>📋</summary><span class="note-entry">cf. Y17.6: <a class="xs" href="https://dharmamitra.org/search?q=tatpratip%C4%81dan%C4%81rtha%E1%B9%83" target="_blank" title="Search for this Sanskrit passage on DharmaMitra">tatpratipādanārthaṃ</a> (D: <a class="xt" href="https://dharmamitra.org/search?q=bstan+pa%27i+phyir" target="_blank" title="Search for this Tibetan passage on DharmaMitra">bstan pa&#x27;i phyir</a>).</span></details></span> caturthaparicchedārambhaḥ |</div></div>
+  <div class="row row-tib"><div class="row-label">Tibetan</div><div class="row-body"><span class="recon">de bas na de bstan pa'i phyir </span> le'ur bcad pa bzhi pa brtsams so //</div></div>
+  <div class="row row-en"><div class="row-label">English</div><div class="row-body"><span class="recon">Therefore, for the purpose of teaching these</span> the fourth chapter is undertaken.</div></div>
 </section>
+
 <section class="sentence" id="s3">
-<h3>§3 — Sūtre pratipakṣatvena bodhipakṣya[ḥ] <span class="status verified">VERIFIED</span></h3>
-
-<h4>Yamaguchi text (italics = reconstructed)</h4>
-<div class="yamaguchi">
-<span class="ms-direct">sūtre pratipakṣatvena</span>
-<span class="recon">bodhipakṣo 'numata iti pradarśanārtham āha</span> |
-<span class="recon">pratipakṣabhāvanā bodhipakṣabhāvanā iti</span> |
-<span class="folio-anchor">(p. 166; OCR lines 6810–6812)</span>
-</div>
-
-<h4>The pivotal Vasubandhu source-quotation (MAVbh, MS-attested)</h4>
-<p>This whole sentence is Sthiramati's gloss on a single MAVbh
-sentence at the very opening of Vasubandhu's chapter 4 commentary —
-preserved in Sanskrit in Nagao's edition (the local file
-<code>references/SA_T06_vmvkbh_u.txt</code> line 801, indexed as
-<a href="https://dharmamitra.org/nexus/db/sa/SA_T06_vmvkbh_u/text?active_segment=SA_T06_vmvkbh_u:789">SA_T06_vmvkbh_u:789</a>):</p>
-<div class="parallel">
-<span class="src">Vasubandhu, MAVbh ch. 4 opening (Nagao Mvbh 50)</span>
-<span class="quote">pratipakṣabhāvanā bodhipakṣyabhāvanā sedānīṃ
-vaktavyā /</span>
-This is the direct lemma Sthiramati is sub-commenting on. <strong>Note
-the form <code>bodhipakṣya-</code></strong> (with the <code>-ya</code>
-suffix), <strong>not</strong> Yamaguchi's <code>bodhipakṣa-</code>.
-Sthiramati's §3 quotes the equation half, and his §7
-(<code>sedānīm vaktavyā | tattvānantaram uddiṣṭatvāt</code>) picks up
-the second half of the same MAVbh sentence.
-</div>
-
-<p>Confirming evidence for <code>-pakṣya-</code> as the consistent
-MAVbh form: local file line 435 (<code>bodhipakṣyeṣu tāvat /</code>)
-and line 510 (<code>tatvapraveśāvaraṇaṃ yad bodhipakṣyeṣu</code>).
-The MAVT itself preserves <code>bodhipakṣya</code> in the MS at line
-4670 (<code>sarvabodhipakṣyadhar-</code>, non-italic MS), and
-Yamaguchi's own footnote 4 to the present passage (OCR line 6833)
-records: <em>Ms. bodhipakṣya</em> — the second occurrence in §3 is
-in the MS and reads <em>-pakṣya-</em>. Yamaguchi silently normalised
-to <em>-pakṣa-</em>; this should be reverted.</p>
-
-<h4>Tibetan (BO_T06_D4032:270a-7)</h4>
-<div class="tibetan">
-བསྟན་པའི་མདོར་བྱས་པ་ལས་གཉེན་པོ་ནི་བྱང་ཆུབ་ཀྱི་ཕྱོགས་སུ་བཞེད་པར་
-བསྟན་པའི་ཕྱིར། གཉེན་པོ་བསྒོམ་པ་ནི་བྱང་ཆུབ་ཀྱི་ཕྱོགས་བསྒོམ་པ་སྟེ་ཞེས་
-བྱ་བ་སྨོས་སོ། །
-</div>
-<p>Gloss: "In order to indicate that, in the brief teaching of the
-sūtra, the counteragent is held to be the bodhi-pakṣa, [Vasubandhu]
-says: 'cultivation of the counteragent is cultivation of the
-bodhi-pakṣa.'" The Tibetan calque <code>byang chub kyi phyogs</code>
-is neutral between <code>-pakṣa-</code> and <code>-pakṣya-</code>,
-but the standard Tib. for <code>bodhipakṣya-dharma</code> is
-<code>byang chub kyi phyogs (dang mthun pa'i chos)</code>, which
-points to the <code>-pakṣya-</code> form.</p>
-
-<h4>Per-italics evidence and proposed re-readings</h4>
-
-<div class="justification">
-<strong>(a) <code>bodhipakṣo</code> → <code>bodhipakṣyo</code></strong><br>
-Three convergent witnesses: MAVbh (verbatim) reads
-<code>bodhipakṣyabhāvanā</code>; the MAVT MS itself (per Yamaguchi
-fn. 4) reads <code>bodhipakṣya</code> at the second occurrence;
-MAVT-internal non-italic at line 4670 has <code>bodhipakṣyadharma-</code>.
-Yamaguchi's silent normalisation to <code>-pakṣa-</code> is not
-supported by any witness.
-</div>
-
-<div class="justification">
-<strong>(b) <code>pratipakṣabhāvanā bodhipakṣabhāvanā iti</code> →
-<code>pratipakṣabhāvanā bodhipakṣyabhāvanā iti</code></strong><br>
-The quoted formula is verbatim MAVbh ch. 4 opening (Nagao Mvbh 50;
-local file line 801). Sthiramati is quoting Vasubandhu directly;
-the wording must match.
-</div>
-
-<div class="justification">
-<strong>(c) <code>'numata iti pradarśanārtham āha</code> — confirmed
-in template, not in lemma</strong><br>
-The frame <code>iti pradarśanārtham āha</code> is Sthiramati's
-standard "[in order to indicate X, he says Y]" idiom, abundantly
-attested in MAVT non-italic contexts (OCR lines 5150, 8575, 8584,
-9314, 9804). The reconstruction is structurally sound; the only
-substantive correction needed inside it is <code>bodhipakṣyo</code>
-for <code>bodhipakṣo</code> (see (a)).
-</div>
-
-<div class="justification">
-<strong>(d) minor: <code>te hī</code> → <code>te hi</code></strong><br>
-A typographic artefact in Yamaguchi's printing (the OCR may also be
-mis-reading); standard form is <code>te hi</code>.
-</div>
-
-<h4>Yamaguchi vs. proposed (side-by-side)</h4>
-<div class="compare">
-<div class="before">
-<h5>Yamaguchi 1934 as printed</h5>
-sūtre pratipakṣatvena <em>bodhipakṣo 'numata iti pradarśanārtham
-āha</em> | <em>pratipakṣabhāvanā bodhipakṣabhāvanā iti</em> | te
-hī yathoktāvaraṇavipakṣaprahāṇāya bhāvyamānāḥ prabhavantīti
-pratipakṣā ucyante |
-</div>
-<div class="after">
-<h5>Proposed re-edited text</h5>
-sūtre pratipakṣatvena <strong>bodhipakṣyo</strong> 'numata iti
-pradarśanārtham āha | pratipakṣabhāvanā
-<strong>bodhipakṣyabhāvanā</strong> iti | te hi
-yathoktāvaraṇavipakṣaprahāṇāya bhāvyamānāḥ prabhavantīti
-pratipakṣā ucyante |
-</div>
-</div>
-
-<h4>Yamaguchi's Japanese translation</h4>
-<div class="japanese">
-〔1〕對治修習經中に菩提分は對治性として認めらると示さんとて言へり、對治の修習は菩提分の修習なりと。
-<span class="folio-anchor">(<code>references/mavt-ja.txt</code> line 3739)</span>
-</div>
-
-<h4>Translation</h4>
-<div class="translation">
-"In order to indicate that, in the sūtra, the <em>bodhipakṣya</em>
-[-dharmas] are admitted as having the nature of a counteragent,
-[Vasubandhu] says: '<em>pratipakṣabhāvanā</em> is
-<em>bodhipakṣya-bhāvanā</em>.'"
-</div>
-
-<h4>Notes</h4>
-<ul>
-  <li>The MAVbh source-text (lemma) is the gold-standard parallel
-  for Sthiramati. Going forward, every Sthiramati passage should be
-  checked against the local
-  <code>references/SA_T06_vmvkbh_u.txt</code> first.</li>
-  <li><code>bodhipakṣya</code> vs <code>bodhipakṣa</code>: the
-  <code>-ya</code> form is standardly used for the 37
-  bodhi-conducive dharmas across Yogācāra texts. Yamaguchi's
-  silent normalisation may reflect a printing-house convention or
-  an attempt to align with non-Yogācāra usage, but it is
-  unsupported by the witnesses here.</li>
-</ul>
+  <header class="sen-header">
+    <span class="sen-num">§3</span>
+    
+  </header>
+  <div class="row row-skt"><div class="row-label">Sanskrit</div><div class="row-body"><span class="ed">tattvānantaram <span class="ed-src">[Y Pa St]</span> <details class="apparatus"><summary>📋</summary><span class="var-entry"><span class="var-src">Ms:</span> <span class="var-text">tattvānambhantaram</span></span><span class="var-entry"><span class="var-src">Yms:</span> <span class="var-text">tattvāntaram</span></span><span class="var-entry"><span class="var-src">Stms:</span> <span class="var-text">tattvānamtantaram</span></span></details></span> uddiṣṭatvāt pratipakṣabhāvanāpratibaddhatvāc ca tadavasthāphala-prāptyor uddeśaḥ |</div></div>
+  <div class="row row-tib"><div class="row-label">Tibetan</div><div class="row-body">de kho na'i 'og tu bstan pa dang gnyen po bsgom pa la rag lus pa'i phyir de'i gnas dang [P115a1] 'bras bu thob pa <span class="ed">gnyis <span class="ed-src">[D]</span> <details class="apparatus"><summary>📋</summary><span class="var-entry"><span class="var-src">P:</span> <span class="var-text">nyid </span></span></details></span> [D270a3] kyang smos so ||</div></div>
+  <div class="row row-en"><div class="row-label">English</div><div class="row-body">Because they are listed after the [teaching of] reality and because they are connected with the cultivation of the antidotes, there is the brief teaching [here in this chapter] of the state [of the cultivation of the antidotes] and the attainment of the fruit [of the cultivation of the antidotes.]</div></div>
 </section>
+
 <section class="sentence" id="s4">
-<h3>§4 — Te hi yathokta-āvaraṇa-vipakṣa-prahāṇāya <span class="status verified">VERIFIED</span></h3>
-
-<h4>Yamaguchi text (entirely MS-attested)</h4>
-<div class="yamaguchi">
-<span class="ms-direct">te hi yathoktāvaraṇavipakṣaprahāṇāya
-bhāvyamānāḥ prabhavantīti pratipakṣā ucyante |</span>
-<span class="folio-anchor">(p. 166; OCR lines 6812–6813)</span>
-</div>
-
-<h4>Tibetan (BO_T06_D4032:270a-9)</h4>
-<div class="tibetan">
-དེ་དག་བསྒོམས་ན་མི་མཐུན་པའི་ཕྱོགས་སྒྲིབ་པ་ཇི་སྐད་བསྟན་པ་རྣམས་སྤང་
-བར་བྱ་བ་ལ་མཐུ་ཡོད་པར་འགྱུར་བས་གཉེན་པོ་རྣམས་ཞེས་བྱའོ། །
-</div>
-
-<h4>Alignment</h4>
-<ul>
-  <li><code>te ... bhāvyamānāḥ</code> ↔ <code>de dag bsgoms na</code>
-  ("these, when cultivated").</li>
-  <li><code>yathokta-āvaraṇa-vipakṣa-prahāṇāya</code> ↔
-  <code>mi mthun pa'i phyogs sgrib pa ji skad bstan pa rnams spang
-  bar bya ba la</code> (Tibetan inverts: "to abandon the discordant
-  factors, the obscurations as previously taught").</li>
-  <li><code>prabhavanti</code> ↔ <code>mthu yod par 'gyur</code> ("come
-  to have the power/capacity"). The Tibetan resolves the ambiguity of
-  Skt. <em>pra-√bhū</em> ("arise" vs "be capable of") toward "be
-  capable of" — i.e. the Sanskrit means "are capable [of producing
-  the abandonment]," not "arise from."</li>
-  <li><code>pratipakṣā ucyante</code> ↔
-  <code>gnyen po rnams zhes bya'o</code>.</li>
-</ul>
-
-<h4>Yamaguchi vs. proposed (no change)</h4>
-<div class="compare">
-<div class="before">
-<h5>Yamaguchi 1934 as printed</h5>
-te hi yathoktāvaraṇavipakṣaprahāṇāya bhāvyamānāḥ prabhavantīti
-pratipakṣā ucyante |
-</div>
-<div class="after">
-<h5>Proposed re-edited text</h5>
-te hi yathoktāvaraṇavipakṣaprahāṇāya bhāvyamānāḥ prabhavantīti
-pratipakṣā ucyante |
-</div>
-</div>
-
-<h4>Yamaguchi's Japanese translation</h4>
-<div class="japanese">
-所以はそれらの修習せらるゝときは、如上〔第二品〕所説の所對治なる障を断ずることに力能あるが故に諸對治と稱せらる。
-<span class="folio-anchor">(<code>references/mavt-ja.txt</code> line 3740)</span>
-</div>
-
-<h4>Translation</h4>
-<div class="translation">
-"For when these [37 bodhipakṣya-dharmas] are cultivated, they come
-to have the capacity to abandon the previously-stated counterparts
-(<em>vipakṣa</em>) of the obscurations [i.e. the āvaraṇas treated in
-chapter 2]; that is why they are called <em>pratipakṣa</em>
-(counteragents)."
-</div>
-
-<h4>Notes</h4>
-<ul>
-  <li>Sthiramati's own etymological justification of the term
-  <em>pratipakṣa</em>: "they are called <em>pratipakṣa</em> because
-  they cultivate the capacity to abandon the <em>vipakṣa</em>." Same
-  argument-shape that appears in numerous Yogācāra contexts.</li>
-  <li><code>yathokta-</code> ("as previously stated") points back to
-  the <em>Āvaraṇa-pariccheda</em> (chapter 2) where the obscurations
-  are enumerated.</li>
-</ul>
+  <header class="sen-header">
+    <span class="sen-num">§4</span>
+    <span class="sen-meta"><span class="meta-mula">comments on mūla §2</span> · <span class="meta-ms">MS fol. 56r5</span></span>
+  </header>
+  <div class="row row-skt"><div class="row-label">Sanskrit</div><div class="row-body">sūtre pratipakṣatve<span class="recon">na </span><span class="ed"><em>bodhipakṣyā abhipretā iti pradarśayann āha</em> <span class="ed-src">[Y Pa]</span> <details class="apparatus"><summary>📋</summary><span class="var-entry"><span class="var-src">Y Pa:</span> <span class="var-text"><em>bodhipakṣo 'numata iti pradarśanārtham āha</em></span></span><span class="note-entry">cf. <span class="ref" title="Pañcaskandhakavibhāṣā (Sthiramati)">Pañcaskandhakavibhāṣā (Sthiramati)</span> 55.11: <a class="xs" href="https://dharmamitra.org/search?q=satk%C4%81yad%E1%B9%9B%E1%B9%A3%E1%B9%ADy%C4%81dik%C4%81%E1%B8%A5+pa%C3%B1ca+d%E1%B9%9B%E1%B9%A3%E1%B9%ADaya+ih%C4%81bhipret%C4%81+iti+pradar%C5%9Bann%C4%81ha" target="_blank" title="Search for this Sanskrit passage on DharmaMitra">satkāyadṛṣṭyādikāḥ pañca dṛṣṭaya ihābhipretā iti pradarśannāha</a> (<span class="ref" title="Pañcaskandhakavibhāṣā — Tibetan">Pañcaskandhakavibhāṣā — Tibetan</span> 218b5: <a class="xt" href="https://dharmamitra.org/search?q=%27dir+ni+%27jig+tshogs+la+lta+ba+la+sogs+pa+lta+ba+lnga+la+bya+bar+bzhed+par+bstan+pa%27i+phyir" target="_blank" title="Search for this Tibetan passage on DharmaMitra">&#x27;dir ni &#x27;jig tshogs la lta ba la sogs pa lta ba lnga la bya bar bzhed par bstan pa&#x27;i phyir</a>). The following sentence, <a class="xs" href="https://dharmamitra.org/search?q=te+%E2%80%A6+prabhavanti" target="_blank" title="Search for this Sanskrit passage on DharmaMitra">te … prabhavanti</a>, indicates a plural form, so it seems to be more natural to reconstruct a plural at this point.  However the form <em>pradarśan</em> given in the <span class="ref" title="Pañcaskandhakavibhāṣā (Sthiramati)">Pañcaskandhakavibhāṣā (Sthiramati)</span> at this point seems to be incorrect, <em>pradarśayan</em> should be the desired reading.</span></details></span>: <span class="muula"><span class="recon">pratipakṣa--</span></span><br><span class="muula"><span class="recon">bhā</span>vanā <span class="ed">bodhipakṣya<span class="ed-src">[Ms Na Pa St]</span> <details class="apparatus"><summary>📋</summary><span class="var-entry"><span class="var-src">Y:</span> <span class="var-text">bodhipakṣa</span></span></details></span>bhāvane</span>ti |</div></div>
+  <div class="row row-tib"><div class="row-label">Tibetan</div><div class="row-body">bstan pa'i mdor byas pa las gnyen po ni <span class="recon">byang chub kyi phyogs su bzhed par bstan pa'i phyir</span> | <span class="muula"><span class="recon">gnyen po </span><span class="ed"><em>bsgom</em> <span class="ed-src">[D]</span> <details class="apparatus"><summary>📋</summary><span class="var-entry"><span class="var-src">P:</span> <span class="var-text"><em>bsgoms</em></span></span></details></span> <span class="recon">pa ni </span> byang chub [P115a2] kyi phyogs <span class="ed">bsgom <span class="ed-src">[D]</span> <details class="apparatus"><summary>📋</summary><span class="var-entry"><span class="var-src">P:</span> <span class="var-text">bsgoms</span></span></details></span> pa ste </span> zhes bya ba smos so //</div></div>
+  <div class="row row-en"><div class="row-label">English</div><div class="row-body">In the Sūtra<details class="xe-note"><summary>📝 note</summary>The word 'Sūtra' at this point very likely refers to the <span class="ref" title="Madhyāntavibhāga (Maitreya)">Madhyāntavibhāga (Maitreya)</span>. In the <em>śāstraśarīra</em>-section at the beginning of the <span class="ref" title="Madhyāntavibhāgaṭīkā (Sthiramati)">Madhyāntavibhāgaṭīkā (Sthiramati)</span>, the text that is commented on is referred to as <em>madhyāntavibhāgasūtrabhāṣya</em> (<span class="ref" title="Madhyāntavibhāgaṭīkā (Yamaguchi 1934)">Madhyāntavibhāgaṭīkā (Yamaguchi 1934)</span> p.1, l. 3). This reveals the possibility that Sthiramati regarded the <span class="ref" title="Madhyāntavibhāga (Maitreya)">Madhyāntavibhāga (Maitreya)</span> in such high regard that he considered them to be Sūtra rather than Śāstra material.
+	    </details> <span class="recon">the aids to awakening are intended to be</span> antidotes, <span class="recon">for the purpose of showing [this] Vasubandhu says: </span> <span class="muula">The cultivation of the aid to awakening is <span class="recon">the cultivation of the antidotes</span>.</span></div></div>
 </section>
+
 <section class="sentence" id="s5">
-<h3>§5 — Te punaḥ saptatriṃśat: catvāri smṛtyupasthānāni … <span class="status verified">VERIFIED</span></h3>
-
-<h4>Yamaguchi text</h4>
-<div class="yamaguchi">
-<span class="ms-direct">te punaḥ saptatriṁśat |</span>
-<span class="recon">catvāri smṛtyupasthānāni yāvad āryāṣṭāṅgamārgāḥ |</span>
-<span class="folio-anchor">(p. 166; OCR lines 6813–6814)</span>
-</div>
-
-<h4>Tibetan (BO_T06_D4032:270a-11)</h4>
-<div class="tibetan">
-དེ་རྣམས་ཀྱང་སུམ་ཅུ་རྩ་བདུན་ཏེ། དྲན་པ་ཉེ་བར་གཞག་པ་བཞི་ནས་
-འཕགས་པའི་ལམ་ཡན་ལག་བརྒྱད་པའི་བར་དུའོ། །
-</div>
-<p>Gloss: "And these are thirty-seven: from the four foundations of
-mindfulness up to the noble eight-fold path." Tibetan
-<code>'phags pa'i lam yan lag brgyad pa</code> is a noun phrase with
-no number marking — naturally a singular.</p>
-
-<h4>Proposed re-reading: singular <code>āryāṣṭāṅgo mārgaḥ</code></h4>
-<div class="justification">
-The bracketing enumeration is a stock Abhidharma formula. Two
-witnesses:
-<ul>
-  <li><strong>Aṣṭādaśasāhasrikā-prajñāpāramitā</strong>
-  (<a href="https://dharmamitra.org/nexus/db/sa/SA_K05_adsp70-u/text?active_segment=SA_K05_adsp70-u:3174">SA_K05_adsp70-u:3174</a>):
-  <code>catvāri smṛtyupasthānāni. yāvad āryāṣṭāṅgaṃ mārgaṃ</code>
-  (acc. sg.).</li>
-  <li><strong>Abhidharmasamuccayabhāṣya</strong>
-  (<a href="https://dharmamitra.org/nexus/db/sa/SA_T06_abhsubhu/text?active_segment=SA_T06_abhsubhu:2407">SA_T06_abhsubhu:2407</a>):
-  <code>viśuddhinairyāṇiko mārga āryāṣṭāṅgo mārgaḥ</code> (nom. sg.).</li>
-  <li><strong>Pañcaviṃśati VI–VIII</strong>
-  (<a href="https://dharmamitra.org/nexus/db/sa/SA_K03_psp_6-8u/text?active_segment=SA_K03_psp_6-8u:2922">SA_K03_psp_6-8u:2922</a>):
-  <code>catvāri smṛtyupasthānāni yāvad āryāṣṭāṅgamārga-</code>
-  (compound, sg.).</li>
-</ul>
-The canonical formula keeps each of the seven items with its own
-number — the eight-fold path is a single set, hence sg. Yamaguchi's
-plural <code>āryāṣṭāṅgamārgāḥ</code> appears to be an over-regularised
-agreement with the preceding plural <code>smṛtyupasthānāni</code>;
-the Tibetan does not support a plural either. Read
-<strong><code>āryāṣṭāṅgo mārgaḥ</code></strong> (or, following PSP's
-compound, <code>āryāṣṭāṅgamārgaḥ</code> sg.).
-</div>
-
-<h4>Yamaguchi vs. proposed (side-by-side)</h4>
-<div class="compare">
-<div class="before">
-<h5>Yamaguchi 1934 as printed</h5>
-te punaḥ saptatriṁśat | <em>catvāri smṛtyupasthānāni yāvad
-āryāṣṭāṅgamārgāḥ</em> |
-</div>
-<div class="after">
-<h5>Proposed re-edited text</h5>
-te punaḥ saptatriṁśat | catvāri smṛtyupasthānāni yāvad
-<strong>āryāṣṭāṅgo mārgaḥ</strong> |
-</div>
-</div>
-
-<h4>Yamaguchi's Japanese translation</h4>
-<div class="japanese">
-然るにそれらは三十七にして、四念處乃至八聖道支なり。
-<span class="folio-anchor">(<code>references/mavt-ja.txt</code> line 3741)</span>
-</div>
-
-<h4>Translation</h4>
-<div class="translation">
-"And these are thirty-seven: [namely] the four foundations of
-mindfulness up to the noble eight-fold path."
-</div>
+  <header class="sen-header">
+    <span class="sen-num">§5</span>
+    
+  </header>
+  <div class="row row-skt"><div class="row-label">Sanskrit</div><div class="row-body">te hi yathoktāvaraṇavipakṣaprahāṇāya bhāvyamānāḥ prabhavantīti pratipakṣā ucyante |</div></div>
+  <div class="row row-tib"><div class="row-label">Tibetan</div><div class="row-body">de dag bsgoms na mi mthun pa'i phyogs sgrib pa ji skad bstan pa rnams <span class="ed">spang <span class="ed-src">[D]</span> <details class="apparatus"><summary>📋</summary><span class="var-entry"><span class="var-src">P:</span> <span class="var-text">spangs</span></span></details></span> bar bya ba la mthu yod [D270a4] par 'gyur bas gnyen po rnams [P115a3] zhes bya'o//</div></div>
+  <div class="row row-en"><div class="row-label">English</div><div class="row-body">For they are called antidotes, because when they are cultivated they become able to perform the removal of the adverse agents which are the hindrances that have been described before [in chapter two].</div></div>
 </section>
+
 <section class="sentence" id="s6">
-<h3>§6 — Tadbhāvanā bṛṃhaṇā-āropaṇā paryāyāḥ <span class="status verified">VERIFIED</span></h3>
-
-<h4>Yamaguchi text (non-italic, MS-attested)</h4>
-<div class="yamaguchi">
-<span class="ms-direct">tadbhāvanā bṛṁhaṇāropaṇā abhyāso bahulā
-kriyeti paryāyāḥ |</span>
-<span class="folio-anchor">(p. 166; OCR lines 6814–6815)</span>
-</div>
-
-<h4>Tibetan (BO_T06_D4032:270a-11) — disambiguates the parse</h4>
-<div class="tibetan">
-དེ་རྣམས་བསྒོམ་པ་ནི་སྤེལ་བ་དང་། བསྐྱེད་པ་དང་། གོམས་པར་བྱ་བ་དང་།
-ལན་མང་དུ་བྱ་བ་ཞེས་བྱ་བའི་རྣམ་གྲངས་སོ། །
-</div>
-<p>Four items joined by <code>dang</code>:
-<code>spel ba</code> / <code>bskyed pa</code> /
-<code>goms par bya ba</code> / <code>lan mang du bya ba</code> —
-which fixes the Sanskrit parse as a four-item list:</p>
-<ul>
-  <li><strong>bṛṁhaṇā</strong> (= <em>spel ba</em>, "increasing")</li>
-  <li><strong>āropaṇā</strong> (= <em>bskyed pa</em>, lit. "installing,
-  raising up" — the Tibetan renders the "raising" sense as "producing,
-  generating")</li>
-  <li><strong>abhyāsaḥ</strong> (= <em>goms par bya ba</em>,
-  "habitual practice")</li>
-  <li><strong>bahulā kriyā</strong> (= <em>lan mang du bya ba</em>,
-  "doing many times")</li>
-</ul>
-
-<h4>Parse note</h4>
-<div class="justification">
-OCR <code>bṛṁhaṇāropaṇā</code> = sandhi for two items
-<code>bṛṁhaṇā āropaṇā</code>, not a single compound. The Tibetan
-four-item list disambiguates. No emendation; just a transliteration
-note for the apparatus.
-</div>
-
-<h4>Doctrinal placement and parallels (with dharmanexus URLs)</h4>
-<p>The Yogācāra stock-formula for the synonyms of <em>bhāvanā</em>
-is best known from the <em>Śrāvakabhūmi</em>, which uses a
-<strong>five-item</strong> list. Sthiramati's <strong>four-item</strong>
-list overlaps only partially with it; he keeps <em>abhyāsaḥ</em> and
-the <em>bahulī-</em> root, drops <em>paricaya</em> and
-<em>āsevanā</em>, and adds <em>bṛṁhaṇā</em> and <em>āropaṇā</em>.
-This is parallel in function but lexically distinct — not a
-citation.</p>
-
-<div class="parallel"><span class="src">Yogācārabhūmi,
-<em>Śrāvakabhūmi</em> (Nepalese edition)</span>
-— <a href="https://dharmamitra.org/nexus/db/sa/SA_T06_srabhu_u/text?active_segment=SA_T06_srabhu_u:5771">SA_T06_srabhu_u:5771</a>.
-The five-item stock formula:
-<span class="quote">saptatriṃśatāṃ bodhipakṣyāṇāṃ dharmāṇām
-abhyāsaḥ paricaya āsevanā bhāvanā bahulīkāra iyam ucyate
-bodhipakṣya-bhāvanā</span></div>
-
-<div class="parallel"><span class="src">Yogācārabhūmi,
-<em>Śrāvakabhūmi</em> (Shukla edition)</span>
-— <a href="https://dharmamitra.org/nexus/db/sa/SA_T06_srabhusu/text?active_segment=SA_T06_srabhusu:6837">SA_T06_srabhusu:6837</a>.
-Same passage in the parallel edition.</div>
-
-<h4>Yamaguchi vs. proposed (no change)</h4>
-<div class="compare">
-<div class="before">
-<h5>Yamaguchi 1934 as printed</h5>
-tadbhāvanā bṛṁhaṇāropaṇā abhyāso bahulā kriyeti paryāyāḥ |
-</div>
-<div class="after">
-<h5>Proposed re-edited text</h5>
-tadbhāvanā bṛṁhaṇā āropaṇā abhyāso bahulā kriyeti paryāyāḥ |
-(sandhi resolved: four items.)
-</div>
-</div>
-
-<h4>Yamaguchi's Japanese translation</h4>
-<div class="japanese">
-それらの修習は、増長、生起、慣習、數作と云ふ同義異語なり。
-<span class="folio-anchor">(<code>references/mavt-ja.txt</code> line 3742)</span>
-</div>
-
-<h4>Translation</h4>
-<div class="translation">
-"Their cultivation (<em>tadbhāvanā</em>) — [namely,]
-making-them-grow (<em>bṛṁhaṇā</em>), installing-them
-(<em>āropaṇā</em>), repeated-practice (<em>abhyāsaḥ</em>), and
-making-much-of-them (<em>bahulā kriyā</em>) — these are synonyms."
-</div>
-
-<h4>Notes</h4>
-<ul>
-  <li>Sthiramati's list deliberately diverges from the standard
-  Śrāvakabhūmi stock formula — drops <em>paricaya</em> and
-  <em>āsevanā</em>, adds <em>bṛṁhaṇā</em> and <em>āropaṇā</em>.
-  A substantive editorial choice on his part, not a textual problem.</li>
-</ul>
+  <header class="sen-header">
+    <span class="sen-num">§6</span>
+    <span class="sen-meta"><span class="meta-ms">MS fol. 56r6</span></span>
+  </header>
+  <div class="row row-skt"><div class="row-label">Sanskrit</div><div class="row-body">te punaḥ saptatri<span class="recon">ṃśat catvāri smṛtyupasthānāni yāvad</span> <span class="red">āryāṣṭāṅgo mārgaḥ<span class="ed-src">[Y Pa]</span> <details class="apparatus"><summary>📋</summary><span class="var-entry"><span class="var-src">Y Pa:</span> <span class="var-text"><em>āryāṣṭāṅgamārgāḥ</em></span></span></details></span> |</div></div>
+  <div class="row row-tib"><div class="row-label">Tibetan</div><div class="row-body">de rnams kyang <span class="recon">sum cu rtsa bdun</span> <span class="red">no<span class="ed-src">[P]</span> <details class="apparatus"><summary>📋</summary><span class="var-entry"><span class="var-src">D:</span> <span class="var-text">te</span></span></details></span> | <span class="recon">dran pa nye bar</span> <span class="red">gzhag <span class="ed-src">[D]</span> <details class="apparatus"><summary>📋</summary><span class="var-entry"><span class="var-src">P:</span> <span class="var-text">bzhag</span></span></details></span> <span class="recon">pa bzhi nas 'phags pa'i lam yan lag brgyad pa'i bar du'o //</span></div></div>
+  <div class="row row-en"><div class="row-label">English</div><div class="row-body">Furthermore these number <span class="recon">37, from the four establishments of mindfulness up to the noble eight-fold path.</span></div></div>
 </section>
+
 <section class="sentence" id="s7">
-<h3>§7 — Sedānīṃ vaktavyā | tattvānantaram uddiṣṭatvāt <span class="status verified">VERIFIED</span></h3>
-
-<h4>Yamaguchi text (entirely non-italic, MS-attested)</h4>
-<div class="yamaguchi">
-<span class="ms-direct">sedānīm vaktavyā | tattvānantaram
-uddiṣṭatvāt |</span>
-<span class="folio-anchor">(p. 166; OCR lines 6815–6816)</span>
-</div>
-
-<h4>The MAVbh source — sentence-tail</h4>
-<p>The phrase <code>sedānīṃ vaktavyā</code> (<em>sā idānīṃ
-vaktavyā</em>, "[it] is now to be expounded") is the second half of
-the Vasubandhu MAVbh sentence whose first half Sthiramati glossed at
-§3. The complete MAVbh sentence is:</p>
-<div class="parallel">
-<span class="src">Vasubandhu, MAVbh ch. 4 opening (Nagao Mvbh 50)</span>
-— <a href="https://dharmamitra.org/nexus/db/sa/SA_T06_vmvkbh_u/text?active_segment=SA_T06_vmvkbh_u:789">SA_T06_vmvkbh_u:789</a>
-(local file <code>references/SA_T06_vmvkbh_u.txt</code> line 801).
-<span class="quote">pratipakṣabhāvanā bodhipakṣyabhāvanā sedānīṃ
-vaktavyā /</span>
-"<em>Pratipakṣabhāvanā</em> is <em>bodhipakṣya-bhāvanā</em>; it is
-now to be expounded."
-</div>
-<p>Sthiramati first glosses the equation half of this sentence in §3
-(<em>… bodhipakṣyabhāvanā iti</em>), then in §7 picks up the tail
-(<em>sedānīṃ vaktavyā</em>) and gives the supporting reason
-(<em>tattvānantaram uddiṣṭatvāt</em> "because [in the piṇḍārtha] it
-is presented immediately after reality" — same connective as §2 and
-§1).</p>
-
-<h4>Tibetan (BO_T06_D4032)</h4>
-<p>Located in the same chapter-4 opening block, immediately after
-the §6 paryāya-list (around segment <code>270a-11</code> / <code>270b-0</code>).
-The Tibetan canonically renders <em>sedānīṃ vaktavyā</em> as
-<em>de skad cig 'di brjod par bya'o</em> or similar.</p>
-
-<h4>Yamaguchi vs. proposed (no change)</h4>
-<div class="compare">
-<div class="before">
-<h5>Yamaguchi 1934 as printed</h5>
-sedānīm vaktavyā | tattvānantaram uddiṣṭatvāt |
-</div>
-<div class="after">
-<h5>Proposed re-edited text</h5>
-sedānīm vaktavyā | tattvānantaram uddiṣṭatvāt |
-</div>
-</div>
-
-<h4>Yamaguchi's Japanese translation</h4>
-<div class="japanese">
-彼〔對治修習〕は真實の次に擧示せられたるが故に、今説かざるべからず。
-<span class="folio-anchor">(<code>references/mavt-ja.txt</code> line 3743)</span>
-</div>
-
-<h4>Translation</h4>
-<div class="translation">
-"[It,] this [cultivation of the counteragent / bodhipakṣya, picking
-up the MAVbh's <em>sedānīṃ vaktavyā</em>] is now to be expounded —
-because [it] has been presented [in the piṇḍārtha] immediately
-after [the chapter on] reality."
-</div>
-
-<h4>Notes</h4>
-<ul>
-  <li>Sthiramati structures his commentary by quoting the MAVbh
-  source-text in pieces and glossing each. §3 takes the first half of
-  the MAVbh sentence; §7 takes the second half.</li>
-  <li>The reason <code>tattvānantaram uddiṣṭatvāt</code> echoes the
-  identical phrase at §1 and §2 — Sthiramati's standard piṇḍārtha
-  argument for chapter ordering.</li>
-</ul>
+  <header class="sen-header">
+    <span class="sen-num">§7</span>
+    <span class="sen-meta"><span class="meta-mula">comments on mūla §3</span></span>
+  </header>
+  <div class="row row-skt"><div class="row-label">Sanskrit</div><div class="row-body"><span class="quote"><span class="ed">teṣāṃ <span class="ed-src">[Ms]</span> <details class="apparatus"><summary>📋</summary><span class="var-entry"><span class="var-src">Y Pa:</span> <span class="var-text"><em>tad</em></span></span></details></span> bhāvanā bṛṃhaṇāropaṇābhyāsaḥ <span class="ed">bahulīkriyā iti <span class="ed-src">[Ms St]</span> <details class="apparatus"><summary>📋</summary><span class="var-entry"><span class="var-src">Y Pa:</span> <span class="var-text">bahulā kriyeti</span></span></details></span> paryāyāḥ |</span><div class="parallels"><div class="parallels-head">↳ Parallel</div><div class="parallel-entry"><div class="parallel-src"><span class="ref" title="Śrāvakabhūmi">Śrāvakabhūmi</span></div><div class="parallel-txt skt"><a href="https://dharmamitra.org/search?q=%C4%81sevan%C4%81+bahul%C4%ABk%C4%81ra+iyamucyate+bodhipak%E1%B9%A3yabh%C4%81van%C4%81+%7C" target="_blank" title="Search this passage on DharmaMitra">āsevanā bahulīkāra iyamucyate bodhipakṣyabhāvanā |</a></div></div></div><br> <span class="muula">sedānīṃ vaktavyā</span>, tattvānantaram uddiṣṭatvāt |</div></div>
+  <div class="row row-tib"><div class="row-label">Tibetan</div><div class="row-body">de rnams <span class="ed">bsgom<span class="ed-src">[D]</span> <details class="apparatus"><summary>📋</summary><span class="var-entry"><span class="var-src">P:</span> <span class="var-text">bsgoms</span></span></details></span> pa ni spel ba dang / [P115a4] bskyed pa dang / goms par bya ba dang / lan mang du bya ba zhes bya ba'i [D270a5] rnam grangs so // de yang de kho na'i 'og tu bstan pa'i phyir <span class="muula">de <span class="ed">da <span class="ed-src">[P]</span> <details class="apparatus"><summary>📋</summary><span class="var-entry"><span class="var-src">D:</span> <span class="var-text">yang</span></span></details></span> brjod par bya'o</span> //</div></div>
+  <div class="row row-en"><div class="row-label">English</div><div class="row-body">The term "cultivation" of these [antidotes] is synonymous with increasing and raising up, practice, the frequent repetition [of these antidotes].<details class="xe-note"><summary>📝 note</summary>This is an echo of a passage of the <span class="ref" title="Śrāvakabhūmi">Śrāvakabhūmi</span>: <span class="quote">Among these, what is the cultivation of the aid to awakening? It is the practice of the factors of the 37 aids to awakening. It is investigation, pursuit, frequent repitition; this is called the cultivation of the aid to awakening. <br> <span class="ref" title="Śrāvakabhūmi (Shōmonji Group ed.)">Śrāvakabhūmi (Shōmonji Group ed.)</span> 174.16: <a class="xs" href="https://dharmamitra.org/search?q=tatra+bodhipak%E1%B9%A3yabh%C4%81van%C4%81+katam%C4%81+%7C+ya%E1%B8%A5+saptatri%E1%B9%83%C5%9Bat%C4%81%E1%B9%83+bodhipak%E1%B9%A3y%C4%81%E1%B9%87%C4%81%E1%B9%83+dharm%C4%81%E1%B9%87%C4%81m+abhy%C4%81sa%E1%B8%A5+paricaya%E1%B8%A5+%C4%81sevan%C4%81+bahul%C4%ABk%C4%81ra+iyam+ucyate+bodhipak%E1%B9%A3yabh%C4%81van%C4%81+%7C" target="_blank" title="Search for this Sanskrit passage on DharmaMitra">tatra bodhipakṣyabhāvanā katamā | yaḥ saptatriṃśatāṃ bodhipakṣyāṇāṃ dharmāṇām abhyāsaḥ paricayaḥ āsevanā bahulīkāra iyam ucyate bodhipakṣyabhāvanā |</a></span></details> 
+    	  <span class="muula">This [cultivation of the antidotes] is to be explained now</span>, because [it] is enumerated after the [explanation of] reality.</div></div>
 </section>
+
 <section class="sentence" id="s8">
-<h3>§8 — Kiṃ kāraṇaṃ smṛtyupasthāna-bhāvanā eva pūrvam <span class="status verified">VERIFIED</span></h3>
-
-<h4>Yamaguchi text (entirely MS-attested)</h4>
-<div class="yamaguchi">
-<span class="ms-direct">kiṁ kāraṇaṁ smṛtyupasthānabhāvanaiva
-pūrvam ucyate nānyā [Tib. 107, a] bodhipakṣabhāvanā |</span>
-<span class="folio-anchor">(p. 166; OCR lines 6820–6821; Tib. ref =
-PBod. 107a)</span>
-</div>
-
-<h4>The MAVbh framing</h4>
-<p>This question opens the sub-section on the
-<em>catvāri smṛtyupasthānāni</em>. It is set up because Vasubandhu's
-MAVbh treats the foundations of mindfulness first — the very next
-kārikā (IV.1) is the answer:</p>
-<div class="parallel">
-<span class="src">Vasubandhu, MAVbh kārikā IV.1cd</span>
-— <a href="https://dharmamitra.org/nexus/db/sa/SA_T06_vmvkbh_u/text?active_segment=SA_T06_vmvkbh_u:789">SA_T06_vmvkbh_u</a>
-(local file <code>references/SA_T06_vmvkbh_u.txt</code> line 805).
-<span class="quote">catuḥsatyāvatārāya smṛtyupasthānabhāvanā //
-IV.1</span>
-"The cultivation of the foundations of mindfulness is for entry into
-the four [noble] truths." — explaining why smṛtyupasthāna comes
-first.
-</div>
-<div class="parallel">
-<span class="src">Vasubandhu's bhāṣya on IV.1</span>
-— local <code>SA_T06_vmvkbh_u.txt</code> line 815.
-<span class="quote">ādau catuḥsatyāvatārāya
-smṛtyupasthānabhāvanā vyavasthāpyate</span>
-"At the outset, the cultivation of the foundations of mindfulness
-is established for entry into the four [noble] truths."
-</div>
-
-<h4>Note on the Tibetan folio reference</h4>
-<p>Yamaguchi's <code>[Tib. 107, a]</code> in the OCR is his
-in-line cross-reference to the Tibetan Tengyur folio. In our
-DharmaMitra source (BO_T06_D4032) the corresponding segment is in
-the <code>270b-0</code>/<code>270b-1</code> range — the Yamaguchi
-reference is to a different (Peking?) Tibetan edition.</p>
-
-<h4>Yamaguchi vs. proposed (no change)</h4>
-<div class="compare">
-<div class="before">
-<h5>Yamaguchi 1934 as printed</h5>
-kiṁ kāraṇaṁ smṛtyupasthānabhāvanaiva pūrvam ucyate nānyā
-bodhipakṣabhāvanā |
-</div>
-<div class="after">
-<h5>Proposed re-edited text</h5>
-kiṁ kāraṇaṁ smṛtyupasthānabhāvanaiva pūrvam ucyate nānyā
-bodhipakṣabhāvanā |
-</div>
-</div>
-
-<h4>Yamaguchi's Japanese translation</h4>
-<div class="japanese">
-四 念 處 何故に諸念の修習が初めに説かれ、諸餘の菩提分修習〔は初めに説かる〕に非るか。
-<span class="folio-anchor">(<code>references/mavt-ja.txt</code> line 3744)</span>
-</div>
-
-<h4>Translation</h4>
-<div class="translation">
-"For what reason is precisely the cultivation of the
-<em>smṛtyupasthāna</em>s [the foundations of mindfulness] taught
-first, and not some other cultivation of <em>bodhipakṣa</em>?"
-</div>
-
-<h4>Notes</h4>
-<ul>
-  <li>This is Sthiramati's set-up question for the kārikā IV.1
-  quotation that follows (in §9 and over the page break to p. 167).
-  The kārikā's first pāda (IV.1a) gives the doctrinal reason
-  (<em>dauṣṭhulya-tṛṣṇā-hetutvāt</em>) and IV.1cd gives the
-  soteriological reason (<em>catuḥsatyāvatārāya</em>).</li>
-  <li>The <code>iva</code> in <code>smṛtyupasthāna-bhāvanā eva</code>
-  is the <em>avadhāraṇa</em>: "precisely (and not others)."</li>
-</ul>
+  <header class="sen-header">
+    <span class="sen-num">§8</span>
+    
+  </header>
+  <div class="row row-skt"><div class="row-label">Sanskrit</div><div class="row-body">kiṃ kāraṇaṃ smṛtyupasthānabhāvanaiva pūrvam ucyate nānyā bodhipakṣabhāvanā ?</div></div>
+  <div class="row row-tib"><div class="row-label">Tibetan</div><div class="row-body">byang chub kyi phyogs <span class="ed">bsgoms <span class="ed-src">[D]</span> <details class="apparatus"><summary>📋</summary><span class="var-entry"><span class="var-src">P:</span> <span class="var-text">bsgom </span></span></details></span> pa la ci'i [P115a5] phyir dran pa nye bar <span class="ed">gzhag<span class="ed-src">[D]</span> <details class="apparatus"><summary>📋</summary><span class="var-entry"><span class="var-src">P:</span> <span class="var-text">bzhag</span></span></details></span> pa bsgom pa nyid thog mar bshad kyi gzhan <span class="ed">ni<span class="ed-src">[D]</span> <details class="apparatus"><summary>📋</summary><span class="var-entry"><span class="var-src">P:</span> <span class="var-text">om.</span></span></details></span> ma yin zhe na /</div></div>
+  <div class="row row-en"><div class="row-label">English</div><div class="row-body">For what reason is precisely the cultivation of the four establishments of mindfulness taught first and not another cultivation of an aid to awakening?</div></div>
 </section>
+
 <section class="sentence" id="s9">
-<h3>§9 — Āha: tatra tāvad ādau dauṣṭhulyāt tarṣa-hetutvāt — kārikā IV.1a pratīka <span class="status verified">VERIFIED</span></h3>
-
-<h4>Yamaguchi text (italicised, reconstructed)</h4>
-<div class="yamaguchi">
-<span class="recon">āha | tatra tāvad ādau dauṣṭhulyatṛṣṇāhetutvād</span>
-<span class="folio-anchor">(p. 166; OCR lines 6821–6822; continues
-on page 205 with <code>iti vistaraḥ |</code>)</span>
-</div>
-
-<h4>The kārikā being cited (kārikā IV.1 in full)</h4>
-<div class="parallel">
-<span class="src">Vasubandhu, MAV/MAVbh kārikā IV.1 (Nagao ed.)</span>
-— local <code>references/SA_T06_vmvkbh_u.txt</code> lines 803–805;
-indexed at
-<a href="https://dharmamitra.org/nexus/db/sa/SA_T06_vmvkbh_u/text?active_segment=SA_T06_vmvkbh_u:789">SA_T06_vmvkbh_u:789</a>.
-<span class="quote">tatra tāvad ādau /<br>
-dauṣṭhulyāt tarṣa-hetutvād vastutvād avimohataḥ |<br>
-catuḥsatyāvatārāya smṛtyupasthānabhāvanā || IV.1 ||</span>
-"There, to begin with, at the outset — because of dysfunction
-(<em>dauṣṭhulya</em>), because of being the cause of craving
-(<em>tarṣa-hetutva</em>), because of [being] a thing
-(<em>vastutva</em>), and because [it brings] non-confusion
-(<em>avimoha</em>) — the cultivation of the foundations of
-mindfulness is for entry into the four [noble] truths." Four
-separate ablative-causes, each tied to one of the four
-smṛtyupasthānas (body / sensation / mind / dharmas) and one of the
-four noble truths.
-</div>
-
-<h4>Tibetan of kārikā IV.1 (MAVbh-Tib)</h4>
-<div class="parallel">
-<span class="src">Vasubandhu MAVbh-Tib</span>
-— <a href="https://dharmamitra.org/nexus/db/bo/BO_T06_D4027/text?active_segment=BO_T06_D4027:15b-21">BO_T06_D4027:15b-21</a>.
-<span class="quote">དེ་ལ་རེ་ཞིག་དང་པོར། ། གནས་ངན་ལེན་ཕྱིར་སྲེད་རྒྱུའི་ཕྱིར། །
-གཞི་ཡི་ཕྱིར་དང་མ་རྨོངས་ཕྱིར། ། བདེན་པ་བཞི་ལ་འཇུག་བྱ་བས། །
-དྲན་པ་ཉེ་བར་གཞག་པ་བསྒོམ། །</span>
-The Tibetan also has <strong>four discrete ablative members</strong>
-(<code>gnas ngan len phyir</code> / <code>sred rgyu'i phyir</code> /
-<code>gzhi yi phyir</code> / <code>ma rmongs phyir</code>) — i.e. it
-matches the kārikā literally and does <em>not</em> support a
-compound.
-</div>
-
-<h4>Sthiramati's own Tibetan handling of the kārikā</h4>
-<div class="parallel">
-<span class="src">Sthiramati MAVT-Tib</span>
-— <a href="https://dharmamitra.org/nexus/db/bo/BO_T06_D4032/text?active_segment=BO_T06_D4032:270b-5">BO_T06_D4032:270b-5</a>
-and
-<a href="https://dharmamitra.org/nexus/db/bo/BO_T06_D4032/text?active_segment=BO_T06_D4032:270b-11">:270b-11</a>.
-Sthiramati's prose commentary at the §9 anchor first glosses
-<code>gnas ngan len dang bcas pa'i 'du byed yin pa'i phyir</code>
-(= <em>sadauṣṭhulya-saṁskāratvāt</em>), i.e. unpacks the first
-ablative <em>dauṣṭhulyāt</em> as a separate item; then moves on to
-<code>tshor ba ni sred pa'i rgyu ste</code> (=
-<em>tṛṣṇā-hetur vedanā</em>) at 270b-11 (which corresponds to
-Yamaguchi page 205 line 6896) as the second item. Decisive evidence
-that Sthiramati was glossing two separate kārikā-items in order, not
-a single compound.
-</div>
-
-<h4>Proposed re-reading</h4>
-<div class="justification">
-<strong>Read <code>dauṣṭhulyāt tarṣa-hetutvād</code></strong> (two
-separate ablatives) for Yamaguchi's compound
-<code>dauṣṭhulyatṛṣṇāhetutvād</code>. Supporting evidence is
-unanimous: (i) the kārikā IV.1a as transmitted in MAVbh Sanskrit
-(Nagao ed.); (ii) the MAVbh Tibetan kārikā at BO_T06_D4027:15b-21
-with four separated ablatives; (iii) Sthiramati's own Tibetan
-commentary which glosses the two items separately and in order;
-(iv) the structural argument: <code>iti vistaraḥ</code> at the head
-of page 205 is the standard MAVT marker for "the kārikā has just
-been cited by its opening words (a <em>pratīka</em>), with the rest
-understood" — incompatible with a Sanskrit compound, which is not a
-pratīka. Yamaguchi's reconstruction collapsed two kārikā items into
-one compound, likely misreading an abbreviated MS pratīka.
-</div>
-
-<div class="justification">
-On <strong>tarṣa vs tṛṣṇā</strong>: keep <em>tarṣa</em> as the
-kārikā reading. Sthiramati's <em>prose paraphrase</em> uses
-<em>tṛṣṇā-hetur vedanā</em> (Yamaguchi p. 205 line 6896, confirmed
-by <code>tshor ba ni sred pa'i rgyu ste</code> in MAVT-Tib 270b-11),
-but that is a gloss, not a quotation. <em>tarṣa</em> is the kārikā
-form in both Nagao and Pandeya editions, and the Tibetan
-<code>sred pa</code> does not disambiguate
-<em>tarṣa</em>/<em>tṛṣṇā</em>.
-</div>
-
-<h4>Yamaguchi vs. proposed (side-by-side)</h4>
-<div class="compare">
-<div class="before">
-<h5>Yamaguchi 1934 as printed</h5>
-<em>āha | tatra tāvad ādau dauṣṭhulyatṛṣṇāhetutvād</em>
-<br>[+ <em>iti vistaraḥ</em> on next page]
-</div>
-<div class="after">
-<h5>Proposed re-edited text</h5>
-āha | tatra tāvad ādau <strong>dauṣṭhulyāt tarṣa-hetutvād</strong>
-iti vistaraḥ |
-</div>
-</div>
-
-<h4>Yamaguchi's Japanese translation</h4>
-<div class="japanese">
-曰く、その中、且らく始めに鏖重と愛との因の故に(第一偈a)等。
-<span class="folio-anchor">(<code>references/mavt-ja.txt</code> line 3745)</span>
-</div>
-
-<h4>Translation</h4>
-<div class="translation">
-"[Vasubandhu] says: 'There [in regard to that question], to begin
-with, at the outset — because of dysfunction (<em>dauṣṭhulya</em>),
-because of being the cause of craving (<em>tarṣa-hetutva</em>)' —
-[so the verse begins; the rest is to be understood at length, viz.
-the four ablatives followed by <em>catuḥsatyāvatārāya
-smṛtyupasthāna-bhāvanā</em>]."
-</div>
-
-<h4>Notes</h4>
-<ul>
-  <li>This is the start of the kārikā IV.1a citation; the
-  <code>iti vistaraḥ</code> on page 205 closes the abbreviated quotation
-  and Sthiramati then commentates the four ablatives one by one over
-  the following pages.</li>
-  <li>A further Sthiramati parallel — Sūtrālaṅkāravṛtti-bhāṣya
-  <a href="https://dharmamitra.org/nexus/db/bo/BO_T06_D4034-2/text?active_segment=BO_T06_D4034-2:104b-3">BO_T06_D4034-2:104b-3</a>
-  — paraphrases the same doctrine using equivalent Tibetan,
-  confirming Sthiramati's consistent reading.</li>
-</ul>
+  <header class="sen-header">
+    <span class="sen-num">§9</span>
+    <span class="sen-meta"><span class="meta-ms">MS fol. 56r7</span></span>
+  </header>
+  <div class="row row-skt"><div class="row-label">Sanskrit</div><div class="row-body"><span class="recon">āha</span>: <span class="muula"><span class="recon">tatra tāvad ādau</span></span></div></div>
+  <div class="row row-tib"><div class="row-label">Tibetan</div><div class="row-body"><span class="muula"><span class="recon">de la re zhig dang por</span></span> /</div></div>
+  <div class="row row-en"><div class="row-label">English</div><div class="row-body"><span class="recon">Vasubandhu says:</span> "<span class="muula">Among these, first of all,</span></div></div>
 </section>
 
+<section class="sentence sutra-sentence" id="s9_5">
+  <header class="sen-header">
+    <span class="sen-num">§9.5</span>
+    <span class="sen-meta"><span class="meta-kar">Kārikā IV. 1a</span></span>
+  </header>
+  <div class="row row-skt"><div class="row-label">Sanskrit</div><div class="row-body">}<span class="ed"><strong><em>dauṣṭhulyāt tarṣahetutvā</em>d</strong><span class="ed-src">[Na Pa St]</span> <details class="apparatus"><summary>📋</summary><span class="var-entry"><span class="var-src">Y:</span> <span class="var-text"><strong><em>dauṣṭhulyatṛṣṇāhetutvā</em>d</strong></span></span></details></span>\textbf{</div></div>
+  <div class="row row-tib"><div class="row-label">Tibetan</div><div class="row-body"><span class="recon">gnas ngan len phyir </span>}<span class="red"><strong>sred rgyu'i</strong> <span class="ed-src">[D]</span> <details class="apparatus"><summary>📋</summary><span class="var-entry"><span class="var-src">P:</span> <span class="var-text">srod rgyu'i</span></span></details></span>\textbf{<span class="recon">phyir</span> ||</div></div>
+  <div class="row row-en"><div class="row-label">English</div><div class="row-body">because of [the body being the basis of] unwellness, because of [feeling being] the cause of thirst<details class="xe-note"><summary>📝 note</summary>As observed in <span class="ref" title="modern academic citation">[schmithausen1977 925]</span> f. the term <em>dauSThulya</em> is used frequently in <em>yogAcAra</em>-works, but is not seen often in other texts.<span class="xf-note">[In the same publication, a detailed etymology of this Sanskrit term is given, which will thus not be repeated here.]</span> The English translation "unwellness" is given in <span class="ref" title="modern academic citation">[schmithausen2014 693]</span>. While this term conveys different aspects of meaning,<span class="xf-note">[These are discussed extensively in <span class="ref" title="modern academic citation">[schmithausen1977 925]</span>.]</span> Sthiramati's understanding of this term becomes clear in the following discussion within the <span class="ref" title="Madhyāntavibhāgaṭīkā (Sthiramati)">Madhyāntavibhāgaṭīkā (Sthiramati)</span>.</details></div></div>
+</section>
 
 </body>
 </html>
