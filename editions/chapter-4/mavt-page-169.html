@@ -211,16 +211,14 @@
 .mavt-img-banner .mavt-img-single img { max-width:560px; max-height:760px; }
 </style>
 
+
 <style>
-section.xml-supplement { margin-top: 3rem; padding: 1.4rem 1.5rem; background: #f0f5ef; border: 2px solid #6c4a1d; border-radius: 6px; }
-section.xml-supplement > h2 { margin-top: 0; color: #2d4a1d; }
-section.xml-supplement > .xml-supp-intro { color: #2d4a1d; font-size: 0.93rem; margin-bottom: 1.2rem; padding-bottom: 0.7rem; border-bottom: 1px solid #b8c8a8; }
-.xml-sen { background: #fff; border: 1px solid #c8d8c0; border-radius: 4px; padding: 0.7rem 0.9rem; margin: 0.8rem 0; }
-.xml-sen .xml-sen-head { font-weight: 700; color: #2d4a1d; padding-bottom: 0.3rem; border-bottom: 1px dotted #d8e2d0; margin-bottom: 0.5rem; }
-.xml-sen .xml-sen-meta { font-size: 0.78rem; color: #6b6b6b; font-weight: normal; margin-left: 0.6rem; }
-.xml-row { display: grid; grid-template-columns: 80px 1fr; gap: 0.5rem; margin: 0.35rem 0; }
-.xml-row .xml-row-label { font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.05em; color: #6b6b6b; padding-top: 0.25rem; font-weight: 600; }
-.xml-row .xml-row-body { padding: 0.35rem 0.6rem; border-radius: 3px; font-family: "Charis SIL", "Gentium Plus", Georgia, serif; font-size: 0.98rem; line-height: 1.5; }
+.xml-inline-app { margin-top: 0.6rem; padding: 0.7rem 1rem; background: #f0f5ef; border: 1px solid #6c4a1d; border-left: 4px solid #6c4a1d; border-radius: 4px; }
+.xml-inline-app > .xml-inline-head { font-size: 0.78rem; color: #2d4a1d; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin: 0 0 0.5rem; padding-bottom: 0.3rem; border-bottom: 1px dotted #b8c8a8; }
+.xml-inline-app > .xml-inline-head .xml-inline-meta { font-weight: normal; color: #6b6b6b; text-transform: none; letter-spacing: 0; font-size: 0.86em; margin-left: 0.6rem; }
+.xml-row { display: grid; grid-template-columns: 80px 1fr; gap: 0.5rem; margin: 0.3rem 0; }
+.xml-row .xml-row-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: #6b6b6b; padding-top: 0.2rem; font-weight: 600; }
+.xml-row .xml-row-body { padding: 0.3rem 0.55rem; border-radius: 3px; font-family: "Charis SIL", "Gentium Plus", Georgia, serif; font-size: 0.95rem; line-height: 1.5; }
 .xml-row-skt .xml-row-body { background: #f4efe4; }
 .xml-row-tib .xml-row-body { background: #f6f1ef; font-family: "Jomolhari", Georgia, serif; }
 .xml-row-en .xml-row-body { background: #fafaef; font-style: italic; color: #2a3a2a; }
@@ -228,34 +226,37 @@ section.xml-supplement > .xml-supp-intro { color: #2d4a1d; font-size: 0.93rem; m
 .xml-muula { font-weight: 600; color: #2a3a55; background: #dde2eb; padding: 0 0.2rem; border-radius: 2px; }
 .xml-sutra { font-weight: 600; color: #244a18; background: #cfe5c7; padding: 0 0.2rem; border-radius: 2px; }
 .xml-ed, .xml-red { border-bottom: 1px dotted #b88c1d; }
-.xml-edsrc { font-size: 0.74rem; color: #8a6f3a; vertical-align: super; margin-left: 0.1rem; }
+.xml-edsrc { font-size: 0.72rem; color: #8a6f3a; vertical-align: super; margin-left: 0.1rem; }
 .xml-app { display: inline-block; vertical-align: super; margin-left: 0.15rem; }
 .xml-app summary { cursor: pointer; font-size: 0.7rem; color: #b88c1d; padding: 0 0.2rem; background: #f4ebe0; border: 1px solid #d8b888; border-radius: 2px; list-style: none; user-select: none; }
 .xml-app summary::-webkit-details-marker { display: none; }
 .xml-app summary:hover { background: #e8d8b8; }
 .xml-app[open] summary { background: #e8d8b8; }
-.xml-app .xml-var, .xml-app .xml-note { display: block; background: #fefbf3; border: 1px solid #e0d4b3; padding: 0.35rem 0.55rem; margin-top: 0.3rem; font-size: 0.84rem; font-style: normal; }
+.xml-app .xml-var, .xml-app .xml-note { display: block; background: #fefbf3; border: 1px solid #e0d4b3; padding: 0.3rem 0.5rem; margin-top: 0.25rem; font-size: 0.82rem; font-style: normal; }
 .xml-var b { color: #6a3f10; }
 .xml-ref { color: #1d4f8e; cursor: help; border-bottom: 1px dotted #1d4f8e; font-style: italic; font-size: 0.94em; }
-.xml-xs, .xml-xt { background: #f0e8e8; color: #3a3a3a; font-style: italic; padding: 0 0.2rem; border-radius: 2px; font-size: 0.92em; }
-.xml-edref { font-size: 0.84rem; color: #5a3a3a; background: #f0eae0; padding: 0 0.3rem; border-radius: 2px; }
-.xml-parallels { margin: 0.4rem 0 0 0; border-left: 3px solid #5a7da2; padding: 0.35rem 0.6rem; background: #eef2f6; border-radius: 2px; }
-.xml-parallels-head { font-size: 0.76rem; color: #2a3a55; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.25rem; font-weight: 600; }
-.xml-par-entry { margin: 0.3rem 0; padding-bottom: 0.25rem; border-bottom: 1px dotted #c0cad8; }
+.xml-xs, .xml-xt { background: #f0e8e8; color: #3a3a3a; font-style: italic; padding: 0 0.2rem; border-radius: 2px; font-size: 0.92em; text-decoration: none; border-bottom: 1px dotted #5a2d2d; }
+.xml-xs:hover, .xml-xt:hover { background: #e8d0d0; border-bottom-style: solid; }
+a.xml-xs, a.xml-xt { cursor: pointer; }
+.xml-edref { font-size: 0.82rem; color: #5a3a3a; background: #f0eae0; padding: 0 0.3rem; border-radius: 2px; }
+.xml-parallels { margin: 0.35rem 0 0; border-left: 3px solid #5a7da2; padding: 0.3rem 0.55rem; background: #eef2f6; border-radius: 2px; }
+.xml-parallels-head { font-size: 0.74rem; color: #2a3a55; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.25rem; font-weight: 600; }
+.xml-par-entry { margin: 0.25rem 0; padding-bottom: 0.2rem; border-bottom: 1px dotted #c0cad8; }
 .xml-par-entry:last-child { border-bottom: none; }
-.xml-par-src { font-size: 0.8rem; color: #2a3a55; font-weight: 600; }
-.xml-par-txt { font-size: 0.9rem; color: #333; margin-top: 0.15rem; }
-.xml-par-tib { font-size: 0.88rem; color: #444; margin-top: 0.15rem; }
-.xml-par-tib b { font-size: 0.78rem; color: #5a2d2d; margin-right: 0.3rem; }
+.xml-par-src { font-size: 0.78rem; color: #2a3a55; font-weight: 600; }
+.xml-par-txt { font-size: 0.88rem; color: #333; margin-top: 0.15rem; }
+.xml-par-tib { font-size: 0.86rem; color: #444; margin-top: 0.15rem; }
+.xml-par-tib b { font-size: 0.76rem; color: #5a2d2d; margin-right: 0.3rem; }
 .xml-xe { display: inline-block; margin: 0 0.15rem; }
 .xml-xe summary { cursor: pointer; font-size: 0.72rem; color: #5a4310; padding: 0 0.3rem; background: #f7f3ea; border: 1px solid #d8c8a8; border-radius: 2px; list-style: none; }
 .xml-xe summary::-webkit-details-marker { display: none; }
-.xml-xe[open] { display: block; background: #fbf6e8; border: 1px solid #d8c8a8; border-radius: 3px; padding: 0.35rem 0.6rem; margin: 0.3rem 0; }
+.xml-xe[open] { display: block; background: #fbf6e8; border: 1px solid #d8c8a8; border-radius: 3px; padding: 0.3rem 0.55rem; margin: 0.25rem 0; }
 .xml-xe[open] summary { background: transparent; border: none; padding: 0 0 0.15rem; }
 .xml-xf { font-size: 0.86em; color: #666; }
 .xml-var-stray { font-size: 0.82rem; color: #888; }
-.xml-supp-conventions { background: #fdfdf6; border: 1px solid #d8d8b8; border-radius: 3px; padding: 0.55rem 0.8rem; margin: 0.6rem 0 1rem; font-size: 0.83rem; color: #4a4a2a; }
-.xml-supp-conventions code, .xml-supp-conventions span { padding: 0 0.25rem; border-radius: 2px; }
+.xml-fallback { margin-top: 2.5rem; padding: 1.2rem 1.4rem; background: #fdf5e6; border: 1px solid #d8b888; border-radius: 4px; }
+.xml-fallback > h3 { color: #6a3f10; margin-top: 0; font-size: 1.05rem; }
+.xml-fallback > p { font-size: 0.88rem; color: #5a4310; }
 </style>
 </head>
 <body>
@@ -328,6 +329,19 @@ Neither-painful-nor-pleasant [vedanā] is, in some samāpatti, the
 cause of the craving for staying in that state and of the craving
 for non-separation from it."
 </div>
+
+<div class="xml-inline-app" data-xmlnum="36">
+  <div class="xml-inline-head">From Nehrdich's critical edition — §36<span class="xml-inline-meta">MS fol. 57r4</span></div>
+  <div class="xml-row xml-row-skt"><div class="xml-row-label">Sanskrit</div><div class="xml-row-body">tatra sukhā vedanā tat-saṃyogāviyoga-tṛṣṇā<span class="xml-recon">yā hetuḥ | duḥkhā tad-asaṃyoga-viyoga-tṛṣṇāyā hetuḥ</span> |</div></div>
+  <div class="xml-row xml-row-tib"><div class="xml-row-label">Tibetan</div><div class="xml-row-body">de la bde ba'i tshor ba ni de dang ldan zhing mi 'bral bar sred <span class="xml-recon">pa'i [P116b4] rgyu'o || sdug bsngal ni de dang mi phrad pa dang <span class="xml-ed">'bral<span class="xml-edsrc">[P]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>D:</b> bral</span></details></span> bar sred pa'i rgyu'o</span> |</div></div>
+  <div class="xml-row xml-row-en"><div class="xml-row-label">English</div><div class="xml-row-body">Among [the different kinds of vedanā] pleasant feeling is the cause of the thirst for association and non-separation with it [the pleasant feeling]. Unpleasant [feeling] is the cause of the thirst for the non-association and separation with it [the unpleasant feeling].</div></div>
+</div>
+<div class="xml-inline-app" data-xmlnum="37">
+  <div class="xml-inline-head">From Nehrdich's critical edition — §37</div>
+  <div class="xml-row xml-row-skt"><div class="xml-row-label">Sanskrit</div><div class="xml-row-body"><span class="xml-recon">aduḥkhāsukhā tadava</span>sthābhiratitṛṣṇāyās tat<span class="xml-ed">saṃyogāviyogatṛṣṇāyāś<span class="xml-edsrc">[Y Pa St Tib (phrad cing mi &#x27;bral par)]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>Ms:</b> saṃyogaviyogatṛṣṇāyāś</span></details></span> ca kasyāṃcit <span class="xml-ed">samāpattau <span class="xml-edsrc">[Ms Y Tib (snyoms par &#x27;jug pa)]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>Pa:</b> samāptau</span></details></span> hetur iti | </div></div>
+  <div class="xml-row xml-row-tib"><div class="xml-row-label">Tibetan</div><div class="xml-row-body"><span class="xml-recon">sdug bsngal yang ma yin [D271b2] bde ba yang ma yin pa ni</span> snyoms par 'jug pa 'ga' zhig la <span class="xml-recon">de'i gnas</span> skabs la mngon par dga' ba'i [P116b5] sred pa'i rgyu dang | de dang phrad cing mi 'bral par sred pa'i rgyu yin no || </div></div>
+  <div class="xml-row xml-row-en"><div class="xml-row-label">English</div><div class="xml-row-body"><span class="xml-recon">Neither pleasant nor unpleasant [feeling]</span>, [at the time of being] in some meditative state[s], is the cause of thirst for [taking] delight in <span class="xml-recon">the state of it</span> [neither pleasant nor unpleasant feeling] and [the cause] for the thirst of association and non-separation with it [neither pleasant nor unpleasant feeling].</div></div>
+</div>
 </section>
 
 <section class="sentence" id="s33">
@@ -390,6 +404,13 @@ person,] when touched by painful vedanā, delights in kāma-sukha
 [= sensual pleasure],' even painful vedanā too is a cause of
 craving — [namely] of craving for pleasure. By examining it, [the
 practitioner] enters the truth of origin."
+</div>
+
+<div class="xml-inline-app" data-xmlnum="38">
+  <div class="xml-inline-head">From Nehrdich's critical edition — §38<span class="xml-inline-meta">MS fol. 57r5</span></div>
+  <div class="xml-row xml-row-skt"><div class="xml-row-label">Sanskrit</div><div class="xml-row-body">sa duḥkhavedanayā <span class="xml-ed">spṛṣṭaḥ<span class="xml-edsrc">[Y Pa Tib (reg na)]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>Ms:</b> spaṣṭaḥ</span></details></span> kāmasukham abhinandatīti vacanāt, duḥkhā<span class="xml-recon">pi vedanā</span> <span class="xml-red">sukhatṛṣṇāyā<span class="xml-edsrc">[Y]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>Y:</b> sukhāya tṛṣṇāyā</span><span class="xml-var"><b>Pa:</b> <em>sukhāya tṛṣṇāyā</em></span><span class="xml-note">cf. Y 102.20: <a class="xml-xs" href="https://dharmamitra.org/nexus/db//sa/SA_T06_sthmavt/text?active_segment=SA_T06_sthmavt:1714" target="_blank" title="DharmaMitra: SA_T06_sthmavt — SA_T06_sthmavt:1714 — Sthiramati: Madhyāntavibhāgaṭīkā">sūtrādidharmatṛṣṇā</a> (D: <a class="xml-xt" href="https://dharmamitra.org/nexus/db//bo/BO_T06_D4032/text?active_segment=BO_T06_D4032:239a-13" target="_blank" title="DharmaMitra: BO_T06_D4032 — BO_T06_D4032:239a-13 — དབུས་དང་མཐའ་རྣམ་པར་འབྱེད་པའི་འགྲེལ་བཤད། (madhyāntavibhāgaṭīkā)">mdo sde la sogs pa&#x27;i chos la sred pa</a>).</span></details></span><span class="xml-recon"> hetur bhavati </span> |</div></div>
+  <div class="xml-row xml-row-tib"><div class="xml-row-label">Tibetan</div><div class="xml-row-body">de sdug bsngal gyi tshor bas reg na 'dod pa'i bde ba la mngon par dga'o zhes 'byung ba'i phyir | <span class="xml-recon">sdug bsngal <span class="xml-ed">ba'i<span class="xml-edsrc">[D]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>P:</b> om.</span></details></span> tshor ba yang bde ba la [P116b6] sred pa'i rgyur 'gyur te</span> | </div></div>
+  <div class="xml-row xml-row-en"><div class="xml-row-label">English</div><div class="xml-row-body">"He, as he made contact with the feeling of suffering, rejoices in the pleasantness of sensory pleasures" because of this recitation <span class="xml-recon">the feeling of</span> suffering <span class="xml-recon">also becomes a cause for the thirst of happiness.</span><details class="xml-xe"><summary>📝 note</summary>This passage is very likely a quotation from the <em>Pratītyasamutpādādivibhaṅganirdeśa</em> (D3995), which according to \textsc{Skilling} can be attributed with certainity to Vasubandhu.<span class="xml-xf">[<span class="xml-ref" title="modern academic citation">[skilling2000 299]</span>.]</span> The wording in <em>Derge</em> 3995 36b4-36b6 is: <span class="xml-quote">'on kyang bde ba'i tshor ba ni de dang ldan zhing mi 'bral bar sred pa'i rkyen yin no || sdug bsngal ni de dang mi ldan zhing 'bral bar sred pa'i rkyen yin no || sdug bsngal yang ma yin bde ba yang ma yin pa ni de'i gnas skabs la mngon par dga' ba'i sred pa'i rkyen yin no || bsam gtan kha cig tu ni de dang ldan zhing mi 'bral bar sred pa'i rkyen yin no || bcom ldan 'das kyis kyang de sdug bsngal gyi tshor bas reg pa dang | 'dod pa'i bde ba la mngon par dga' ba'o zhes gsungs te | sdug bsngal gyi tshor ba yang bde ba la sred pa'i rkyen yin no ||</span> </details></div></div>
 </div>
 </section>
 
@@ -459,6 +480,13 @@ effect, by its impermanence, and by its painfulness, enters the
 truth of origin. The sense is: '[he] cognizes <em>tṛṣṇā</em> as
 [vedanā's] effect.'"
 </div>
+
+<div class="xml-inline-app" data-xmlnum="39">
+  <div class="xml-inline-head">From Nehrdich's critical edition — §39</div>
+  <div class="xml-row xml-row-skt"><div class="xml-row-label">Sanskrit</div><div class="xml-row-body"><span class="xml-muula"><span class="xml-recon">tatparīkṣayā samudayasatyam avata</span>rati</span> | sa hi vedanāṃ svarūpataḥ <span class="xml-ed">kāraṇato <span class="xml-edsrc">[Ms]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>Y Pa St:</b> kāraṇataḥ kāryato</span><span class="xml-var"><b>Tib:</b> kāryato (<span class="xml-xt">&#x27;bras bu</span>)</span></details></span> 'nityato duḥkhataś copaparīkṣamāṇaḥ samudayasatyam avatarati |</div></div>
+  <div class="xml-row xml-row-tib"><div class="xml-row-label">Tibetan</div><div class="xml-row-body"><span class="xml-muula"><span class="xml-recon">de la yongs su brtags pas kun 'byung ba'i bden pa la 'jug</span> go</span> || de la tshor ba rnams la rang bzhin dang 'bras bu dang mi rtag pa dang sdug bsngal ba nyid du nye bar yongs su rtog na [P116b7] kun 'byung ba'i bden pa la 'jug ste |</div></div>
+  <div class="xml-row xml-row-en"><div class="xml-row-label">English</div><div class="xml-row-body"><span class="xml-muula"><span class="xml-recon">By the investigation of it [of sensation]</span></span><br><span class="xml-muula"><span class="xml-recon">one enters the truth of origination.</span></span> He, because he is observing feeling in it's own nature, as a cause, as not eternal and as suffering, enters the truth of suffering.</div></div>
+</div>
 </section>
 
 <section class="sentence" id="s35">
@@ -526,6 +554,19 @@ the craving that is rebirth-producing, accompanied by delight and
 passion' — and so on. Thus, by the foundation-of-mindfulness on
 vedanā, [the practitioner] enters the truth of origin."
 </div>
+
+<div class="xml-inline-app" data-xmlnum="40">
+  <div class="xml-inline-head">From Nehrdich's critical edition — §40<span class="xml-inline-meta">MS fol. 57r6</span></div>
+  <div class="xml-row xml-row-skt"><div class="xml-row-label">Sanskrit</div><div class="xml-row-body">tṛṣṇāṃ tatkāryatvenāvagacchatīty arthaḥ | <span class="xml-quote">tṛṣṇā hi sūtre <span class="xml-recon">samudayasatyam ity uktā</span> |</span><div class="xml-parallels"><div class="xml-parallels-head">↳ Parallels</div><div class="xml-par-entry"><div class="xml-par-src"><span class="xml-ref" title="Abhidharmakośabhāṣya (Vasubandhu)">Abhidharmakośabhāṣya (Vasubandhu)</span> 333.2-3</div><div class="xml-par-txt">yat tu samudayasatyaṃ tad evocyate | idamutsūtram sūtre hi tṛṣṇaivoktā</div></div><div class="xml-par-entry"><div class="xml-par-src"><span class="xml-ref" title="Abhidharmakośavyākhyā (Yaśomitra, Sphuṭārthā)">Abhidharmakośavyākhyā (Yaśomitra, Sphuṭārthā)</span> 523.1-2</div><div class="xml-par-txt">abhinirvṛttihetuṃ bruvatā samudayasatyaṃ tṛṣṇaivoktā sūtre |</div></div></div><span class="xml-recon"> ko duḥkhasamudayaḥ?</span></div></div>
+  <div class="xml-row xml-row-tib"><div class="xml-row-label">Tibetan</div><div class="xml-row-body">sred pa ni de'i 'bras <span class="xml-ed">bur<span class="xml-edsrc">[D]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>P:</b> bu</span></details></span> khong du chud do zhes bya ba'i tha tshig go || mdo sde las sred pa ni <span class="xml-recon">kun 'byung ba'i bden par gsungs te | sdug bsngal kun 'byung ba gang [P116b8] zhe na</span> |</div></div>
+  <div class="xml-row xml-row-en"><div class="xml-row-label">English</div><div class="xml-row-body">One understands thirst as being the effect of it [feeling] - this is the meaning [of the previous statement]. For in a <em>sUtra</em><details class="xml-xe"><summary>📝 note</summary>As noted in <span class="xml-ref" title="modern academic citation">[mavtjt 273]</span>, note 8, <span class="xml-ref" title="Abhidharmakośabhāṣya (Vasubandhu)">Abhidharmakośabhāṣya (Vasubandhu)</span> also refers to the following passage, which is indicated as a quote from the <span class="xml-ref" title="Sacca-saṃyutta">Sacca-saṃyutta</span>. </details> thirst is said to be the truth of origination. What is the origin of suffering?</div></div>
+</div>
+<div class="xml-inline-app" data-xmlnum="41">
+  <div class="xml-inline-head">From Nehrdich's critical edition — §41</div>
+  <div class="xml-row xml-row-skt"><div class="xml-row-label">Sanskrit</div><div class="xml-row-body"><span class="xml-quote"><span class="xml-recon">tṛṣṇā <span class="xml-red">paunarbhavikī<span class="xml-edsrc">[Y pa]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>Y pa:</b> <em>paunarbha</em>vikā</span><span class="xml-var"><b>Yms:</b> … viveka</span></details></span></span> <span class="xml-ed"><em>nan</em>dī<span class="xml-edsrc">[Ms St]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>Y Pa:</b> nandā </span></details></span> rāgasahagate <span class="xml-ed">ti vistaraḥ<span class="xml-edsrc">[Y Pa]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>Y Pa:</b> paṭhyate tṛṣṇā ... eti vistaraḥ</span></details></span></span><div class="xml-parallels"><div class="xml-parallels-head">↳ Parallels</div><div class="xml-par-entry"><div class="xml-par-src"><span class="xml-ref" title="Lalitavistara">Lalitavistara</span></div><div class="xml-par-txt">katamo duḥkhasamudayaḥ? yeyaṃ tṛṣṇā paunarbhavikī nandīrāgasahagatā</div></div><div class="xml-par-entry"><div class="xml-par-src"><span class="xml-ref" title="Arthaviniścaya">Arthaviniścaya</span></div><div class="xml-par-txt">duḥkhasamudayamāryasatyaṃ katamat? tadyathā - yeyaṃ tṛṣṇā paunarbhavikī nandīrāgasahagatā </div></div><div class="xml-par-entry"><div class="xml-par-src"><span class="xml-ref" title="Pāli Majjhima-nikāya (PTS)">Pāli Majjhima-nikāya (PTS)</span> 141</div><div class="xml-par-txt">yāyaṃ taṇhā ponobhavikā nandirāgasahagatā tatratatrābhinandinī</div></div></div> | evaṃ vedanāsmṛtyupasthānena samudayasatyam avatarati |</div></div>
+  <div class="xml-row xml-row-tib"><div class="xml-row-label">Tibetan</div><div class="xml-row-body"><span class="xml-recon">yang 'byung ba'i sred pa dga' ba'i</span> 'dod chags dang ldan pa'o zhes rgya cher 'byung ngo || de ltar tshor ba dran pa nye bar gzhag pas kun 'byung ba'i bden pa la 'jug go ||</div></div>
+  <div class="xml-row xml-row-en"><div class="xml-row-label">English</div><div class="xml-row-body">"[It is] thirst, which is pertaining to rebirth, which is endowed with the craving for joy" and so on.<details class="xml-xe"><summary>📝 note</summary>The "and so on" at this point carries the nuance of indicating a well-known quotation. As the parallels indicate, it is indeed seen in various places. The probably earliest appearance could be the form seen in the <span class="xml-ref" title="Pāli Majjhima-nikāya (PTS)">Pāli Majjhima-nikāya (PTS)</span> 141, which was also mentioned at s<span class="xml-ref" title="modern academic citation">[mavtjt 274]</span> fn. 10: <a class="xml-xt" href="https://dharmamitra.org/nexus/db//bo/BO_ACIP-SUNGBUM_S0999E_T/text?active_segment=BO_ACIP-SUNGBUM_S0999E_T:3230" target="_blank" title="DharmaMitra: BO_ACIP-SUNGBUM_S0999E_T — BO_ACIP-SUNGBUM_S0999E_T:3230 — — བསྟན་བཅོས་མངོན་པར་རྟོགས་པའི་རྒྱན་འགྲེལ་པ་འགྲེལ་བཤད་དང་བཅས་པའི་རྒྱ་ཆེར་བཤད་པ་བས">yāyaṃ taṇhā ponobhavikā nandirāgasahagatā tatratatrābhinandinī</a>. It should also be noted that a paraphrase of this quotation appears in the <span class="xml-ref" title="Abhidharmasamuccayabhāṣya">Abhidharmasamuccayabhāṣya</span> 55.9.</details> this way by the establishment of the mindfulness of feeling one enters the truth of origination.</div></div>
+</div>
 </section>
 
 <section class="sentence" id="s36">
@@ -586,6 +627,13 @@ because there is no other self-endowed-with-the-qualities-of-
 permanence-and-so-on, the object of self-clinging is citta itself.
 Therefore, by examining it, [the practitioner] enters the truth
 of cessation [understood] as quiescence."
+</div>
+
+<div class="xml-inline-app" data-xmlnum="42">
+  <div class="xml-inline-head">From Nehrdich's critical edition — §42<span class="xml-inline-meta">MS fol. 57r7</span></div>
+  <div class="xml-row xml-row-skt"><div class="xml-row-label">Sanskrit</div><div class="xml-row-body"><span class="xml-muula">ātmābhiniveśavastu cittam</span> iti | anyasya nityādi-guṇa-viśiṣṭasyātmano 'bhā-vā<span class="xml-recon">d ātmābhi</span><span class="xml-recon">-niveśālambanaṃ cittam eva | tasmāt</span><span class="xml-muula"><span class="xml-recon"> tatparīkṣayā</span> nirodhasatyam avatarati</span> śāntatvena |</div></div>
+  <div class="xml-row xml-row-tib"><div class="xml-row-label">Tibetan</div><div class="xml-row-body"><span class="xml-muula">bdag tu mngon par zhen [P117a1] pa'i gzhi ni sems te</span> zhes bya ba la | rtag pa la sogs pa'i yon tan khyad par can gyi bdag gzhan med pas na <span class="xml-recon">bdag tu mngon par zhen pa'i dmigs pa ni sems nyid do || de bas [P117a2] na <span class="xml-muula">de [D271b6] yongs su brtags pas</span></span> <span class="xml-muula">'gog pa'i bden pa la</span> zhi ba nyid du <span class="xml-muula">'jug ste</span> |</div></div>
+  <div class="xml-row xml-row-en"><div class="xml-row-label">English</div><div class="xml-row-body"><span class="xml-muula">The basis for the stubborn clinging to a self is the mind<details class="xml-xe"><summary>📝 note</summary>In  the second chapter of the <span class="xml-ref" title="Madhyāntavibhāgaṭīkā (Sthiramati)">Madhyāntavibhāgaṭīkā (Sthiramati)</span>, Sthiramati discusses these bases of clining: <span class="xml-quote"><u>Lack of skill with regard to the base is an  obstacle with regard to the establishments of mindfulness.</u> And these [establishments of mindfulness] are <em>the four establishments</em> of mindfulness of body, feeling, the mind and the phenomena. <em>the bases of these [establishments of mindfulness] again are the body, feeling, the mind and the phenomena [respectively], because [the establishments of mindfulness] have these as their objects. Among these [bases], the basis for the stubborn clining to a [physical] foundation is the body. The basis for the stubborn clinging to enjoyment of the self</em> is feeling. The basis for the stubborn clinging to a self is the mind. The basis to the stubborn clinging to the self as either defiled or pure are the phenomena.  <br><span class="xml-ref" title="Madhyāntavibhāgaṭīkā (Sthiramati)">Madhyāntavibhāgaṭīkā (Sthiramati)</span> 90.14-19: <u>smṛty upasthāneṣu vastvakauśalam āvaraṇam</u> iti | tāni punaḥ kāyavedanācittadharmasmṛtyupa<em>sthānāni catvāri | teṣām punar vastu kāyavedanācittadharmāḥ tadviṣayatvāt | tatrāśrayābhiniveśavastu kāyaḥ | ātmaparibhogābhinive</em>śavastu vedanā | ātmābhiniveśavastu cittaṃ | ātmasaṃkleśavyavadānābhiniveśavastu dharmā<span class="xml-xf">[Y reads <em>dharma</em>. This improvement is suggested in St p. 117, fn. 171.]</span> iti |</span></details></span>. <span class="xml-recon">Because of the absence</span> of a different self that is characterized by the qualities such as being eternal and so on, <span class="xml-recon">only the mind is the basis for the stubborn clinging to a self. Therefore, <span class="xml-muula">by the investigation of it [the mind]</span></span> <span class="xml-muula">one enters the truth of cessation</span> as a state of peacefulness.</div></div>
 </div>
 </section>
 
@@ -663,6 +711,13 @@ self-annihilation, by the cessation of mere-suffering, [the
 practitioner] enters the truth of cessation [understood] as
 quiescence."
 </div>
+
+<div class="xml-inline-app" data-xmlnum="43">
+  <div class="xml-inline-head">From Nehrdich's critical edition — §43</div>
+  <div class="xml-row xml-row-skt"><div class="xml-row-label">Sanskrit</div><div class="xml-row-body">atr<span class="xml-ed">aiva<span class="xml-edsrc">[Tib]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>Tib:</b> om.</span></details></span> kāraṇam āha: <span class="xml-muula">ātmocchedabhayāpagamād</span> iti | citte hy anityatvādiparīkṣayātmābhiniveśo vyāvartate duḥkhasaṃjñā pravartate |</div></div>
+  <div class="xml-row xml-row-tib"><div class="xml-row-label">Tibetan</div><div class="xml-row-body">'dir rgyu smos pa | <span class="xml-muula">bdag chad bar dogs pa'i 'jigs pa med pa'i phyir ro</span> zhes bya ba ste | sems la mi rtag pa la sogs par [P117a3] yongs su brtags pas bdag tu mngon par zhen pa ldog cing sdug bsngal du 'du shes 'byung ngo ||</div></div>
+  <div class="xml-row xml-row-en"><div class="xml-row-label">English</div><div class="xml-row-body">Vasubandhu states the reason precisely for this: <span class="xml-muula">Because of the going away of the fear of the destruction of the self.</span>.<details class="xml-xe"><summary>📝 note</summary>At this point Tib. differs slightly: Because of the absence of the fear of the destruction of the self.</details> For by the investigation of impermanence etc. with regard to the mind the stubborn clinging to the self ceases [and] the notion of suffering arises.</div></div>
+</div>
 </section>
 
 <section class="sentence" id="s38">
@@ -703,6 +758,14 @@ evaṁ cittasmṛtyupasthānena nirodhasatyam avataratīti |
 <div class="translation">
 "Thus, by the foundation-of-mindfulness on citta, [the
 practitioner] enters the truth of cessation."
+</div>
+
+<div class="xml-inline-app" data-xmlnum="44">
+  <div class="xml-inline-head">From Nehrdich's critical edition — §44<span class="xml-inline-meta">MS fol. 58v1</span></div>
+  <div class="xml-row xml-row-skt"><div class="xml-row-label">Sanskrit</div><div class="xml-row-body">ataś cātmocche<span class="xml-recon">da-bhayāpa-gamād duḥkha</span><span class="xml-red">mātrocchedān <span class="xml-edsrc">[Tib (tsam zhig gcod pa&#x27;i phir)]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>Y Pa:</b> <em>mātrasyo</em>cchedān</span></details></span> <span class="xml-recon">nirodhasatyaṃ śānta</span><span class="xml-ed">tvenāvataratīti<span class="xml-edsrc">[Yms]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>Yms:</b> tvaṃ cāvatarati</span></details></span> | evaṃ cittasmṛtyupasthānena nirodhasatyam avataratīti |</div></div>
+  <div class="xml-row xml-row-tib"><div class="xml-row-label">Tibetan</div><div class="xml-row-body"> de'i phyir bdag chad <span class="xml-recon">pa'i 'jigs pa med pas sdug bsngal ba tsam zhig gcod pa'i phyir</span> 'gog pa'i bden pa la <span class="xml-recon">zhi ba</span> [P117a4] nyid du 'jug ste | de ltar sems dran pa nye bar gzhag pas 'gog pa'i bden pa la 'jug ces bya'o ||
+    </div></div>
+  <div class="xml-row xml-row-en"><div class="xml-row-label">English</div><div class="xml-row-body">Therefore, <span class="xml-recon">because of the cutting off of just suffering due to the absence of the fear of the</span> destruction of the self one enters the truth of cessation <span class="xml-recon">as peaceful</span>.<details class="xml-xe"><summary>📝 note</summary>This passage appears very literaly in Jayānanda's <em>Madhyamakāvatāraṭīkā</em> (D3870) at 22b6-7: <span class="xml-quote">de ltar mi rtag pa nyid la sogs pa la spyad pas bdag tu mngon par zhen pa ldog la | sdug bsngal gyi 'du shes kyang skye'o || des na bdag chad par 'gyur ba'i 'jigs pa med pa dang | sdug bsngal tsam 'chad pa yin pas 'gog pa'i bden pa zhi ba nyid du mthong ngo ||</span></details> In this way by the establishment of mindfulness of the mind one enters the truth of cessation.</div></div>
 </div>
 </section>
 
@@ -778,6 +841,13 @@ these, the defiling dharmas are the <em>kleśa</em>s and
 to those defilements and secondary defilements… [continues on
 p. 208]"
 </div>
+
+<div class="xml-inline-app" data-xmlnum="45">
+  <div class="xml-inline-head">From Nehrdich's critical edition — §45<span class="xml-inline-meta">Stanley §226</span></div>
+  <div class="xml-row xml-row-skt"><div class="xml-row-label">Sanskrit</div><div class="xml-row-body"><span class="xml-muula">dharmaparīkṣayā sāṃkleśika<span class="xml-ed">vyāvadānika<span class="xml-edsrc">[Ms Y Pa]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>Na:</b> vaiyavadānika</span></details></span>-dharmāsammohān mārga--</span><br><span class="xml-muula">satyam avataratī</span>ti | tatra sāṃkleśikā dharmāḥ kleśopakleśāḥ |</div></div>
+  <div class="xml-row xml-row-tib"><div class="xml-row-label">Tibetan</div><div class="xml-row-body"><span class="xml-muula">chos la yongs su brtags [D272a1] pas kun nas nyon mongs pa dang rnam par byang ba'i chos la rmongs pa med pa'i [P117a5] phyir lam gyi bden pa la 'jug go </span> zhes bya ba | de la kun nas nyon mongs pa'i chos rnams ni nyon mongs pa dang nye ba'i nyon <span class="xml-ed">mongs<span class="xml-edsrc">[D]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>P:</b> rmongs</span></details></span> pa rnams so ||</div></div>
+  <div class="xml-row xml-row-en"><div class="xml-row-label">English</div><div class="xml-row-body"><span class="xml-muula">By the observation of the phenomena, because there is no confusion with regard to the phenomena related to pollution and  those related to purity, one enters the truth of the path</span>. At this point the impure phenomena are defilements and secondary defilements.</div></div>
+</div>
 </section>
 <section class="sentence" id="s33"><h3>§33 — Sa duḥkha-vedanayā spṛṣṭaḥ kāma-sukham abhinandati (sūtra citation) <span class="status pending">PENDING</span></h3></section>
 <section class="sentence" id="s34"><h3>§34 — Sa hi vedanāṃ svarūpataḥ kāraṇataḥ … upaparīkṣamāṇaḥ <span class="status pending">PENDING</span></h3></section>
@@ -788,93 +858,6 @@ p. 208]"
 <section class="sentence" id="s39"><h3>§39 — Dharma-parīkṣayā … mārga-satyam avatarati (dharma section opens, → p. 208) <span class="status pending">PENDING</span></h3></section>
 
 
-
-<section class="xml-supplement" id="xml-supplement">
-<h2>Additional critical apparatus from Sebastian Nehrdich's TEI edition</h2>
-<div class="xml-supp-intro">
-The walk-through above is the agent's analysis. The block below shows the
-<strong>same Yamaguchi page through Sebastian Nehrdich's hand-edited critical
-edition</strong> (an XML/TEI source covering the whole chapter 4). Every
-sentence is shown in three rows — Sanskrit / Tibetan / English — with the
-full multi-witness apparatus inline. Variant readings are collected by
-sigla (<b>Ms</b>, <b>Na</b>, <b>Y</b>, <b>Pa</b>, <b>St</b> for Sanskrit;
-<b>D</b>, <b>P</b> for Tibetan) and tucked behind a 📋 expander next to
-the chosen reading; long editorial notes are behind 📝. Sentence numbers
-(§1, §2, …) are <em>Nehrdich's</em> numbering and do not correspond to
-the §-sections in the walk-through above.
-</div>
-<div class="xml-supp-conventions">
-<strong>Legend:</strong>
-<span class="xml-recon">italic orange</span> = reconstructed (italic in Yamaguchi) ·
-<span class="xml-muula">blue bg</span> = mūla (the kārikā being commented) ·
-<span class="xml-sutra">green bg</span> = sūtra-quotation ·
-<span class="xml-xs">orange bg</span> = Sanskrit citation snippet ·
-<span class="xml-xt">orange bg</span> = Tibetan citation snippet ·
-<span class="xml-ref">italic blue</span> = reference to another work (hover for full name)
-</div>
-
-<div class="xml-sen">
-  <div class="xml-sen-head">§36<span class="xml-sen-meta">MS fol. 57r4</span></div>
-  <div class="xml-row xml-row-skt"><div class="xml-row-label">Sanskrit</div><div class="xml-row-body">tatra sukhā vedanā tat-saṃyogāviyoga-tṛṣṇā<span class="xml-recon">yā hetuḥ | duḥkhā tad-asaṃyoga-viyoga-tṛṣṇāyā hetuḥ</span> |</div></div>
-  <div class="xml-row xml-row-tib"><div class="xml-row-label">Tibetan</div><div class="xml-row-body">de la bde ba'i tshor ba ni de dang ldan zhing mi 'bral bar sred <span class="xml-recon">pa'i [P116b4] rgyu'o || sdug bsngal ni de dang mi phrad pa dang <span class="xml-ed">'bral<span class="xml-edsrc">[P]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>D:</b> bral</span></details></span> bar sred pa'i rgyu'o</span> |</div></div>
-  <div class="xml-row xml-row-en"><div class="xml-row-label">English</div><div class="xml-row-body">Among [the different kinds of vedanā] pleasant feeling is the cause of the thirst for association and non-separation with it [the pleasant feeling]. Unpleasant [feeling] is the cause of the thirst for the non-association and separation with it [the unpleasant feeling].</div></div>
-</div>
-<div class="xml-sen">
-  <div class="xml-sen-head">§37</div>
-  <div class="xml-row xml-row-skt"><div class="xml-row-label">Sanskrit</div><div class="xml-row-body"><span class="xml-recon">aduḥkhāsukhā tadava</span>sthābhiratitṛṣṇāyās tat<span class="xml-ed">saṃyogāviyogatṛṣṇāyāś<span class="xml-edsrc">[Y Pa St Tib (phrad cing mi &#x27;bral par)]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>Ms:</b> saṃyogaviyogatṛṣṇāyāś</span></details></span> ca kasyāṃcit <span class="xml-ed">samāpattau <span class="xml-edsrc">[Ms Y Tib (snyoms par &#x27;jug pa)]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>Pa:</b> samāptau</span></details></span> hetur iti | </div></div>
-  <div class="xml-row xml-row-tib"><div class="xml-row-label">Tibetan</div><div class="xml-row-body"><span class="xml-recon">sdug bsngal yang ma yin [D271b2] bde ba yang ma yin pa ni</span> snyoms par 'jug pa 'ga' zhig la <span class="xml-recon">de'i gnas</span> skabs la mngon par dga' ba'i [P116b5] sred pa'i rgyu dang | de dang phrad cing mi 'bral par sred pa'i rgyu yin no || </div></div>
-  <div class="xml-row xml-row-en"><div class="xml-row-label">English</div><div class="xml-row-body"><span class="xml-recon">Neither pleasant nor unpleasant [feeling]</span>, [at the time of being] in some meditative state[s], is the cause of thirst for [taking] delight in <span class="xml-recon">the state of it</span> [neither pleasant nor unpleasant feeling] and [the cause] for the thirst of association and non-separation with it [neither pleasant nor unpleasant feeling].</div></div>
-</div>
-<div class="xml-sen">
-  <div class="xml-sen-head">§38<span class="xml-sen-meta">MS fol. 57r5</span></div>
-  <div class="xml-row xml-row-skt"><div class="xml-row-label">Sanskrit</div><div class="xml-row-body">sa duḥkhavedanayā <span class="xml-ed">spṛṣṭaḥ<span class="xml-edsrc">[Y Pa Tib (reg na)]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>Ms:</b> spaṣṭaḥ</span></details></span> kāmasukham abhinandatīti vacanāt, duḥkhā<span class="xml-recon">pi vedanā</span> <span class="xml-red">sukhatṛṣṇāyā<span class="xml-edsrc">[Y]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>Y:</b> sukhāya tṛṣṇāyā</span><span class="xml-var"><b>Pa:</b> <em>sukhāya tṛṣṇāyā</em></span><span class="xml-note">cf. Y 102.20: <span class="xml-xs">sūtrādidharmatṛṣṇā</span> (D: <span class="xml-xt">mdo sde la sogs pa&#x27;i chos la sred pa</span>).</span></details></span><span class="xml-recon"> hetur bhavati </span> |</div></div>
-  <div class="xml-row xml-row-tib"><div class="xml-row-label">Tibetan</div><div class="xml-row-body">de sdug bsngal gyi tshor bas reg na 'dod pa'i bde ba la mngon par dga'o zhes 'byung ba'i phyir | <span class="xml-recon">sdug bsngal <span class="xml-ed">ba'i<span class="xml-edsrc">[D]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>P:</b> om.</span></details></span> tshor ba yang bde ba la [P116b6] sred pa'i rgyur 'gyur te</span> | </div></div>
-  <div class="xml-row xml-row-en"><div class="xml-row-label">English</div><div class="xml-row-body">"He, as he made contact with the feeling of suffering, rejoices in the pleasantness of sensory pleasures" because of this recitation <span class="xml-recon">the feeling of</span> suffering <span class="xml-recon">also becomes a cause for the thirst of happiness.</span><details class="xml-xe"><summary>📝 note</summary>This passage is very likely a quotation from the <em>Pratītyasamutpādādivibhaṅganirdeśa</em> (D3995), which according to \textsc{Skilling} can be attributed with certainity to Vasubandhu.<span class="xml-xf">[<span class="xml-ref" title="modern academic citation">[skilling2000 299]</span>.]</span> The wording in <em>Derge</em> 3995 36b4-36b6 is: <span class="xml-quote">'on kyang bde ba'i tshor ba ni de dang ldan zhing mi 'bral bar sred pa'i rkyen yin no || sdug bsngal ni de dang mi ldan zhing 'bral bar sred pa'i rkyen yin no || sdug bsngal yang ma yin bde ba yang ma yin pa ni de'i gnas skabs la mngon par dga' ba'i sred pa'i rkyen yin no || bsam gtan kha cig tu ni de dang ldan zhing mi 'bral bar sred pa'i rkyen yin no || bcom ldan 'das kyis kyang de sdug bsngal gyi tshor bas reg pa dang | 'dod pa'i bde ba la mngon par dga' ba'o zhes gsungs te | sdug bsngal gyi tshor ba yang bde ba la sred pa'i rkyen yin no ||</span> </details></div></div>
-</div>
-<div class="xml-sen">
-  <div class="xml-sen-head">§39</div>
-  <div class="xml-row xml-row-skt"><div class="xml-row-label">Sanskrit</div><div class="xml-row-body"><span class="xml-muula"><span class="xml-recon">tatparīkṣayā samudayasatyam avata</span>rati</span> | sa hi vedanāṃ svarūpataḥ <span class="xml-ed">kāraṇato <span class="xml-edsrc">[Ms]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>Y Pa St:</b> kāraṇataḥ kāryato</span><span class="xml-var"><b>Tib:</b> kāryato (<span class="xml-xt">&#x27;bras bu</span>)</span></details></span> 'nityato duḥkhataś copaparīkṣamāṇaḥ samudayasatyam avatarati |</div></div>
-  <div class="xml-row xml-row-tib"><div class="xml-row-label">Tibetan</div><div class="xml-row-body"><span class="xml-muula"><span class="xml-recon">de la yongs su brtags pas kun 'byung ba'i bden pa la 'jug</span> go</span> || de la tshor ba rnams la rang bzhin dang 'bras bu dang mi rtag pa dang sdug bsngal ba nyid du nye bar yongs su rtog na [P116b7] kun 'byung ba'i bden pa la 'jug ste |</div></div>
-  <div class="xml-row xml-row-en"><div class="xml-row-label">English</div><div class="xml-row-body"><span class="xml-muula"><span class="xml-recon">By the investigation of it [of sensation]</span></span><br><span class="xml-muula"><span class="xml-recon">one enters the truth of origination.</span></span> He, because he is observing feeling in it's own nature, as a cause, as not eternal and as suffering, enters the truth of suffering.</div></div>
-</div>
-<div class="xml-sen">
-  <div class="xml-sen-head">§40<span class="xml-sen-meta">MS fol. 57r6</span></div>
-  <div class="xml-row xml-row-skt"><div class="xml-row-label">Sanskrit</div><div class="xml-row-body">tṛṣṇāṃ tatkāryatvenāvagacchatīty arthaḥ | <span class="xml-quote">tṛṣṇā hi sūtre <span class="xml-recon">samudayasatyam ity uktā</span> |</span><div class="xml-parallels"><div class="xml-parallels-head">↳ Parallels</div><div class="xml-par-entry"><div class="xml-par-src"><span class="xml-ref" title="Abhidharmakośabhāṣya (Vasubandhu)">Abhidharmakośabhāṣya (Vasubandhu)</span> 333.2-3</div><div class="xml-par-txt">yat tu samudayasatyaṃ tad evocyate | idamutsūtram sūtre hi tṛṣṇaivoktā</div></div><div class="xml-par-entry"><div class="xml-par-src"><span class="xml-ref" title="Abhidharmakośavyākhyā (Yaśomitra, Sphuṭārthā)">Abhidharmakośavyākhyā (Yaśomitra, Sphuṭārthā)</span> 523.1-2</div><div class="xml-par-txt">abhinirvṛttihetuṃ bruvatā samudayasatyaṃ tṛṣṇaivoktā sūtre |</div></div></div><span class="xml-recon"> ko duḥkhasamudayaḥ?</span></div></div>
-  <div class="xml-row xml-row-tib"><div class="xml-row-label">Tibetan</div><div class="xml-row-body">sred pa ni de'i 'bras <span class="xml-ed">bur<span class="xml-edsrc">[D]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>P:</b> bu</span></details></span> khong du chud do zhes bya ba'i tha tshig go || mdo sde las sred pa ni <span class="xml-recon">kun 'byung ba'i bden par gsungs te | sdug bsngal kun 'byung ba gang [P116b8] zhe na</span> |</div></div>
-  <div class="xml-row xml-row-en"><div class="xml-row-label">English</div><div class="xml-row-body">One understands thirst as being the effect of it [feeling] - this is the meaning [of the previous statement]. For in a <em>sUtra</em><details class="xml-xe"><summary>📝 note</summary>As noted in <span class="xml-ref" title="modern academic citation">[mavtjt 273]</span>, note 8, <span class="xml-ref" title="Abhidharmakośabhāṣya (Vasubandhu)">Abhidharmakośabhāṣya (Vasubandhu)</span> also refers to the following passage, which is indicated as a quote from the <span class="xml-ref" title="Sacca-saṃyutta">Sacca-saṃyutta</span>. </details> thirst is said to be the truth of origination. What is the origin of suffering?</div></div>
-</div>
-<div class="xml-sen">
-  <div class="xml-sen-head">§41</div>
-  <div class="xml-row xml-row-skt"><div class="xml-row-label">Sanskrit</div><div class="xml-row-body"><span class="xml-quote"><span class="xml-recon">tṛṣṇā <span class="xml-red">paunarbhavikī<span class="xml-edsrc">[Y pa]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>Y pa:</b> <em>paunarbha</em>vikā</span><span class="xml-var"><b>Yms:</b> … viveka</span></details></span></span> <span class="xml-ed"><em>nan</em>dī<span class="xml-edsrc">[Ms St]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>Y Pa:</b> nandā </span></details></span> rāgasahagate <span class="xml-ed">ti vistaraḥ<span class="xml-edsrc">[Y Pa]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>Y Pa:</b> paṭhyate tṛṣṇā ... eti vistaraḥ</span></details></span></span><div class="xml-parallels"><div class="xml-parallels-head">↳ Parallels</div><div class="xml-par-entry"><div class="xml-par-src"><span class="xml-ref" title="Lalitavistara">Lalitavistara</span></div><div class="xml-par-txt">katamo duḥkhasamudayaḥ? yeyaṃ tṛṣṇā paunarbhavikī nandīrāgasahagatā</div></div><div class="xml-par-entry"><div class="xml-par-src"><span class="xml-ref" title="Arthaviniścaya">Arthaviniścaya</span></div><div class="xml-par-txt">duḥkhasamudayamāryasatyaṃ katamat? tadyathā - yeyaṃ tṛṣṇā paunarbhavikī nandīrāgasahagatā </div></div><div class="xml-par-entry"><div class="xml-par-src"><span class="xml-ref" title="Pāli Majjhima-nikāya (PTS)">Pāli Majjhima-nikāya (PTS)</span> 141</div><div class="xml-par-txt">yāyaṃ taṇhā ponobhavikā nandirāgasahagatā tatratatrābhinandinī</div></div></div> | evaṃ vedanāsmṛtyupasthānena samudayasatyam avatarati |</div></div>
-  <div class="xml-row xml-row-tib"><div class="xml-row-label">Tibetan</div><div class="xml-row-body"><span class="xml-recon">yang 'byung ba'i sred pa dga' ba'i</span> 'dod chags dang ldan pa'o zhes rgya cher 'byung ngo || de ltar tshor ba dran pa nye bar gzhag pas kun 'byung ba'i bden pa la 'jug go ||</div></div>
-  <div class="xml-row xml-row-en"><div class="xml-row-label">English</div><div class="xml-row-body">"[It is] thirst, which is pertaining to rebirth, which is endowed with the craving for joy" and so on.<details class="xml-xe"><summary>📝 note</summary>The "and so on" at this point carries the nuance of indicating a well-known quotation. As the parallels indicate, it is indeed seen in various places. The probably earliest appearance could be the form seen in the <span class="xml-ref" title="Pāli Majjhima-nikāya (PTS)">Pāli Majjhima-nikāya (PTS)</span> 141, which was also mentioned at s<span class="xml-ref" title="modern academic citation">[mavtjt 274]</span> fn. 10: <span class="xml-xt">yāyaṃ taṇhā ponobhavikā nandirāgasahagatā tatratatrābhinandinī</span>. It should also be noted that a paraphrase of this quotation appears in the <span class="xml-ref" title="Abhidharmasamuccayabhāṣya">Abhidharmasamuccayabhāṣya</span> 55.9.</details> this way by the establishment of the mindfulness of feeling one enters the truth of origination.</div></div>
-</div>
-<div class="xml-sen">
-  <div class="xml-sen-head">§42<span class="xml-sen-meta">MS fol. 57r7</span></div>
-  <div class="xml-row xml-row-skt"><div class="xml-row-label">Sanskrit</div><div class="xml-row-body"><span class="xml-muula">ātmābhiniveśavastu cittam</span> iti | anyasya nityādi-guṇa-viśiṣṭasyātmano 'bhā-vā<span class="xml-recon">d ātmābhi</span><span class="xml-recon">-niveśālambanaṃ cittam eva | tasmāt</span><span class="xml-muula"><span class="xml-recon"> tatparīkṣayā</span> nirodhasatyam avatarati</span> śāntatvena |</div></div>
-  <div class="xml-row xml-row-tib"><div class="xml-row-label">Tibetan</div><div class="xml-row-body"><span class="xml-muula">bdag tu mngon par zhen [P117a1] pa'i gzhi ni sems te</span> zhes bya ba la | rtag pa la sogs pa'i yon tan khyad par can gyi bdag gzhan med pas na <span class="xml-recon">bdag tu mngon par zhen pa'i dmigs pa ni sems nyid do || de bas [P117a2] na <span class="xml-muula">de [D271b6] yongs su brtags pas</span></span> <span class="xml-muula">'gog pa'i bden pa la</span> zhi ba nyid du <span class="xml-muula">'jug ste</span> |</div></div>
-  <div class="xml-row xml-row-en"><div class="xml-row-label">English</div><div class="xml-row-body"><span class="xml-muula">The basis for the stubborn clinging to a self is the mind<details class="xml-xe"><summary>📝 note</summary>In  the second chapter of the <span class="xml-ref" title="Madhyāntavibhāgaṭīkā (Sthiramati)">Madhyāntavibhāgaṭīkā (Sthiramati)</span>, Sthiramati discusses these bases of clining: <span class="xml-quote"><u>Lack of skill with regard to the base is an  obstacle with regard to the establishments of mindfulness.</u> And these [establishments of mindfulness] are <em>the four establishments</em> of mindfulness of body, feeling, the mind and the phenomena. <em>the bases of these [establishments of mindfulness] again are the body, feeling, the mind and the phenomena [respectively], because [the establishments of mindfulness] have these as their objects. Among these [bases], the basis for the stubborn clining to a [physical] foundation is the body. The basis for the stubborn clinging to enjoyment of the self</em> is feeling. The basis for the stubborn clinging to a self is the mind. The basis to the stubborn clinging to the self as either defiled or pure are the phenomena.  <br><span class="xml-ref" title="Madhyāntavibhāgaṭīkā (Sthiramati)">Madhyāntavibhāgaṭīkā (Sthiramati)</span> 90.14-19: <u>smṛty upasthāneṣu vastvakauśalam āvaraṇam</u> iti | tāni punaḥ kāyavedanācittadharmasmṛtyupa<em>sthānāni catvāri | teṣām punar vastu kāyavedanācittadharmāḥ tadviṣayatvāt | tatrāśrayābhiniveśavastu kāyaḥ | ātmaparibhogābhinive</em>śavastu vedanā | ātmābhiniveśavastu cittaṃ | ātmasaṃkleśavyavadānābhiniveśavastu dharmā<span class="xml-xf">[Y reads <em>dharma</em>. This improvement is suggested in St p. 117, fn. 171.]</span> iti |</span></details></span>. <span class="xml-recon">Because of the absence</span> of a different self that is characterized by the qualities such as being eternal and so on, <span class="xml-recon">only the mind is the basis for the stubborn clinging to a self. Therefore, <span class="xml-muula">by the investigation of it [the mind]</span></span> <span class="xml-muula">one enters the truth of cessation</span> as a state of peacefulness.</div></div>
-</div>
-<div class="xml-sen">
-  <div class="xml-sen-head">§43</div>
-  <div class="xml-row xml-row-skt"><div class="xml-row-label">Sanskrit</div><div class="xml-row-body">atr<span class="xml-ed">aiva<span class="xml-edsrc">[Tib]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>Tib:</b> om.</span></details></span> kāraṇam āha: <span class="xml-muula">ātmocchedabhayāpagamād</span> iti | citte hy anityatvādiparīkṣayātmābhiniveśo vyāvartate duḥkhasaṃjñā pravartate |</div></div>
-  <div class="xml-row xml-row-tib"><div class="xml-row-label">Tibetan</div><div class="xml-row-body">'dir rgyu smos pa | <span class="xml-muula">bdag chad bar dogs pa'i 'jigs pa med pa'i phyir ro</span> zhes bya ba ste | sems la mi rtag pa la sogs par [P117a3] yongs su brtags pas bdag tu mngon par zhen pa ldog cing sdug bsngal du 'du shes 'byung ngo ||</div></div>
-  <div class="xml-row xml-row-en"><div class="xml-row-label">English</div><div class="xml-row-body">Vasubandhu states the reason precisely for this: <span class="xml-muula">Because of the going away of the fear of the destruction of the self.</span>.<details class="xml-xe"><summary>📝 note</summary>At this point Tib. differs slightly: Because of the absence of the fear of the destruction of the self.</details> For by the investigation of impermanence etc. with regard to the mind the stubborn clinging to the self ceases [and] the notion of suffering arises.</div></div>
-</div>
-<div class="xml-sen">
-  <div class="xml-sen-head">§44<span class="xml-sen-meta">MS fol. 58v1</span></div>
-  <div class="xml-row xml-row-skt"><div class="xml-row-label">Sanskrit</div><div class="xml-row-body">ataś cātmocche<span class="xml-recon">da-bhayāpa-gamād duḥkha</span><span class="xml-red">mātrocchedān <span class="xml-edsrc">[Tib (tsam zhig gcod pa&#x27;i phir)]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>Y Pa:</b> <em>mātrasyo</em>cchedān</span></details></span> <span class="xml-recon">nirodhasatyaṃ śānta</span><span class="xml-ed">tvenāvataratīti<span class="xml-edsrc">[Yms]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>Yms:</b> tvaṃ cāvatarati</span></details></span> | evaṃ cittasmṛtyupasthānena nirodhasatyam avataratīti |</div></div>
-  <div class="xml-row xml-row-tib"><div class="xml-row-label">Tibetan</div><div class="xml-row-body"> de'i phyir bdag chad <span class="xml-recon">pa'i 'jigs pa med pas sdug bsngal ba tsam zhig gcod pa'i phyir</span> 'gog pa'i bden pa la <span class="xml-recon">zhi ba</span> [P117a4] nyid du 'jug ste | de ltar sems dran pa nye bar gzhag pas 'gog pa'i bden pa la 'jug ces bya'o ||
-    </div></div>
-  <div class="xml-row xml-row-en"><div class="xml-row-label">English</div><div class="xml-row-body">Therefore, <span class="xml-recon">because of the cutting off of just suffering due to the absence of the fear of the</span> destruction of the self one enters the truth of cessation <span class="xml-recon">as peaceful</span>.<details class="xml-xe"><summary>📝 note</summary>This passage appears very literaly in Jayānanda's <em>Madhyamakāvatāraṭīkā</em> (D3870) at 22b6-7: <span class="xml-quote">de ltar mi rtag pa nyid la sogs pa la spyad pas bdag tu mngon par zhen pa ldog la | sdug bsngal gyi 'du shes kyang skye'o || des na bdag chad par 'gyur ba'i 'jigs pa med pa dang | sdug bsngal tsam 'chad pa yin pas 'gog pa'i bden pa zhi ba nyid du mthong ngo ||</span></details> In this way by the establishment of mindfulness of the mind one enters the truth of cessation.</div></div>
-</div>
-<div class="xml-sen">
-  <div class="xml-sen-head">§45<span class="xml-sen-meta">Stanley §226</span></div>
-  <div class="xml-row xml-row-skt"><div class="xml-row-label">Sanskrit</div><div class="xml-row-body"><span class="xml-muula">dharmaparīkṣayā sāṃkleśika<span class="xml-ed">vyāvadānika<span class="xml-edsrc">[Ms Y Pa]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>Na:</b> vaiyavadānika</span></details></span>-dharmāsammohān mārga--</span><br><span class="xml-muula">satyam avataratī</span>ti | tatra sāṃkleśikā dharmāḥ kleśopakleśāḥ |</div></div>
-  <div class="xml-row xml-row-tib"><div class="xml-row-label">Tibetan</div><div class="xml-row-body"><span class="xml-muula">chos la yongs su brtags [D272a1] pas kun nas nyon mongs pa dang rnam par byang ba'i chos la rmongs pa med pa'i [P117a5] phyir lam gyi bden pa la 'jug go </span> zhes bya ba | de la kun nas nyon mongs pa'i chos rnams ni nyon mongs pa dang nye ba'i nyon <span class="xml-ed">mongs<span class="xml-edsrc">[D]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>P:</b> rmongs</span></details></span> pa rnams so ||</div></div>
-  <div class="xml-row xml-row-en"><div class="xml-row-label">English</div><div class="xml-row-body"><span class="xml-muula">By the observation of the phenomena, because there is no confusion with regard to the phenomena related to pollution and  those related to purity, one enters the truth of the path</span>. At this point the impure phenomena are defilements and secondary defilements.</div></div>
-</div>
-</section>
 
 </body>
 </html>

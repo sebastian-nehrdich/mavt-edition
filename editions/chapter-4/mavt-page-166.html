@@ -211,16 +211,14 @@
 .mavt-img-banner .mavt-img-single img { max-width:560px; max-height:760px; }
 </style>
 
+
 <style>
-section.xml-supplement { margin-top: 3rem; padding: 1.4rem 1.5rem; background: #f0f5ef; border: 2px solid #6c4a1d; border-radius: 6px; }
-section.xml-supplement > h2 { margin-top: 0; color: #2d4a1d; }
-section.xml-supplement > .xml-supp-intro { color: #2d4a1d; font-size: 0.93rem; margin-bottom: 1.2rem; padding-bottom: 0.7rem; border-bottom: 1px solid #b8c8a8; }
-.xml-sen { background: #fff; border: 1px solid #c8d8c0; border-radius: 4px; padding: 0.7rem 0.9rem; margin: 0.8rem 0; }
-.xml-sen .xml-sen-head { font-weight: 700; color: #2d4a1d; padding-bottom: 0.3rem; border-bottom: 1px dotted #d8e2d0; margin-bottom: 0.5rem; }
-.xml-sen .xml-sen-meta { font-size: 0.78rem; color: #6b6b6b; font-weight: normal; margin-left: 0.6rem; }
-.xml-row { display: grid; grid-template-columns: 80px 1fr; gap: 0.5rem; margin: 0.35rem 0; }
-.xml-row .xml-row-label { font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.05em; color: #6b6b6b; padding-top: 0.25rem; font-weight: 600; }
-.xml-row .xml-row-body { padding: 0.35rem 0.6rem; border-radius: 3px; font-family: "Charis SIL", "Gentium Plus", Georgia, serif; font-size: 0.98rem; line-height: 1.5; }
+.xml-inline-app { margin-top: 0.6rem; padding: 0.7rem 1rem; background: #f0f5ef; border: 1px solid #6c4a1d; border-left: 4px solid #6c4a1d; border-radius: 4px; }
+.xml-inline-app > .xml-inline-head { font-size: 0.78rem; color: #2d4a1d; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin: 0 0 0.5rem; padding-bottom: 0.3rem; border-bottom: 1px dotted #b8c8a8; }
+.xml-inline-app > .xml-inline-head .xml-inline-meta { font-weight: normal; color: #6b6b6b; text-transform: none; letter-spacing: 0; font-size: 0.86em; margin-left: 0.6rem; }
+.xml-row { display: grid; grid-template-columns: 80px 1fr; gap: 0.5rem; margin: 0.3rem 0; }
+.xml-row .xml-row-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: #6b6b6b; padding-top: 0.2rem; font-weight: 600; }
+.xml-row .xml-row-body { padding: 0.3rem 0.55rem; border-radius: 3px; font-family: "Charis SIL", "Gentium Plus", Georgia, serif; font-size: 0.95rem; line-height: 1.5; }
 .xml-row-skt .xml-row-body { background: #f4efe4; }
 .xml-row-tib .xml-row-body { background: #f6f1ef; font-family: "Jomolhari", Georgia, serif; }
 .xml-row-en .xml-row-body { background: #fafaef; font-style: italic; color: #2a3a2a; }
@@ -228,34 +226,37 @@ section.xml-supplement > .xml-supp-intro { color: #2d4a1d; font-size: 0.93rem; m
 .xml-muula { font-weight: 600; color: #2a3a55; background: #dde2eb; padding: 0 0.2rem; border-radius: 2px; }
 .xml-sutra { font-weight: 600; color: #244a18; background: #cfe5c7; padding: 0 0.2rem; border-radius: 2px; }
 .xml-ed, .xml-red { border-bottom: 1px dotted #b88c1d; }
-.xml-edsrc { font-size: 0.74rem; color: #8a6f3a; vertical-align: super; margin-left: 0.1rem; }
+.xml-edsrc { font-size: 0.72rem; color: #8a6f3a; vertical-align: super; margin-left: 0.1rem; }
 .xml-app { display: inline-block; vertical-align: super; margin-left: 0.15rem; }
 .xml-app summary { cursor: pointer; font-size: 0.7rem; color: #b88c1d; padding: 0 0.2rem; background: #f4ebe0; border: 1px solid #d8b888; border-radius: 2px; list-style: none; user-select: none; }
 .xml-app summary::-webkit-details-marker { display: none; }
 .xml-app summary:hover { background: #e8d8b8; }
 .xml-app[open] summary { background: #e8d8b8; }
-.xml-app .xml-var, .xml-app .xml-note { display: block; background: #fefbf3; border: 1px solid #e0d4b3; padding: 0.35rem 0.55rem; margin-top: 0.3rem; font-size: 0.84rem; font-style: normal; }
+.xml-app .xml-var, .xml-app .xml-note { display: block; background: #fefbf3; border: 1px solid #e0d4b3; padding: 0.3rem 0.5rem; margin-top: 0.25rem; font-size: 0.82rem; font-style: normal; }
 .xml-var b { color: #6a3f10; }
 .xml-ref { color: #1d4f8e; cursor: help; border-bottom: 1px dotted #1d4f8e; font-style: italic; font-size: 0.94em; }
-.xml-xs, .xml-xt { background: #f0e8e8; color: #3a3a3a; font-style: italic; padding: 0 0.2rem; border-radius: 2px; font-size: 0.92em; }
-.xml-edref { font-size: 0.84rem; color: #5a3a3a; background: #f0eae0; padding: 0 0.3rem; border-radius: 2px; }
-.xml-parallels { margin: 0.4rem 0 0 0; border-left: 3px solid #5a7da2; padding: 0.35rem 0.6rem; background: #eef2f6; border-radius: 2px; }
-.xml-parallels-head { font-size: 0.76rem; color: #2a3a55; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.25rem; font-weight: 600; }
-.xml-par-entry { margin: 0.3rem 0; padding-bottom: 0.25rem; border-bottom: 1px dotted #c0cad8; }
+.xml-xs, .xml-xt { background: #f0e8e8; color: #3a3a3a; font-style: italic; padding: 0 0.2rem; border-radius: 2px; font-size: 0.92em; text-decoration: none; border-bottom: 1px dotted #5a2d2d; }
+.xml-xs:hover, .xml-xt:hover { background: #e8d0d0; border-bottom-style: solid; }
+a.xml-xs, a.xml-xt { cursor: pointer; }
+.xml-edref { font-size: 0.82rem; color: #5a3a3a; background: #f0eae0; padding: 0 0.3rem; border-radius: 2px; }
+.xml-parallels { margin: 0.35rem 0 0; border-left: 3px solid #5a7da2; padding: 0.3rem 0.55rem; background: #eef2f6; border-radius: 2px; }
+.xml-parallels-head { font-size: 0.74rem; color: #2a3a55; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.25rem; font-weight: 600; }
+.xml-par-entry { margin: 0.25rem 0; padding-bottom: 0.2rem; border-bottom: 1px dotted #c0cad8; }
 .xml-par-entry:last-child { border-bottom: none; }
-.xml-par-src { font-size: 0.8rem; color: #2a3a55; font-weight: 600; }
-.xml-par-txt { font-size: 0.9rem; color: #333; margin-top: 0.15rem; }
-.xml-par-tib { font-size: 0.88rem; color: #444; margin-top: 0.15rem; }
-.xml-par-tib b { font-size: 0.78rem; color: #5a2d2d; margin-right: 0.3rem; }
+.xml-par-src { font-size: 0.78rem; color: #2a3a55; font-weight: 600; }
+.xml-par-txt { font-size: 0.88rem; color: #333; margin-top: 0.15rem; }
+.xml-par-tib { font-size: 0.86rem; color: #444; margin-top: 0.15rem; }
+.xml-par-tib b { font-size: 0.76rem; color: #5a2d2d; margin-right: 0.3rem; }
 .xml-xe { display: inline-block; margin: 0 0.15rem; }
 .xml-xe summary { cursor: pointer; font-size: 0.72rem; color: #5a4310; padding: 0 0.3rem; background: #f7f3ea; border: 1px solid #d8c8a8; border-radius: 2px; list-style: none; }
 .xml-xe summary::-webkit-details-marker { display: none; }
-.xml-xe[open] { display: block; background: #fbf6e8; border: 1px solid #d8c8a8; border-radius: 3px; padding: 0.35rem 0.6rem; margin: 0.3rem 0; }
+.xml-xe[open] { display: block; background: #fbf6e8; border: 1px solid #d8c8a8; border-radius: 3px; padding: 0.3rem 0.55rem; margin: 0.25rem 0; }
 .xml-xe[open] summary { background: transparent; border: none; padding: 0 0 0.15rem; }
 .xml-xf { font-size: 0.86em; color: #666; }
 .xml-var-stray { font-size: 0.82rem; color: #888; }
-.xml-supp-conventions { background: #fdfdf6; border: 1px solid #d8d8b8; border-radius: 3px; padding: 0.55rem 0.8rem; margin: 0.6rem 0 1rem; font-size: 0.83rem; color: #4a4a2a; }
-.xml-supp-conventions code, .xml-supp-conventions span { padding: 0 0.25rem; border-radius: 2px; }
+.xml-fallback { margin-top: 2.5rem; padding: 1.2rem 1.4rem; background: #fdf5e6; border: 1px solid #d8b888; border-radius: 4px; }
+.xml-fallback > h3 { color: #6a3f10; margin-top: 0; font-size: 1.05rem; }
+.xml-fallback > p { font-size: 0.88rem; color: #5a4310; }
 </style>
 </head>
 <body>
@@ -404,6 +405,19 @@ expound those, the fourth chapter is undertaken."
   printing / OCR error in Yamaguchi. No status as a "variant" — just
   a correction.</li>
 </ul>
+
+<div class="xml-inline-app" data-xmlnum="1">
+  <div class="xml-inline-head">From Nehrdich's critical edition — §1<span class="xml-inline-meta">Pandeya p. 125</span></div>
+  <div class="xml-row xml-row-skt"><div class="xml-row-label">Sanskrit</div><div class="xml-row-body">tattvapratipādanānantaraṃ pratipakṣabhāva<span class="xml-recon">nā </span><span class="xml-ed"><em>tadavasthā phalaprāptiś ca vaktavyāḥ</em><span class="xml-edsrc">[Y Pa]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>Y Pa:</b> <em>vaktavyā tatrāvasthā phalaprāptiśca</em></span><span class="xml-note">cf. Y94.6: <span class="xml-xs">vaktavya</span> (D: <span class="xml-xt">bshad dgos</span>). As can be seen in crit. ed. line <span class="xml-edref">→ phala</span> the compound <a class="xml-xs" href="https://dharmamitra.org/nexus/db//sa/SA_T11_dhkpvsvu/text?active_segment=SA_T11_dhkpvsvu:2441" target="_blank" title="DharmaMitra: SA_T11_dhkpvsvu — SA_T11_dhkpvsvu:2441 — Dharmakīrti: Pramāṇavārttikavṛtti [Pramāṇavārttikasvavṛtti]">tad-avasthā-phala-prāptyor</a> is rendered with Tib. <a class="xml-xt" href="https://dharmamitra.org/nexus/db//bo/BO_T06_D4032/text?active_segment=BO_T06_D4032:270a-3" target="_blank" title="DharmaMitra: BO_T06_D4032 — BO_T06_D4032:270a-3 — དབུས་དང་མཐའ་རྣམ་པར་འབྱེད་པའི་འགྲེལ་བཤད། (madhyāntavibhāgaṭīkā)">de&#x27;i gnas dang &#x27;bras bu thob pa gnyis</a>.  Y's reconstruction is possibly based on the Śāstraśarīraṃ of the <span class="xml-ref" title="Madhyāntavibhāgabhāṣya (Vasubandhu)">Madhyāntavibhāgabhāṣya (Vasubandhu)</span>: <a class="xml-xs" href="https://dharmamitra.org/nexus/db//sa/SA_T06_vmvkbh_u/text?active_segment=SA_T06_vmvkbh_u:6" target="_blank" title="DharmaMitra: SA_T06_vmvkbh_u — SA_T06_vmvkbh_u:6 — Vasubandhu: Madhyāntavibhāgabhāṣya [Madhyāntavibhāgakārikābhāṣya]">pratipakṣasya bhāvanā | tatrāvasthā phalaprāptir</a> (Na17.7-8).</span></details></span> |</div></div>
+  <div class="xml-row xml-row-tib"><div class="xml-row-label">Tibetan</div><div class="xml-row-body">[D270a2] de kho na bshad pa'i 'og tu gnyen po bsgom pa <span class="xml-recon">dang / de'i <span class="xml-ed">gnas [P114b8]  dang 'bras bu <span class="xml-edsrc">[D]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>P:</b> gnas pa'i bras bu</span></details></span> thob pa bshad dgos te /</span></div></div>
+  <div class="xml-row xml-row-en"><div class="xml-row-label">English</div><div class="xml-row-body">Directly after the teaching of reality, the cultivation of the antidotes, <span class="xml-recon">its states and the attainment of [it's] results are to be taught.</span></div></div>
+</div>
+<div class="xml-inline-app" data-xmlnum="2">
+  <div class="xml-inline-head">From Nehrdich's critical edition — §2<span class="xml-inline-meta">MS fol. 56r4</span></div>
+  <div class="xml-row xml-row-skt"><div class="xml-row-label">Sanskrit</div><div class="xml-row-body"><span class="xml-recon">atas </span> <span class="xml-ed"><em>tatpratipādanārthaṃ</em> <details class="xml-app"><summary>📋</summary><span class="xml-note">cf. Y17.6: <a class="xml-xs" href="https://dharmamitra.org/nexus/db//sa/SA_T06_sthmavt/text?active_segment=SA_T06_sthmavt:2717" target="_blank" title="DharmaMitra: SA_T06_sthmavt — SA_T06_sthmavt:2717 — Sthiramati: Madhyāntavibhāgaṭīkā">tatpratipādanārthaṃ</a> (D: <a class="xml-xt" href="https://dharmamitra.org/nexus/db//bo/BO_S10_GRAM025/text?active_segment=BO_S10_GRAM025:412" target="_blank" title="DharmaMitra: BO_S10_GRAM025 — BO_S10_GRAM025:412 — རྟེན་འབྲེལ་གྱི་རྣམ་པར་བཞག་པ་འཁོར་འདས་རབ་གསལ་ཞེས་བྱ་བ་བཞུགས་སོ">bstan pa&#x27;i phyir</a>).</span></details></span> caturthaparicchedārambhaḥ |</div></div>
+  <div class="xml-row xml-row-tib"><div class="xml-row-label">Tibetan</div><div class="xml-row-body"><span class="xml-recon">de bas na de bstan pa'i phyir </span> le'ur bcad pa bzhi pa brtsams so //</div></div>
+  <div class="xml-row xml-row-en"><div class="xml-row-label">English</div><div class="xml-row-body"><span class="xml-recon">Therefore, for the purpose of teaching these</span> the fourth chapter is undertaken.</div></div>
+</div>
 </section>
 <section class="sentence" id="s2">
 <h3>§2 — Tattvānantaram uddiṣṭatvāt … uddeśaḥ <span class="status verified">VERIFIED</span></h3>
@@ -483,6 +497,13 @@ are also mentioned [in the piṇḍārtha as belonging to chapter 4]."
   piṇḍārtha's enumeration justifying why the chapter handles the items
   it does.</li>
 </ul>
+
+<div class="xml-inline-app" data-xmlnum="3">
+  <div class="xml-inline-head">From Nehrdich's critical edition — §3</div>
+  <div class="xml-row xml-row-skt"><div class="xml-row-label">Sanskrit</div><div class="xml-row-body"><span class="xml-ed">tattvānantaram <span class="xml-edsrc">[Y Pa St]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>Ms:</b> tattvānambhantaram</span><span class="xml-var"><b>Yms:</b> tattvāntaram</span><span class="xml-var"><b>Stms:</b> tattvānamtantaram</span></details></span> uddiṣṭatvāt pratipakṣabhāvanāpratibaddhatvāc ca tadavasthāphala-prāptyor uddeśaḥ |</div></div>
+  <div class="xml-row xml-row-tib"><div class="xml-row-label">Tibetan</div><div class="xml-row-body">de kho na'i 'og tu bstan pa dang gnyen po bsgom pa la rag lus pa'i phyir de'i gnas dang [P115a1] 'bras bu thob pa <span class="xml-ed">gnyis <span class="xml-edsrc">[D]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>P:</b> nyid </span></details></span> [D270a3] kyang smos so ||</div></div>
+  <div class="xml-row xml-row-en"><div class="xml-row-label">English</div><div class="xml-row-body">Because they are listed after the [teaching of] reality and because they are connected with the cultivation of the antidotes, there is the brief teaching [here in this chapter] of the state [of the cultivation of the antidotes] and the attainment of the fruit [of the cultivation of the antidotes.]</div></div>
+</div>
 </section>
 <section class="sentence" id="s3">
 <h3>§3 — Sūtre pratipakṣatvena bodhipakṣya[ḥ] <span class="status verified">VERIFIED</span></h3>
@@ -621,6 +642,14 @@ pratipakṣā ucyante |
   an attempt to align with non-Yogācāra usage, but it is
   unsupported by the witnesses here.</li>
 </ul>
+
+<div class="xml-inline-app" data-xmlnum="4">
+  <div class="xml-inline-head">From Nehrdich's critical edition — §4<span class="xml-inline-meta">on mūla §2 · MS fol. 56r5</span></div>
+  <div class="xml-row xml-row-skt"><div class="xml-row-label">Sanskrit</div><div class="xml-row-body">sūtre pratipakṣatve<span class="xml-recon">na </span><span class="xml-ed"><em>bodhipakṣyā abhipretā iti pradarśayann āha</em> <span class="xml-edsrc">[Y Pa]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>Y Pa:</b> <em>bodhipakṣo 'numata iti pradarśanārtham āha</em></span><span class="xml-note">cf. <span class="xml-ref" title="Pañcaskandhakavibhāṣā (Sthiramati)">Pañcaskandhakavibhāṣā (Sthiramati)</span> 55.11: <a class="xml-xs" href="https://dharmamitra.org/nexus/db//sa/SA_T06_pskvbhu/text?active_segment=SA_T06_pskvbhu:1043" target="_blank" title="DharmaMitra: SA_T06_pskvbhu — SA_T06_pskvbhu:1043 — Sthiramati: Pañcaskandhakavibhāṣā">satkāyadṛṣṭyādikāḥ pañca dṛṣṭaya ihābhipretā iti pradarśannāha</a> (<span class="xml-ref" title="Pañcaskandhakavibhāṣā — Tibetan">Pañcaskandhakavibhāṣā — Tibetan</span> 218b5: <a class="xml-xt" href="https://dharmamitra.org/nexus/db//bo/BO_T06_D4066/text?active_segment=BO_T06_D4066:218b-16" target="_blank" title="DharmaMitra: BO_T06_D4066 — BO_T06_D4066:218b-16 — ཕུང་པོ་ལྔའི་རབ་ཏུ་བྱེད་པ་བྱེ་བྲག་ཏུ་བཤད་པ། (pañcaskandhaprakaraṇavaibhāṣā)">&#x27;dir ni &#x27;jig tshogs la lta ba la sogs pa lta ba lnga la bya bar bzhed par bstan pa&#x27;i phyir</a>). The following sentence, <a class="xml-xs" href="https://dharmamitra.org/nexus/db//sa/SA_MB_Pranatosini_3_ArthaKandaHK/text?active_segment=SA_MB_Pranatosini_3_ArthaKandaHK:1591" target="_blank" title="DharmaMitra: SA_MB_Pranatosini_3_ArthaKandaHK — SA_MB_Pranatosini_3_ArthaKandaHK:1591 — rāmatoṣaṇa compiler: rāmatoṣaṇa compiler: prāṇatoṣiṇī arthakāṇḍa">te … prabhavanti</a>, indicates a plural form, so it seems to be more natural to reconstruct a plural at this point.  However the form <em>pradarśan</em> given in the <span class="xml-ref" title="Pañcaskandhakavibhāṣā (Sthiramati)">Pañcaskandhakavibhāṣā (Sthiramati)</span> at this point seems to be incorrect, <em>pradarśayan</em> should be the desired reading.</span></details></span>: <span class="xml-muula"><span class="xml-recon">pratipakṣa--</span></span><br><span class="xml-muula"><span class="xml-recon">bhā</span>vanā <span class="xml-ed">bodhipakṣya<span class="xml-edsrc">[Ms Na Pa St]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>Y:</b> bodhipakṣa</span></details></span>bhāvane</span>ti |</div></div>
+  <div class="xml-row xml-row-tib"><div class="xml-row-label">Tibetan</div><div class="xml-row-body">bstan pa'i mdor byas pa las gnyen po ni <span class="xml-recon">byang chub kyi phyogs su bzhed par bstan pa'i phyir</span> | <span class="xml-muula"><span class="xml-recon">gnyen po </span><span class="xml-ed"><em>bsgom</em> <span class="xml-edsrc">[D]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>P:</b> <em>bsgoms</em></span></details></span> <span class="xml-recon">pa ni </span> byang chub [P115a2] kyi phyogs <span class="xml-ed">bsgom <span class="xml-edsrc">[D]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>P:</b> bsgoms</span></details></span> pa ste </span> zhes bya ba smos so //</div></div>
+  <div class="xml-row xml-row-en"><div class="xml-row-label">English</div><div class="xml-row-body">In the Sūtra<details class="xml-xe"><summary>📝 note</summary>The word 'Sūtra' at this point very likely refers to the <span class="xml-ref" title="Madhyāntavibhāga (Maitreya)">Madhyāntavibhāga (Maitreya)</span>. In the <em>śāstraśarīra</em>-section at the beginning of the <span class="xml-ref" title="Madhyāntavibhāgaṭīkā (Sthiramati)">Madhyāntavibhāgaṭīkā (Sthiramati)</span>, the text that is commented on is referred to as <em>madhyāntavibhāgasūtrabhāṣya</em> (<span class="xml-ref" title="Madhyāntavibhāgaṭīkā (Yamaguchi 1934)">Madhyāntavibhāgaṭīkā (Yamaguchi 1934)</span> p.1, l. 3). This reveals the possibility that Sthiramati regarded the <span class="xml-ref" title="Madhyāntavibhāga (Maitreya)">Madhyāntavibhāga (Maitreya)</span> in such high regard that he considered them to be Sūtra rather than Śāstra material.
+	    </details> <span class="xml-recon">the aids to awakening are intended to be</span> antidotes, <span class="xml-recon">for the purpose of showing [this] Vasubandhu says: </span> <span class="xml-muula">The cultivation of the aid to awakening is <span class="xml-recon">the cultivation of the antidotes</span>.</span></div></div>
+</div>
 </section>
 <section class="sentence" id="s4">
 <h3>§4 — Te hi yathokta-āvaraṇa-vipakṣa-prahāṇāya <span class="status verified">VERIFIED</span></h3>
@@ -694,6 +723,13 @@ chapter 2]; that is why they are called <em>pratipakṣa</em>
   the <em>Āvaraṇa-pariccheda</em> (chapter 2) where the obscurations
   are enumerated.</li>
 </ul>
+
+<div class="xml-inline-app" data-xmlnum="5">
+  <div class="xml-inline-head">From Nehrdich's critical edition — §5</div>
+  <div class="xml-row xml-row-skt"><div class="xml-row-label">Sanskrit</div><div class="xml-row-body">te hi yathoktāvaraṇavipakṣaprahāṇāya bhāvyamānāḥ prabhavantīti pratipakṣā ucyante |</div></div>
+  <div class="xml-row xml-row-tib"><div class="xml-row-label">Tibetan</div><div class="xml-row-body">de dag bsgoms na mi mthun pa'i phyogs sgrib pa ji skad bstan pa rnams <span class="xml-ed">spang <span class="xml-edsrc">[D]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>P:</b> spangs</span></details></span> bar bya ba la mthu yod [D270a4] par 'gyur bas gnyen po rnams [P115a3] zhes bya'o//</div></div>
+  <div class="xml-row xml-row-en"><div class="xml-row-label">English</div><div class="xml-row-body">For they are called antidotes, because when they are cultivated they become able to perform the removal of the adverse agents which are the hindrances that have been described before [in chapter two].</div></div>
+</div>
 </section>
 <section class="sentence" id="s5">
 <h3>§5 — Te punaḥ saptatriṃśat: catvāri smṛtyupasthānāni … <span class="status verified">VERIFIED</span></h3>
@@ -765,6 +801,13 @@ te punaḥ saptatriṁśat | catvāri smṛtyupasthānāni yāvad
 <div class="translation">
 "And these are thirty-seven: [namely] the four foundations of
 mindfulness up to the noble eight-fold path."
+</div>
+
+<div class="xml-inline-app" data-xmlnum="6">
+  <div class="xml-inline-head">From Nehrdich's critical edition — §6<span class="xml-inline-meta">MS fol. 56r6</span></div>
+  <div class="xml-row xml-row-skt"><div class="xml-row-label">Sanskrit</div><div class="xml-row-body">te punaḥ saptatri<span class="xml-recon">ṃśat catvāri smṛtyupasthānāni yāvad</span> <span class="xml-red">āryāṣṭāṅgo mārgaḥ<span class="xml-edsrc">[Y Pa]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>Y Pa:</b> <em>āryāṣṭāṅgamārgāḥ</em></span></details></span> |</div></div>
+  <div class="xml-row xml-row-tib"><div class="xml-row-label">Tibetan</div><div class="xml-row-body">de rnams kyang <span class="xml-recon">sum cu rtsa bdun</span> <span class="xml-red">no<span class="xml-edsrc">[P]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>D:</b> te</span></details></span> | <span class="xml-recon">dran pa nye bar</span> <span class="xml-red">gzhag <span class="xml-edsrc">[D]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>P:</b> bzhag</span></details></span> <span class="xml-recon">pa bzhi nas 'phags pa'i lam yan lag brgyad pa'i bar du'o //</span></div></div>
+  <div class="xml-row xml-row-en"><div class="xml-row-label">English</div><div class="xml-row-body">Furthermore these number <span class="xml-recon">37, from the four establishments of mindfulness up to the noble eight-fold path.</span></div></div>
 </div>
 </section>
 <section class="sentence" id="s6">
@@ -862,6 +905,14 @@ making-much-of-them (<em>bahulā kriyā</em>) — these are synonyms."
   <em>āsevanā</em>, adds <em>bṛṁhaṇā</em> and <em>āropaṇā</em>.
   A substantive editorial choice on his part, not a textual problem.</li>
 </ul>
+
+<div class="xml-inline-app" data-xmlnum="7">
+  <div class="xml-inline-head">From Nehrdich's critical edition — §7<span class="xml-inline-meta">on mūla §3</span></div>
+  <div class="xml-row xml-row-skt"><div class="xml-row-label">Sanskrit</div><div class="xml-row-body"><span class="xml-quote"><span class="xml-ed">teṣāṃ <span class="xml-edsrc">[Ms]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>Y Pa:</b> <em>tad</em></span></details></span> bhāvanā bṛṃhaṇāropaṇābhyāsaḥ <span class="xml-ed">bahulīkriyā iti <span class="xml-edsrc">[Ms St]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>Y Pa:</b> bahulā kriyeti</span></details></span> paryāyāḥ |</span><div class="xml-parallels"><div class="xml-parallels-head">↳ Parallel</div><div class="xml-par-entry"><div class="xml-par-src"><span class="xml-ref" title="Śrāvakabhūmi">Śrāvakabhūmi</span></div><div class="xml-par-txt">āsevanā bahulīkāra iyamucyate bodhipakṣyabhāvanā |</div></div></div><br> <span class="xml-muula">sedānīṃ vaktavyā</span>, tattvānantaram uddiṣṭatvāt |</div></div>
+  <div class="xml-row xml-row-tib"><div class="xml-row-label">Tibetan</div><div class="xml-row-body">de rnams <span class="xml-ed">bsgom<span class="xml-edsrc">[D]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>P:</b> bsgoms</span></details></span> pa ni spel ba dang / [P115a4] bskyed pa dang / goms par bya ba dang / lan mang du bya ba zhes bya ba'i [D270a5] rnam grangs so // de yang de kho na'i 'og tu bstan pa'i phyir <span class="xml-muula">de <span class="xml-ed">da <span class="xml-edsrc">[P]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>D:</b> yang</span></details></span> brjod par bya'o</span> //</div></div>
+  <div class="xml-row xml-row-en"><div class="xml-row-label">English</div><div class="xml-row-body">The term "cultivation" of these [antidotes] is synonymous with increasing and raising up, practice, the frequent repetition [of these antidotes].<details class="xml-xe"><summary>📝 note</summary>This is an echo of a passage of the <span class="xml-ref" title="Śrāvakabhūmi">Śrāvakabhūmi</span>: <span class="xml-quote">Among these, what is the cultivation of the aid to awakening? It is the practice of the factors of the 37 aids to awakening. It is investigation, pursuit, frequent repitition; this is called the cultivation of the aid to awakening. <br> <span class="xml-ref" title="Śrāvakabhūmi (Shōmonji Group ed.)">Śrāvakabhūmi (Shōmonji Group ed.)</span> 174.16: <a class="xml-xs" href="https://dharmamitra.org/nexus/db//sa/SA_T06_srabhu_u/text?active_segment=SA_T06_srabhu_u:5771" target="_blank" title="DharmaMitra: SA_T06_srabhu_u — SA_T06_srabhu_u:5771 — Yogācārabhūmi: Śrāvakabhūmi">tatra bodhipakṣyabhāvanā katamā | yaḥ saptatriṃśatāṃ bodhipakṣyāṇāṃ dharmāṇām abhyāsaḥ paricayaḥ āsevanā bahulīkāra iyam ucyate bodhipakṣyabhāvanā |</a></span></details> 
+    	  <span class="xml-muula">This [cultivation of the antidotes] is to be explained now</span>, because [it] is enumerated after the [explanation of] reality.</div></div>
+</div>
 </section>
 <section class="sentence" id="s7">
 <h3>§7 — Sedānīṃ vaktavyā | tattvānantaram uddiṣṭatvāt <span class="status verified">VERIFIED</span></h3>
@@ -1015,6 +1066,13 @@ first, and not some other cultivation of <em>bodhipakṣa</em>?"
   <li>The <code>iva</code> in <code>smṛtyupasthāna-bhāvanā eva</code>
   is the <em>avadhāraṇa</em>: "precisely (and not others)."</li>
 </ul>
+
+<div class="xml-inline-app" data-xmlnum="8">
+  <div class="xml-inline-head">From Nehrdich's critical edition — §8</div>
+  <div class="xml-row xml-row-skt"><div class="xml-row-label">Sanskrit</div><div class="xml-row-body">kiṃ kāraṇaṃ smṛtyupasthānabhāvanaiva pūrvam ucyate nānyā bodhipakṣabhāvanā ?</div></div>
+  <div class="xml-row xml-row-tib"><div class="xml-row-label">Tibetan</div><div class="xml-row-body">byang chub kyi phyogs <span class="xml-ed">bsgoms <span class="xml-edsrc">[D]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>P:</b> bsgom </span></details></span> pa la ci'i [P115a5] phyir dran pa nye bar <span class="xml-ed">gzhag<span class="xml-edsrc">[D]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>P:</b> bzhag</span></details></span> pa bsgom pa nyid thog mar bshad kyi gzhan <span class="xml-ed">ni<span class="xml-edsrc">[D]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>P:</b> om.</span></details></span> ma yin zhe na /</div></div>
+  <div class="xml-row xml-row-en"><div class="xml-row-label">English</div><div class="xml-row-body">For what reason is precisely the cultivation of the four establishments of mindfulness taught first and not another cultivation of an aid to awakening?</div></div>
+</div>
 </section>
 <section class="sentence" id="s9">
 <h3>§9 — Āha: tatra tāvad ādau dauṣṭhulyāt tarṣa-hetutvāt — kārikā IV.1a pratīka <span class="status verified">VERIFIED</span></h3>
@@ -1146,97 +1204,22 @@ smṛtyupasthāna-bhāvanā</em>]."
   — paraphrases the same doctrine using equivalent Tibetan,
   confirming Sthiramati's consistent reading.</li>
 </ul>
-</section>
 
-
-
-<section class="xml-supplement" id="xml-supplement">
-<h2>Additional critical apparatus from Sebastian Nehrdich's TEI edition</h2>
-<div class="xml-supp-intro">
-The walk-through above is the agent's analysis. The block below shows the
-<strong>same Yamaguchi page through Sebastian Nehrdich's hand-edited critical
-edition</strong> (an XML/TEI source covering the whole chapter 4). Every
-sentence is shown in three rows — Sanskrit / Tibetan / English — with the
-full multi-witness apparatus inline. Variant readings are collected by
-sigla (<b>Ms</b>, <b>Na</b>, <b>Y</b>, <b>Pa</b>, <b>St</b> for Sanskrit;
-<b>D</b>, <b>P</b> for Tibetan) and tucked behind a 📋 expander next to
-the chosen reading; long editorial notes are behind 📝. Sentence numbers
-(§1, §2, …) are <em>Nehrdich's</em> numbering and do not correspond to
-the §-sections in the walk-through above.
-</div>
-<div class="xml-supp-conventions">
-<strong>Legend:</strong>
-<span class="xml-recon">italic orange</span> = reconstructed (italic in Yamaguchi) ·
-<span class="xml-muula">blue bg</span> = mūla (the kārikā being commented) ·
-<span class="xml-sutra">green bg</span> = sūtra-quotation ·
-<span class="xml-xs">orange bg</span> = Sanskrit citation snippet ·
-<span class="xml-xt">orange bg</span> = Tibetan citation snippet ·
-<span class="xml-ref">italic blue</span> = reference to another work (hover for full name)
-</div>
-
-<div class="xml-sen">
-  <div class="xml-sen-head">§1<span class="xml-sen-meta">Pandeya p. 125</span></div>
-  <div class="xml-row xml-row-skt"><div class="xml-row-label">Sanskrit</div><div class="xml-row-body">tattvapratipādanānantaraṃ pratipakṣabhāva<span class="xml-recon">nā </span><span class="xml-ed"><em>tadavasthā phalaprāptiś ca vaktavyāḥ</em><span class="xml-edsrc">[Y Pa]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>Y Pa:</b> <em>vaktavyā tatrāvasthā phalaprāptiśca</em></span><span class="xml-note">cf. Y94.6: <span class="xml-xs">vaktavya</span> (D: <span class="xml-xt">bshad dgos</span>). As can be seen in crit. ed. line <span class="xml-edref">→ phala</span> the compound <span class="xml-xs">tad-avasthā-phala-prāptyor</span> is rendered with Tib. <span class="xml-xt">de&#x27;i gnas dang &#x27;bras bu thob pa gnyis</span>.  Y's reconstruction is possibly based on the Śāstraśarīraṃ of the <span class="xml-ref" title="Madhyāntavibhāgabhāṣya (Vasubandhu)">Madhyāntavibhāgabhāṣya (Vasubandhu)</span>: <span class="xml-xs">pratipakṣasya bhāvanā | tatrāvasthā phalaprāptir</span> (Na17.7-8).</span></details></span> |</div></div>
-  <div class="xml-row xml-row-tib"><div class="xml-row-label">Tibetan</div><div class="xml-row-body">[D270a2] de kho na bshad pa'i 'og tu gnyen po bsgom pa <span class="xml-recon">dang / de'i <span class="xml-ed">gnas [P114b8]  dang 'bras bu <span class="xml-edsrc">[D]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>P:</b> gnas pa'i bras bu</span></details></span> thob pa bshad dgos te /</span></div></div>
-  <div class="xml-row xml-row-en"><div class="xml-row-label">English</div><div class="xml-row-body">Directly after the teaching of reality, the cultivation of the antidotes, <span class="xml-recon">its states and the attainment of [it's] results are to be taught.</span></div></div>
-</div>
-<div class="xml-sen">
-  <div class="xml-sen-head">§2<span class="xml-sen-meta">MS fol. 56r4</span></div>
-  <div class="xml-row xml-row-skt"><div class="xml-row-label">Sanskrit</div><div class="xml-row-body"><span class="xml-recon">atas </span> <span class="xml-ed"><em>tatpratipādanārthaṃ</em> <details class="xml-app"><summary>📋</summary><span class="xml-note">cf. Y17.6: <span class="xml-xs">tatpratipādanārthaṃ</span> (D: <span class="xml-xt">bstan pa&#x27;i phyir</span>).</span></details></span> caturthaparicchedārambhaḥ |</div></div>
-  <div class="xml-row xml-row-tib"><div class="xml-row-label">Tibetan</div><div class="xml-row-body"><span class="xml-recon">de bas na de bstan pa'i phyir </span> le'ur bcad pa bzhi pa brtsams so //</div></div>
-  <div class="xml-row xml-row-en"><div class="xml-row-label">English</div><div class="xml-row-body"><span class="xml-recon">Therefore, for the purpose of teaching these</span> the fourth chapter is undertaken.</div></div>
-</div>
-<div class="xml-sen">
-  <div class="xml-sen-head">§3</div>
-  <div class="xml-row xml-row-skt"><div class="xml-row-label">Sanskrit</div><div class="xml-row-body"><span class="xml-ed">tattvānantaram <span class="xml-edsrc">[Y Pa St]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>Ms:</b> tattvānambhantaram</span><span class="xml-var"><b>Yms:</b> tattvāntaram</span><span class="xml-var"><b>Stms:</b> tattvānamtantaram</span></details></span> uddiṣṭatvāt pratipakṣabhāvanāpratibaddhatvāc ca tadavasthāphala-prāptyor uddeśaḥ |</div></div>
-  <div class="xml-row xml-row-tib"><div class="xml-row-label">Tibetan</div><div class="xml-row-body">de kho na'i 'og tu bstan pa dang gnyen po bsgom pa la rag lus pa'i phyir de'i gnas dang [P115a1] 'bras bu thob pa <span class="xml-ed">gnyis <span class="xml-edsrc">[D]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>P:</b> nyid </span></details></span> [D270a3] kyang smos so ||</div></div>
-  <div class="xml-row xml-row-en"><div class="xml-row-label">English</div><div class="xml-row-body">Because they are listed after the [teaching of] reality and because they are connected with the cultivation of the antidotes, there is the brief teaching [here in this chapter] of the state [of the cultivation of the antidotes] and the attainment of the fruit [of the cultivation of the antidotes.]</div></div>
-</div>
-<div class="xml-sen">
-  <div class="xml-sen-head">§4<span class="xml-sen-meta">comments on mūla §2 · MS fol. 56r5</span></div>
-  <div class="xml-row xml-row-skt"><div class="xml-row-label">Sanskrit</div><div class="xml-row-body">sūtre pratipakṣatve<span class="xml-recon">na </span><span class="xml-ed"><em>bodhipakṣyā abhipretā iti pradarśayann āha</em> <span class="xml-edsrc">[Y Pa]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>Y Pa:</b> <em>bodhipakṣo 'numata iti pradarśanārtham āha</em></span><span class="xml-note">cf. <span class="xml-ref" title="Pañcaskandhakavibhāṣā (Sthiramati)">Pañcaskandhakavibhāṣā (Sthiramati)</span> 55.11: <span class="xml-xs">satkāyadṛṣṭyādikāḥ pañca dṛṣṭaya ihābhipretā iti pradarśannāha</span> (<span class="xml-ref" title="Pañcaskandhakavibhāṣā — Tibetan">Pañcaskandhakavibhāṣā — Tibetan</span> 218b5: <span class="xml-xt">&#x27;dir ni &#x27;jig tshogs la lta ba la sogs pa lta ba lnga la bya bar bzhed par bstan pa&#x27;i phyir</span>). The following sentence, <span class="xml-xs">te … prabhavanti</span>, indicates a plural form, so it seems to be more natural to reconstruct a plural at this point.  However the form <em>pradarśan</em> given in the <span class="xml-ref" title="Pañcaskandhakavibhāṣā (Sthiramati)">Pañcaskandhakavibhāṣā (Sthiramati)</span> at this point seems to be incorrect, <em>pradarśayan</em> should be the desired reading.</span></details></span>: <span class="xml-muula"><span class="xml-recon">pratipakṣa--</span></span><br><span class="xml-muula"><span class="xml-recon">bhā</span>vanā <span class="xml-ed">bodhipakṣya<span class="xml-edsrc">[Ms Na Pa St]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>Y:</b> bodhipakṣa</span></details></span>bhāvane</span>ti |</div></div>
-  <div class="xml-row xml-row-tib"><div class="xml-row-label">Tibetan</div><div class="xml-row-body">bstan pa'i mdor byas pa las gnyen po ni <span class="xml-recon">byang chub kyi phyogs su bzhed par bstan pa'i phyir</span> | <span class="xml-muula"><span class="xml-recon">gnyen po </span><span class="xml-ed"><em>bsgom</em> <span class="xml-edsrc">[D]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>P:</b> <em>bsgoms</em></span></details></span> <span class="xml-recon">pa ni </span> byang chub [P115a2] kyi phyogs <span class="xml-ed">bsgom <span class="xml-edsrc">[D]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>P:</b> bsgoms</span></details></span> pa ste </span> zhes bya ba smos so //</div></div>
-  <div class="xml-row xml-row-en"><div class="xml-row-label">English</div><div class="xml-row-body">In the Sūtra<details class="xml-xe"><summary>📝 note</summary>The word 'Sūtra' at this point very likely refers to the <span class="xml-ref" title="Madhyāntavibhāga (Maitreya)">Madhyāntavibhāga (Maitreya)</span>. In the <em>śāstraśarīra</em>-section at the beginning of the <span class="xml-ref" title="Madhyāntavibhāgaṭīkā (Sthiramati)">Madhyāntavibhāgaṭīkā (Sthiramati)</span>, the text that is commented on is referred to as <em>madhyāntavibhāgasūtrabhāṣya</em> (<span class="xml-ref" title="Madhyāntavibhāgaṭīkā (Yamaguchi 1934)">Madhyāntavibhāgaṭīkā (Yamaguchi 1934)</span> p.1, l. 3). This reveals the possibility that Sthiramati regarded the <span class="xml-ref" title="Madhyāntavibhāga (Maitreya)">Madhyāntavibhāga (Maitreya)</span> in such high regard that he considered them to be Sūtra rather than Śāstra material.
-	    </details> <span class="xml-recon">the aids to awakening are intended to be</span> antidotes, <span class="xml-recon">for the purpose of showing [this] Vasubandhu says: </span> <span class="xml-muula">The cultivation of the aid to awakening is <span class="xml-recon">the cultivation of the antidotes</span>.</span></div></div>
-</div>
-<div class="xml-sen">
-  <div class="xml-sen-head">§5</div>
-  <div class="xml-row xml-row-skt"><div class="xml-row-label">Sanskrit</div><div class="xml-row-body">te hi yathoktāvaraṇavipakṣaprahāṇāya bhāvyamānāḥ prabhavantīti pratipakṣā ucyante |</div></div>
-  <div class="xml-row xml-row-tib"><div class="xml-row-label">Tibetan</div><div class="xml-row-body">de dag bsgoms na mi mthun pa'i phyogs sgrib pa ji skad bstan pa rnams <span class="xml-ed">spang <span class="xml-edsrc">[D]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>P:</b> spangs</span></details></span> bar bya ba la mthu yod [D270a4] par 'gyur bas gnyen po rnams [P115a3] zhes bya'o//</div></div>
-  <div class="xml-row xml-row-en"><div class="xml-row-label">English</div><div class="xml-row-body">For they are called antidotes, because when they are cultivated they become able to perform the removal of the adverse agents which are the hindrances that have been described before [in chapter two].</div></div>
-</div>
-<div class="xml-sen">
-  <div class="xml-sen-head">§6<span class="xml-sen-meta">MS fol. 56r6</span></div>
-  <div class="xml-row xml-row-skt"><div class="xml-row-label">Sanskrit</div><div class="xml-row-body">te punaḥ saptatri<span class="xml-recon">ṃśat catvāri smṛtyupasthānāni yāvad</span> <span class="xml-red">āryāṣṭāṅgo mārgaḥ<span class="xml-edsrc">[Y Pa]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>Y Pa:</b> <em>āryāṣṭāṅgamārgāḥ</em></span></details></span> |</div></div>
-  <div class="xml-row xml-row-tib"><div class="xml-row-label">Tibetan</div><div class="xml-row-body">de rnams kyang <span class="xml-recon">sum cu rtsa bdun</span> <span class="xml-red">no<span class="xml-edsrc">[P]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>D:</b> te</span></details></span> | <span class="xml-recon">dran pa nye bar</span> <span class="xml-red">gzhag <span class="xml-edsrc">[D]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>P:</b> bzhag</span></details></span> <span class="xml-recon">pa bzhi nas 'phags pa'i lam yan lag brgyad pa'i bar du'o //</span></div></div>
-  <div class="xml-row xml-row-en"><div class="xml-row-label">English</div><div class="xml-row-body">Furthermore these number <span class="xml-recon">37, from the four establishments of mindfulness up to the noble eight-fold path.</span></div></div>
-</div>
-<div class="xml-sen">
-  <div class="xml-sen-head">§7<span class="xml-sen-meta">comments on mūla §3</span></div>
-  <div class="xml-row xml-row-skt"><div class="xml-row-label">Sanskrit</div><div class="xml-row-body"><span class="xml-quote"><span class="xml-ed">teṣāṃ <span class="xml-edsrc">[Ms]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>Y Pa:</b> <em>tad</em></span></details></span> bhāvanā bṛṃhaṇāropaṇābhyāsaḥ <span class="xml-ed">bahulīkriyā iti <span class="xml-edsrc">[Ms St]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>Y Pa:</b> bahulā kriyeti</span></details></span> paryāyāḥ |</span><div class="xml-parallels"><div class="xml-parallels-head">↳ Parallel</div><div class="xml-par-entry"><div class="xml-par-src"><span class="xml-ref" title="Śrāvakabhūmi">Śrāvakabhūmi</span></div><div class="xml-par-txt">āsevanā bahulīkāra iyamucyate bodhipakṣyabhāvanā |</div></div></div><br> <span class="xml-muula">sedānīṃ vaktavyā</span>, tattvānantaram uddiṣṭatvāt |</div></div>
-  <div class="xml-row xml-row-tib"><div class="xml-row-label">Tibetan</div><div class="xml-row-body">de rnams <span class="xml-ed">bsgom<span class="xml-edsrc">[D]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>P:</b> bsgoms</span></details></span> pa ni spel ba dang / [P115a4] bskyed pa dang / goms par bya ba dang / lan mang du bya ba zhes bya ba'i [D270a5] rnam grangs so // de yang de kho na'i 'og tu bstan pa'i phyir <span class="xml-muula">de <span class="xml-ed">da <span class="xml-edsrc">[P]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>D:</b> yang</span></details></span> brjod par bya'o</span> //</div></div>
-  <div class="xml-row xml-row-en"><div class="xml-row-label">English</div><div class="xml-row-body">The term "cultivation" of these [antidotes] is synonymous with increasing and raising up, practice, the frequent repetition [of these antidotes].<details class="xml-xe"><summary>📝 note</summary>This is an echo of a passage of the <span class="xml-ref" title="Śrāvakabhūmi">Śrāvakabhūmi</span>: <span class="xml-quote">Among these, what is the cultivation of the aid to awakening? It is the practice of the factors of the 37 aids to awakening. It is investigation, pursuit, frequent repitition; this is called the cultivation of the aid to awakening. <br> <span class="xml-ref" title="Śrāvakabhūmi (Shōmonji Group ed.)">Śrāvakabhūmi (Shōmonji Group ed.)</span> 174.16: <span class="xml-xs">tatra bodhipakṣyabhāvanā katamā | yaḥ saptatriṃśatāṃ bodhipakṣyāṇāṃ dharmāṇām abhyāsaḥ paricayaḥ āsevanā bahulīkāra iyam ucyate bodhipakṣyabhāvanā |</span></span></details> 
-    	  <span class="xml-muula">This [cultivation of the antidotes] is to be explained now</span>, because [it] is enumerated after the [explanation of] reality.</div></div>
-</div>
-<div class="xml-sen">
-  <div class="xml-sen-head">§8</div>
-  <div class="xml-row xml-row-skt"><div class="xml-row-label">Sanskrit</div><div class="xml-row-body">kiṃ kāraṇaṃ smṛtyupasthānabhāvanaiva pūrvam ucyate nānyā bodhipakṣabhāvanā ?</div></div>
-  <div class="xml-row xml-row-tib"><div class="xml-row-label">Tibetan</div><div class="xml-row-body">byang chub kyi phyogs <span class="xml-ed">bsgoms <span class="xml-edsrc">[D]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>P:</b> bsgom </span></details></span> pa la ci'i [P115a5] phyir dran pa nye bar <span class="xml-ed">gzhag<span class="xml-edsrc">[D]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>P:</b> bzhag</span></details></span> pa bsgom pa nyid thog mar bshad kyi gzhan <span class="xml-ed">ni<span class="xml-edsrc">[D]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>P:</b> om.</span></details></span> ma yin zhe na /</div></div>
-  <div class="xml-row xml-row-en"><div class="xml-row-label">English</div><div class="xml-row-body">For what reason is precisely the cultivation of the four establishments of mindfulness taught first and not another cultivation of an aid to awakening?</div></div>
-</div>
-<div class="xml-sen">
-  <div class="xml-sen-head">§9<span class="xml-sen-meta">MS fol. 56r7</span></div>
+<div class="xml-inline-app" data-xmlnum="9">
+  <div class="xml-inline-head">From Nehrdich's critical edition — §9<span class="xml-inline-meta">MS fol. 56r7</span></div>
   <div class="xml-row xml-row-skt"><div class="xml-row-label">Sanskrit</div><div class="xml-row-body"><span class="xml-recon">āha</span>: <span class="xml-muula"><span class="xml-recon">tatra tāvad ādau</span></span></div></div>
   <div class="xml-row xml-row-tib"><div class="xml-row-label">Tibetan</div><div class="xml-row-body"><span class="xml-muula"><span class="xml-recon">de la re zhig dang por</span></span> /</div></div>
   <div class="xml-row xml-row-en"><div class="xml-row-label">English</div><div class="xml-row-body"><span class="xml-recon">Vasubandhu says:</span> "<span class="xml-muula">Among these, first of all,</span></div></div>
 </div>
-<div class="xml-sen">
-  <div class="xml-sen-head">§9.5<span class="xml-sen-meta">Kārikā IV. 1a</span></div>
+<div class="xml-inline-app" data-xmlnum="9.5">
+  <div class="xml-inline-head">From Nehrdich's critical edition — §9.5<span class="xml-inline-meta">Kārikā IV. 1a</span></div>
   <div class="xml-row xml-row-skt"><div class="xml-row-label">Sanskrit</div><div class="xml-row-body">}<span class="xml-ed"><strong><em>dauṣṭhulyāt tarṣahetutvā</em>d</strong><span class="xml-edsrc">[Na Pa St]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>Y:</b> <strong><em>dauṣṭhulyatṛṣṇāhetutvā</em>d</strong></span></details></span>\textbf{</div></div>
   <div class="xml-row xml-row-tib"><div class="xml-row-label">Tibetan</div><div class="xml-row-body"><span class="xml-recon">gnas ngan len phyir </span>}<span class="xml-red"><strong>sred rgyu'i</strong> <span class="xml-edsrc">[D]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>P:</b> srod rgyu'i</span></details></span>\textbf{<span class="xml-recon">phyir</span> ||</div></div>
   <div class="xml-row xml-row-en"><div class="xml-row-label">English</div><div class="xml-row-body">because of [the body being the basis of] unwellness, because of [feeling being] the cause of thirst<details class="xml-xe"><summary>📝 note</summary>As observed in <span class="xml-ref" title="modern academic citation">[schmithausen1977 925]</span> f. the term <em>dauSThulya</em> is used frequently in <em>yogAcAra</em>-works, but is not seen often in other texts.<span class="xml-xf">[In the same publication, a detailed etymology of this Sanskrit term is given, which will thus not be repeated here.]</span> The English translation "unwellness" is given in <span class="xml-ref" title="modern academic citation">[schmithausen2014 693]</span>. While this term conveys different aspects of meaning,<span class="xml-xf">[These are discussed extensively in <span class="xml-ref" title="modern academic citation">[schmithausen1977 925]</span>.]</span> Sthiramati's understanding of this term becomes clear in the following discussion within the <span class="xml-ref" title="Madhyāntavibhāgaṭīkā (Sthiramati)">Madhyāntavibhāgaṭīkā (Sthiramati)</span>.</details></div></div>
 </div>
 </section>
+
+
 
 </body>
 </html>
