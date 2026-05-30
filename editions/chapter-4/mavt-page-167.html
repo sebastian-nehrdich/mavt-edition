@@ -1,287 +1,1139 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>MAVT ch. 4, p. 167 — re-edition</title>
+  <meta charset="UTF-8">
+  <title>Sthiramati MAVT chapter 4 — re-edition walk-through</title>
+  <style>
+    :root {
+      --bg: #fdfdfb;
+      --fg: #1c1c1c;
+      --muted: #6b6b6b;
+      --rule: #d8d3c8;
+      --accent: #6c4a1d;
+      --skt-bg: #f4efe4;
+      --para-bg: #eef2f6;
+      --tib-bg: #f6f1ef;
+      --recon-bg: #f0e7d9;
+      --proposed-bg: #e1ecdb;
+      --warn-bg: #fde6e1;
+      --link: #1d4f8e;
+    }
+    html { font-size: 16px; }
+    body {
+      font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
+      background: var(--bg);
+      color: var(--fg);
+      max-width: 960px;
+      margin: 2.5rem auto;
+      padding: 0 1.5rem 4rem;
+      line-height: 1.55;
+    }
+    h1 { font-size: 1.6rem; margin-bottom: 0.2rem; }
+    h2 {
+      font-size: 1.2rem;
+      margin-top: 2.6rem;
+      padding-bottom: 0.2rem;
+      border-bottom: 1px solid var(--rule);
+      color: var(--accent);
+    }
+    h3 { font-size: 1.05rem; margin-top: 1.6rem; color: var(--accent); }
+    h4 { font-size: 0.95rem; margin: 0.8rem 0 0.3rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+    p, ul, ol { margin: 0.5rem 0; }
+    .meta { color: var(--muted); font-size: 0.85rem; margin-top: 0; }
+    .conventions { font-size: 0.88rem; color: var(--muted); }
+    .conventions code { background: #efeae0; padding: 0 0.25rem; border-radius: 2px; }
+    code, .ms { font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 0.92em; }
+    .yamaguchi {
+      background: var(--recon-bg);
+      padding: 0.55rem 0.85rem;
+      border-left: 3px solid #b88c1d;
+      margin: 0.4rem 0;
+      font-family: "Charis SIL", "Gentium Plus", Georgia, serif;
+    }
+    .yamaguchi .recon { font-style: italic; color: #8a3e0c; }
+    .yamaguchi .ms-direct { color: #1c1c1c; }
+    .tibetan {
+      background: var(--tib-bg);
+      padding: 0.55rem 0.85rem;
+      border-left: 3px solid #8a4a4a;
+      margin: 0.4rem 0;
+      font-family: "Jomolhari", "Tibetan Machine Uni", "Iowan Old Style", serif;
+    }
+    .proposed {
+      background: var(--proposed-bg);
+      padding: 0.55rem 0.85rem;
+      border-left: 3px solid #4a7a3a;
+      margin: 0.4rem 0;
+      font-family: "Charis SIL", "Gentium Plus", Georgia, serif;
+    }
+    .proposed strong { color: #2d5020; }
+    .japanese {
+      background: #f5f0e8;
+      padding: 0.55rem 0.85rem;
+      border-left: 3px solid #6b4a2a;
+      margin: 0.4rem 0;
+      font-family: "Hiragino Mincho ProN", "Yu Mincho", "MS Mincho", serif;
+      font-size: 0.97rem;
+    }
+    .compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem;
+      margin: 0.6rem 0;
+    }
+    .compare > div {
+      padding: 0.55rem 0.75rem;
+      border-radius: 3px;
+      font-family: "Charis SIL", "Gentium Plus", Georgia, serif;
+      font-size: 0.95rem;
+    }
+    .compare .before {
+      background: #f4ebe0;
+      border-left: 3px solid #b88c1d;
+    }
+    .compare .after {
+      background: #e1ecdb;
+      border-left: 3px solid #4a7a3a;
+    }
+    .compare h5 {
+      margin: 0 0 0.3rem 0;
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #555;
+    }
+    .compare .before h5 { color: #8a3e0c; }
+    .compare .after h5 { color: #2d5020; }
+    .translation {
+      background: #fafafa;
+      border-left: 3px solid #777;
+      padding: 0.5rem 0.85rem;
+      margin: 0.4rem 0;
+      font-style: italic;
+      color: #333;
+    }
+    .parallel {
+      background: var(--para-bg);
+      padding: 0.55rem 0.8rem;
+      border-left: 3px solid #5a7da2;
+      margin: 0.4rem 0;
+      font-size: 0.95rem;
+    }
+    .parallel .src { font-weight: 600; }
+    .parallel .quote {
+      display: block;
+      margin-top: 0.25rem;
+      font-family: "Charis SIL", "Gentium Plus", Georgia, serif;
+      font-style: italic;
+      color: #333;
+    }
+    .justification {
+      background: #f9f5e8;
+      border-left: 3px solid #c2a04a;
+      padding: 0.5rem 0.85rem;
+      margin: 0.4rem 0;
+      font-size: 0.93rem;
+    }
+    .warn {
+      background: var(--warn-bg);
+      padding: 0.45rem 0.75rem;
+      border-left: 3px solid #b54c30;
+      margin: 0.4rem 0;
+      font-size: 0.93rem;
+    }
+    .disclaimer {
+      background: #fff3e0;
+      border: 2px solid #c25c1a;
+      border-radius: 4px;
+      padding: 1rem 1.2rem;
+      margin: 1.2rem 0 2rem;
+      font-size: 0.95rem;
+    }
+    .disclaimer h2 { margin-top: 0; border: none; color: #8a3e0c; font-size: 1.05rem; }
+    .disclaimer p { margin: 0.5rem 0; }
+    .disclaimer ul { margin: 0.4rem 0 0.4rem 1.2rem; padding: 0; }
+    .intro {
+      background: #f4f0e6;
+      border-left: 3px solid var(--accent);
+      padding: 0.8rem 1rem;
+      margin: 1rem 0 2rem;
+      font-size: 0.97rem;
+    }
+    .intro h3 { margin-top: 0.8rem; }
+    .status {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      padding: 0.15rem 0.5rem;
+      border-radius: 2px;
+      margin-left: 0.5rem;
+      vertical-align: middle;
+    }
+    .status.verified { background: #cfe5c7; color: #244a18; }
+    .status.pending  { background: #f0e4c2; color: #5a4310; }
+    .label {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      padding: 0.1rem 0.4rem;
+      border-radius: 2px;
+      margin-right: 0.4rem;
+      text-transform: uppercase;
+    }
+    .label.recon { background: #f4dab8; color: #6a3f10; }
+    .label.ms { background: #d2dce8; color: #1f3a55; }
+    .label.tib { background: #e6cccc; color: #5a2d2d; }
+    .label.proposed { background: #c8dcc0; color: #2d5020; }
+    .folio-anchor { color: #999; font-size: 0.78rem; }
+    a { color: var(--link); text-decoration: none; border-bottom: 1px solid #c8d3e3; }
+    a:hover { background: #eef3fa; }
+    section.sentence { margin-top: 2.0rem; padding-top: 0.4rem; border-top: 1px dotted #d0d0c0; }
+    section.sentence h3 { display: flex; align-items: center; flex-wrap: wrap; }
+  </style>
+
+
+
 <style>
-:root {
-  --bg:#fdfdfb; --fg:#1c1c1c; --muted:#6b6b6b; --rule:#d8d3c8;
-  --accent:#6c4a1d; --link:#1d4f8e;
-  --skt-bg:#f4efe4; --tib-bg:#f6f1ef; --en-bg:#f0f5ef;
-}
-* { box-sizing:border-box; }
-body { font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif; background:var(--bg); color:var(--fg); max-width:1100px; margin:0 auto; padding:0 1.5rem 4rem; line-height:1.55; }
-.mavt-img-banner { background:#f0e7d9; border-bottom:2px solid #b88c1d; padding:0.8rem 1rem; margin:0 -1.5rem 1.6rem; text-align:center; font-family:"Iowan Old Style",Georgia,serif; }
+.mavt-img-banner { background:#f0e7d9; border-bottom:2px solid #b88c1d; padding:0.8rem 1rem; margin:-2.5rem -1.5rem 1.6rem; text-align:center; font-family:"Iowan Old Style",Georgia,serif; }
 .mavt-img-banner .mavt-nav { font-size:0.88rem; margin-bottom:0.6rem; color:#6a3f10; }
 .mavt-img-banner .mavt-nav a { color:#5a2d2d; text-decoration:none; padding:0.15rem 0.5rem; background:#e8d8b8; border:1px solid #c8a87a; border-radius:3px; margin:0 0.2rem; display:inline-block; }
 .mavt-img-banner .mavt-nav a:hover { background:#d8c0a0; }
 .mavt-img-banner details { text-align:left; }
 .mavt-img-banner summary { cursor:pointer; font-size:0.92rem; color:#5a3a18; padding:0.3rem 0; user-select:none; }
 .mavt-img-banner summary:hover { color:#3a1a08; }
-.mavt-img-banner img { max-width:560px; max-height:780px; border:1px solid #b88c1d; border-radius:2px; margin-top:0.5rem; }
-h1 { font-size:1.5rem; margin:1rem 0 0.2rem; }
-h1 em { font-style:italic; color:#6c4a1d; }
-.meta { color:var(--muted); font-size:0.85rem; margin-top:0; }
-.intro { background:#f4f0e6; border-left:3px solid var(--accent); padding:0.9rem 1.2rem; margin:1.2rem 0 2rem; font-size:0.95rem; }
-.conventions { background:#f7f3ea; border:1px solid #e5dcc6; border-radius:3px; padding:0.7rem 1rem; margin:1rem 0; font-size:0.85rem; color:#5a4310; }
-.conventions code, .conventions span { background:#efeae0; padding:0 0.3rem; border-radius:2px; }
+.mavt-img-banner .mavt-img-strip { display:flex; flex-wrap:wrap; gap:0.6rem; justify-content:center; margin-top:0.6rem; }
+.mavt-img-banner .mavt-img-strip a { display:inline-block; text-decoration:none; }
+.mavt-img-banner .mavt-img-strip img { max-width:420px; max-height:560px; border:1px solid #b88c1d; border-radius:2px; transition:transform 0.15s; }
+.mavt-img-banner .mavt-img-strip img:hover { transform:scale(1.02); box-shadow:0 2px 8px rgba(0,0,0,0.15); }
+.mavt-img-banner .mavt-img-strip .mavt-img-cap { display:block; font-size:0.78rem; color:#6a3f10; margin-top:0.2rem; text-align:center; }
+.mavt-img-banner .mavt-img-single img { max-width:560px; max-height:760px; }
+</style>
 
-section.sentence { background:#fff; border:1px solid var(--rule); border-radius:4px; padding:0.8rem 1rem; margin:1rem 0; }
-section.sutra-sentence { background:#fbf6e8; border-color:#d8b888; }
-.sen-header { display:flex; align-items:baseline; gap:0.8rem; flex-wrap:wrap; padding-bottom:0.4rem; border-bottom:1px dotted #e5dcc6; margin-bottom:0.6rem; }
-.sen-num { font-weight:700; color:#6c4a1d; font-size:1.05rem; }
-.sen-meta { font-size:0.78rem; color:var(--muted); }
-.sen-meta span { margin-right:0.6rem; }
-.row { display:grid; grid-template-columns:90px 1fr; gap:0.6rem; margin:0.45rem 0; align-items:start; }
-.row-label { font-size:0.76rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--muted); padding-top:0.25rem; font-weight:600; }
-.row-body { padding:0.4rem 0.7rem; border-radius:3px; font-family:"Charis SIL","Gentium Plus",Georgia,serif; font-size:1.0rem; line-height:1.5; }
-.row-skt .row-body { background:var(--skt-bg); }
-.row-tib .row-body { background:var(--tib-bg); font-family:"Jomolhari",Georgia,serif; }
-.row-en .row-body { background:var(--en-bg); font-style:italic; color:#2a3a2a; }
-
-.recon { color:#8a3e0c; font-style:italic; }
-.muula { font-weight:600; color:#2a3a55; background:#dde2eb; padding:0 0.2rem; border-radius:2px; }
-.sutra { font-weight:600; color:#244a18; background:#cfe5c7; padding:0 0.2rem; border-radius:2px; }
-.red { color:#6b4a10; }
-.quote { font-style:italic; color:#2a3a3a; }
-.ed { border-bottom:1px dotted #b88c1d; }
-.ed-src { font-size:0.78rem; color:#8a6f3a; vertical-align:super; }
-.apparatus { display:inline-block; vertical-align:super; margin-left:0.2rem; }
-.apparatus summary { cursor:pointer; font-size:0.7rem; color:#b88c1d; padding:0 0.2rem; background:#f4ebe0; border:1px solid #d8b888; border-radius:2px; list-style:none; user-select:none; }
-.apparatus summary::-webkit-details-marker { display:none; }
-.apparatus summary::marker { content:""; }
-.apparatus summary:hover { background:#e8d8b8; }
-.apparatus[open] summary { background:#e8d8b8; }
-.apparatus > .var-entry, .apparatus > .note-entry { display:block; background:#fefbf3; border:1px solid #e0d4b3; padding:0.4rem 0.6rem; margin-top:0.4rem; font-size:0.86rem; font-style:normal; }
-.var-src { font-weight:700; color:#6a3f10; }
-.note-entry { color:#3a3a3a; }
-.ref { color:#1d4f8e; cursor:help; border-bottom:1px dotted #1d4f8e; font-style:italic; font-size:0.94em; }
-.xs, .xt { text-decoration:none; border-bottom:1px dotted #5a2d2d; color:#3a3a3a; font-style:italic; }
-.xs:hover, .xt:hover { background:#f0e0e0; border-bottom-style:solid; }
-.xe-note { display:inline-block; margin:0 0.2rem; vertical-align:baseline; }
-.xe-note summary { cursor:pointer; font-size:0.74rem; color:#5a4310; padding:0 0.3rem; background:#f7f3ea; border:1px solid #d8c8a8; border-radius:2px; list-style:none; user-select:none; display:inline; }
-.xe-note summary::-webkit-details-marker { display:none; }
-.xe-note[open] { display:block; background:#fbf6e8; border:1px solid #d8c8a8; border-radius:3px; padding:0.4rem 0.7rem; margin:0.4rem 0; }
-.xe-note[open] summary { background:transparent; border:none; padding:0 0 0.2rem; }
-.xf-note { font-size:0.86em; color:#666; }
-.edref { font-size:0.86rem; color:#5a3a3a; background:#f0eae0; padding:0 0.3rem; border-radius:2px; }
-.parallels { margin:0.5rem 0 0.2rem 0; border-left:3px solid #5a7da2; padding:0.4rem 0.7rem; background:#eef2f6; border-radius:2px; }
-.parallels-head { font-size:0.78rem; color:#2a3a55; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.3rem; font-weight:600; }
-.parallel-entry { margin:0.4rem 0; padding-bottom:0.3rem; border-bottom:1px dotted #c0cad8; }
-.parallel-entry:last-child { border-bottom:none; }
-.parallel-src { font-size:0.82rem; color:#2a3a55; font-weight:600; }
-.parallel-src-inline { font-size:0.8rem; color:#5a2d2d; font-weight:600; margin-right:0.4rem; }
-.parallel-txt { font-size:0.93rem; color:#333; margin-top:0.2rem; }
-.parallel-txt a { color:#1d4f8e; text-decoration:none; }
-.parallel-txt a:hover { text-decoration:underline; }
-.var-stray { font-size:0.82rem; color:#888; }
-a { color:var(--link); text-decoration:none; }
-a:hover { text-decoration:underline; }
+<style>
+section.xml-supplement { margin-top: 3rem; padding: 1.4rem 1.5rem; background: #f0f5ef; border: 2px solid #6c4a1d; border-radius: 6px; }
+section.xml-supplement > h2 { margin-top: 0; color: #2d4a1d; }
+section.xml-supplement > .xml-supp-intro { color: #2d4a1d; font-size: 0.93rem; margin-bottom: 1.2rem; padding-bottom: 0.7rem; border-bottom: 1px solid #b8c8a8; }
+.xml-sen { background: #fff; border: 1px solid #c8d8c0; border-radius: 4px; padding: 0.7rem 0.9rem; margin: 0.8rem 0; }
+.xml-sen .xml-sen-head { font-weight: 700; color: #2d4a1d; padding-bottom: 0.3rem; border-bottom: 1px dotted #d8e2d0; margin-bottom: 0.5rem; }
+.xml-sen .xml-sen-meta { font-size: 0.78rem; color: #6b6b6b; font-weight: normal; margin-left: 0.6rem; }
+.xml-row { display: grid; grid-template-columns: 80px 1fr; gap: 0.5rem; margin: 0.35rem 0; }
+.xml-row .xml-row-label { font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.05em; color: #6b6b6b; padding-top: 0.25rem; font-weight: 600; }
+.xml-row .xml-row-body { padding: 0.35rem 0.6rem; border-radius: 3px; font-family: "Charis SIL", "Gentium Plus", Georgia, serif; font-size: 0.98rem; line-height: 1.5; }
+.xml-row-skt .xml-row-body { background: #f4efe4; }
+.xml-row-tib .xml-row-body { background: #f6f1ef; font-family: "Jomolhari", Georgia, serif; }
+.xml-row-en .xml-row-body { background: #fafaef; font-style: italic; color: #2a3a2a; }
+.xml-recon { color: #8a3e0c; font-style: italic; }
+.xml-muula { font-weight: 600; color: #2a3a55; background: #dde2eb; padding: 0 0.2rem; border-radius: 2px; }
+.xml-sutra { font-weight: 600; color: #244a18; background: #cfe5c7; padding: 0 0.2rem; border-radius: 2px; }
+.xml-ed, .xml-red { border-bottom: 1px dotted #b88c1d; }
+.xml-edsrc { font-size: 0.74rem; color: #8a6f3a; vertical-align: super; margin-left: 0.1rem; }
+.xml-app { display: inline-block; vertical-align: super; margin-left: 0.15rem; }
+.xml-app summary { cursor: pointer; font-size: 0.7rem; color: #b88c1d; padding: 0 0.2rem; background: #f4ebe0; border: 1px solid #d8b888; border-radius: 2px; list-style: none; user-select: none; }
+.xml-app summary::-webkit-details-marker { display: none; }
+.xml-app summary:hover { background: #e8d8b8; }
+.xml-app[open] summary { background: #e8d8b8; }
+.xml-app .xml-var, .xml-app .xml-note { display: block; background: #fefbf3; border: 1px solid #e0d4b3; padding: 0.35rem 0.55rem; margin-top: 0.3rem; font-size: 0.84rem; font-style: normal; }
+.xml-var b { color: #6a3f10; }
+.xml-ref { color: #1d4f8e; cursor: help; border-bottom: 1px dotted #1d4f8e; font-style: italic; font-size: 0.94em; }
+.xml-xs, .xml-xt { background: #f0e8e8; color: #3a3a3a; font-style: italic; padding: 0 0.2rem; border-radius: 2px; font-size: 0.92em; }
+.xml-edref { font-size: 0.84rem; color: #5a3a3a; background: #f0eae0; padding: 0 0.3rem; border-radius: 2px; }
+.xml-parallels { margin: 0.4rem 0 0 0; border-left: 3px solid #5a7da2; padding: 0.35rem 0.6rem; background: #eef2f6; border-radius: 2px; }
+.xml-parallels-head { font-size: 0.76rem; color: #2a3a55; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.25rem; font-weight: 600; }
+.xml-par-entry { margin: 0.3rem 0; padding-bottom: 0.25rem; border-bottom: 1px dotted #c0cad8; }
+.xml-par-entry:last-child { border-bottom: none; }
+.xml-par-src { font-size: 0.8rem; color: #2a3a55; font-weight: 600; }
+.xml-par-txt { font-size: 0.9rem; color: #333; margin-top: 0.15rem; }
+.xml-par-tib { font-size: 0.88rem; color: #444; margin-top: 0.15rem; }
+.xml-par-tib b { font-size: 0.78rem; color: #5a2d2d; margin-right: 0.3rem; }
+.xml-xe { display: inline-block; margin: 0 0.15rem; }
+.xml-xe summary { cursor: pointer; font-size: 0.72rem; color: #5a4310; padding: 0 0.3rem; background: #f7f3ea; border: 1px solid #d8c8a8; border-radius: 2px; list-style: none; }
+.xml-xe summary::-webkit-details-marker { display: none; }
+.xml-xe[open] { display: block; background: #fbf6e8; border: 1px solid #d8c8a8; border-radius: 3px; padding: 0.35rem 0.6rem; margin: 0.3rem 0; }
+.xml-xe[open] summary { background: transparent; border: none; padding: 0 0 0.15rem; }
+.xml-xf { font-size: 0.86em; color: #666; }
+.xml-var-stray { font-size: 0.82rem; color: #888; }
+.xml-supp-conventions { background: #fdfdf6; border: 1px solid #d8d8b8; border-radius: 3px; padding: 0.55rem 0.8rem; margin: 0.6rem 0 1rem; font-size: 0.83rem; color: #4a4a2a; }
+.xml-supp-conventions code, .xml-supp-conventions span { padding: 0 0.25rem; border-radius: 2px; }
 </style>
 </head>
 <body>
-
-<div class="mavt-img-banner">
-<div class="mavt-nav">
-<a href="../../index.html">← Index</a>
-<a href="../../all-pages.html">📑 All PDF pages</a>
-</div>
-<details open>
-<summary>📜 Original Yamaguchi 1934 scan — page 167</summary>
-<a href="../../images/page-205.jpg" target="_blank" title="Click for full-size"><img src="../../images/page-205.jpg" alt="Yamaguchi 1934, p. 167" loading="lazy"></a>
-</details>
-</div>
-
+<div class="mavt-img-banner"><div class="mavt-nav"><a href="../../index.html">← Index</a><a href="../../all-pages.html">📑 All PDF pages</a></div><details open><summary>📜 Show original Yamaguchi 1934 scan — page 167</summary><div class="mavt-img-strip mavt-img-single"><a href="../../images/page-205.jpg" target="_blank" title="Click for full-size"><img src="../../images/page-205.jpg" alt="Yamaguchi 1934, p. 167" loading="lazy"><span class="mavt-img-cap">p. 167</span></a></div></details></div>
 <h1>Sthiramati, <em>Madhyāntavibhāgaṭīkā</em> — Yamaguchi p.&nbsp;167 <span style="font-size:0.7em;color:#888;">(chapter 4)</span></h1>
-<p class="meta">Yamaguchi 1934 file p. 205. Chapter 4 (<em>Pratipakṣa-bhāvanā-pariccheda</em>).
-Edited from Sebastian Nehrdich's TEI-style critical edition; all variants and citations preserved.
-Sanskrit/Tibetan quotations link to a search on
-<a href="https://dharmamitra.org/" target="_blank">DharmaMitra</a> /
-<a href="https://dharmanexus.net/" target="_blank">DharmaNexus</a>.</p>
-
-<div class="intro">Continuation of <em>kāya-smṛtyupasthāna</em>: <em>dauṣṭhulya</em> as <em>saṃskāra-duḥkhatā</em>; the verse on rebirth as the disaster; the controversy over <em>karmaṇyatā</em>; the seeds-in-ālayavijñāna argument. Sentences §9.7, §10–§22 (cross-page from 166).</div>
-
-<div class="conventions">
-<strong>Conventions:</strong>
-<span class="recon">italic orange</span> = reconstructed by Yamaguchi from the Tibetan (italic in his print) ·
-<span class="muula">blue background</span> = mūla text (the kārikā that Sthiramati is commenting on) ·
-<span class="sutra">green background</span> = sūtra-quotation ·
-<span class="ed">dotted-underline</span> = editor's chosen reading (click 📋 for apparatus) ·
-<span class="ref">italic blue</span> = reference to another work (hover for full name) ·
-<span class="xs">dotted-underline italic</span> = inline Sanskrit/Tibetan citation (click for DharmaMitra search)
-</div>
-
-
-<section class="sentence" id="s9_7">
-  <header class="sen-header">
-    <span class="sen-num">§9.7</span>
-    
-  </header>
-  <div class="row row-skt"><div class="row-label">Sanskrit</div><div class="row-body">iti vistaraḥ |</div></div>
-  <div class="row row-tib"><div class="row-label">Tibetan</div><div class="row-body">zhes [D270a6] rgya cher <span class="recon">smos so </span> //</div></div>
-  <div class="row row-en"><div class="row-label">English</div><div class="row-body">and so on.</div></div>
-</section>
+<p class="meta">Yamaguchi 1934 file p. 205. Chapter 4 (<em>Pratipakṣa-bhāvanā-pariccheda</em>) — kāya-smṛtyupasthāna (continued). Methodology: <a href="../../mavt-reedition-workflow.md"><code>mavt-reedition-workflow.md</code></a>.</p>
+<h2>Page 205 (Yamaguchi p. 167) — continuation of chapter 4 opening</h2>
+<p class="meta">Sthiramati's commentary on MAVbh kārikā IV.1 begins
+properly. Most italicised stretches on this page are MAVbh
+<em>pratīkas</em> (quotation-words) and can be checked verbatim
+against the local <code>references/SA_T06_vmvkbh_u.txt</code>.</p>
 
 <section class="sentence" id="s10">
-  <header class="sen-header">
-    <span class="sen-num">§10</span>
-    
-  </header>
-  <div class="row row-skt"><div class="row-label">Sanskrit</div><div class="row-body"><span class="muula">tatr</span>eti bodhipakṣabhāvanāyām | <span class="ed"><u>tāva</u>cchabdaḥ<span class="ed-src">[Ms Y]</span> <details class="apparatus"><summary>📋</summary><span class="var-entry"><span class="var-src">Pa:</span> <span class="var-text">tāvacchabdārthaḥ</span></span><span class="note-entry">Pa's rendering <em>tāvacchabdārthaḥ</em> was not marked as an emendation.</span></details></span> kramārthaḥ |</div></div>
-  <div class="row row-tib"><div class="row-label">Tibetan</div><div class="row-body"><span class="muula">de la</span> zhes bya ba ni byang chub kyi [P115a6] phyogs bsgoms pa la'o // <span class="muula">re zhig</span> <span class="ed">ces<span class="ed-src">[D]</span> <details class="apparatus"><summary>📋</summary><span class="var-entry"><span class="var-src">P:</span> <span class="var-text">cis</span></span></details></span> bya ba ni rim gyi don te /</div></div>
-  <div class="row row-en"><div class="row-label">English</div><div class="row-body"><span class="muula">"Among these"</span>, this means "among the [types of] cultivation of the aids to awakening". The word <span class="muula">first</span><details class="xe-note"><summary>📝 note</summary>The <span class="ref" title="Madhyāntavibhāgabhāṣya (Vasubandhu)">Madhyāntavibhāgabhāṣya (Vasubandhu)</span> gives here not only the word <em>tAvat</em> "first", but also <em>Adau</em> "in the beginning", which carries more or less the same meaning. Thus the use of these almost synonymous words has an emphatic effect at this place. The word <em>tAvat</em> can also, but less frequently, be rendered not as "first", but as "clearly", which at this point would give emphasis to the following <em>Adau</em>. Following this understanding, a translation of these two words in the manner of  "clearly, first" would appear to be possible. However Sthiramati's gloss of the word <em>tAvat</em> at this point contradicts such an interpretation.</details> has the meaning of the order [of the way the different types of cultivation are to be practiced].</div></div>
-</section>
+<h3>§10 — Iti vistaraḥ | tatreti bodhipakṣa-bhāvanāyām | tāvac-chabdaḥ kramārthaḥ <span class="status verified">VERIFIED</span></h3>
 
+<h4>Yamaguchi text</h4>
+<div class="yamaguchi">
+<span class="ms-direct">iti vistaraḥ |</span>
+<span class="recon">tatreti bodhipakṣabhāvanāyām |</span>
+<span class="ms-direct">tāvacchabdaḥ kramārthaḥ |</span>
+<span class="folio-anchor">(p. 167; OCR line 6838)</span>
+</div>
+
+<h4>Structure</h4>
+<p>Three brisk glosses closing the kārikā IV.1a quotation:</p>
+<ul>
+  <li><code>iti vistaraḥ</code> — "[so the kārikā goes on] in full"
+  — closes the abbreviated citation begun at §9. Standard MAVT
+  citation-closing formula (parallel at OCR line 6816 of §7
+  context).</li>
+  <li><code>tatra iti bodhipakṣa-bhāvanāyām</code> — glosses
+  <em>tatra</em> from the kārikā / bhāṣya lead-in (<em>tatra tāvad
+  ādau</em>): "by '<em>tatra</em>' is meant 'in the
+  cultivation-of-<em>bodhipakṣya</em>.'" Pratīka + locative gloss.</li>
+  <li><code>tāvac-chabdaḥ krama-arthaḥ</code> — "the word
+  <em>tāvat</em> has the meaning 'in order'/'in sequence'" — i.e.
+  <em>tāvat</em> is a sequence-marker, signalling that
+  smṛtyupasthāna-bhāvanā is treated <em>first</em> in the sequence
+  of bodhipakṣa-bhāvanās.</li>
+</ul>
+
+<h4>Yamaguchi vs. proposed (no change)</h4>
+<div class="compare">
+<div class="before">
+<h5>Yamaguchi 1934 as printed</h5>
+iti vistaraḥ | <em>tatreti bodhipakṣabhāvanāyām</em> | tāvacchabdaḥ
+kramārthaḥ |
+</div>
+<div class="after">
+<h5>Proposed re-edited text</h5>
+iti vistaraḥ | tatreti bodhipakṣyabhāvanāyām | tāvac-chabdaḥ
+kramārthaḥ |<br>
+<span style="font-size:0.85em;color:#5a4310;">(Note: emend
+<em>bodhipakṣa</em> → <em>bodhipakṣya</em> for consistency with
+§3; see §3 note.)</span>
+</div>
+</div>
+
+<h4>Yamaguchi's Japanese translation</h4>
+<div class="japanese">
+等は擴大の語、その中とは菩提分修習に於てなり。且く聲は次第の義なり。
+<span class="folio-anchor">(<code>references/mavt-ja.txt</code> line 3746 + 3747)</span>
+</div>
+
+<h4>Translation</h4>
+<div class="translation">
+"… and so on [<em>iti vistaraḥ</em>]. By '<em>tatra</em>' is meant
+'in the cultivation of the <em>bodhipakṣya</em>[-dharmas].' The
+word '<em>tāvat</em>' has the sense of sequence."
+</div>
+</section>
 <section class="sentence" id="s11">
-  <header class="sen-header">
-    <span class="sen-num">§11</span>
-    
-  </header>
-  <div class="row row-skt"><div class="row-label">Sanskrit</div><div class="row-body"><span class="muula">ādau</span> tāvat smṛtyupasthānabhāvanocyate, paścād anyeṣām apīti |</div></div>
-  <div class="row row-tib"><div class="row-label">Tibetan</div><div class="row-body"><span class="muula">thog mar</span> dran pa nye bar <span class="ed">gzhag <span class="ed-src">[D]</span> <details class="apparatus"><summary>📋</summary><span class="var-entry"><span class="var-src">P:</span> <span class="var-text">bzhag </span></span></details></span> pa bsgom pa <span class="ed">je bshad <span class="ed-src">[P]</span> <details class="apparatus"><summary>📋</summary><span class="var-entry"><span class="var-src">D:</span> <span class="var-text">ji bshad</span></span></details></span> la / gzhan yang phyis bshad do zhes bya bar 'gyur ro //</div></div>
-  <div class="row row-en"><div class="row-label">English</div><div class="row-body"><span class="muula">First of all</span>, the cultivation of the establishment of mindfulness is mentioned, and later [the cultivation] of the other [aids to awakening].</div></div>
-</section>
+<h3>§11 — Ādāu tāvat smṛtyupasthāna-bhāvanā ucyate paścād anyeṣām api <span class="status verified">VERIFIED</span></h3>
 
+<h4>Yamaguchi text (MS-attested)</h4>
+<div class="yamaguchi">
+<span class="ms-direct">ādāu tāvat smṛtyupasthānabhāvanocyate paçcād
+anyeṣām api iti |</span>
+<span class="folio-anchor">(p. 167; OCR line 6839–6840)</span>
+</div>
+
+<h4>Structure</h4>
+<p>An explicit unpacking of <em>ādau tāvat</em>: "[the implied
+meaning is:] at the outset, the cultivation of the
+<em>smṛtyupasthāna</em>s is taught; afterwards [the cultivation] of
+the others as well."</p>
+
+<h4>Yamaguchi vs. proposed (no change)</h4>
+<div class="compare">
+<div class="before">
+<h5>Yamaguchi 1934 as printed</h5>
+ādāu tāvat smṛtyupasthānabhāvanocyate paçcād anyeṣām apiti |
+</div>
+<div class="after">
+<h5>Proposed re-edited text</h5>
+ādau tāvat smṛtyupasthāna-bhāvanocyate paścād anyeṣām apīti |<br>
+<span style="font-size:0.85em;color:#5a4310;">(Normalise OCR
+<em>ç</em> → <em>ś</em>; <em>apiti</em> resolves
+<em>api iti</em>.)</span>
+</div>
+</div>
+
+<h4>Yamaguchi's Japanese translation</h4>
+<div class="japanese">
+初めには且らく念處の修習を説き、後に諸餘〔菩提分〕についても亦〔説く〕なり。
+<span class="folio-anchor">(<code>references/mavt-ja.txt</code> line 3748)</span>
+</div>
+
+<h4>Translation</h4>
+<div class="translation">
+"[The implication is:] at the outset, the cultivation of the
+<em>smṛtyupasthāna</em>s [foundations of mindfulness] is taught;
+afterwards [the cultivation] of the others [the remaining 33
+bodhipakṣya-dharmas] as well."
+</div>
+</section>
 <section class="sentence" id="s12">
-  <header class="sen-header">
-    <span class="sen-num">§12</span>
-    <span class="sen-meta"><span class="meta-ms">MS fol. 57v1</span> · <span class="meta-st">Stanley §223</span></span>
-  </header>
-  <div class="row row-skt"><div class="row-label">Sanskrit</div><div class="row-body"><span class="ed">nirvāṇa<span class="ed-src">[Yms]</span> <details class="apparatus"><summary>📋</summary><span class="var-entry"><span class="var-src">Yms:</span> <span class="var-text">nivārṇa</span></span></details></span>saṃsārayor guṇadoṣānavabodhāt saṃskāre<span class="recon">ṣu </span><span class="quote"><span class="recon">sukha-śu-cinit-yātmābhi-ni-ve-śe-na<details class="apparatus inline"><summary>📋 note</summary>cf. <span class="ref" title="Abhidharmasamuccayabhāṣya">Abhidharmasamuccayabhāṣya</span> 86.3: <a class="xs" href="https://dharmamitra.org/search?q=%C5%9Bucisukhanity%C4%81tmavipary%C4%81saprahara%E1%B9%87am" target="_blank" title="Search for this Sanskrit passage on DharmaMitra">śucisukhanityātmaviparyāsapraharaṇam</a> (<span class="ref" title="Abhidharmasamuccayabhāṣya — Tibetan">Abhidharmasamuccayabhāṣya — Tibetan</span> 62b5: <a class="xt" href="https://dharmamitra.org/search?q=bde+ba+dang+%2F+gtsang+ba+dang+%2F+rtag+pa+dang+%2F+bdag+tu+phyin+ci+log+spang+ba" target="_blank" title="Search for this Tibetan passage on DharmaMitra">bde ba dang / gtsang ba dang / rtag pa dang / bdag tu phyin ci log spang ba</a>). While word-order of <em>śuci</em> and <em>sukha</em> is not the same in the case of the <span class="ref" title="Abhidharmasamuccayabhāṣya">Abhidharmasamuccayabhāṣya</span>, the combination <em>sukhaśuci</em> is seen in <span class="ref" title="Abhidharmakośabhāṣya (Vasubandhu)">Abhidharmakośabhāṣya (Vasubandhu)</span> 283.9 where <a class="xs" href="https://dharmamitra.org/search?q=sukha%C5%9Bucivipary%C4%81sau" target="_blank" title="Search for this Sanskrit passage on DharmaMitra">sukhaśuciviparyāsau</a>  is rendered at <span class="ref" title="Abhidharmakośabhāṣya — Tibetan">Abhidharmakośabhāṣya — Tibetan</span> ku 231a2-3 with <a class="xt" href="https://dharmamitra.org/search?q=bde+ba+dang+gtsang+bar+phyin+ci+log+go" target="_blank" title="Search for this Tibetan passage on DharmaMitra">bde ba dang gtsang bar phyin ci log go</a>.</details></span></span><div class="parallels"><div class="parallels-head">↳ Parallel</div><div class="parallel-entry"><div class="parallel-src"><span class="ref" title="Abhidharmasamuccayabhāṣya">Abhidharmasamuccayabhāṣya</span> 86.3</div><div class="parallel-txt skt"><a href="https://dharmamitra.org/search?q=%C5%9Buci-sukha-nity%C4%81tma-vipary%C4%81sa-prahara%E1%B9%87am" target="_blank" title="Search this passage on DharmaMitra">śuci-sukha-nityātma-viparyāsa-praharaṇam</a></div><div class="parallel-txt tib"><span class="parallel-src-inline"><span class="ref" title="Abhidharmasamuccayabhāṣya — Tibetan">Abhidharmasamuccayabhāṣya — Tibetan</span> 62b5:</span> <a href="https://dharmamitra.org/search?q=bde+ba+dang+%2F+gtsang+ba+dang+%2F+rtag+pa+dang+%2F+bdag+tu+phyin+ci+log+spang+ba" target="_blank">bde ba dang / gtsang ba dang / rtag pa dang / bdag tu phyin ci log spang ba</a></div></div></div> <span class="recon">bālānāṃ</span> <span class="red">bhavabhogeṣu <span class="ed-src">[Y Pa]</span> <details class="apparatus"><summary>📋</summary><span class="var-entry"><span class="var-src">Y Pa:</span> <span class="var-text">bhavabhoge</span></span><span class="note-entry">cf. <span class="ref" title="Pañcaskandhakavibhāṣā (Sthiramati)">Pañcaskandhakavibhāṣā (Sthiramati)</span> 41.7: <a class="xs" href="https://dharmamitra.org/search?q=bhavabhoge%E1%B9%A3v" target="_blank" title="Search for this Sanskrit passage on DharmaMitra">bhavabhogeṣv</a> (<span class="ref" title="Pañcaskandhakavibhāṣā — Tibetan">Pañcaskandhakavibhāṣā — Tibetan</span> 212b5: <a class="xt" href="https://dharmamitra.org/search?q=srid+pa+dang+longs+spyod+la" target="_blank" title="Search for this Tibetan passage on DharmaMitra">srid pa dang longs spyod la</a>); <span class="ref" title="Abhidharmasamuccayabhāṣya">Abhidharmasamuccayabhāṣya</span> 59.8: <a class="xs" href="https://dharmamitra.org/search?q=bhavabhoge%E1%B9%A3u+ratne%E1%B9%A3u+ca" target="_blank" title="Search for this Sanskrit passage on DharmaMitra">bhavabhogeṣu ratneṣu ca</a>.</span></details></span><span class="recon"> abhi</span><span class="ed">nandanaṃ <span class="ed-src">[St Tib (mngon par dga&#x27; zhing)]</span> <details class="apparatus"><summary>📋</summary><span class="var-entry"><span class="var-src">Y:</span> <span class="var-text">mandanaṃ </span></span><span class="var-entry"><span class="var-src">Yms Pa:</span> <span class="var-text">vacanaṃ</span></span><span class="note-entry">Pa notes the emendation in Y, but reports it wrongly as <a class="xs" href="https://dharmamitra.org/search?q=abhima%E1%B9%87%E1%B8%8Dana%E1%B9%83" target="_blank" title="Search for this Sanskrit passage on DharmaMitra">abhimaṇḍanaṃ</a>. There is a possibility that Y and Pa misread the Ms.</span></details></span> <span class="ed">nirvāṇāc cotrāsaḥ <span class="ed-src">[Ms]</span> <details class="apparatus"><summary>📋</summary><span class="var-entry"><span class="var-src">Y Pa:</span> <span class="var-text">nirvāṇārthe trāsaḥ </span></span><span class="var-entry"><span class="var-src">Yms:</span> <span class="var-text">nivāṇārthe trāsaḥ </span></span></details></span> |</div></div>
-  <div class="row row-tib"><div class="row-label">Tibetan</div><div class="row-body">mya ngan las [P115a7] 'das pa dang 'khor ba gnyis kyi yon tan dang [D270a7] nyes pa ma rtogs pa'i phyir 'du byed rnams la <span class="recon">bde ba dang gtsang ba dang rtag pa dang bdag tu mngon par zhen pas byis pa rnams srid pa dang longs spyod [P115a8] la mngon par dga' zhing </span> mya ngan las 'das pas skrag go //</div></div>
-  <div class="row row-en"><div class="row-label">English</div><div class="row-body">Because of not understanding the good qualities and faults of Nirvāṇa and Saṃsāra [respectively] and <span class="recon">their stubborn clinging to the [notion of] a self as something blissful, pure and eternal</span> with regard to the conditioned and conditioning factors,<details class="xe-note"><summary>📝 note</summary>This is a repetition of the typical definition of the four types of error (<em>viparyāsa</em>) as found in the <span class="ref" title="Abhidharmakośabhāṣya (Vasubandhu)">Abhidharmakośabhāṣya (Vasubandhu)</span>: <span class="quote">There are four types of error: [1.] "There is permanence in impermanence", [2.] "There is happiness in suffering", [3.] "There is purity in impurity", [4.] "There is a self in what is without a self".<br><span class="ref" title="Abhidharmakośabhāṣya (Vasubandhu)">Abhidharmakośabhāṣya (Vasubandhu)</span> 283: <a class="xs" href="https://dharmamitra.org/search?q=catv%C4%81ro+vipary%C4%81s%C4%81%E1%B8%A5+%7C+anitye+nityamiti+%7C+du%E1%B8%A5khe+sukhamiti+%7C+a%C5%9Bucau+%C5%9Buc%C4%ABti+%7C+an%C4%81tmany%C4%81tmeti+%7C" target="_blank" title="Search for this Sanskrit passage on DharmaMitra">catvāro viparyāsāḥ | anitye nityamiti | duḥkhe sukhamiti | aśucau śucīti | anātmanyātmeti |</a></span>
-    	  This definition is paralleled in the <em>Vipallāsa Sutta</em> (<span class="ref" title="Pāli Aṅguttara-nikāya (PTS)">Pāli Aṅguttara-nikāya (PTS)</span> 4.49) and the <span class="ref" title="Ekottarikāgama">Ekottarikāgama</span> at 2.5.</details> <span class="recon">for the foolish people</span> there is rejoicing in existence and the enjoyments [related to existence]  and fear of [entering] <em>nirvANa</em>.<details class="xe-note"><summary>📝 note</summary>The reconstruction here is highly doubtful. The Tibetan translation here seems to provide a better reading: "[...] The foolish people, who are taking delight in the worldly pleasures, are afraid of <em>nirvANa</em>."</details></div></div>
-</section>
+<h3>§12 — Nirvāṇa-saṃsārayor guṇadoṣānavabodhāt … <span class="status verified">VERIFIED</span></h3>
 
+<h4>Yamaguchi text (MS-attested, with two MS-vs-Tib variants noted by Yamaguchi)</h4>
+<div class="yamaguchi">
+<span class="ms-direct">nirvāṇasaṁsārayor guṇadoṣānavabodhāt
+saṁskāreṣu sukhaśucinityātmābhiniveśena bālānāṁ bhavabhoge
+'bhimandanaṁ nirvāṇārthe trāsaḥ |</span>
+<span class="ms-direct">sa ca guṇadoṣānavabodhaḥ
+sukhādyabhiniveśaś ca satyadarśanād vinivartata ity ataḥ saṁsārād
+udvejanārthaṁ nirvāṇe cābhimukhīkaraṇārthaṁ catuḥsatyāvatārāya
+smṛtyupasthānabhāvanaivādāv uktā |</span>
+<span class="folio-anchor">(p. 167; OCR lines 6840–6845)</span>
+</div>
+
+<h4>Apparatus notes from Yamaguchi (footnotes 1, 2, 3)</h4>
+<ul>
+  <li>fn. 1: MS reads <em>nivārṇa</em>; Tib. <em>mya-ṅan-las
+  ḥdas-pa</em> — so <em>nirvāṇa</em> is the correct reading
+  (MS is a metathesis slip).</li>
+  <li>fn. 2: MS reads <em>vacanaṁ nivāṇa-</em> (perhaps an inserted
+  <em>vacanam</em> that should be removed); Tib. <em>mñon-par
+  dgaḥ-ba çiṅ mya-ṅan-las-ḥdas-pa</em> — supports
+  <em>'bhimandanaṁ nirvāṇa</em> (gerundive of <em>abhi-mand</em>
+  "delighting in").</li>
+  <li>fn. 3: In Vasubandhu's MAVbh, this very sentence appears at
+  the end of the <em>smṛtyupasthāna</em> section, and where
+  Sthiramati has <em>uktā</em>, MAVbh has <em>vyavasthāpyate</em>.
+  Cf. local MAVbh file line 815:
+  <code>ādau catuḥsatyāvatārāya smṛtyupasthānabhāvanā
+  vyavasthāpyate /</code></li>
+</ul>
+
+<h4>The MAVbh parallel — Sthiramati anticipates Vasubandhu's prose</h4>
+<div class="parallel">
+<span class="src">Vasubandhu MAVbh ad IV.1 closing</span>
+— local <code>references/SA_T06_vmvkbh_u.txt</code> line 815;
+indexed in
+<a href="https://dharmamitra.org/nexus/db/sa/SA_T06_vmvkbh_u/text?active_segment=SA_T06_vmvkbh_u:789">SA_T06_vmvkbh_u</a>.
+<span class="quote">ādau catuḥsatyāvatārāya
+smṛtyupasthānabhāvanā vyavasthāpyate /</span>
+Sthiramati lifts this MAVbh formula but substitutes the perfect
+passive <em>uktā</em> for the present <em>vyavasthāpyate</em> —
+because in his commentarial order this statement falls at the
+beginning (anticipating what Vasubandhu will say), not at the end.
+</div>
+
+<h4>Yamaguchi vs. proposed (minor cleanups)</h4>
+<div class="compare">
+<div class="before">
+<h5>Yamaguchi 1934 as printed</h5>
+nirvāṇasaṁsārayor guṇadoṣānavabodhāt saṁskāreṣu
+sukhaçucinityātmābhiniveçena bālānāṁ bhavabhoge 'bhimandanaṁ
+nirvāṇārthe trāsaḥ | sa ca guṇadoṣānavabodhaḥ sukhādyabhiniveçaç
+ca satyadarçanād vinivartata ity ataḥ saṁsārād udvejanārthaṁ
+nirvāṇe cābhimukhīkaraṇārthaṁ catuḥsatyāvatārāya
+smṛtyupasthānabhāvanāivādāv uktā |
+</div>
+<div class="after">
+<h5>Proposed re-edited text</h5>
+nirvāṇa-saṃsārayor guṇa-doṣa-anavabodhāt saṃskāreṣu
+sukha-śuci-nitya-ātma-abhiniveśena bālānāṃ bhava-bhoge
+'bhimandanaṃ nirvāṇa-arthe trāsaḥ | sa ca
+guṇa-doṣa-anavabodhaḥ sukha-ādy-abhiniveśaś ca satya-darśanād
+vinivartata ity ataḥ saṃsārād udvejana-arthaṃ nirvāṇe ca
+abhimukhī-karaṇa-arthaṃ catuḥsatya-avatārāya
+smṛtyupasthāna-bhāvanā eva ādāv uktā |<br>
+<span style="font-size:0.85em;color:#5a4310;">(OCR
+<em>ç → ś</em> and minor sandhi resolutions.)</span>
+</div>
+</div>
+
+<h4>Yamaguchi's Japanese translation</h4>
+<div class="japanese">
+諸愚昧者、涅槃と生死との功徳と過失とを悟了せざる由り、諸行中樂淨常我を執著するによりて有と資具とを喜愛し、涅槃の爲には恐怖あり。然るに彼功徳と過失との不了悟と樂等に對する執著とは諦を見ることによりて止息す。されば輪廻を厭離することを目的とし、及び、涅槃に現向することを目的として四諦に入る為に、念の修習をこそ初めに説きたるなり。
+<span class="folio-anchor">(<code>references/mavt-ja.txt</code> lines 3749–3751)</span>
+</div>
+
+<h4>Translation</h4>
+<div class="translation">
+"Because ordinary people [<em>bāla</em>] fail to comprehend the
+virtues and defects of nirvāṇa and saṃsāra, and through their
+attachment to the saṃskāras as pleasant, pure, permanent, and
+self-possessing, they delight in mundane enjoyment and dread
+nirvāṇa. But that failure to comprehend the virtues-and-defects,
+and that attachment to pleasure and so on, are reversed by the
+seeing of the [noble] truths. Therefore, in order to disenchant
+[the practitioner] from saṃsāra and to turn [them] toward nirvāṇa,
+the cultivation of the foundations of mindfulness is taught
+precisely at the outset, [as the means] for entry into the four
+[noble] truths."
+</div>
+</section>
 <section class="sentence" id="s13">
-  <header class="sen-header">
-    <span class="sen-num">§13</span>
-    <span class="sen-meta"><span class="meta-pandeya">Pandeya p. 126</span></span>
-  </header>
-  <div class="row row-skt"><div class="row-label">Sanskrit</div><div class="row-body">sa ca guṇadoṣānavabodhaḥ sukhādyabhiniveśaś ca satyadarśanād vinivartata ity ataḥ saṃsārād udvejanārthaṃ nirvāṇe cābhimukhīkaraṇārthaṃ </div></div>
-  <div class="row row-tib"><div class="row-label">Tibetan</div><div class="row-body">yon tan dang nyes pa ma rtogs pa dang / bde ba la sogs pa la mngon par zhen pa de yang bden <span class="ed">pa <span class="ed-src">[D]</span> <details class="apparatus"><summary>📋</summary><span class="var-entry"><span class="var-src">P:</span> <span class="var-text">na</span></span></details></span> mthong nas ldog par 'gyur te / [P115b1] de'i phyir 'khor ba la skyo bar bya ba'i don dang / mya ngan las 'das pa mngon sum du bya ba'i don du</div></div>
-  <div class="row row-en"><div class="row-label">English</div><div class="row-body">And the non-realization of the good qualities and faults [of <em>saMsAra</em> and <em>nirvANa</em>] and the clinging to [searching] bliss etc. cease because of seeing the truth. Therefore in order to make them fear <em>saMsAra</em> and in order make [them] face <em>nirvANa</em>,</div></div>
-</section>
+<h3>§13 — Kāyena dauṣṭhulyaṃ prabhāvyate iti — dauṣṭhulyaṃ duḥsthitatā <span class="status verified">VERIFIED</span></h3>
 
-<section class="sentence sutra-sentence" id="s13_5">
-  <header class="sen-header">
-    <span class="sen-num">§13.5</span>
-    <span class="sen-meta"><span class="meta-kar">Kārikā IV. 1cd</span> · <span class="meta-ms">MS fol. 57v2</span></span>
-  </header>
-  <div class="row row-skt"><div class="row-label">Sanskrit</div><div class="row-body">catuḥsatyāvatārāya smṛtyupasthā<span class="recon">nabhāvanā ||</span></div></div>
-  <div class="row row-tib"><div class="row-label">Tibetan</div><div class="row-body">bden pa bzhi la 'jug par bya ba'i phyir ||<br>dran pa nye bar <span class="recon">gzhag pa bsgom pa</span> ||</div></div>
-  <div class="row row-en"><div class="row-label">English</div><div class="row-body">[By observing these, ] in order to enter the four truths, there is the cultivation of the establishments of mindfulness</div></div>
-</section>
+<h4>Yamaguchi text (italics = MAVbh pratīka)</h4>
+<div class="yamaguchi">
+<span class="recon">kāyena dāuṣṭhulyaṃ prabhāvyate iti dauṣṭhulyaṃ
+duḥsthitatā |</span>
+<span class="folio-anchor">(p. 167; OCR line 6846)</span>
+</div>
 
-<section class="sentence" id="s13_7">
-  <header class="sen-header">
-    <span class="sen-num">§13.7</span>
-    
-  </header>
-  <div class="row row-skt"><div class="row-label">Sanskrit</div><div class="row-body"><span class="red">evādāv uktā <span class="ed-src">[Y]</span> <details class="apparatus"><summary>📋</summary><span class="var-entry"><span class="var-src">Y:</span> <span class="var-text">evādāv uktā</span></span></details></span> |</div></div>
-  <div class="row row-tib"><div class="row-label">Tibetan</div><div class="row-body"><span class="recon">nyid thog mar bshad do</span> ||</div></div>
-  <div class="row row-en"><div class="row-label">English</div><div class="row-body">has been taught in the beginning.</div></div>
-</section>
+<h4>The MAVbh source (verbatim pratīka)</h4>
+<div class="parallel">
+<span class="src">Vasubandhu MAVbh ad IV.1</span>
+— local <code>references/SA_T06_vmvkbh_u.txt</code> line 806;
+indexed in
+<a href="https://dharmamitra.org/nexus/db/sa/SA_T06_vmvkbh_u/text?active_segment=SA_T06_vmvkbh_u:789">SA_T06_vmvkbh_u</a>.
+<span class="quote">kāyena hi dauṣṭhulyaṃ prabhāvyate /</span>
+Verbatim MAVbh, with the bhāṣya's <em>hi</em> appropriately omitted
+in Sthiramati's pratīka (he is quoting the lemma to gloss it).
+</div>
 
+<h4>Structure</h4>
+<p>Sthiramati quotes the MAVbh sentence <code>kāyena dauṣṭhulyaṃ
+prabhāvyate</code> ("by [observing] the body, <em>dauṣṭhulya</em> is
+made manifest") and immediately glosses <code>dauṣṭhulyaṃ duḥsthitatā</code>
+— "<em>dauṣṭhulya</em> means 'being in a bad state' /
+'dys-functionality.'" Standard Yogācāra lexical gloss; the term
+<em>dauṣṭhulya</em> is a Yogācāra technical term for the bodily-mental
+disability that the bodhipakṣya-cultivation removes.</p>
+
+<h4>Yamaguchi vs. proposed (minor)</h4>
+<div class="compare">
+<div class="before">
+<h5>Yamaguchi 1934 as printed</h5>
+<em>kāyena dāuṣṭhulyaṁ prabhāvyate iti dāuṣṭhulyaṁ duḥsthitatā</em> |
+</div>
+<div class="after">
+<h5>Proposed re-edited text</h5>
+kāyena dauṣṭhulyaṃ prabhāvyate iti dauṣṭhulyaṃ duḥsthitatā |<br>
+<span style="font-size:0.85em;color:#5a4310;">(OCR
+<em>dāuṣṭhulya</em> → standard <em>dauṣṭhulya</em>; the
+<em>ā</em> is an OCR/printing convention.)</span>
+</div>
+</div>
+
+<h4>Yamaguchi's Japanese translation</h4>
+<div class="japanese">
+身によりて重は顯了せらると云ふ、鏖重は惡く住する義なり。
+<span class="folio-anchor">(<code>references/mavt-ja.txt</code> line 3752)</span>
+</div>
+
+<h4>Translation</h4>
+<div class="translation">
+"[The bhāṣya says:] '<em>kāyena dauṣṭhulyaṃ prabhāvyate</em>' —
+[meaning that] <em>dauṣṭhulya</em> [signifies]
+<em>duḥsthitatā</em> ['being in a bad state', dys-functionality]."
+</div>
+</section>
 <section class="sentence" id="s14">
-  <header class="sen-header">
-    <span class="sen-num">§14</span>
-    
-  </header>
-  <div class="row row-skt"><div class="row-label">Sanskrit</div><div class="row-body"><span class="muula"><span class="red">kāyena hi dauṣṭhulyaṃ <span class="ed-src">[Na Pa]</span> <details class="apparatus"><summary>📋</summary><span class="var-entry"><span class="var-src">Y:</span> <span class="var-text"><em>kāyena</em> dauṣṭhulyaṃ</span></span></details></span> prabhāvyata</span> iti dauṣṭhulyaṃ duḥsthitatā |</div></div>
-  <div class="row row-tib"><div class="row-label">Tibetan</div><div class="row-body">[P115b2]<span class="muula"><span class="recon">lus kyis <span class="ed">ni<span class="ed-src">[D]</span> <details class="apparatus"><summary>📋</summary><span class="var-entry"><span class="var-src">P:</span> <span class="var-text">na</span></span></details></span> gnas ngan len</span> rab tu ston</span> zhes bya ba la / gnas ngan len ni ngan par gnas pa ste /</div></div>
-  <div class="row row-en"><div class="row-label">English</div><div class="row-body"><span class="muula">For unwellness is demonstrated through the body</span> - the meaning of unwellness is "being in a bad condition".<details class="xe-note"><summary>📝 note</summary>For this translation of <em>duHsthitatA</em> see <span class="ref" title="modern academic citation">[schmithausen1987b 377]</span> n. 602 and also <span class="ref" title="modern academic citation">[schmithausen2014 509]</span>.</details></div></div>
-</section>
+<h3>§14 — Tathā hi pratidinam abhisaṃskriyamāṇo vikriyate eva kāyaḥ <span class="status verified">VERIFIED</span></h3>
 
+<h4>Yamaguchi text (MS-attested)</h4>
+<div class="yamaguchi">
+<span class="ms-direct">tathā hi pratidinaṁ abhisaṁskriyamāṇo
+vikriyata eva kāya iti <span class="recon">kāyena dāuṣṭhulyaṁ
+prabhāvyate</span> |</span>
+<span class="folio-anchor">(p. 167; OCR lines 6847–6848)</span>
+</div>
+
+<h4>Structure</h4>
+<p>Sthiramati's gloss on what it means for the body to manifest
+<em>dauṣṭhulya</em>: "indeed, the body, being daily made-up
+(<em>abhi-saṃskriyamāṇa</em>, i.e. groomed/conditioned), is in
+fact transformed [continually]" — so its very impermanence is what
+makes <em>dauṣṭhulya</em> apparent to investigation. Sthiramati
+then re-quotes the MAVbh pratīka <code>kāyena dauṣṭhulyaṃ
+prabhāvyate</code> as the conclusion drawn from this gloss.</p>
+
+<h4>Yamaguchi vs. proposed (no change)</h4>
+<div class="compare">
+<div class="before">
+<h5>Yamaguchi 1934 as printed</h5>
+tathā hi pratidinaṁ abhisaṁskriyamāṇo vikriyata eva kāya iti
+<em>kāyena dāuṣṭhulyaṁ prabhāvyate</em> |
+</div>
+<div class="after">
+<h5>Proposed re-edited text</h5>
+tathā hi pratidinam abhisaṃskriyamāṇo vikriyata eva kāya iti
+"kāyena dauṣṭhulyaṃ prabhāvyate" |
+</div>
+</div>
+
+<h4>Yamaguchi's Japanese translation</h4>
+<div class="japanese">
+そは、毎日行作しつゝも身はたゞ變異すとて身によりて鏖重は顯了せらるればなり。
+<span class="folio-anchor">(<code>references/mavt-ja.txt</code> line 3753)</span>
+</div>
+
+<h4>Translation</h4>
+<div class="translation">
+"For [the body], being daily made-up [or conditioned —
+<em>abhi-saṃskriyamāṇa</em>], is indeed transformed [moment by
+moment]; that is why '<em>kāyena dauṣṭhulyaṃ prabhāvyate</em>'
+['by the body, <em>dauṣṭhulya</em> is made manifest']."
+</div>
+</section>
 <section class="sentence" id="s15">
-  <header class="sen-header">
-    <span class="sen-num">§15</span>
-    
-  </header>
-  <div class="row row-skt"><div class="row-label">Sanskrit</div><div class="row-body">tathā hi pratidinam abhisaṃskriyamāṇo vikriyata eva kāya iti kāyena dauṣṭhul-yaṃ prabhāvyate |</div></div>
-  <div class="row row-tib"><div class="row-label">Tibetan</div><div class="row-body">'di ltar nyin gcig bzhin mngon par 'dus byas kyang lus 'gyur ba nyid pas lus kyis [P115b3] ni gnas ngan len rab tu ston to/</div></div>
-  <div class="row row-en"><div class="row-label">English</div><div class="row-body">It is like this: The body which is being maintained<details class="xe-note"><summary>📝 note</summary>This is to be understood in the sense that we put effort every day into mainting our body and keeping it healthy, yet ultimately it is going to deteriorate and die. </details> every day, just gets destroyed [again]. Thus unwellness is demonstrated through the body.</div></div>
-</section>
+<h3>§15 — Tataś ca kāya-parīkṣayā duḥkha-satyam avatarati <span class="status verified">VERIFIED</span></h3>
 
+<h4>Yamaguchi text (MS + MAVbh pratīka)</h4>
+<div class="yamaguchi">
+<span class="ms-direct">tataç ca kāyaparīkṣayā</span>
+<span class="recon">duḥkhasatyam avatarati |</span>
+<span class="folio-anchor">(p. 167; OCR lines 6848–6849)</span>
+</div>
+
+<h4>The MAVbh source</h4>
+<div class="parallel">
+<span class="src">Vasubandhu MAVbh ad IV.1</span>
+— local <code>references/SA_T06_vmvkbh_u.txt</code> line 807;
+indexed in
+<a href="https://dharmamitra.org/nexus/db/sa/SA_T06_vmvkbh_u/text?active_segment=SA_T06_vmvkbh_u:789">SA_T06_vmvkbh_u</a>.
+<span class="quote">tatparīkṣayā duḥkhasatyam avatarati /</span>
+MAVbh has <em>tat-parīkṣayā</em> ("by the inspection of that [body]");
+Sthiramati's <em>kāya-parīkṣayā</em> spells out what
+<em>tat-</em> refers to. So the italicised
+<em>duḥkhasatyam avatarati</em> is verbatim MAVbh; Sthiramati's
+<em>tataś ca kāyaparīkṣayā</em> connects it explicitly back to
+<em>kāyena dauṣṭhulyaṃ prabhāvyate</em> of §13–§14.
+</div>
+
+<h4>Yamaguchi vs. proposed (no change)</h4>
+<div class="compare">
+<div class="before">
+<h5>Yamaguchi 1934 as printed</h5>
+tataç ca kāyaparīkṣayā <em>duḥkhasatyam avatarati</em> |
+</div>
+<div class="after">
+<h5>Proposed re-edited text</h5>
+tataś ca kāya-parīkṣayā "duḥkha-satyam avatarati" |
+</div>
+</div>
+
+<h4>Yamaguchi's Japanese translation</h4>
+<div class="japanese">
+されば身を観察することによりて苦諦に入る。
+<span class="folio-anchor">(<code>references/mavt-ja.txt</code> line 3754)</span>
+</div>
+
+<h4>Translation</h4>
+<div class="translation">
+"And so, '[the practitioner] enters into the truth of suffering
+[duḥkha-satya] through investigation of the body.'"
+</div>
+</section>
 <section class="sentence" id="s16">
-  <header class="sen-header">
-    <span class="sen-num">§16</span>
-    
-  </header>
-  <div class="row row-skt"><div class="row-label">Sanskrit</div><div class="row-body">tataś ca kāya<span class="muula">parīkṣayā duḥkhasatyam avatarati</span> |</div></div>
-  <div class="row row-tib"><div class="row-label">Tibetan</div><div class="row-body">de'i phyir lus la <span class="muula">yongs su brtags pas sdug bsngal gyi bden pa la 'jug go</span> //</div></div>
-  <div class="row row-en"><div class="row-label">English</div><div class="row-body">And therefore <span class="muula">through the investigation</span> of the body <span class="muula">one enters the truth of suffering.</span> </div></div>
-</section>
+<h3>§16 — Tal-lakṣaṇasya hi sadauṣṭhulya-saṃskāratvāt iti <span class="status verified">VERIFIED</span></h3>
 
+<h4>Yamaguchi text (italics = reconstructed)</h4>
+<div class="yamaguchi">
+<span class="recon">kim-artham etad iti āha | tallakṣaṇasya hi
+sadauṣṭhulyasaṃskāratvād iti |</span>
+<span class="folio-anchor">(p. 167; OCR line 6849–6850)</span>
+</div>
+
+<h4>The MAVbh discrepancy</h4>
+<p>Yamaguchi's reconstruction <strong>differs from Nagao's MAVbh
+Sanskrit</strong> in syntactically substantial way:</p>
+<div class="parallel">
+<span class="src">Nagao's MAVbh Sanskrit edition</span>
+— local <code>references/SA_T06_vmvkbh_u.txt</code> line 808;
+indexed in
+<a href="https://dharmamitra.org/nexus/db/sa/SA_T06_vmvkbh_u/text?active_segment=SA_T06_vmvkbh_u:789">SA_T06_vmvkbh_u</a>.
+<span class="quote">tasya sadauṣṭhulyasaṃskāra-LAKṢAṆATVĀT /</span>
+"Because that [body] HAS THE CHARACTERISTIC of being a saṃskāra-with-
+dauṣṭhulya." — subject is <em>tasya [kāyasya]</em>; predicate is
+<em>-lakṣaṇatvāt</em>.
+</div>
+
+<h4>The Tibetan evidence — a substantive MAVbh variant</h4>
+<p>Both Tibetan witnesses are <strong>verbatim identical</strong> at
+this lemma, and both support Yamaguchi's reconstruction
+<em>tallakṣaṇasya … saṃskāratvāt</em> over Nagao's
+<em>tasya … lakṣaṇatvāt</em>:</p>
+
+<div class="parallel">
+<span class="src">Vasubandhu MAVbh-Tib</span>
+— <a href="https://dharmamitra.org/nexus/db/bo/BO_T06_D4027/text?active_segment=BO_T06_D4027:15b-26">BO_T06_D4027:15b-26</a>.
+<span class="quote">ལུས་ཀྱིས་ནི་གནས་ངན་ལེན་རབ་ཏུ་སྟོན་ཏེ། དེ་ཡང་ཡོངས་སུ་
+བརྟགས་པས་སྡུག་བསྔལ་གྱི་བདེན་པ་ལ་འཇུག་གོ །
+<strong>དེའི་མཚན་ཉིད་ནི་གནས་ངན་ལེན་དང་བཅས་པའི་འདུ་བྱེད་ཡིན་པའི་ཕྱིར་རོ།</strong></span>
+The bolded clause translates a Sanskrit
+<strong><em>tal-lakṣaṇasya … saṃskāratvāt</em></strong>, not
+<em>tasya … lakṣaṇatvāt</em>.
+</div>
+
+<div class="parallel">
+<span class="src">Sthiramati MAVT-Tib</span>
+— <a href="https://dharmamitra.org/nexus/db/bo/BO_T06_D4032/text?active_segment=BO_T06_D4032:270b-5">BO_T06_D4032:270b-5</a>.
+<span class="quote">དེ་ཅིའི་ཕྱིར་ཞེ་ན།
+<strong>དེའི་མཚན་ཉིད་ནི་གནས་ངན་ལེན་དང་བཅས་པའི་འདུ་བྱེད་ཡིན་པའི་ཕྱིར་རོ་ཞེས་བྱ་བ་སྟེ།</strong>
+འདི་ལྟར་སྡུག་བསྔལ་གྱི་བདེན་པའི་མཚན་ཉིད་ངོ་བོ་ཉིད་ནི་གནས་ངན་ལེན་
+དང་བཅས་པའི་འདུ་བྱེད་རྣམས་ཡིན་ལ།</span>
+Sthiramati's MAVT-Tib quotes the same lemma identically.
+</div>
+
+<h4>Verdict</h4>
+<div class="justification">
+<strong>Yamaguchi's italics reconstruction is vindicated.</strong>
+Both Tibetan translations — made independently — attest the same
+Sanskrit pre-form <em>tal-lakṣaṇasya … saṃskāratvāt</em>. The
+divergence is therefore at the level of <strong>MAVbh Sanskrit
+transmission</strong>: Sthiramati's MAVbh-Vorlage differed from the
+Sanskrit MS Nagao edited. This is a substantive Sanskrit variant
+attested by <em>both Tibetan translations</em> against the lone
+Nagao MS — worth flagging in any future MAVbh apparatus too.
+</div>
+
+<div class="justification">
+Further internal confirmation from Sthiramati's own gloss in §17:
+<em>yasmād duḥkhasatyasya sadauṣṭhulyāḥ saṃskārā lakṣaṇaṃ
+svabhāvaḥ</em> ("because the saṃskāras with dauṣṭhulya are the
+<em>lakṣaṇa</em>, the nature, <em>of duḥkha-satya</em>") — i.e.
+Sthiramati's gloss presupposes <em>duḥkha-satya / tal-lakṣaṇa</em>
+as the genitive subject, and <em>sa-dauṣṭhulya-saṃskāra</em> as the
+predicate-attribute. Exactly the syntax of <em>tal-lakṣaṇasya …
+saṃskāratvāt</em>.
+</div>
+
+<h4>Yamaguchi vs. proposed (vindication)</h4>
+<div class="compare">
+<div class="before">
+<h5>Yamaguchi 1934 as printed (reconstruction)</h5>
+<em>kim-artham etad iti āha | tal-lakṣaṇasya hi sadauṣṭhulya-saṃskāratvād
+iti |</em>
+</div>
+<div class="after">
+<h5>Proposed re-edited text (= Yamaguchi, vindicated)</h5>
+kim-artham etad iti āha | tal-lakṣaṇasya hi sadauṣṭhulya-saṃskāratvād
+iti |<br>
+<span style="font-size:0.85em;color:#5a4310;">
+(Note: <em>this</em> is the better reading; Nagao's MAVbh Skt
+<em>tasya sadauṣṭhulyasaṃskāralakṣaṇatvāt</em> is itself a variant
+unsupported by either Tibetan translation.)</span>
+</div>
+</div>
+
+<h4>Yamaguchi's Japanese translation</h4>
+<div class="japanese">
+何故なるか。曰く、彼〔身〕の相は鏖重を具有する諸行なればなりと。
+<span class="folio-anchor">(<code>references/mavt-ja.txt</code> line 3755–3756)</span>
+</div>
+
+<h4>Translation</h4>
+<div class="translation">
+"[Reader asks:] 'For what reason is this so?' [Bhāṣyakāra] says:
+'Because the characteristic [of duḥkha-satya] is being a
+saṃskāra-with-dauṣṭhulya.'"
+</div>
+</section>
 <section class="sentence" id="s17">
-  <header class="sen-header">
-    <span class="sen-num">§17</span>
-    <span class="sen-meta"><span class="meta-ms">MS fol. 57v3</span> · <span class="meta-pandeya">Pandeya p. 127</span></span>
-  </header>
-  <div class="row row-skt"><div class="row-label">Sanskrit</div><div class="row-body"><span class="ed">kiṃ <em>kāraṇam</em>   <span class="ed-src">[Y Pa]</span> <details class="apparatus"><summary>📋</summary><span class="var-entry"><span class="var-src">Y Pa:</span> <span class="var-text">kim <em>artham etad ity āha</em></span></span><span class="note-entry">cf. <em>MAVṬ</em> 187.9: <a class="xs" href="https://dharmamitra.org/search?q=ki%E1%B9%83+k%C4%81ra%E1%B9%87am" target="_blank" title="Search for this Sanskrit passage on DharmaMitra">kiṃ kāraṇam</a> (<a class="xt" href="https://dharmamitra.org/search?q=de+ci%27i+phyir+ce+na" target="_blank" title="Search for this Tibetan passage on DharmaMitra">de ci&#x27;i phyir ce na</a>).</span></details></span> <span class="muula"><span class="red">tasya sadauṣṭhulyasaṃskāralakṣaṇatvād<span class="ed-src">[Na Pa]</span> <details class="apparatus"><summary>📋</summary><span class="var-entry"><span class="var-src">Y:</span> <span class="var-text"><em>tallakṣaṇasya hi sadauṣṭhulyasaṃskāratvād</em></span></span></details></span></span><span class="recon"> iti</span> |</div></div>
-  <div class="row row-tib"><div class="row-label">Tibetan</div><div class="row-body">[D270b3] <span class="recon">de ci'i phyir zhe na </span> | <span class="muula"><span class="recon">de'i mtshan nyid ni gnas ngan len dang bcas</span> [P115b4] <span class="recon">pa'i 'du byed</span></span><br><span class="muula"><span class="recon">yin pa'i phyir ro</span></span>#<span class="recon">zhes bya ba ste /</span></div></div>
-  <div class="row row-en"><div class="row-label">English</div><div class="row-body">For what reason does [Vasubandhu] say: "<span class="muula">Because it [the body] is chara--</span><br><span class="muula">cterized by</span><br> <span class="muula">conditioned and conditioning phenomena that are associated with unwellness</span>"?</div></div>
-</section>
+<h3>§17 — Yasmād duḥkha-satyasya sadauṣṭhulyāḥ saṃskārā lakṣaṇaṃ svabhāvaḥ … <span class="status verified">VERIFIED</span></h3>
 
+<h4>Yamaguchi text (MS-attested)</h4>
+<div class="yamaguchi">
+<span class="ms-direct">yasmād duḥkha-satyasya sadauṣṭhulyāḥ
+saṁskārā lakṣaṇaṁ svabhāvaḥ kāyena ca dāuṣṭhulyaṁ prabhāvyate |
+tasmāt kāya-parīkṣayā duḥkha-satyam avatarati | dāuṣṭhulyaṁ na
+vijñāyata ity ata āha |</span>
+<span class="folio-anchor">(p. 167; OCR lines 6850–6853)</span>
+</div>
+
+<h4>Structure</h4>
+<p>Sthiramati's <code>yasmāt … tasmāt</code> syllogism. Three steps:</p>
+<ol>
+  <li>The saṃskāras with <em>dauṣṭhulya</em> are the
+  <em>lakṣaṇa</em>, the nature, of <em>duḥkha-satya</em>
+  (= the substance of §16).</li>
+  <li><em>dauṣṭhulya</em> is made manifest by the body (= MAVbh
+  pratīka of §13).</li>
+  <li>Therefore, entry into <em>duḥkha-satya</em> is by
+  body-investigation (= MAVbh of §15).</li>
+</ol>
+<p>The closing <em>dauṣṭhulyaṁ na vijñāyata ity ata āha</em> ("[but]
+'dauṣṭhulya is not [yet] known' — for that reason [the
+bhāṣyakāra] says:") sets up the next MAVbh pratīka in §18
+(<em>dauṣṭhulyaṃ hi saṃskāra-duḥkhatā</em>).</p>
+
+<h4>Internal confirmation of §16</h4>
+<p>Note that <em>duḥkha-satyasya sadauṣṭhulyāḥ saṃskārā lakṣaṇaṃ</em>
+("the saṃskāras with dauṣṭhulya are the <em>lakṣaṇa</em> of
+<em>duḥkha-satya</em>") is precisely Sthiramati paraphrasing the
+syntax of <em>tal-lakṣaṇasya … saṃskāratvāt</em> from §16 — i.e.
+the subject is <em>duḥkha-satya</em> / <em>tal-lakṣaṇa</em>; the
+predicate is <em>sa-dauṣṭhulya-saṃskāra</em>. This is decisive
+internal evidence that Sthiramati's MAVbh-Vorlage had the
+<em>tal-lakṣaṇasya</em> form (cf. §16 finding).</p>
+
+<h4>Yamaguchi vs. proposed (no change)</h4>
+<div class="compare">
+<div class="before">
+<h5>Yamaguchi 1934 as printed</h5>
+yasmād duḥkhasatyasya sadāuṣṭhulyāḥ saṁskārā lakṣaṇaṁ svabhāvaḥ
+kāyena ca dāuṣṭhulyaṁ prabhāvyate | tasmāt kāyaparīkṣayā
+duḥkhasatyam avatarati | dāuṣṭhulyaṁ na vijñāyata ity ata āha |
+</div>
+<div class="after">
+<h5>Proposed re-edited text</h5>
+yasmād duḥkha-satyasya sa-dauṣṭhulyāḥ saṃskārā lakṣaṇaṃ svabhāvaḥ
+kāyena ca dauṣṭhulyaṃ prabhāvyate | tasmāt kāya-parīkṣayā
+duḥkha-satyam avatarati | dauṣṭhulyaṃ na vijñāyata ity ata āha |
+</div>
+</div>
+
+<h4>Yamaguchi's Japanese translation</h4>
+<div class="japanese">
+そは、苦諦の相・自性は鏖重を具有する諸行なり。而して鏖重は身によりて顯了せらるが故に、夫故に身の観察によりて苦諦に入る。人は未だ鏖重を識らざる故に曰へり。
+<span class="folio-anchor">(<code>references/mavt-ja.txt</code> lines 3757–3759)</span>
+</div>
+
+<h4>Translation</h4>
+<div class="translation">
+"Since the saṃskāras with <em>dauṣṭhulya</em> are the
+<em>lakṣaṇa</em>, the very nature, of <em>duḥkha-satya</em>, and
+<em>dauṣṭhulya</em> is made manifest by the body, therefore through
+the investigation of the body [the practitioner] enters into the
+truth of suffering. — But <em>dauṣṭhulya</em> [itself] is not [yet]
+known: for that reason, [the bhāṣyakāra] then says: …"
+</div>
+</section>
 <section class="sentence" id="s18">
-  <header class="sen-header">
-    <span class="sen-num">§18</span>
-    
-  </header>
-  <div class="row row-skt"><div class="row-label">Sanskrit</div><div class="row-body"><span class="quote"><span class="recon">yasmād duḥkhasatyasya sa</span>-dau-ṣṭhul-yāḥ saṃskārā lakṣaṇaṃ svabhāvaḥ kāyena ca dauṣṭhulyaṃ prabhāvyate, tasmāt kāyaparīkṣayā duḥkhasatyam avatarati</span><div class="parallels"><div class="parallels-head">↳ Parallel</div><div class="parallel-entry"><div class="parallel-src"><span class="ref" title="Abhidharmasamuccaya (variant code)">Abhidharmasamuccaya (variant code)</span></div><div class="parallel-txt skt"><a href="https://dharmamitra.org/search?q=k%C4%81yasm%E1%B9%9Btyupasth%C4%81nena+du%E1%B8%A5khasatyamavatarati+sa%E1%B9%83sk%C4%81radu%E1%B8%A5khat%C4%81lak%E1%B9%A3a%E1%B9%87ena+dau%E1%B9%A3%E1%B9%ADhulyena+prabh%C4%81vitatv%C4%81t+k%C4%81yasya" target="_blank" title="Search this passage on DharmaMitra">kāyasmṛtyupasthānena duḥkhasatyamavatarati saṃskāraduḥkhatālakṣaṇena dauṣṭhulyena prabhāvitatvāt kāyasya</a></div><div class="parallel-txt tib"><span class="parallel-src-inline"><span class="ref" title="Abhidharmasamuccaya — Tibetan (variant)">Abhidharmasamuccaya — Tibetan (variant)</span>:</span> <a href="https://dharmamitra.org/search?q=lus+dran+pa+nye+bar+gzhag+pas+ni+sdug+bsngal+gyi+bden+pa+la+%27jug+ste+%7C%7C+lus+ni+%27du+byed+kyi+sdug+bsngal+gyi+mtshan+nyid+gnas+ngan+len+gyis+rab+tu+phye+ba%27i+phyir+ro+%7C" target="_blank">lus dran pa nye bar gzhag pas ni sdug bsngal gyi bden pa la &#x27;jug ste || lus ni &#x27;du byed kyi sdug bsngal gyi mtshan nyid gnas ngan len gyis rab tu phye ba&#x27;i phyir ro |</a></div></div></div> |</div></div>
-  <div class="row row-tib"><div class="row-label">Tibetan</div><div class="row-body"><span class="recon">'di ltar sdug bsngal gyi bden pa'i </span> mtshan nyid <span class="ed">de <span class="ed-src">[P]</span> <details class="apparatus"><summary>📋</summary><span class="var-entry"><span class="var-src">D:</span> <span class="var-text">om.</span></span></details></span> ngo bo nyid ni gnas ngan len dang bcas pa'i 'du byed rnams yin la | lus kyis kyang gnas ngan len [P115b5] du rab tu [D270b4] ston pas / de'i phyir lus la yongs su brtags pas sdug bsngal gyi bden pa la <span class="ed">'jug<span class="ed-src">[D]</span> <details class="apparatus"><summary>📋</summary><span class="var-entry"><span class="var-src">P:</span> <span class="var-text">bjug</span></span></details></span> go //</div></div>
-  <div class="row row-en"><div class="row-label">English</div><div class="row-body"><span class="recon">Because</span> the conditioned and conditioning phenomena that are associated with unwellness are the characteristic, which means they have the nature <span class="recon">of the truth of suffering</span>, and because unwellness is demonstrated through the body, therefore <span class="muula">through the investigation</span> of the body <span class="muula">one enters the truth of suffering.</span></div></div>
-</section>
+<h3>§18 — Dauṣṭhulyaṃ hi saṃskāra-duḥkhatā iti <span class="status verified">VERIFIED</span></h3>
 
+<h4>Yamaguchi text (italics = MAVbh pratīka)</h4>
+<div class="yamaguchi">
+<span class="recon">dauṣṭhulyaṁ hi <span class="folio-anchor">[Tib. 107, b]</span>
+saṁskāraduḥkhatā iti |</span>
+<span class="folio-anchor">(p. 167; OCR line 6854)</span>
+</div>
+
+<h4>The MAVbh source (verbatim)</h4>
+<div class="parallel">
+<span class="src">Vasubandhu MAVbh ad IV.1</span>
+— local <code>references/SA_T06_vmvkbh_u.txt</code> line 809;
+indexed in
+<a href="https://dharmamitra.org/nexus/db/sa/SA_T06_vmvkbh_u/text?active_segment=SA_T06_vmvkbh_u:789">SA_T06_vmvkbh_u</a>.
+<span class="quote">dauṣṭhulyaṃ hi saṃskāra-duḥkhatā /</span>
+Verbatim MAVbh.
+</div>
+
+<h4>Yamaguchi vs. proposed (no change — vindicated)</h4>
+<div class="compare">
+<div class="before">
+<h5>Yamaguchi 1934 as printed</h5>
+<em>dāuṣṭhulyaṁ hi saṁskāraduḥkhateti</em> |
+</div>
+<div class="after">
+<h5>Proposed re-edited text</h5>
+"dauṣṭhulyaṃ hi saṃskāra-duḥkhatā" iti |
+</div>
+</div>
+
+<h4>Yamaguchi's Japanese translation</h4>
+<div class="japanese">
+鏖重は實に行苦なりと。
+<span class="folio-anchor">(<code>references/mavt-ja.txt</code> line 3760)</span>
+</div>
+
+<h4>Translation</h4>
+<div class="translation">
+"[The bhāṣyakāra says:] 'For <em>dauṣṭhulya</em> is the
+<em>saṃskāra-duḥkhatā</em> [the suffering-of-conditioned-existence].'"
+</div>
+</section>
 <section class="sentence" id="s19">
-  <header class="sen-header">
-    <span class="sen-num">§19</span>
-    <span class="sen-meta"><span class="meta-ms">MS fol. 57v4</span></span>
-  </header>
-  <div class="row row-skt"><div class="row-label">Sanskrit</div><div class="row-body">dauṣṭhulyaṃ na vijñāyata ity ata āha: <span class="muula">dauṣṭhulyaṃ hi <span class="recon">saṃskāraduḥkhate</span></span><span class="recon">ti  | saṃs-kāro bhāvānām utpattiḥ</span> | <span class="recon">sa ca </span><span class="red"> sarvopadravāśrayatvād <span class="ed-src">[Y Pa]</span> <details class="apparatus"><summary>📋</summary><span class="var-entry"><span class="var-src">Y Pa:</span> <span class="var-text"><em>sarvaviplavavastv iti</em></span></span><span class="note-entry">cf. Y 48.2;170.2;240.1-2: <a class="xs" href="https://dharmamitra.org/search?q=sarvopadrava" target="_blank" title="Search for this Sanskrit passage on DharmaMitra">sarvopadrava</a> (D: gnod pa thams cad); Y 133.3: aśrāyatvād (D: gzhi yin pas). At Y 74.9, <a class="xt" href="https://dharmamitra.org/search?q=gnod+pa+thams+cad" target="_blank" title="Search for this Tibetan passage on DharmaMitra">gnod pa thams cad</a> is used to translate <a class="xs" href="https://dharmamitra.org/search?q=sarv%C4%81nartha" target="_blank" title="Search for this Sanskrit passage on DharmaMitra">sarvānartha</a>, therefore this wording is also possible. In the following verse, <a class="xt" href="https://dharmamitra.org/search?q=gnod" target="_blank" title="Search for this Tibetan passage on DharmaMitra">gnod</a> is used to translate <a class="xs" href="https://dharmamitra.org/search?q=anartha" target="_blank" title="Search for this Sanskrit passage on DharmaMitra">anartha</a>. Because <a class="xs" href="https://dharmamitra.org/search?q=sarvopdravava" target="_blank" title="Search for this Sanskrit passage on DharmaMitra">sarvopdravava</a> also appears in the explanation of the <a class="xs" href="https://dharmamitra.org/search?q=catv%C4%81ri+sm%E1%B9%9Btyupasth%C4%81n%C4%81ni" target="_blank" title="Search for this Sanskrit passage on DharmaMitra">catvāri smṛtyupasthānāni</a>, it is the most likely candidate at this point. <a class="xs" href="https://dharmamitra.org/search?q=tad+ca" target="_blank" title="Search for this Sanskrit passage on DharmaMitra">tad ca</a> instead of <a class="xs" href="https://dharmamitra.org/search?q=sa+ca" target="_blank" title="Search for this Sanskrit passage on DharmaMitra">sa ca</a> is also possible. </span></details></span> dauṣṭhulyam |</div></div>
-  <div class="row row-tib"><div class="row-label">Tibetan</div><div class="row-body">gnas ngan len mi shes pas de'i phyir | <span class="muula">gnas ngan len ni <span class="recon">'du byed kyi sdug</span></span><br><span class="muula"><span class="recon">bsngal</span> [P115b6] <span class="recon">nyid de</span></span> zhes bya ba smos so || <span class="recon">'du byed ni gnos po rnams kyi skye ba'o || de yang gnod pa [D270b5] thams cad kyi gzhi yin pas</span> gnas ngan len yin la |</div></div>
-  <div class="row row-en"><div class="row-label">English</div><div class="row-body">Since [the term] 'unwellness' is not known, [Vasubandhu] thus says: <span class="muula">For unwellness is <span class="recon">the unsatisfactoriness of the conditioned and conditioning factors.</span></span> <span class="recon">The conditioned and conditioning factors<details class="xe-note"><summary>📝 note</summary>Here <em>saṃskāra</em> can be seen as a collective singular.</details> are the production of the existences. It is 'unwellness' because it is a base for all [kinds of] distress.</span></div></div>
-</section>
+<h3>§19 — Saṃskāro bhāvānām utpattiḥ … yathoktam: anartho janma <span class="status verified">VERIFIED</span></h3>
 
+<h4>Yamaguchi text</h4>
+<div class="yamaguchi">
+<span class="ms-direct">saṁskāro</span>
+<span class="recon">bhāvānām utpattiḥ |</span>
+<span class="ms-direct">sa ca sarva-viplava-vastu iti dāuṣṭhulyaṁ
+āryāṇāṁ pratikūlatvāc ca duḥkhatā |</span>
+<span class="ms-direct">yathoktam — anartho janma idaṃ sati hi
+janane santi ripavo jarā-mṛtyu-vyādhi-vyasana-vadha-bandha-
+prabhṛtayaḥ |</span>
+<span class="ms-direct">anarthās te na syur yady avināśo 'nutpādaḥ
+syāt |</span>
+<span class="ms-direct">vṛkṣe 'nutpanne 'gni-vāyu-vana-agni-bhraṃśo
+na syād iti |</span>
+<span class="folio-anchor">(p. 167; OCR lines 6854–6859)</span>
+</div>
+
+<h4>Structure</h4>
+<p>Gloss on the MAVbh pratīka of §18 (<em>dauṣṭhulyaṃ hi
+saṃskāra-duḥkhatā</em>):</p>
+<ol>
+  <li><code>saṃskāro bhāvānām utpattiḥ</code> — "<em>saṃskāra</em> is
+  the arising of beings." Mini-definition. The
+  <em>bhāvānām utpattiḥ</em> gloss is italicised — Yamaguchi
+  reconstructs it (perhaps because the MS had only "saṃskāro …"
+  with the rest lost). Confirmed by the Tibetan if any.</li>
+  <li><code>sa ca sarva-viplava-vastu</code> — "and it (saṃskāra)
+  is the basis of every disturbance." This is <em>dauṣṭhulya</em>.</li>
+  <li><code>… āryāṇāṃ pratikūlatvāc ca duḥkhatā</code> — "and
+  because it is adverse to the noble ones, [it is]
+  <em>duḥkhatā</em>." Hence "saṃskāra-duḥkhatā."</li>
+  <li>Verse-citation <code>yathoktam — anartho janma …</code>:
+  scriptural support that birth is the root evil.</li>
+</ol>
+
+<h4>Verse-citation hunt</h4>
+<div class="warn">
+<strong>Source unidentified.</strong> The verse <code>anartho janma
+idaṃ sati hi janane … vṛkṣe 'nutpanne 'gni-vāyu-vana-agni-bhraṃśo
+na syād</code> does not appear in the indexed Sanskrit corpus
+anywhere except in Sthiramati's own MAVT quotation itself
+(<a href="https://dharmamitra.org/nexus/db/sa/SA_T06_sthmavtyg/text?active_segment=SA_T06_sthmavtyg:3379">SA_T06_sthmavtyg:3379</a>).
+None of the obvious candidates (Bodhicaryāvatāra and pañjikā,
+Aśvaghoṣa's Saundarananda/Buddhacarita, Catuḥśataka, MSABh, YBh)
+yields the distinctive tree-simile clause
+<em>vṛkṣe 'nutpanne … bhraṃśo</em>. The
+<code>yathoktam</code> formula implies a real citation — likely a
+sūtra excerpt or lost prose-source. Worth chasing in the Tibetan
+canonical translator-notes (Derge / Peking apparatus) or in older
+secondary literature on the MAVT.
+</div>
+
+<h4>Yamaguchi vs. proposed (minor)</h4>
+<div class="compare">
+<div class="before">
+<h5>Yamaguchi 1934 as printed</h5>
+saṁskāro <em>bhāvānām utpattiḥ</em> | sa ca sarvaviplavavastu iti
+dāuṣṭhulyaṁ āryāṇāṁ pratikūlatvāc ca duḥkhatā | yathoktam anartho
+jan-<em>medaṁ</em> sati hi janane santi ripavo jarāmṛtyuvyādhi-
+vyasanavadhabandhaprabhṛtayaḥ | anarthās te na syur yady
+avināço 'nutpādaḥ syāt | vṛkṣe 'nutpanne 'gnivāyuvanāgnibhraṁço
+na syād iti |
+</div>
+<div class="after">
+<h5>Proposed re-edited text</h5>
+saṃskāro bhāvānām utpattiḥ | sa ca sarva-viplava-vastu iti
+dauṣṭhulyam āryāṇāṃ pratikūlatvāc ca duḥkhatā | yathoktam —
+"anartho janma | idaṃ sati hi janane santi ripavo jarā-mṛtyu-vyādhi-
+vyasana-vadha-bandha-prabhṛtayaḥ | anarthās te na syur yady
+avināśo 'nutpādaḥ syāt | vṛkṣe 'nutpanne 'gni-vāyu-vana-agni-bhraṃśo
+na syād" iti |<br>
+<span style="font-size:0.85em;color:#5a4310;">
+(OCR <em>*medaṁ*</em> = <em>(janma) + idam</em>; OCR
+<em>avināço</em> = <em>avināśo</em>; minor sandhi resolution.)</span>
+</div>
+</div>
+
+<h4>Yamaguchi's Japanese translation</h4>
+<div class="japanese">
+鏖重は實に行苦なりと。行は諸法の生起なり。そは又一切の害の依處なるが故に鏖重にして、 諸聖人に背戻する故に又苦性なり。 説かれたるが如し、「無常なる生は害なり。所以は生あるときには老、死、病、不幸、殺害、繋縛等の怨敵あればなり。若し無滅無生ならばそれらの害無かるべし。木生じたるに非るときは、火と風と森の火とによる破壊無きが如し」と。
+<span class="folio-anchor">(<code>references/mavt-ja.txt</code> lines 3760–3766)</span>
+</div>
+
+<h4>Translation</h4>
+<div class="translation">
+"[On the bhāṣya's <em>dauṣṭhulyaṃ hi saṃskāra-duḥkhatā</em>:]
+<em>saṃskāra</em> is the arising of beings. And it is the basis of
+every disturbance: thus it is <em>dauṣṭhulya</em>. And, being
+adverse to the noble ones, it is also <em>duḥkhatā</em>. As it is
+said: 'Birth is the [root] evil. For when there is birth, there
+exist enemies — old age, death, disease, calamity, killing, bondage,
+and so forth. These evils would not occur if non-destruction were
+non-arising. [Just as] when a tree has not arisen, the falling-of-
+fire-air-wood-fire does not occur.'"
+</div>
+</section>
 <section class="sentence" id="s20">
-  <header class="sen-header">
-    <span class="sen-num">§20</span>
-    
-  </header>
-  <div class="row row-skt"><div class="row-label">Sanskrit</div><div class="row-body">yathoktam |</div></div>
-  <div class="row row-tib"><div class="row-label">Tibetan</div><div class="row-body">ji skad du |</div></div>
-  <div class="row row-en"><div class="row-label">English</div><div class="row-body">Because it is disagreeable for the noble ones it is called 'unsatisfactoriness'. As it is said [in a Verse]:</div></div>
+<h3>§20 — Tayeti saṃskāra-duḥkhatayā … (page 205 → 206) <span class="status verified">VERIFIED</span></h3>
+
+<h4>Yamaguchi text (italics = MAVbh pratīka)</h4>
+<div class="yamaguchi">
+<span class="recon">tayeti saṁskāra-duḥkhatayā |</span>
+<span class="ms-direct">na vipariṇāma-duḥkhatā-duḥkha-duḥkhatābhyām |
+tayor avyāpitvāt saṁskāra-duḥkha-[tā-nimittatvāc ca …]</span>
+<span class="folio-anchor">(p. 167–168; OCR lines 6860–6862,
+continues on page 206)</span>
+</div>
+
+<h4>The MAVbh source (verbatim)</h4>
+<div class="parallel">
+<span class="src">Vasubandhu MAVbh ad IV.1</span>
+— local <code>references/SA_T06_vmvkbh_u.txt</code> line 810;
+indexed in
+<a href="https://dharmamitra.org/nexus/db/sa/SA_T06_vmvkbh_u/text?active_segment=SA_T06_vmvkbh_u:789">SA_T06_vmvkbh_u</a>.
+<span class="quote">tayā sarvaṃ sāsravaṃ vastv āryā duḥkhataḥ
+paśyantīti /</span>
+The MAVbh has <em>tayā</em> as instrumental of
+<em>saṃskāra-duḥkhatā</em>: "by it [= by saṃskāra-duḥkhatā], the
+āryas see all defiled things as duḥkha." Sthiramati's
+<code>tayeti</code> is a pratīka quoting that <em>tayā</em> and
+glossing it: "<em>by it</em> means: by saṃskāra-duḥkhatā."
+</div>
+
+<h4>Structure</h4>
+<p>Sthiramati's gloss: <em>tayā</em> in the MAVbh refers
+specifically to <em>saṃskāra-duḥkhatā</em>, not to either of the
+other two duḥkhatās (<em>vipariṇāma-duḥkhatā</em>,
+<em>duḥkha-duḥkhatā</em>). Reason: the other two are not
+pervasive (<em>avyāpitva</em>) and saṃskāra-duḥkhatā is the
+underlying basis (the bottom of page 205 cuts off at
+<em>saṃskāra-duḥkha-[tā-nimittatvāt]</em>, continued p. 206).</p>
+
+<h4>Yamaguchi vs. proposed (no change)</h4>
+<div class="compare">
+<div class="before">
+<h5>Yamaguchi 1934 as printed</h5>
+<em>tayeti saṁskāraduḥkhatayā</em> | na vipariṇāmaduḥkhatā-
+duḥkhaduḥkhatābhyām | tayor avyāpitvāt saṁskāraduḥkha-…
+</div>
+<div class="after">
+<h5>Proposed re-edited text</h5>
+"tayā" iti saṃskāra-duḥkhatayā | na vipariṇāma-duḥkhatā-
+duḥkha-duḥkhatābhyām | tayor avyāpitvāt saṃskāra-duḥkha-…
+[continues on p. 206]
+</div>
+</div>
+
+<h4>Yamaguchi's Japanese translation</h4>
+<div class="japanese">
+彼に由りてとは行苦によりてなり。 苦苦と壊苦とに由るにあらず。 彼〔苦苦と壊苦〕二には遍通無きが故に、又〔彼二の〕因は行苦なるが故に。
+<span class="folio-anchor">(<code>references/mavt-ja.txt</code> lines 3767–3769)</span>
+</div>
+
+<h4>Translation</h4>
+<div class="translation">
+"'By it' (<em>tayā</em>) means 'by saṃskāra-duḥkhatā' [the
+suffering-of-conditioned-existence] — not by
+<em>vipariṇāma-duḥkhatā</em> [the suffering-of-change] or by
+<em>duḥkha-duḥkhatā</em> [the suffering-of-suffering]. For those
+two are not all-pervasive, and saṃskāra-duḥkha[tā is the
+basis of those two…] [continues page 206]"
+</div>
 </section>
 
-<section class="sentence" id="s21">
-  <header class="sen-header">
-    <span class="sen-num">§21</span>
-    
-  </header>
-  <div class="row row-skt"><div class="row-label">Sanskrit</div><div class="row-body">anartho janmedaṃ sati hi janane santi ripavo <br>jarā-mṛtyu-vyādhi-vyasanavadha-bandha-prabhṛtayaḥ |</div></div>
-  <div class="row row-tib"><div class="row-label">Tibetan</div><div class="row-body">skye 'di gnod yin <span class="ed">pa<span class="ed-src">[D]</span> <details class="apparatus"><summary>📋</summary><span class="var-entry"><span class="var-src">P:</span> <span class="var-text">om.</span></span></details></span> skye ba yod na rga dang 'chi ba dang ||<br>nad dang phongs <span class="ed">pa<span class="ed-src">[D]</span> <details class="apparatus"><summary>📋</summary><span class="var-entry"><span class="var-src">P:</span> <span class="var-text">dang</span></span></details></span> gsod dang 'ching ba la sogs <span class="ed">pa<span class="ed-src">[D]</span> <details class="apparatus"><summary>📋</summary><span class="var-entry"><span class="var-src">P:</span> <span class="var-text">om.</span></span></details></span> dgra rnams yod ||</div></div>
-  <div class="row row-en"><div class="row-label">English</div><div class="row-body">The disaster is this birth. For when there is birth, there are the enemies beginning with old age, death, sickness, misfortune, killing, binding and so on.</div></div>
-</section>
 
-<section class="sentence" id="s22">
-  <header class="sen-header">
-    <span class="sen-num">§22</span>
-    <span class="sen-meta"><span class="meta-ms">MS fol. 57v5</span></span>
-  </header>
-  <div class="row row-skt"><div class="row-label">Sanskrit</div><div class="row-body">anarthās te na syur <span class="red">yadi bahubhayotpattir api na  <span class="ed-src">[Y]</span> <details class="apparatus"><summary>📋</summary><span class="var-entry"><span class="var-src">Y:</span> <span class="var-text">yady avināśo 'nutpādaḥ syāt vṛkṣe 'nutpanne 'gnivāyuvanāgnibhraṃśo na syād iti</span></span><span class="var-entry"><span class="var-src">Pa:</span> <span class="var-text">yadi na bhavato nāśavibhavāvajāte vṛkṣe syān na hi dahanadavavāyuvyutir api</span></span><span class="note-entry">This verse is in <em>śikhariṇī</em> metre, which was correctly noticed by P but not by Y. As noted by St, <em>bahubhayo</em> seems to be a (more) reasonable reconstruction of <a class="xt" href="https://dharmamitra.org/search?q=%27jigs+mang" target="_blank" title="Search for this Tibetan passage on DharmaMitra">&#x27;jigs mang</a>. </span></details></span> <br> <span class="recon">yathājāte vṛkṣe na hi pavanavahnyor vipatanam</span> ||</div></div>
-  <div class="row row-tib"><div class="row-label">Tibetan</div><div class="row-body"><span class="recon">gal te 'jigs [D270b6] mang skye ba med [P115b8] gyur</span> gnod pa de dag med || <br>  <span class="recon">shing skyed med na me dang rlung dang nags mes 'gyel mi 'gyur</span> ||</div></div>
-  <div class="row row-en"><div class="row-label">English</div><div class="row-body">They would not be misfortunes if that [birth] which has many dangers<details class="xe-note"><summary>📝 note</summary>The translation of <em>bahubhaya</em> which is a reconstruction based on the Tibetan <a class="xt" href="https://dharmamitra.org/search?q=%27jigs+mang" target="_blank" title="Search for this Tibetan passage on DharmaMitra">&#x27;jigs mang</a> is difficult at this point possibly points at 'birth' itself. Stanley translates this compound with 'body'.<span class="xf-note">[See <span class="ref" title="modern academic citation">[stanley1988 223]</span>, note 9.]</span> Yamaguchi on the other hand translates at this point "if the non-cessation has not arisen",<span class="xf-note">[<span class="ref" title="modern academic citation">[mavtjt 169]</span>: 若し無滅無生ならばそれらの害無かるべし。]</span> this interpretation is also reflected in his reconstruction of <a class="xt" href="https://dharmamitra.org/search?q=%27jigs+mang+skye+ba+med" target="_blank" title="Search for this Tibetan passage on DharmaMitra">&#x27;jigs mang skye ba med</a> with <a class="xs" href="https://dharmamitra.org/search?q=avin%C4%81%C5%9Bo+%27nutp%C4%81da%E1%B8%A5" target="_blank" title="Search for this Sanskrit passage on DharmaMitra">avināśo &#x27;nutpādaḥ</a>. However it seems to be rather hard to get the meaning non-cessation from <a class="xt" href="https://dharmamitra.org/search?q=%27jigs+mang" target="_blank" title="Search for this Tibetan passage on DharmaMitra">&#x27;jigs mang</a>, and therefore his reconstruction and translation at this point remain doubtful.</details> would not arise, just like when there is no tree, there is no destruction due to fire, wind and forest-fire. </div></div>
-</section>
 
-<section class="sentence" id="s22_5">
-  <header class="sen-header">
-    <span class="sen-num">§22.5</span>
-    
-  </header>
-  <div class="row row-skt"><div class="row-label">Sanskrit</div><div class="row-body"><em>(no Sanskrit)</em></div></div>
-  <div class="row row-tib"><div class="row-label">Tibetan</div><div class="row-body">zhes bya ba lta bu'o ||</div></div>
-  <div class="row row-en"><div class="row-label">English</div><div class="row-body"><em>(no English translation in source)</em></div></div>
+<section class="xml-supplement" id="xml-supplement">
+<h2>Additional critical apparatus from Sebastian Nehrdich's TEI edition</h2>
+<div class="xml-supp-intro">
+The walk-through above is the agent's analysis. The block below shows the
+<strong>same Yamaguchi page through Sebastian Nehrdich's hand-edited critical
+edition</strong> (an XML/TEI source covering the whole chapter 4). Every
+sentence is shown in three rows — Sanskrit / Tibetan / English — with the
+full multi-witness apparatus inline. Variant readings are collected by
+sigla (<b>Ms</b>, <b>Na</b>, <b>Y</b>, <b>Pa</b>, <b>St</b> for Sanskrit;
+<b>D</b>, <b>P</b> for Tibetan) and tucked behind a 📋 expander next to
+the chosen reading; long editorial notes are behind 📝. Sentence numbers
+(§1, §2, …) are <em>Nehrdich's</em> numbering and do not correspond to
+the §-sections in the walk-through above.
+</div>
+<div class="xml-supp-conventions">
+<strong>Legend:</strong>
+<span class="xml-recon">italic orange</span> = reconstructed (italic in Yamaguchi) ·
+<span class="xml-muula">blue bg</span> = mūla (the kārikā being commented) ·
+<span class="xml-sutra">green bg</span> = sūtra-quotation ·
+<span class="xml-xs">orange bg</span> = Sanskrit citation snippet ·
+<span class="xml-xt">orange bg</span> = Tibetan citation snippet ·
+<span class="xml-ref">italic blue</span> = reference to another work (hover for full name)
+</div>
+
+<div class="xml-sen">
+  <div class="xml-sen-head">§9.7</div>
+  <div class="xml-row xml-row-skt"><div class="xml-row-label">Sanskrit</div><div class="xml-row-body">iti vistaraḥ |</div></div>
+  <div class="xml-row xml-row-tib"><div class="xml-row-label">Tibetan</div><div class="xml-row-body">zhes [D270a6] rgya cher <span class="xml-recon">smos so </span> //</div></div>
+  <div class="xml-row xml-row-en"><div class="xml-row-label">English</div><div class="xml-row-body">and so on.</div></div>
+</div>
+<div class="xml-sen">
+  <div class="xml-sen-head">§10</div>
+  <div class="xml-row xml-row-skt"><div class="xml-row-label">Sanskrit</div><div class="xml-row-body"><span class="xml-muula">tatr</span>eti bodhipakṣabhāvanāyām | <span class="xml-ed"><u>tāva</u>cchabdaḥ<span class="xml-edsrc">[Ms Y]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>Pa:</b> tāvacchabdārthaḥ</span><span class="xml-note">Pa's rendering <em>tāvacchabdārthaḥ</em> was not marked as an emendation.</span></details></span> kramārthaḥ |</div></div>
+  <div class="xml-row xml-row-tib"><div class="xml-row-label">Tibetan</div><div class="xml-row-body"><span class="xml-muula">de la</span> zhes bya ba ni byang chub kyi [P115a6] phyogs bsgoms pa la'o // <span class="xml-muula">re zhig</span> <span class="xml-ed">ces<span class="xml-edsrc">[D]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>P:</b> cis</span></details></span> bya ba ni rim gyi don te /</div></div>
+  <div class="xml-row xml-row-en"><div class="xml-row-label">English</div><div class="xml-row-body"><span class="xml-muula">"Among these"</span>, this means "among the [types of] cultivation of the aids to awakening". The word <span class="xml-muula">first</span><details class="xml-xe"><summary>📝 note</summary>The <span class="xml-ref" title="Madhyāntavibhāgabhāṣya (Vasubandhu)">Madhyāntavibhāgabhāṣya (Vasubandhu)</span> gives here not only the word <em>tAvat</em> "first", but also <em>Adau</em> "in the beginning", which carries more or less the same meaning. Thus the use of these almost synonymous words has an emphatic effect at this place. The word <em>tAvat</em> can also, but less frequently, be rendered not as "first", but as "clearly", which at this point would give emphasis to the following <em>Adau</em>. Following this understanding, a translation of these two words in the manner of  "clearly, first" would appear to be possible. However Sthiramati's gloss of the word <em>tAvat</em> at this point contradicts such an interpretation.</details> has the meaning of the order [of the way the different types of cultivation are to be practiced].</div></div>
+</div>
+<div class="xml-sen">
+  <div class="xml-sen-head">§11</div>
+  <div class="xml-row xml-row-skt"><div class="xml-row-label">Sanskrit</div><div class="xml-row-body"><span class="xml-muula">ādau</span> tāvat smṛtyupasthānabhāvanocyate, paścād anyeṣām apīti |</div></div>
+  <div class="xml-row xml-row-tib"><div class="xml-row-label">Tibetan</div><div class="xml-row-body"><span class="xml-muula">thog mar</span> dran pa nye bar <span class="xml-ed">gzhag <span class="xml-edsrc">[D]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>P:</b> bzhag </span></details></span> pa bsgom pa <span class="xml-ed">je bshad <span class="xml-edsrc">[P]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>D:</b> ji bshad</span></details></span> la / gzhan yang phyis bshad do zhes bya bar 'gyur ro //</div></div>
+  <div class="xml-row xml-row-en"><div class="xml-row-label">English</div><div class="xml-row-body"><span class="xml-muula">First of all</span>, the cultivation of the establishment of mindfulness is mentioned, and later [the cultivation] of the other [aids to awakening].</div></div>
+</div>
+<div class="xml-sen">
+  <div class="xml-sen-head">§12<span class="xml-sen-meta">MS fol. 57v1 · Stanley §223</span></div>
+  <div class="xml-row xml-row-skt"><div class="xml-row-label">Sanskrit</div><div class="xml-row-body"><span class="xml-ed">nirvāṇa<span class="xml-edsrc">[Yms]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>Yms:</b> nivārṇa</span></details></span>saṃsārayor guṇadoṣānavabodhāt saṃskāre<span class="xml-recon">ṣu </span><span class="xml-quote"><span class="xml-recon">sukha-śu-cinit-yātmābhi-ni-ve-śe-na<details class="xml-app inline"><summary>📋 note</summary>cf. <span class="xml-ref" title="Abhidharmasamuccayabhāṣya">Abhidharmasamuccayabhāṣya</span> 86.3: <span class="xml-xs">śucisukhanityātmaviparyāsapraharaṇam</span> (<span class="xml-ref" title="Abhidharmasamuccayabhāṣya — Tibetan">Abhidharmasamuccayabhāṣya — Tibetan</span> 62b5: <span class="xml-xt">bde ba dang / gtsang ba dang / rtag pa dang / bdag tu phyin ci log spang ba</span>). While word-order of <em>śuci</em> and <em>sukha</em> is not the same in the case of the <span class="xml-ref" title="Abhidharmasamuccayabhāṣya">Abhidharmasamuccayabhāṣya</span>, the combination <em>sukhaśuci</em> is seen in <span class="xml-ref" title="Abhidharmakośabhāṣya (Vasubandhu)">Abhidharmakośabhāṣya (Vasubandhu)</span> 283.9 where <span class="xml-xs">sukhaśuciviparyāsau</span>  is rendered at <span class="xml-ref" title="Abhidharmakośabhāṣya — Tibetan">Abhidharmakośabhāṣya — Tibetan</span> ku 231a2-3 with <span class="xml-xt">bde ba dang gtsang bar phyin ci log go</span>.</details></span></span><div class="xml-parallels"><div class="xml-parallels-head">↳ Parallel</div><div class="xml-par-entry"><div class="xml-par-src"><span class="xml-ref" title="Abhidharmasamuccayabhāṣya">Abhidharmasamuccayabhāṣya</span> 86.3</div><div class="xml-par-txt">śuci-sukha-nityātma-viparyāsa-praharaṇam</div><div class="xml-par-tib"><b><span class="xml-ref" title="Abhidharmasamuccayabhāṣya — Tibetan">Abhidharmasamuccayabhāṣya — Tibetan</span> 62b5:</b> bde ba dang / gtsang ba dang / rtag pa dang / bdag tu phyin ci log spang ba</div></div></div> <span class="xml-recon">bālānāṃ</span> <span class="xml-red">bhavabhogeṣu <span class="xml-edsrc">[Y Pa]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>Y Pa:</b> bhavabhoge</span><span class="xml-note">cf. <span class="xml-ref" title="Pañcaskandhakavibhāṣā (Sthiramati)">Pañcaskandhakavibhāṣā (Sthiramati)</span> 41.7: <span class="xml-xs">bhavabhogeṣv</span> (<span class="xml-ref" title="Pañcaskandhakavibhāṣā — Tibetan">Pañcaskandhakavibhāṣā — Tibetan</span> 212b5: <span class="xml-xt">srid pa dang longs spyod la</span>); <span class="xml-ref" title="Abhidharmasamuccayabhāṣya">Abhidharmasamuccayabhāṣya</span> 59.8: <span class="xml-xs">bhavabhogeṣu ratneṣu ca</span>.</span></details></span><span class="xml-recon"> abhi</span><span class="xml-ed">nandanaṃ <span class="xml-edsrc">[St Tib (mngon par dga&#x27; zhing)]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>Y:</b> mandanaṃ </span><span class="xml-var"><b>Yms Pa:</b> vacanaṃ</span><span class="xml-note">Pa notes the emendation in Y, but reports it wrongly as <span class="xml-xs">abhimaṇḍanaṃ</span>. There is a possibility that Y and Pa misread the Ms.</span></details></span> <span class="xml-ed">nirvāṇāc cotrāsaḥ <span class="xml-edsrc">[Ms]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>Y Pa:</b> nirvāṇārthe trāsaḥ </span><span class="xml-var"><b>Yms:</b> nivāṇārthe trāsaḥ </span></details></span> |</div></div>
+  <div class="xml-row xml-row-tib"><div class="xml-row-label">Tibetan</div><div class="xml-row-body">mya ngan las [P115a7] 'das pa dang 'khor ba gnyis kyi yon tan dang [D270a7] nyes pa ma rtogs pa'i phyir 'du byed rnams la <span class="xml-recon">bde ba dang gtsang ba dang rtag pa dang bdag tu mngon par zhen pas byis pa rnams srid pa dang longs spyod [P115a8] la mngon par dga' zhing </span> mya ngan las 'das pas skrag go //</div></div>
+  <div class="xml-row xml-row-en"><div class="xml-row-label">English</div><div class="xml-row-body">Because of not understanding the good qualities and faults of Nirvāṇa and Saṃsāra [respectively] and <span class="xml-recon">their stubborn clinging to the [notion of] a self as something blissful, pure and eternal</span> with regard to the conditioned and conditioning factors,<details class="xml-xe"><summary>📝 note</summary>This is a repetition of the typical definition of the four types of error (<em>viparyāsa</em>) as found in the <span class="xml-ref" title="Abhidharmakośabhāṣya (Vasubandhu)">Abhidharmakośabhāṣya (Vasubandhu)</span>: <span class="xml-quote">There are four types of error: [1.] "There is permanence in impermanence", [2.] "There is happiness in suffering", [3.] "There is purity in impurity", [4.] "There is a self in what is without a self".<br><span class="xml-ref" title="Abhidharmakośabhāṣya (Vasubandhu)">Abhidharmakośabhāṣya (Vasubandhu)</span> 283: <span class="xml-xs">catvāro viparyāsāḥ | anitye nityamiti | duḥkhe sukhamiti | aśucau śucīti | anātmanyātmeti |</span></span>
+    	  This definition is paralleled in the <em>Vipallāsa Sutta</em> (<span class="xml-ref" title="Pāli Aṅguttara-nikāya (PTS)">Pāli Aṅguttara-nikāya (PTS)</span> 4.49) and the <span class="xml-ref" title="Ekottarikāgama">Ekottarikāgama</span> at 2.5.</details> <span class="xml-recon">for the foolish people</span> there is rejoicing in existence and the enjoyments [related to existence]  and fear of [entering] <em>nirvANa</em>.<details class="xml-xe"><summary>📝 note</summary>The reconstruction here is highly doubtful. The Tibetan translation here seems to provide a better reading: "[...] The foolish people, who are taking delight in the worldly pleasures, are afraid of <em>nirvANa</em>."</details></div></div>
+</div>
+<div class="xml-sen">
+  <div class="xml-sen-head">§13<span class="xml-sen-meta">Pandeya p. 126</span></div>
+  <div class="xml-row xml-row-skt"><div class="xml-row-label">Sanskrit</div><div class="xml-row-body">sa ca guṇadoṣānavabodhaḥ sukhādyabhiniveśaś ca satyadarśanād vinivartata ity ataḥ saṃsārād udvejanārthaṃ nirvāṇe cābhimukhīkaraṇārthaṃ </div></div>
+  <div class="xml-row xml-row-tib"><div class="xml-row-label">Tibetan</div><div class="xml-row-body">yon tan dang nyes pa ma rtogs pa dang / bde ba la sogs pa la mngon par zhen pa de yang bden <span class="xml-ed">pa <span class="xml-edsrc">[D]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>P:</b> na</span></details></span> mthong nas ldog par 'gyur te / [P115b1] de'i phyir 'khor ba la skyo bar bya ba'i don dang / mya ngan las 'das pa mngon sum du bya ba'i don du</div></div>
+  <div class="xml-row xml-row-en"><div class="xml-row-label">English</div><div class="xml-row-body">And the non-realization of the good qualities and faults [of <em>saMsAra</em> and <em>nirvANa</em>] and the clinging to [searching] bliss etc. cease because of seeing the truth. Therefore in order to make them fear <em>saMsAra</em> and in order make [them] face <em>nirvANa</em>,</div></div>
+</div>
+<div class="xml-sen">
+  <div class="xml-sen-head">§13.5<span class="xml-sen-meta">Kārikā IV. 1cd · MS fol. 57v2</span></div>
+  <div class="xml-row xml-row-skt"><div class="xml-row-label">Sanskrit</div><div class="xml-row-body">catuḥsatyāvatārāya smṛtyupasthā<span class="xml-recon">nabhāvanā ||</span></div></div>
+  <div class="xml-row xml-row-tib"><div class="xml-row-label">Tibetan</div><div class="xml-row-body">bden pa bzhi la 'jug par bya ba'i phyir ||<br>dran pa nye bar <span class="xml-recon">gzhag pa bsgom pa</span> ||</div></div>
+  <div class="xml-row xml-row-en"><div class="xml-row-label">English</div><div class="xml-row-body">[By observing these, ] in order to enter the four truths, there is the cultivation of the establishments of mindfulness</div></div>
+</div>
+<div class="xml-sen">
+  <div class="xml-sen-head">§13.7</div>
+  <div class="xml-row xml-row-skt"><div class="xml-row-label">Sanskrit</div><div class="xml-row-body"><span class="xml-red">evādāv uktā <span class="xml-edsrc">[Y]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>Y:</b> evādāv uktā</span></details></span> |</div></div>
+  <div class="xml-row xml-row-tib"><div class="xml-row-label">Tibetan</div><div class="xml-row-body"><span class="xml-recon">nyid thog mar bshad do</span> ||</div></div>
+  <div class="xml-row xml-row-en"><div class="xml-row-label">English</div><div class="xml-row-body">has been taught in the beginning.</div></div>
+</div>
+<div class="xml-sen">
+  <div class="xml-sen-head">§14</div>
+  <div class="xml-row xml-row-skt"><div class="xml-row-label">Sanskrit</div><div class="xml-row-body"><span class="xml-muula"><span class="xml-red">kāyena hi dauṣṭhulyaṃ <span class="xml-edsrc">[Na Pa]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>Y:</b> <em>kāyena</em> dauṣṭhulyaṃ</span></details></span> prabhāvyata</span> iti dauṣṭhulyaṃ duḥsthitatā |</div></div>
+  <div class="xml-row xml-row-tib"><div class="xml-row-label">Tibetan</div><div class="xml-row-body">[P115b2]<span class="xml-muula"><span class="xml-recon">lus kyis <span class="xml-ed">ni<span class="xml-edsrc">[D]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>P:</b> na</span></details></span> gnas ngan len</span> rab tu ston</span> zhes bya ba la / gnas ngan len ni ngan par gnas pa ste /</div></div>
+  <div class="xml-row xml-row-en"><div class="xml-row-label">English</div><div class="xml-row-body"><span class="xml-muula">For unwellness is demonstrated through the body</span> - the meaning of unwellness is "being in a bad condition".<details class="xml-xe"><summary>📝 note</summary>For this translation of <em>duHsthitatA</em> see <span class="xml-ref" title="modern academic citation">[schmithausen1987b 377]</span> n. 602 and also <span class="xml-ref" title="modern academic citation">[schmithausen2014 509]</span>.</details></div></div>
+</div>
+<div class="xml-sen">
+  <div class="xml-sen-head">§15</div>
+  <div class="xml-row xml-row-skt"><div class="xml-row-label">Sanskrit</div><div class="xml-row-body">tathā hi pratidinam abhisaṃskriyamāṇo vikriyata eva kāya iti kāyena dauṣṭhul-yaṃ prabhāvyate |</div></div>
+  <div class="xml-row xml-row-tib"><div class="xml-row-label">Tibetan</div><div class="xml-row-body">'di ltar nyin gcig bzhin mngon par 'dus byas kyang lus 'gyur ba nyid pas lus kyis [P115b3] ni gnas ngan len rab tu ston to/</div></div>
+  <div class="xml-row xml-row-en"><div class="xml-row-label">English</div><div class="xml-row-body">It is like this: The body which is being maintained<details class="xml-xe"><summary>📝 note</summary>This is to be understood in the sense that we put effort every day into mainting our body and keeping it healthy, yet ultimately it is going to deteriorate and die. </details> every day, just gets destroyed [again]. Thus unwellness is demonstrated through the body.</div></div>
+</div>
+<div class="xml-sen">
+  <div class="xml-sen-head">§16</div>
+  <div class="xml-row xml-row-skt"><div class="xml-row-label">Sanskrit</div><div class="xml-row-body">tataś ca kāya<span class="xml-muula">parīkṣayā duḥkhasatyam avatarati</span> |</div></div>
+  <div class="xml-row xml-row-tib"><div class="xml-row-label">Tibetan</div><div class="xml-row-body">de'i phyir lus la <span class="xml-muula">yongs su brtags pas sdug bsngal gyi bden pa la 'jug go</span> //</div></div>
+  <div class="xml-row xml-row-en"><div class="xml-row-label">English</div><div class="xml-row-body">And therefore <span class="xml-muula">through the investigation</span> of the body <span class="xml-muula">one enters the truth of suffering.</span> </div></div>
+</div>
+<div class="xml-sen">
+  <div class="xml-sen-head">§17<span class="xml-sen-meta">MS fol. 57v3 · Pandeya p. 127</span></div>
+  <div class="xml-row xml-row-skt"><div class="xml-row-label">Sanskrit</div><div class="xml-row-body"><span class="xml-ed">kiṃ <em>kāraṇam</em>   <span class="xml-edsrc">[Y Pa]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>Y Pa:</b> kim <em>artham etad ity āha</em></span><span class="xml-note">cf. <em>MAVṬ</em> 187.9: <span class="xml-xs">kiṃ kāraṇam</span> (<span class="xml-xt">de ci&#x27;i phyir ce na</span>).</span></details></span> <span class="xml-muula"><span class="xml-red">tasya sadauṣṭhulyasaṃskāralakṣaṇatvād<span class="xml-edsrc">[Na Pa]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>Y:</b> <em>tallakṣaṇasya hi sadauṣṭhulyasaṃskāratvād</em></span></details></span></span><span class="xml-recon"> iti</span> |</div></div>
+  <div class="xml-row xml-row-tib"><div class="xml-row-label">Tibetan</div><div class="xml-row-body">[D270b3] <span class="xml-recon">de ci'i phyir zhe na </span> | <span class="xml-muula"><span class="xml-recon">de'i mtshan nyid ni gnas ngan len dang bcas</span> [P115b4] <span class="xml-recon">pa'i 'du byed</span></span><br><span class="xml-muula"><span class="xml-recon">yin pa'i phyir ro</span></span>#<span class="xml-recon">zhes bya ba ste /</span></div></div>
+  <div class="xml-row xml-row-en"><div class="xml-row-label">English</div><div class="xml-row-body">For what reason does [Vasubandhu] say: "<span class="xml-muula">Because it [the body] is chara--</span><br><span class="xml-muula">cterized by</span><br> <span class="xml-muula">conditioned and conditioning phenomena that are associated with unwellness</span>"?</div></div>
+</div>
+<div class="xml-sen">
+  <div class="xml-sen-head">§18</div>
+  <div class="xml-row xml-row-skt"><div class="xml-row-label">Sanskrit</div><div class="xml-row-body"><span class="xml-quote"><span class="xml-recon">yasmād duḥkhasatyasya sa</span>-dau-ṣṭhul-yāḥ saṃskārā lakṣaṇaṃ svabhāvaḥ kāyena ca dauṣṭhulyaṃ prabhāvyate, tasmāt kāyaparīkṣayā duḥkhasatyam avatarati</span><div class="xml-parallels"><div class="xml-parallels-head">↳ Parallel</div><div class="xml-par-entry"><div class="xml-par-src"><span class="xml-ref" title="Abhidharmasamuccaya">Abhidharmasamuccaya</span></div><div class="xml-par-txt">kāyasmṛtyupasthānena duḥkhasatyamavatarati saṃskāraduḥkhatālakṣaṇena dauṣṭhulyena prabhāvitatvāt kāyasya</div><div class="xml-par-tib"><b><span class="xml-ref" title="Abhidharmasamuccaya — Tibetan">Abhidharmasamuccaya — Tibetan</span>:</b> lus dran pa nye bar gzhag pas ni sdug bsngal gyi bden pa la &#x27;jug ste || lus ni &#x27;du byed kyi sdug bsngal gyi mtshan nyid gnas ngan len gyis rab tu phye ba&#x27;i phyir ro |</div></div></div> |</div></div>
+  <div class="xml-row xml-row-tib"><div class="xml-row-label">Tibetan</div><div class="xml-row-body"><span class="xml-recon">'di ltar sdug bsngal gyi bden pa'i </span> mtshan nyid <span class="xml-ed">de <span class="xml-edsrc">[P]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>D:</b> om.</span></details></span> ngo bo nyid ni gnas ngan len dang bcas pa'i 'du byed rnams yin la | lus kyis kyang gnas ngan len [P115b5] du rab tu [D270b4] ston pas / de'i phyir lus la yongs su brtags pas sdug bsngal gyi bden pa la <span class="xml-ed">'jug<span class="xml-edsrc">[D]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>P:</b> bjug</span></details></span> go //</div></div>
+  <div class="xml-row xml-row-en"><div class="xml-row-label">English</div><div class="xml-row-body"><span class="xml-recon">Because</span> the conditioned and conditioning phenomena that are associated with unwellness are the characteristic, which means they have the nature <span class="xml-recon">of the truth of suffering</span>, and because unwellness is demonstrated through the body, therefore <span class="xml-muula">through the investigation</span> of the body <span class="xml-muula">one enters the truth of suffering.</span></div></div>
+</div>
+<div class="xml-sen">
+  <div class="xml-sen-head">§19<span class="xml-sen-meta">MS fol. 57v4</span></div>
+  <div class="xml-row xml-row-skt"><div class="xml-row-label">Sanskrit</div><div class="xml-row-body">dauṣṭhulyaṃ na vijñāyata ity ata āha: <span class="xml-muula">dauṣṭhulyaṃ hi <span class="xml-recon">saṃskāraduḥkhate</span></span><span class="xml-recon">ti  | saṃs-kāro bhāvānām utpattiḥ</span> | <span class="xml-recon">sa ca </span><span class="xml-red"> sarvopadravāśrayatvād <span class="xml-edsrc">[Y Pa]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>Y Pa:</b> <em>sarvaviplavavastv iti</em></span><span class="xml-note">cf. Y 48.2;170.2;240.1-2: <span class="xml-xs">sarvopadrava</span> (D: gnod pa thams cad); Y 133.3: aśrāyatvād (D: gzhi yin pas). At Y 74.9, <span class="xml-xt">gnod pa thams cad</span> is used to translate <span class="xml-xs">sarvānartha</span>, therefore this wording is also possible. In the following verse, <span class="xml-xt">gnod</span> is used to translate <span class="xml-xs">anartha</span>. Because <span class="xml-xs">sarvopdravava</span> also appears in the explanation of the <span class="xml-xs">catvāri smṛtyupasthānāni</span>, it is the most likely candidate at this point. <span class="xml-xs">tad ca</span> instead of <span class="xml-xs">sa ca</span> is also possible. </span></details></span> dauṣṭhulyam |</div></div>
+  <div class="xml-row xml-row-tib"><div class="xml-row-label">Tibetan</div><div class="xml-row-body">gnas ngan len mi shes pas de'i phyir | <span class="xml-muula">gnas ngan len ni <span class="xml-recon">'du byed kyi sdug</span></span><br><span class="xml-muula"><span class="xml-recon">bsngal</span> [P115b6] <span class="xml-recon">nyid de</span></span> zhes bya ba smos so || <span class="xml-recon">'du byed ni gnos po rnams kyi skye ba'o || de yang gnod pa [D270b5] thams cad kyi gzhi yin pas</span> gnas ngan len yin la |</div></div>
+  <div class="xml-row xml-row-en"><div class="xml-row-label">English</div><div class="xml-row-body">Since [the term] 'unwellness' is not known, [Vasubandhu] thus says: <span class="xml-muula">For unwellness is <span class="xml-recon">the unsatisfactoriness of the conditioned and conditioning factors.</span></span> <span class="xml-recon">The conditioned and conditioning factors<details class="xml-xe"><summary>📝 note</summary>Here <em>saṃskāra</em> can be seen as a collective singular.</details> are the production of the existences. It is 'unwellness' because it is a base for all [kinds of] distress.</span></div></div>
+</div>
+<div class="xml-sen">
+  <div class="xml-sen-head">§20</div>
+  <div class="xml-row xml-row-skt"><div class="xml-row-label">Sanskrit</div><div class="xml-row-body">yathoktam |</div></div>
+  <div class="xml-row xml-row-tib"><div class="xml-row-label">Tibetan</div><div class="xml-row-body">ji skad du |</div></div>
+  <div class="xml-row xml-row-en"><div class="xml-row-label">English</div><div class="xml-row-body">Because it is disagreeable for the noble ones it is called 'unsatisfactoriness'. As it is said [in a Verse]:</div></div>
+</div>
+<div class="xml-sen">
+  <div class="xml-sen-head">§21</div>
+  <div class="xml-row xml-row-skt"><div class="xml-row-label">Sanskrit</div><div class="xml-row-body">anartho janmedaṃ sati hi janane santi ripavo <br>jarā-mṛtyu-vyādhi-vyasanavadha-bandha-prabhṛtayaḥ |</div></div>
+  <div class="xml-row xml-row-tib"><div class="xml-row-label">Tibetan</div><div class="xml-row-body">skye 'di gnod yin <span class="xml-ed">pa<span class="xml-edsrc">[D]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>P:</b> om.</span></details></span> skye ba yod na rga dang 'chi ba dang ||<br>nad dang phongs <span class="xml-ed">pa<span class="xml-edsrc">[D]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>P:</b> dang</span></details></span> gsod dang 'ching ba la sogs <span class="xml-ed">pa<span class="xml-edsrc">[D]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>P:</b> om.</span></details></span> dgra rnams yod ||</div></div>
+  <div class="xml-row xml-row-en"><div class="xml-row-label">English</div><div class="xml-row-body">The disaster is this birth. For when there is birth, there are the enemies beginning with old age, death, sickness, misfortune, killing, binding and so on.</div></div>
+</div>
+<div class="xml-sen">
+  <div class="xml-sen-head">§22<span class="xml-sen-meta">MS fol. 57v5</span></div>
+  <div class="xml-row xml-row-skt"><div class="xml-row-label">Sanskrit</div><div class="xml-row-body">anarthās te na syur <span class="xml-red">yadi bahubhayotpattir api na  <span class="xml-edsrc">[Y]</span> <details class="xml-app"><summary>📋</summary><span class="xml-var"><b>Y:</b> yady avināśo 'nutpādaḥ syāt vṛkṣe 'nutpanne 'gnivāyuvanāgnibhraṃśo na syād iti</span><span class="xml-var"><b>Pa:</b> yadi na bhavato nāśavibhavāvajāte vṛkṣe syān na hi dahanadavavāyuvyutir api</span><span class="xml-note">This verse is in <em>śikhariṇī</em> metre, which was correctly noticed by P but not by Y. As noted by St, <em>bahubhayo</em> seems to be a (more) reasonable reconstruction of <span class="xml-xt">&#x27;jigs mang</span>. </span></details></span> <br> <span class="xml-recon">yathājāte vṛkṣe na hi pavanavahnyor vipatanam</span> ||</div></div>
+  <div class="xml-row xml-row-tib"><div class="xml-row-label">Tibetan</div><div class="xml-row-body"><span class="xml-recon">gal te 'jigs [D270b6] mang skye ba med [P115b8] gyur</span> gnod pa de dag med || <br>  <span class="xml-recon">shing skyed med na me dang rlung dang nags mes 'gyel mi 'gyur</span> ||</div></div>
+  <div class="xml-row xml-row-en"><div class="xml-row-label">English</div><div class="xml-row-body">They would not be misfortunes if that [birth] which has many dangers<details class="xml-xe"><summary>📝 note</summary>The translation of <em>bahubhaya</em> which is a reconstruction based on the Tibetan <span class="xml-xt">&#x27;jigs mang</span> is difficult at this point possibly points at 'birth' itself. Stanley translates this compound with 'body'.<span class="xml-xf">[See <span class="xml-ref" title="modern academic citation">[stanley1988 223]</span>, note 9.]</span> Yamaguchi on the other hand translates at this point "if the non-cessation has not arisen",<span class="xml-xf">[<span class="xml-ref" title="modern academic citation">[mavtjt 169]</span>: 若し無滅無生ならばそれらの害無かるべし。]</span> this interpretation is also reflected in his reconstruction of <span class="xml-xt">&#x27;jigs mang skye ba med</span> with <span class="xml-xs">avināśo &#x27;nutpādaḥ</span>. However it seems to be rather hard to get the meaning non-cessation from <span class="xml-xt">&#x27;jigs mang</span>, and therefore his reconstruction and translation at this point remain doubtful.</details> would not arise, just like when there is no tree, there is no destruction due to fire, wind and forest-fire. </div></div>
+</div>
+<div class="xml-sen">
+  <div class="xml-sen-head">§22.5</div>
+  <div class="xml-row xml-row-skt"><div class="xml-row-label">Sanskrit</div><div class="xml-row-body"><em>(no Sanskrit)</em></div></div>
+  <div class="xml-row xml-row-tib"><div class="xml-row-label">Tibetan</div><div class="xml-row-body">zhes bya ba lta bu'o ||</div></div>
+  <div class="xml-row xml-row-en"><div class="xml-row-label">English</div><div class="xml-row-body"><em>(no English translation)</em></div></div>
+</div>
 </section>
 
 </body>
